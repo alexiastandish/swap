@@ -3,7 +3,7 @@
 //   return listOutput
 // }
 
-const getUsers = (req, res) => {
+const getAllUsers = (req, res) => {
   let db = req.app.get('db')
   db.get_users()
     .then(response => {
@@ -15,7 +15,7 @@ const getUsers = (req, res) => {
 }
 
 module.exports = {
-  getUsers,
+  getAllUsers,
 }
 
 // const getProducts = (req, res) => {

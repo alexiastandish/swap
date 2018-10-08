@@ -10,25 +10,30 @@ const strategy = new Auth0Strategy(
     callbackURL: '/login',
     scope: 'openid profile',
   },
-  (accessToken, refreshToken, extraParams, profile, done) => {
-    done(null, profile)
+  () => {
+    console.log('hello')
   }
+  // (accessToken, refreshToken, extraParams, profile, done) => {
+  //   console.log('profile', profile)
+  //   done(null, profile)
+  // }
 )
 
 const getUser = (req, res) => {
-  if (req.use) res.status(200).json(req.use)
-  else res.status(403).json({ message: 'Not logged in' })
+  console.log('user', user)
+  if (req.user) res.status(200).json(req.user)
+  else res.status(403).json({ message: 'not logged in' })
 }
 
-const logout = (req, res) => {
-  req.session.destroy(() => {
-    res.redirect('http://localhost:3001/login')
-    // domain will be added in place of local host
-  })
-}
+// const logout = (req, res) => {
+//   req.session.destroy(() => {
+//     res.redirect('http://localhost:3001/login')
+//     // domain will be added in place of local host
+//   })
+// }
 
 module.exports = {
   strategy,
   getUser,
-  logout,
+  // logout,
 }

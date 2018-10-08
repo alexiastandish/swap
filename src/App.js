@@ -2,37 +2,25 @@ import React, { Component } from 'react'
 // import { BrowserRouter } from 'react-router-dom'
 // import { Provider } from 'react-redux'
 // import store from './ducks/store'
-import Nav from './components/Nav/Nav'
+// import About from './components/About/About'
 // import SideBar from './components/SideBar/SideBar'
 // import { Link } from 'react-router-dom'
-import './App.css'
-// import axios from 'axios'
+import '../src/sass/sass.scss'
 
 class App extends Component {
-  // componentDidMount() {
-  //   axios.get('/api/users').then(response => console.log('response', response))
-  // }
-  // constructor() {
-  //   super()
-
-  //   this.state = {
-  //     users: [],
-  //   }
-  // }
-
   render() {
     return (
-      // <Provider store={store}>
-      //   <BrowserRouter>
-      //     <div className="landing-view">
-      //       <Nav />
-      //       <Link to="/dash" />
-      //     </div>
-      //   </BrowserRouter>
-      // </Provider>
-
-      <div className="App">
-        <Nav />
+      <div>
+        <div className="landing-page">
+          <div className="landing-container">
+            <div className="logo">
+              <img src="http://i66.tinypic.com/nb6452.png" alt="swap-logo" />
+            </div>
+            <button>SIGN IN</button>
+            <button>SIGN UP</button>
+            <button>ABOUT</button>
+          </div>
+        </div>
       </div>
     )
   }

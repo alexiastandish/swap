@@ -1,13 +1,34 @@
 require('dotenv').config()
 const express = require('express')
-const { json } = require('body-parser')
 const massive = require('massive')
+const { json } = require('body-parser')
 const session = require('express-session')
 const passport = require('passport')
+const port = 3001
+// const path = require("path")
 
-const { strategy, getUser, logout } = require('./controllers/authCtrl')
+const { strategy, getUser } = require(`${__dirname}/controllers/authCtrl`)
 
-const port = process.env.PORT || 3001
+// const {
+//   getItem,
+//   postItem,
+//   deleteItem,
+//   editItem,
+//   // addImage,
+//   // uploadImage,
+//   // changeItemImage,
+// } = require(`${__dirname}/controllers/itemsCtrl`)
+
+// const { getAllUsers } = require(`${__dirname}/controllers/getUsersCtrl`)
+
+// const {
+//   addFollow,
+//   getFollowing,
+//   removeFollow,
+//   getFollowingItems,
+// } = require(`${__dirname}/controllers/followingCtrl`)
+
+// const { addLike, getLikes, removeLike } = require(`${__dirname}/controllers/likesCtrl`)
 
 const app = express()
 
@@ -16,19 +37,19 @@ const app = express()
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {
-    // console.log('db', db)
     app.set('db', db)
   })
-  .catch(console.log('error'))
+  .catch(console.log)
 
 app.use(json())
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 100000,
+      maxAge: 1000000,
     },
   })
 )
@@ -38,19 +59,22 @@ app.use(passport.session())
 passport.use(strategy)
 
 passport.serializeUser((user, done) => {
+  console.log('hello')
+  // console.log(user);
   const db = app.get('db')
-  db.get_user_by_authid([user.id])
+  db.getUserByAuthid([user.id])
     .then(response => {
+      console.log(response)
       if (!response[0]) {
-        db.add_user_by_authid([user.displayName, user.id])
+        console.log(response)
+        db.addUserByAuthid([user.displayName, user.id, user.emails[0].value])
           .then(res => done(null, res[0]))
           .catch(console.log)
       } else return done(null, response[0])
     })
     .catch(console.log)
 })
-
-passport.deserializeUser((user, done) => done(null, user))
+passport.deserializeUser((user, done) => {})
 
 app.get(
   '/login',
@@ -61,7 +85,24 @@ app.get(
 )
 
 app.get('/api/me', getUser)
-app.post('/api/logout', logout)
+
+// // items
+// app.get('/api/item/:id', getItem)
+// app.post('/api/item', postItem)
+// app.delete('/api/item/:id', deleteItem)
+// app.put('/api/item/:id', editItem)
+
+// // follows
+// app.get('/api/users', getAllUsers)
+// app.post('/api/follows', addFollow)
+// app.get('/api/follows/:id', getFollowing)
+// app.get('/api/follows/:id', getFollowingItems)
+// app.delete('/api/follows/:id', removeFollow)
+
+// //likes
+// app.post('api/like', addLike)
+// app.get('/api/likes/:id', getLikes)
+// app.delete('/api/like/:id', removeLike)
 
 app.listen(port, () => {
   console.log(`MARCO.... POLO ${port}`)

@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700');
+
+.landing-page {
+  background-image: url('http://i66.tinypic.com/2wrqo79.jpg');
+  background-size: contain no-repeat;
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-position-y: -75px;
+  flex-direction: column;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  .landing-container {
+    position: absolute;
+    top: 15%;
+
+    .logo img {
+      width: 600px;
+      margin: 0 auto;
+      margin-bottom: 300px;
+    }
+
+    .landing-page-button {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      text-align: center;
+      padding: 12px 46px;
+      margin-top: 20px;
+    }
+  }
+}
