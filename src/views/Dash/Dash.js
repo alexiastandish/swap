@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 import SideBar from '../../components/SideBar/SideBar'
-// import { Link } from 'react-router-dom'
+import './Dash.scss'
 
 class Dash extends Component {
   render() {
     return (
-      <div>
+      <div className="dash-container">
         <SideBar />
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code>
-          and save to reload.
-        </p>
       </div>
     )
   }
