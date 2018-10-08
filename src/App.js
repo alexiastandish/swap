@@ -1,28 +1,41 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+// import { BrowserRouter } from 'react-router-dom'
+// import { Provider } from 'react-redux'
+// import store from './ducks/store'
+import Nav from './components/Nav/Nav'
+// import SideBar from './components/SideBar/SideBar'
+// import { Link } from 'react-router-dom'
+import './App.css'
+// import axios from 'axios'
 
 class App extends Component {
+  // componentDidMount() {
+  //   axios.get('/api/users').then(response => console.log('response', response))
+  // }
+  // constructor() {
+  //   super()
+
+  //   this.state = {
+  //     users: [],
+  //   }
+  // }
+
   render() {
     return (
+      // <Provider store={store}>
+      //   <BrowserRouter>
+      //     <div className="landing-view">
+      //       <Nav />
+      //       <Link to="/dash" />
+      //     </div>
+      //   </BrowserRouter>
+      // </Provider>
+
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Nav />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
