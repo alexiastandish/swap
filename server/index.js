@@ -9,17 +9,17 @@ const port = 3001
 
 // const { strategy, getUser } = require(`${__dirname}/controllers/authCtrl`)
 
-// const {
-//   getItem,
-//   postItem,
-//   deleteItem,
-//   editItem,
-//   // addImage,
-//   // uploadImage,
-//   // changeItemImage,
-// } = require(`${__dirname}/controllers/itemsCtrl`)
+const {
+  getItem,
+  // postItem,
+  // deleteItem,
+  // editItem,
+  // addImage,
+  // uploadImage,
+  // changeItemImage,
+} = require(`${__dirname}/controllers/itemsCtrl`)
 
-// const { getAllUsers } = require(`${__dirname}/controllers/getUsersCtrl`)
+const { getAllUsers } = require(`${__dirname}/controllers/getUsersCtrl`)
 
 // const {
 //   addFollow,
@@ -86,23 +86,23 @@ app.use(json())
 
 // app.get('/api/me', getUser)
 
-// items
+// // items
 app.get('/api/item/:id', getItem)
-app.post('/api/item', postItem)
-app.delete('/api/item/:id', deleteItem)
-app.put('/api/item/:id', editItem)
+// app.post('/api/item', postItem)
+// app.delete('/api/item/:id', deleteItem)
+// app.put('/api/item/:id', editItem)
 
-// follows
+// // follows
 app.get('/api/users', getAllUsers)
-app.post('/api/follows', addFollow)
-app.get('/api/follows/:id', getFollowing)
-app.get('/api/follows/:id', getFollowingItems)
-app.delete('/api/follows/:id', removeFollow)
+// app.post('/api/follows', addFollow)
+// app.get('/api/follows/:id', getFollowing)
+// app.get('/api/follows/:id', getFollowingItems)
+// app.delete('/api/follows/:id', removeFollow)
 
-//likes
-app.post('api/like', addLike)
-app.get('/api/likes/:id', getLikes)
-app.delete('/api/like/:id', removeLike)
+// //likes
+// app.post('api/like', addLike)
+// app.get('/api/likes/:id', getLikes)
+// app.delete('/api/like/:id', removeLike)
 
 app.listen(port, () => {
   console.log(`MARCO.... POLO ${port}`)

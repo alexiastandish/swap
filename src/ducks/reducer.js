@@ -1,3 +1,4 @@
+import getItem from '../api/getItem'
 // import axios from 'axios'
 
 // const GET_USERS = 'GET_USERS'
@@ -12,6 +13,7 @@
 // // const EDIT_ITEM = 'EDIT_ITEM'
 // // const GET_USER_OFFERS = 'GET_USER_OFFERS'
 // // const DELETE_OFFER = 'DELETE_OFFER'
+const GET_ITEM = 'GET_ITEM'
 // // const ACCEPT_OFFER = 'ACCEPT_OFFER'
 
 // export function getUsers() {
@@ -20,6 +22,13 @@
 //     payload: axios.get('/api/users'),
 //   }
 // }
+
+export function getItemReducer(id) {
+  return {
+    type: GET_ITEM,
+    payload: getItem(id),
+  }
+}
 
 // export function getItems() {
 //   return {
