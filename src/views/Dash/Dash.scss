@@ -9,4 +9,6 @@ $dark-gray: #707070;
 .dash-container {
   background-image: none;
   background-color: $light-gray;
+  width: 100vw;
+  display: flex;
 }

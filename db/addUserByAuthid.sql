@@ -1,4 +1,6 @@
 INSERT INTO users
-  ( authid, username, email )
+  ( username,
+  authid,
+  email)
 VALUES
   ($1, $2, $3)

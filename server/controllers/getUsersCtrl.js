@@ -1,11 +1,6 @@
-// const getList = (req, res) => {
-//   const listOutput = res.status(200).json(items)
-//   return listOutput
-// }
-
 const getAllUsers = (req, res) => {
-  let db = req.app.get('db')
-  db.get_users()
+  const db = req.app.get('db')
+  db.getUsers()
     .then(response => {
       const users = res.status(200).json(response)
       console.log('users', users)
@@ -14,18 +9,18 @@ const getAllUsers = (req, res) => {
     .catch(err => res.status(500).send(err))
 }
 
-module.exports = {
-  getAllUsers,
+const getUserId = (req, res) => {
+  const db = req.app.get('db')
+  db.getUserById([req.params.id])
+    .then(response => {
+      const user = res.status(200).json(response)
+      console.log('users', user)
+      return user
+    })
+    .catch(err => res.status(500).send(err))
 }
 
-// const getProducts = (req, res) => {
-//   req.app
-//     .get('db')
-//     .get_products()
-//     .then(response => res.status(200).send(response))
-//     .catch(err => res.status(500).send(err));
-// };
-
-// module.exports = {
-//   getProducts
-// };
+module.exports = {
+  getAllUsers,
+  getUserId,
+}

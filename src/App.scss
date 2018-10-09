@@ -6,6 +6,10 @@ $navy: #424c58;
 $light-gray: #e5e5e5;
 $dark-gray: #707070;
 
+.App {
+  display: flex;
+}
+
 .landing-page {
   background-image: url('http://i65.tinypic.com/znkmmc.jpg');
   background-size: contain;

@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const GET_USERS = 'GET_USERS'
+const GET_FOLLOWING = 'GET_FOLLOWING'
 
-export function getUsers() {
+export function getFollowingUsers() {
   return {
     type: GET_USERS,
     payload: axios.get('/api/users'),
