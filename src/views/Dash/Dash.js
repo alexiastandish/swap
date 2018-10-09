@@ -4,11 +4,7 @@ import './Dash.scss'
 
 class Dash extends Component {
   render() {
-    return (
-      <div className="dash-container">
-        <SideBar />
-      </div>
-    )
+    return <div className="dash-container" />
   }
 }
 
