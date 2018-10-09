@@ -1,22 +1,32 @@
 const getItem = (req, res) => {
   const db = req.app.get('db')
   db.items.getItem([req.params.id]).then(response => {
-    console.log('calling getItem')
     res.status(200).json(response)
   })
 }
 
-// const getItems = (req, res) => {
-//   let db = req.app.get('db')
-//   db.items
-// }
-// const addItem = async (req, res) => {
+const getItems = (req, res) => {
+  const db = req.app.get('db')
+  db.items.getItems([req.params.id]).then(response => {
+    res.status(200).json(response)
+  })
+}
+
+const getItemAndImage = (req, res) => {
+  // console.log('req.body', req.body)
+  const db = req.app.get('db')
+  db.items.joinItemAndImage([req.params.id]).then(response => {
+    res.status(200).json(response)
+  })
+}
+
+// const postItem = async (req, res) => {
 //   console.log('req.body', req.body)
 //   const {
 //     item_name,
 //     item_description,
 //     item_userid,
-//     // firebaseImg,
+//     item_url,
 //   } = req.body
 //   let db = req.app.get('db')
 //   const item = await db.items.addItem([
@@ -49,7 +59,8 @@ const getItem = (req, res) => {
 
 module.exports = {
   getItem,
-  // getItems,
+  getItems,
+  getItemAndImage,
   // addItem,
   // deleteItem,
   // editItem,

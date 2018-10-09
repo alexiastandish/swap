@@ -10,15 +10,17 @@ const port = 3001
 const { strategy, getUser, logout } = require('./controllers/authCtrl')
 const { getAllUsers, getUserId } = require('./controllers/getUsersCtrl')
 
-// const {
-//   getItem,
-// postItem,
-// deleteItem,
-// editItem,
-// addImage,
-// uploadImage,
-// changeItemImage,
-// } = require(`${__dirname}/controllers/itemsCtrl`)
+const {
+  getItem,
+  getItems,
+  getItemAndImage,
+  // postItem,
+  // deleteItem,
+  // editItem,
+  // addImage,
+  // uploadImage,
+  // changeItemImage,
+} = require(`${__dirname}/controllers/itemsCtrl`)
 
 // const { getAllUsers } = require(`${__dirname}/controllers/getUsersCtrl`)
 
@@ -90,7 +92,9 @@ app.get('/api/me', getUser)
 app.get('/api/user/:id', getUserId)
 
 // // items
-// app.get('/api/item/:id', getItem)
+app.get('/api/item/:id', getItem)
+app.get('/api/items/:id', getItems)
+app.get('/api/allitem/:id', getItemAndImage)
 // app.post('/api/item', postItem)
 // app.delete('/api/item/:id', deleteItem)
 // app.put('/api/item/:id', editItem)
