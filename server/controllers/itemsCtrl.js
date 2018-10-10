@@ -12,13 +12,20 @@ const getItems = (req, res) => {
   })
 }
 
-const getItemAndImage = async (req, res) => {
-  // console.log('req.body', req.body)
+// const getItemAndImage = async (req, res) => {
+//   console.log(req.body)
+//   const db = req.app.get('db')
+//   // const {}
+//   await db.items.joinItemAndImage([req.params.id]).then(response => {
+//     res.status(200).json(response)
+//   })
+// }
+
+const getItemImages = (req, res) => {
   const db = req.app.get('db')
-  const itemWithImage = await db.items.joinItemAndImage([req.params.id]).then(response => {
+  db.items.getImages([req.params.id]).then(response => {
     res.status(200).json(response)
   })
-  return itemWithImage
 }
 
 const postItem = async (req, res) => {
@@ -36,9 +43,9 @@ const postItem = async (req, res) => {
 }
 
 const addItemImages = async (req, res) => {
-  const { default_image_url, imageurl } = req.body
+  const { default_image_url, imageurl, imageurl_itemid } = req.body
   const db = req.app.get('db')
-  const image = await db.items.addImages([default_image_url, imageurl])
+  const image = await db.items.addImages([default_image_url, imageurl, imageurl_itemid])
   return res.status(200).send(image)
 }
 
@@ -64,16 +71,17 @@ const editItem = (req, res) => {
 
 const changeItemImage = (req, res) => {
   const { id } = req.params
-  const { item_name, item_description } = req.body
+  const { default_image_url, imageurl } = req.body
   const db = req.app.get('db')
-  db.items.updateImage([id, item_name, item_description])
+  db.items.updateImage([id, default_image_url, imageurl])
   return res.sendStatus(200)
 }
 
 module.exports = {
   getItem,
   getItems,
-  getItemAndImage,
+  // getItemAndImage,
+  getItemImages,
   postItem,
   addItemImages,
   deleteItem,

@@ -1,4 +1,4 @@
 INSERT into images
-  (default_image_url, imageurl)
+  (default_image_url, imageurl, imageurl_itemid)
 VALUES
-  ($1, $2);
+  ($1, $2, $3);

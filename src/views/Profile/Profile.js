@@ -3,18 +3,22 @@ import Nav from '../../components/Nav/Nav'
 import './Profile.scss'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { getProfileItems } from '../../ducks/itemsReducer'
+import { getItems } from '../../ducks/itemsReducer'
+import { getUserId } from '../../ducks/userReducer'
 import ItemCard from '../../components/ItemCard/ItemCard'
 
 class Profile extends Component {
   componentDidMount() {
-    this.props.getProfileItems()
+    this.props.getItems()
+    this.props.getUserId()
   }
   render() {
     return (
-      <div className="dash-container">
-        <Nav />
-        <ItemCard />
+      <div>
+        <div className="dash-container">
+          <Nav />
+          <ItemCard />
+        </div>
       </div>
     )
   }
@@ -28,7 +32,8 @@ export default withRouter(
   connect(
     mapStateToProps,
     {
-      getProfileItems,
+      getItems,
+      getUserId,
     }
   )(Profile)
 )

@@ -13,7 +13,8 @@ const { getAllUsers, getUserId } = require('./controllers/getUsersCtrl')
 const {
   getItem,
   getItems,
-  getItemAndImage,
+  // getItemAndImage,
+  getItemImages,
   postItem,
   addItemImages,
   // getAllFollows,
@@ -32,11 +33,7 @@ const {
   getFollowingItems,
 } = require('./controllers/followingCtrl')
 
-const {
-  saveItem,
-  getUserLikes,
-  // removeLike
-} = require('./controllers/likesCtrl')
+const { saveItem, getUserLikes, removeLike } = require('./controllers/likesCtrl')
 
 const app = express()
 
@@ -98,14 +95,16 @@ app.get('/api/user/:id', getUserId)
 
 // // items
 app.get('/api/item/:id', getItem)
+// gets item by id
 app.get('/api/items/:id', getItems)
-app.get('/api/allitem/:id', getItemAndImage)
+app.get('/api/images/:id', getItemImages)
+// app.get('/api/allitem/:id', getItemAndImage)
 app.post('/api/item', postItem)
-app.post('/api/item', addItemImages)
+app.post('/api/image', addItemImages)
 app.delete('/api/item/:id', deleteItem)
 app.put('/api/item/:id', editItem)
 app.put('/api/item/:id', changeItemImage)
-// ADD LIKES TO ITEM??
+// ADD user+LIKES TO ITEM??
 
 // // follows
 app.get('/api/users', getAllUsers)
@@ -118,9 +117,7 @@ app.delete('/api/follow/:id', removeFollow)
 // //likes
 app.post('/api/like', saveItem)
 app.get('/api/like/:id', getUserLikes)
-// app.get('/api/likes/:id', getUserLikes)
-
-// app.delete('/api/like/:id', removeLike)
+app.delete('/api/like/:id', removeLike)
 
 app.listen(port, () => {
   console.log(`MARCO.... POLO ${port}`)

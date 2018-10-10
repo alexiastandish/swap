@@ -1,6 +1,14 @@
 import axios from 'axios'
 
+const GET_USER_BY_ID = 'GET_USER_BY_ID'
 const GET_USERS = 'GET_USERS'
+
+export function getUserId(id) {
+  return {
+    type: GET_USER_BY_ID,
+    payload: axios.get(`/api/user/${id}`),
+  }
+}
 
 export function getUsers() {
   return {
@@ -11,6 +19,7 @@ export function getUsers() {
 
 const initialState = {
   users: [],
+  user: {},
   isLoading: false,
   userErrorMessage: '',
 }
@@ -31,7 +40,7 @@ export default function userReducer(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        products: action.payload.data,
+        users: action.payload.data,
       }
     case `${GET_USERS}_REJECTED`:
       return {
@@ -39,6 +48,19 @@ export default function userReducer(state = initialState, action) {
         isLoading: false,
         userErrorMessage: 'Failed To Fetch Products',
       }
+    case `${GET_USER_BY_ID}_PENDING`:
+      return {
+        ...state,
+        isLoading: true,
+      }
+
+    case `${GET_USER_BY_ID}_FULLFILLED`:
+      return {
+        ...state,
+        isLoading: false,
+        user: action.payload.data,
+      }
+
     default:
       return state
   }

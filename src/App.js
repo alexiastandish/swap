@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom'
 import Routes from './Routes'
 import SideBar from './components/SideBar/SideBar'
 import './App.scss'
+import { Provider } from 'react-redux'
+import store from './ducks/store'
 
 class App extends Component {
   // componentDidMount() {
@@ -15,12 +17,14 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <div className="App">
-          <SideBar />
-          <Routes />
-        </div>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <div className="App">
+            <SideBar />
+            <Routes />
+          </div>
+        </BrowserRouter>
+      </Provider>
     )
   }
 }

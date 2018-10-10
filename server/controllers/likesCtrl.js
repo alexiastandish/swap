@@ -12,7 +12,18 @@ const getUserLikes = (req, res) => {
   })
 }
 
+const removeLike = (req, res) => {
+  const db = req.app.get('db')
+  db.likes
+    .unlike([req.params.id])
+    .then(() => {
+      res.sendStatus(200)
+    })
+    .catch(err => console.log(err))
+}
+
 module.exports = {
   saveItem,
   getUserLikes,
+  removeLike,
 }

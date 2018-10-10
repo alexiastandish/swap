@@ -1,43 +1,48 @@
 import axios from 'axios'
 
 const GET_FOLLOWING = 'GET_FOLLOWING'
+const FOLLOW_USER = 'FOLLOW_USER'
 
 export function getFollowingUsers() {
   return {
-    type: GET_USERS,
-    payload: axios.get('/api/users'),
+    type: GET_FOLLOWING,
+    payload: axios.get('/api/follows/:id'),
+  }
+}
+
+export function followUser(user_followingid) {
+  return {
+    type: FOLLOW_USER,
+    payload: axios.post('/api/follow', { user_followingid }),
   }
 }
 
 const initialState = {
-  users: [],
+  followingUsers: [],
   isLoading: false,
-  userErrorMessage: '',
 }
 
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_USERS:
-      return {
-        ...state,
-        userErrorMessage: 'Failed To Use Middlewares',
-      }
-    case `${GET_USERS}_PENDING`:
+    case `${GET_FOLLOWING}_PENDING`:
       return {
         ...state,
         isLoading: true,
       }
-    case `${GET_USERS}_FULFILLED`:
+    case `${GET_FOLLOWING}_FULLFILLED`:
       return {
         ...state,
         isLoading: false,
-        products: action.payload.data,
       }
-    case `${GET_USERS}_REJECTED`:
+    case `${FOLLOW_USER}_PENDING`:
+      return {
+        ...state,
+        isLoading: true,
+      }
+    case `${FOLLOW_USER}_FULLFILLED`:
       return {
         ...state,
         isLoading: false,
-        userErrorMessage: 'Failed To Fetch Users',
       }
     default:
       return state
