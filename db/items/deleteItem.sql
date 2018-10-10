@@ -1,2 +1,2 @@
-DELETE FROM items
+DELETE FROM itemList
 WHERE id = $1;

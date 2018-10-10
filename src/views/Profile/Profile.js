@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import Nav from '../../components/Nav/Nav'
 import './Profile.scss'
 import { connect } from 'react-redux'
-import { itemsReducer } from '../../ducks/itemsReducer'
+import { withRouter } from 'react-router-dom'
+import { getProfileItems } from '../../ducks/itemsReducer'
 import ItemCard from '../../components/ItemCard/ItemCard'
 
 class Profile extends Component {
   componentDidMount() {
-    // this.props.getUserItems()
+    this.props.getProfileItems()
   }
   render() {
     return (
@@ -19,4 +20,15 @@ class Profile extends Component {
   }
 }
 
-export default Profile
+const mapStateToProps = ({ items }) => ({
+  ...items,
+})
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    {
+      getProfileItems,
+    }
+  )(Profile)
+)

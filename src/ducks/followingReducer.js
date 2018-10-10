@@ -37,7 +37,7 @@ export default function userReducer(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        userErrorMessage: 'Failed To Fetch Products',
+        userErrorMessage: 'Failed To Fetch Users',
       }
     default:
       return state

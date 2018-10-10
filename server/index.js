@@ -14,22 +14,23 @@ const {
   getItem,
   getItems,
   getItemAndImage,
-  // postItem,
-  // deleteItem,
-  // editItem,
-  // addImage,
-  // uploadImage,
-  // changeItemImage,
+  postItem,
+  addItemImages,
+  // getAllFollows,
+  deleteItem,
+  editItem,
+  changeItemImage,
 } = require(`${__dirname}/controllers/itemsCtrl`)
 
 // const { getAllUsers } = require(`${__dirname}/controllers/getUsersCtrl`)
 
-// const {
-//   addFollow,
-//   getFollowing,
-//   removeFollow,
-//   getFollowingItems,
-// } = require(`${__dirname}/controllers/followingCtrl`)
+const {
+  getFollowingUsers,
+  followUser,
+  getAllFollowingUsers,
+  //   removeFollow,
+  //   getFollowingItems,
+} = require('./controllers/followingCtrl')
 
 // const { addLike, getLikes, removeLike } = require(`${__dirname}/controllers/likesCtrl`)
 
@@ -95,14 +96,17 @@ app.get('/api/user/:id', getUserId)
 app.get('/api/item/:id', getItem)
 app.get('/api/items/:id', getItems)
 app.get('/api/allitem/:id', getItemAndImage)
-// app.post('/api/item', postItem)
-// app.delete('/api/item/:id', deleteItem)
-// app.put('/api/item/:id', editItem)
+app.post('/api/item', postItem)
+app.post('/api/item', addItemImages)
+app.delete('/api/item/:id', deleteItem)
+app.put('/api/item/:id', editItem)
+app.put('/api/item/:id', changeItemImage)
 
 // // follows
 app.get('/api/users', getAllUsers)
-// app.post('/api/follows', addFollow)
-// app.get('/api/follows/:id', getFollowingUsers)
+app.get('/api/follows', getAllFollowingUsers)
+app.post('/api/follow', followUser)
+app.get('/api/follows/:id', getFollowingUsers)
 // app.get('/api/follows/:id', getFollowingItems)
 // app.delete('/api/follows/:id', removeFollow)
 

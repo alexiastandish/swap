@@ -1,8 +1,5 @@
 
-INSERT INTO items
-  ( item_name, item_description, item_userid)
+INSERT INTO itemList
+  ( post_name, post_description, user_id, posted_time)
 VALUES
-  ( $1 , $2, $3)
-
-
-
+  ( $1 , $2, $3, $4)
