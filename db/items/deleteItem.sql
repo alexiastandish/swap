@@ -1,2 +1,2 @@
-DELETE FROM itemList
-WHERE id = $1;
+DELETE FROM items
+WHERE items_id = $1;

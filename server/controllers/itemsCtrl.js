@@ -23,9 +23,15 @@ const getItemAndImage = async (req, res) => {
 
 const postItem = async (req, res) => {
   console.log('req.body', req.body)
-  const { item_name, item_description, item_userid } = req.body
+  const { item_name, item_description, item_userid, post_time, post_date } = req.body
   const db = req.app.get('db')
-  const item = await db.items.addItem([item_name, item_description, item_userid])
+  const item = await db.items.addItem([
+    item_name,
+    item_description,
+    item_userid,
+    post_time,
+    post_date,
+  ])
   return res.status(200).send(item)
 }
 

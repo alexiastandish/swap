@@ -1,3 +1,3 @@
 SELECT *
-FROM itemList
-WHERE id = $1;
+FROM items
+WHERE items_id = $1;

@@ -28,11 +28,15 @@ const {
   getFollowingUsers,
   followUser,
   getAllFollowingUsers,
-  //   removeFollow,
-  //   getFollowingItems,
+  removeFollow,
+  getFollowingItems,
 } = require('./controllers/followingCtrl')
 
-// const { addLike, getLikes, removeLike } = require(`${__dirname}/controllers/likesCtrl`)
+const {
+  saveItem,
+  getUserLikes,
+  // removeLike
+} = require('./controllers/likesCtrl')
 
 const app = express()
 
@@ -101,18 +105,21 @@ app.post('/api/item', addItemImages)
 app.delete('/api/item/:id', deleteItem)
 app.put('/api/item/:id', editItem)
 app.put('/api/item/:id', changeItemImage)
+// ADD LIKES TO ITEM??
 
 // // follows
 app.get('/api/users', getAllUsers)
 app.get('/api/follows', getAllFollowingUsers)
 app.post('/api/follow', followUser)
 app.get('/api/follows/:id', getFollowingUsers)
-// app.get('/api/follows/:id', getFollowingItems)
-// app.delete('/api/follows/:id', removeFollow)
+app.get('/api/following/:id', getFollowingItems)
+app.delete('/api/follow/:id', removeFollow)
 
 // //likes
-// app.post('api/like', addLike)
-// app.get('/api/likes/:id', getLikes)
+app.post('/api/like', saveItem)
+app.get('/api/like/:id', getUserLikes)
+// app.get('/api/likes/:id', getUserLikes)
+
 // app.delete('/api/like/:id', removeLike)
 
 app.listen(port, () => {

@@ -1,2 +1,2 @@
 DELETE FROM following
-where id = $1;
+WHERE follower_id = $1;
