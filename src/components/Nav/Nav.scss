@@ -10,12 +10,12 @@ $dark-gray: #707070;
   height: 7vh;
   width: 93%;
   margin: 0 auto;
-  display: flex;
   border-bottom: 2px solid $dark-gray;
   align-items: center;
   display: flex;
   flex-direction: row;
-
+  margin-bottom: 50px;
+  justify-content: space-between;
   .search-bar {
     width: 320px;
     height: 35px;
@@ -54,5 +54,20 @@ $dark-gray: #707070;
     color: white;
     margin: 0;
     border: 2px solid $dark-gray;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    justify-content: flex-end;
+
+    li {
+      list-style: none;
+      color: $dark-gray;
+      font-family: $font-family;
+      flex-direction: row;
+      padding-left: 30px;
+    }
   }
 }

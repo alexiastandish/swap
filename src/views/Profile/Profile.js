@@ -14,11 +14,9 @@ class Profile extends Component {
   }
   render() {
     return (
-      <div>
-        <div className="dash-container">
-          <Nav />
-          <ItemCard />
-        </div>
+      <div className="dash-container">
+        <Nav />
+        <ItemCard />
       </div>
     )
   }

@@ -10,6 +10,7 @@ import Offers from './views/Offers/Offers'
 // import Item from './views/Item/Item'
 import Login from './Login'
 import Home from './Home'
+import Item from './views/Item/Item'
 
 export default function Routes() {
   return (
@@ -22,7 +23,7 @@ export default function Routes() {
       <Route path="/likes/:id" component={Likes} />
       <Route path="/offers" component={Offers} />
       {/* <Route path="/additem" component={AddItem} /> */}
-      {/* <Route path="/item/:id" component={Item} /> */}
+      <Route path="/item/:id" component={Item} />
       <Redirect to="/" />
     </Switch>
   )

@@ -30,9 +30,10 @@ class Nav extends Component {
             <i className="fa fa-search" />
           </button>
         </div>
-        <div className="menu" />
-
-        <div />
+        <ul className="menu">
+          <li>back</li>
+          <li>signout</li>
+        </ul>
       </div>
     )
   }
