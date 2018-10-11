@@ -9,8 +9,8 @@ class Home extends Component {
     super(props)
   }
 
-  componentDidMount() {
-    this.props.getUserById()
+  componentDidMount(id) {
+    this.props.getUserById(id)
   }
   render() {
     console.log('props', this.props.user)
@@ -41,13 +41,3 @@ export default connect(
   mapStateToProps,
   { getUserById }
 )(Home)
-
-{
-  /* <div>
-          {!this.props.isAuthed ? (
-            <div>Not Logged In</div>
-          ) : (
-            <div>{JSON.stringify(this.props.user)}</div>
-          )}
-        </div> */
-}

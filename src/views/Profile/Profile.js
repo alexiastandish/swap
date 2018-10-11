@@ -12,13 +12,14 @@ class Profile extends Component {
     super(props)
 
     this.state = {
-      user: {},
+      items: {},
     }
   }
   componentDidMount() {
     this.props.getItems()
     this.props.getUserById()
   }
+
   render() {
     return (
       <div className="dash-container">

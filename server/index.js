@@ -70,7 +70,7 @@ passport.serializeUser((user, done) => {
       // console.log(response)
       if (!response[0]) {
         // console.log(response)
-        db.addUserByAuthid([user.displayName, user.id, user.email])
+        db.addUserByAuthid([user.displayName, user.id, user_avatar, user.email])
           .then(res => done(null, res[0]))
           .catch(console.log)
       } else return done(null, response[0])
@@ -97,10 +97,8 @@ app.get('/api/user/:id', getUserId)
 
 // // items
 app.get('/api/item/:id', getItem)
-// gets item by id
 app.get('/api/items/:id', getItems)
 app.get('/api/images/:id', getItemImages)
-// app.get('/api/allitem/:id', getItemAndImage)
 app.post('/api/item', postItem)
 app.post('/api/image', addItemImages)
 app.delete('/api/item/:id', deleteItem)

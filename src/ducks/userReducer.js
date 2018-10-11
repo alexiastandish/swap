@@ -4,14 +4,14 @@ const GET_USER_BY_ID = 'GET_USER_BY_ID'
 const GET_CURRENT_USER = 'GET_CURRENT_USER'
 // const GET_USERS = 'GET_USERS'
 
-export function getUserById(id) {
+export function getUserById() {
   return {
     type: GET_USER_BY_ID,
     payload: axios.get(`/api/me`),
   }
 }
 
-export function getCurrentUser() {
+export function getCurrentUser(id) {
   return {
     type: GET_CURRENT_USER,
     payload: axios.get(`/api/user/${id}`),
@@ -28,6 +28,7 @@ export function getCurrentUser() {
 const initialState = {
   // users: [],
   user: {},
+  currentUser: {},
   isAuthed: false,
 }
 
@@ -65,6 +66,11 @@ export default function userReducer(state = initialState, action) {
       return {
         ...state,
         isAuthed: false,
+      }
+    case `${GET_CURRENT_USER}_FULLFILLED`:
+      return {
+        ...state,
+        currentUser: action.payload.data,
       }
     default:
       return state

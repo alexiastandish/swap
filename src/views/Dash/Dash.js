@@ -1,31 +1,38 @@
 import React, { Component } from 'react'
-import { getUserById } from '../../ducks/userReducer'
+import { getCurrentUser, getUserById } from '../../ducks/userReducer'
 import { connect } from 'react-redux'
 import Nav from '../../components/Nav/Nav'
+import axios from 'axios'
 
 class Dash extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      currentUser: {},
+    }
   }
 
-  componentDidMount() {
-    this.props.getUserById()
+  componentDidMount(id) {
+    axios.get(`/api/user/${id}`).then(response => {
+      // console.log('response.data', response.data)
+      this.setState(response)
+    })
   }
+
   render() {
-    console.log('this.props.user', this.props.user)
-    console.log('this.props.username', this.props.username)
+    console.log('this.props.id', this.props.id)
     return (
       <div className="dash-container">
-        <h1>Hello, {this.props.username}</h1>
         <Nav />
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({ ...state.user })
+const mapStateToProps = state => ({ ...state.currentUser })
 
 export default connect(
   mapStateToProps,
-  { getUserById }
+  { getCurrentUser }
 )(Dash)

@@ -14,10 +14,12 @@ $dark-gray: #707070;
   flex-direction: column;
 
   .item-section {
-    width: 93%;
+    width: 70vw;
     display: flex;
     flex-direction: row;
-    margin: 20px auto;
+    justify-content: center;
+    margin: 40px 60px;
+    justify-content: flex-start;
 
     .description-section {
       color: $navy;
@@ -25,8 +27,8 @@ $dark-gray: #707070;
       width: 24vw;
     }
 
-    .image-container img {
-      width: 26vw;
+    .selected-image img {
+      width: 30vw;
       height: 50vh;
       object-fit: cover;
     }
@@ -34,7 +36,8 @@ $dark-gray: #707070;
     .multi-image-container {
       display: flex;
       flex-direction: column;
-      margin-left: 20px;
+      margin-left: 0px;
+      margin-top: 0px;
 
       img {
         width: 8vw;
@@ -42,11 +45,20 @@ $dark-gray: #707070;
         object-fit: cover;
         margin-bottom: 20px;
       }
+
+      .thumbnail {
+        width: 10vw;
+        height: 15vh;
+      }
+    }
+    img {
+      box-shadow: 2px 2px 3px rgba(82, 82, 82, 0.048);
+      border: 0.15px $light-gray solid;
     }
   }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 900px) {
   .item-container {
     display: flex;
     flex-direction: column;
@@ -56,10 +68,11 @@ $dark-gray: #707070;
       height: 10vh;
       max-height: 400px;
       object-fit: cover;
+      flex-direction: column;
     }
     .multi-image-container {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       margin-left: 30px;
 
       img {

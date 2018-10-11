@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Nav from '../../components/Nav/Nav'
 import './Item.scss'
+import { connect } from 'react-redux'
+import { getItem, getItemImages } from '../../ducks/itemsReducer'
 
 class Item extends Component {
   constructor(props) {
@@ -8,23 +10,45 @@ class Item extends Component {
 
     this.state = {
       item: {},
+      selectedImage: '',
+      imageUrls: [],
+      // imageUrls: [
+      //   'http://i65.tinypic.com/wcoh10.jpg',
+      //   'http://www.bagswish.com/2049/leather-backpack-for-women-black-school-backpack.jpg',
+      // ],
     }
   }
+
+  componentDidMount() {
+    // this.setState({ selectedImage: 'http://i65.tinypic.com/wcoh10.jpg' })
+    this.setState({ selectedImage: 'http://i65.tinypic.com/wcoh10.jpg' })
+  }
+
   render() {
+    console.log('selectedImage', this.state.selectedImage)
+    console.log('this.state', this.state)
     return (
       <div className="item-container">
         <Nav />
-        <div className="image-container">
-          <img src="http://i65.tinypic.com/wcoh10.jpg" alt="black-leather-backpack" />
-        </div>
         <div className="item-section">
-          <div className="multi-image-container">
-            <img src="http://i65.tinypic.com/wcoh10.jpg" alt="black-leather-backpack" />
-            <img
-              src="http://www.bagswish.com/2049/leather-backpack-for-women-black-school-backpack.jpg"
-              alt="black-leather-backpack"
-            />
+          <div className="selected-image">
+            <img className="selectedImage" src={this.state.selectedImage} />
           </div>
+
+          <ul className="multi-image-container">
+            {this.state.imageUrls.map((e, i) => {
+              return (
+                <div key={this.state.imageUrls[i]}>
+                  <img
+                    className="thumbnail"
+                    src={this.state.imageUrls[i]}
+                    onClick={event => this.setState({ selectedImage: event.target.src })}
+                  />
+                </div>
+              )
+            })}
+          </ul>
+
           <div className="description-section">
             <h1>Item Name</h1>
             <p>
@@ -39,4 +63,9 @@ class Item extends Component {
   }
 }
 
-export default Item
+const mapStateToProps = state => ({ ...state.item, ...state.images })
+
+export default connect(
+  mapStateToProps,
+  { getItem, getItemImages }
+)(Item)
