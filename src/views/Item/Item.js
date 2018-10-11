@@ -3,17 +3,27 @@ import Nav from '../../components/Nav/Nav'
 import './Item.scss'
 
 class Item extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      item: {},
+    }
+  }
   render() {
     return (
       <div className="item-container">
         <Nav />
+        <div className="image-container">
+          <img src="http://i65.tinypic.com/wcoh10.jpg" alt="black-leather-backpack" />
+        </div>
         <div className="item-section">
-          <div className="image-container">
-            <img src="http://i65.tinypic.com/wcoh10.jpg" />
-          </div>
           <div className="multi-image-container">
-            <img src="http://i65.tinypic.com/wcoh10.jpg" />
-            <img src="http://www.bagswish.com/2049/leather-backpack-for-women-black-school-backpack.jpg" />
+            <img src="http://i65.tinypic.com/wcoh10.jpg" alt="black-leather-backpack" />
+            <img
+              src="http://www.bagswish.com/2049/leather-backpack-for-women-black-school-backpack.jpg"
+              alt="black-leather-backpack"
+            />
           </div>
           <div className="description-section">
             <h1>Item Name</h1>

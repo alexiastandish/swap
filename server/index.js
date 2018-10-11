@@ -67,9 +67,9 @@ passport.serializeUser((user, done) => {
   const db = app.get('db')
   db.getUserByAuthid([user.id])
     .then(response => {
-      console.log(response)
+      // console.log(response)
       if (!response[0]) {
-        console.log(response)
+        // console.log(response)
         db.addUserByAuthid([user.displayName, user.id, user.email])
           .then(res => done(null, res[0]))
           .catch(console.log)
@@ -85,12 +85,14 @@ passport.deserializeUser((user, done) => {
 app.get(
   '/login',
   passport.authenticate('auth0', {
-    successRedirect: '/api/me',
+    successRedirect: `http://localhost:3000/api/me`,
     failureRedirect: '/login',
   })
 )
 
 app.get('/api/me', getUser)
+app.post('/logout', logout)
+
 app.get('/api/user/:id', getUserId)
 
 // // items

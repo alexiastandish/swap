@@ -6,7 +6,7 @@ class Nav extends Component {
     super(props)
 
     this.state = {
-      user: '',
+      user: {},
     }
   }
 
@@ -40,3 +40,13 @@ class Nav extends Component {
 }
 
 export default Nav
+
+{
+  /* <li>
+{!this.props.isAuthed ? (
+  <div>Not Logged In</div>
+) : (
+  <div>{JSON.stringify(this.props.user)}</div>
+)}
+</li> */
+}

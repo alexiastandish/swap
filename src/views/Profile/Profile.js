@@ -4,13 +4,20 @@ import './Profile.scss'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { getItems } from '../../ducks/itemsReducer'
-import { getUserId } from '../../ducks/userReducer'
+import { getUserById } from '../../ducks/userReducer'
 import ItemCard from '../../components/ItemCard/ItemCard'
 
 class Profile extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      user: {},
+    }
+  }
   componentDidMount() {
     this.props.getItems()
-    this.props.getUserId()
+    this.props.getUserById()
   }
   render() {
     return (
@@ -31,7 +38,7 @@ export default withRouter(
     mapStateToProps,
     {
       getItems,
-      getUserId,
+      getUserById,
     }
   )(Profile)
 )

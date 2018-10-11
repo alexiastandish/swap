@@ -17,13 +17,13 @@ const strategy = new Auth0Strategy(
 )
 
 const getUser = (req, res) => {
-  if (!req.user) res.sendStatus(401)
-  else res.status(200).send(req.user)
+  if (req.user) res.status(200).json(req.user)
+  else res.status(403).json({ message: 'Not Logged In' })
 }
 
 const logout = (req, res) => {
   req.session.destroy(() => {
-    res.redirect('http://localhost:3001/login')
+    res.redirect('http://localhost:3000/')
     // domain will be added in place of local host
   })
 }

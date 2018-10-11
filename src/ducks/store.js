@@ -4,8 +4,8 @@ import itemsReducer from './itemsReducer'
 import userReducer from './userReducer'
 
 const combinedReducers = combineReducers({
-  item: itemsReducer,
   user: userReducer,
+  items: itemsReducer,
 })
 
 const store = createStore(combinedReducers, applyMiddleware(promiseMiddleware()))

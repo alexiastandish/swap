@@ -29,6 +29,10 @@ $dark-gray: #707070;
     flex-direction: column;
     align-items: center;
 
+    .image-container img {
+      position: absolute;
+    }
+
     img {
       width: 46vw;
       max-width: 600px;
@@ -61,6 +65,7 @@ $dark-gray: #707070;
     .button:hover {
       background: $light-gray;
       border: $blue solid 3px;
+      margin-top: 12px;
 
       span {
         color: $blue;

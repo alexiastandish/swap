@@ -1,6 +1,5 @@
 INSERT INTO users
-  ( username,
-  authid,
-  email)
+  ( username, authid, email)
 VALUES
   ($1, $2, $3)
+RETURNING *;

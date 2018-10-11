@@ -1,26 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getItem, getItemImages } from '../../ducks/itemsReducer'
+import { getItem } from '../../ducks/itemsReducer'
 import { getUserLikes } from '../../ducks/likesReducer'
 import { saveItem } from '../../ducks/likesReducer'
-import { getUserId } from '../../ducks/userReducer'
+import { getUserById } from '../../ducks/userReducer'
 
 class ItemCard extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       user: {},
       noLike: 'fa fa-2x fa-heart-o not-liked',
       liked: 'fa fa-2x fa-heart liked',
     }
-    this.getUserId = this.getUserId.bind(this)
+    this.getUserById = this.getUserById.bind(this)
   }
 
-  getUserId(id) {
+  getUserById(id) {
     this.setState({ user: this.props.user(id) })
   }
   componentDidMount() {
-    getUserId()
+    getUserById()
     this.props.user && this.props.getUserLikes(this.props.user.userid)
   }
 
@@ -51,5 +51,5 @@ const mapStateToProps = ({ items, user }) => ({ ...items, ...user })
 
 export default connect(
   mapStateToProps,
-  { getItem, saveItem, getUserLikes, getUserId }
+  { getItem, saveItem, getUserLikes, getUserById }
 )(ItemCard)
