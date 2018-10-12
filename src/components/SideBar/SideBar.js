@@ -4,7 +4,6 @@ import './SideBar.scss'
 
 class SideBar extends Component {
   render() {
-    console.log('window.location', window.location)
     return (
       window.location.pathname !== '/' && (
         <div className="sidebar-container">

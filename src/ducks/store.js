@@ -1,13 +1,19 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux'
 import promiseMiddleware from 'redux-promise-middleware'
-import itemsReducer from './itemsReducer'
+import itemReducer from './itemReducer'
 import userReducer from './userReducer'
+import imagesReducer from './imagesReducer'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const combinedReducers = combineReducers({
   user: userReducer,
-  items: itemsReducer,
+  item: itemReducer,
+  images: imagesReducer,
 })
 
-const store = createStore(combinedReducers, applyMiddleware(promiseMiddleware()))
+const store = createStore(
+  combinedReducers,
+  composeWithDevTools(applyMiddleware(promiseMiddleware()))
+)
 
 export default store

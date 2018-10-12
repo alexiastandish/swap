@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 // import axios from 'axios'
 import Routes from './Routes'
@@ -6,27 +6,21 @@ import SideBar from './components/SideBar/SideBar'
 import './App.scss'
 import { Provider } from 'react-redux'
 import store from './ducks/store'
+import User from './User'
 
-class App extends Component {
-  // componentDidMount() {
-  //   axios.get('/api/users').then(res => {
-  //     console.log('users', res)
-  //   })
-  //   getItem(1)
-  // }
-
-  render() {
-    return (
-      <Provider store={store}>
-        <BrowserRouter>
+function App() {
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        <User>
           <div className="App">
             <SideBar />
             <Routes />
           </div>
-        </BrowserRouter>
-      </Provider>
-    )
-  }
+        </User>
+      </BrowserRouter>
+    </Provider>
+  )
 }
 
 export default App

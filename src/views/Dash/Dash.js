@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { getCurrentUser, getUserById } from '../../ducks/userReducer'
 import { connect } from 'react-redux'
 import Nav from '../../components/Nav/Nav'
 import axios from 'axios'
@@ -34,5 +33,5 @@ const mapStateToProps = state => ({ ...state.currentUser })
 
 export default connect(
   mapStateToProps,
-  { getCurrentUser }
+  null
 )(Dash)

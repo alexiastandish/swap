@@ -13,7 +13,6 @@ class Nav extends Component {
   render() {
     const { user } = this.state
 
-    console.log('user', user)
     return (
       <div className="nav-container">
         <div className="search-containter">

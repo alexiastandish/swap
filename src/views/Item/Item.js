@@ -1,61 +1,64 @@
 import React, { Component } from 'react'
 import Nav from '../../components/Nav/Nav'
 import './Item.scss'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { getItem, getItemImages } from '../../ducks/itemsReducer'
+import { getItem } from '../../ducks/itemReducer'
+import { getImages } from '../../ducks/imagesReducer'
 
 class Item extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
 
     this.state = {
-      item: {},
-      selectedImage: '',
-      imageUrls: [],
-      // imageUrls: [
-      //   'http://i65.tinypic.com/wcoh10.jpg',
-      //   'http://www.bagswish.com/2049/leather-backpack-for-women-black-school-backpack.jpg',
-      // ],
+      selectedImage: null,
     }
   }
 
   componentDidMount() {
-    // this.setState({ selectedImage: 'http://i65.tinypic.com/wcoh10.jpg' })
-    this.setState({ selectedImage: 'http://i65.tinypic.com/wcoh10.jpg' })
+    // this.props.items_id itemId
+    this.props.getItem(2)
+    this.props.getImages(2)
   }
 
   render() {
-    console.log('selectedImage', this.state.selectedImage)
+    console.log('this.props', this.props)
+    console.log('this.props.images', this.props.images)
     console.log('this.state', this.state)
+    const hasImages = this.props.images.length > 0
     return (
       <div className="item-container">
         <Nav />
         <div className="item-section">
           <div className="selected-image">
-            <img className="selectedImage" src={this.state.selectedImage} />
+            <img
+              className="selectedImage"
+              src={
+                hasImages
+                  ? this.state.selectedImage
+                    ? this.state.selectedImage.imageurl
+                    : this.props.images[0].imageurl
+                  : ''
+              }
+            />
           </div>
 
           <ul className="multi-image-container">
-            {this.state.imageUrls.map((e, i) => {
+            {this.props.images.map(image => {
               return (
-                <div key={this.state.imageUrls[i]}>
+                <div key={image.image_id}>
                   <img
                     className="thumbnail"
-                    src={this.state.imageUrls[i]}
-                    onClick={event => this.setState({ selectedImage: event.target.src })}
+                    src={image.imageurl}
+                    onClick={() => this.setState({ selectedImage: image })}
                   />
                 </div>
               )
             })}
           </ul>
-
           <div className="description-section">
-            <h1>Item Name</h1>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-              has been the industry's standard dummy text ever since the 1500s, when an unknown
-              printer took a galley of type and scrambled it to make a type specimen book.
-            </p>
+            <h1>{this.props.item.item_name}</h1>
+            <p>{this.props.item.item_description}</p>
           </div>
         </div>
       </div>
@@ -63,9 +66,18 @@ class Item extends Component {
   }
 }
 
-const mapStateToProps = state => ({ ...state.item, ...state.images })
+function mapStateToProps(state) {
+  return {
+    item: state.item,
+    images: state.images,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getItem, getImages }, dispatch)
+}
 
 export default connect(
   mapStateToProps,
-  { getItem, getItemImages }
+  mapDispatchToProps
 )(Item)

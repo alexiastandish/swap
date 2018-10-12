@@ -1,8 +1,11 @@
 const getItem = (req, res) => {
   const db = req.app.get('db')
-  db.items.getItem([req.params.id]).then(response => {
-    res.status(200).json(response)
-  })
+  db.items
+    .getItem([req.params.id])
+    .then(response => {
+      res.status(200).json(response[0])
+    })
+    .catch(console.log())
 }
 
 const getItems = (req, res) => {

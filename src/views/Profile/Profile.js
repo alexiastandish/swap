@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import Nav from '../../components/Nav/Nav'
 import './Profile.scss'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import { getItems } from '../../ducks/itemsReducer'
-import { getUserById } from '../../ducks/userReducer'
+import { bindActionCreators } from 'redux'
+import { getItems } from '../../ducks/itemReducer'
+// import { getUser } from '../../ducks/userReducer'
 import ItemCard from '../../components/ItemCard/ItemCard'
 
 class Profile extends Component {
@@ -12,12 +12,11 @@ class Profile extends Component {
     super(props)
 
     this.state = {
-      items: {},
+      items: [],
     }
   }
   componentDidMount() {
     this.props.getItems()
-    this.props.getUserById()
   }
 
   render() {
@@ -30,16 +29,17 @@ class Profile extends Component {
   }
 }
 
-const mapStateToProps = ({ items }) => ({
-  ...items,
-})
+function mapStateToProps(state) {
+  return {
+    items: state.items,
+  }
+}
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    {
-      getItems,
-      getUserById,
-    }
-  )(Profile)
-)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getItems }, dispatch)
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Profile)

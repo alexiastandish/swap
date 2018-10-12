@@ -12,12 +12,12 @@ import Offers from './views/Offers/Offers'
 import Home from './Home'
 import Item from './views/Item/Item'
 
-export default function Routes() {
+export default function Routes(props) {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
       {/* <Route path="/login" component={Login} /> */}
-      <Route path="/api/me" component={Dash} />
+      <Route path="/dash" component={Dash} />
       <Route path="/profile/:id" component={Profile} />
       <Route path="/friends/:id" component={Friends} />
       <Route path="/likes/:id" component={Likes} />
