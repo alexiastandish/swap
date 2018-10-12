@@ -6,9 +6,10 @@ $navy: #424c58;
 $light-gray: #e5e5e5;
 $dark-gray: #707070;
 
-.dash-container {
-  background-image: none;
+.profile-container {
   background-color: $light-gray;
-  width: 100vw;
+  width: 93%;
   display: flex;
+  flex-direction: row;
+  margin: 0 auto;
 }

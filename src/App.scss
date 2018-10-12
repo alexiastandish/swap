@@ -10,6 +10,13 @@ $dark-gray: #707070;
   display: flex;
 }
 
+.body-container {
+  flex-direction: column;
+  display: flex;
+  width: 90%;
+  background-color: $light-gray;
+}
+
 .landing-page {
   background-image: url('http://i65.tinypic.com/znkmmc.jpg');
   background-size: contain;

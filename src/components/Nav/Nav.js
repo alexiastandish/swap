@@ -14,26 +14,28 @@ class Nav extends Component {
     const { user } = this.state
 
     return (
-      <div className="nav-container">
-        <div className="search-containter">
-          <div className="search-bar">
-            <input
-              placeholder="search users..."
-              className="input-text"
-              onChange={event => {
-                return this.setState({ user: event.target.value })
-              }}
-            />
+      window.location.pathname !== '/' && (
+        <div className="nav-container">
+          <div className="search-containter">
+            <div className="search-bar">
+              <input
+                placeholder="search users..."
+                className="input-text"
+                onChange={event => {
+                  return this.setState({ user: event.target.value })
+                }}
+              />
+            </div>
+            <button className="search-button">
+              <i className="fa fa-search" />
+            </button>
           </div>
-          <button className="search-button">
-            <i className="fa fa-search" />
-          </button>
+          <ul className="menu">
+            <li>back</li>
+            <li>signout</li>
+          </ul>
         </div>
-        <ul className="menu">
-          <li>back</li>
-          <li>signout</li>
-        </ul>
-      </div>
+      )
     )
   }
 }
