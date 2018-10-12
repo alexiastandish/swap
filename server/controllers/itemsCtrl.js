@@ -10,7 +10,8 @@ const getItem = (req, res) => {
 
 const getItems = (req, res) => {
   const db = req.app.get('db')
-  db.items.getItems([req.params.id]).then(response => {
+  db.getItems([req.params.id]).then(response => {
+    console.log('response', response)
     res.status(200).json(response)
   })
 }

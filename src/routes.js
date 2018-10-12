@@ -17,8 +17,8 @@ export default function Routes(props) {
     <Switch>
       <Route exact path="/" component={Home} />
       {/* <Route path="/login" component={Login} /> */}
-      <Route path="/dash" component={Dash} />
-      <Route path="/profile/:id" component={Profile} />
+      <Route path="/api/me" component={Dash} />
+      <Route path="/profile" component={Profile} />
       <Route path="/friends/:id" component={Friends} />
       <Route path="/likes/:id" component={Likes} />
       <Route path="/offers" component={Offers} />

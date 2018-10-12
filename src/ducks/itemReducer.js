@@ -15,7 +15,7 @@ export function getItem(id) {
   }
 }
 
-export function getItems() {}
+// export function getItems() {}
 
 const initialState = {
   item: {},

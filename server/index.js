@@ -95,7 +95,6 @@ app.post('/logout', logout)
 
 app.get('/api/user/:id', getUserId)
 
-// // items
 app.get('/api/item/:id', getItem)
 app.get('/api/items/:id', getItems)
 app.get('/api/images/:id', getItemImages)
