@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getUserItems } from '../../ducks/profileReducer'
 import { getImages } from '../../ducks/imagesReducer'
-import { getUser } from '../../ducks/userReducer'
 import ItemCard from '../../components/ItemCard/ItemCard'
 
 class Profile extends Component {
@@ -21,7 +20,6 @@ class Profile extends Component {
     // this.props.user_id userId
     this.props.getUserItems(2)
     this.props.getImages(1)
-    this.props.getUser(2)
   }
 
   render() {
@@ -49,7 +47,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getUser, getUserItems, getImages }, dispatch)
+  return bindActionCreators({ getUserItems, getImages }, dispatch)
 }
 
 export default connect(

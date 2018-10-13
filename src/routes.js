@@ -19,8 +19,8 @@ export default function Routes() {
       {/* <Route path="/login" component={Login} /> */}
       <Route path="/dash" component={Dash} />
       <Route path="/profile" component={Profile} />
-      <Route path="/friends/:id" component={Friends} />
-      <Route path="/likes/:id" component={Likes} />
+      <Route path="/friends" component={Friends} />
+      <Route path="/likes" component={Likes} />
       <Route path="/offers" component={Offers} />
       {/* <Route path="/additem" component={AddItem} /> */}
       <Route path="/item/:id" component={Item} />
