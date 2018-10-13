@@ -19,6 +19,9 @@ class Nav extends Component {
           <div className="search-containter">
             <div className="search-bar">
               <input
+                type="text"
+                name="textarea"
+                id="textarea"
                 placeholder="search users..."
                 className="input-text"
                 onChange={event => {
@@ -26,9 +29,6 @@ class Nav extends Component {
                 }}
               />
             </div>
-            <button className="search-button">
-              <i className="fa fa-search" />
-            </button>
           </div>
           <ul className="menu">
             <li>back</li>

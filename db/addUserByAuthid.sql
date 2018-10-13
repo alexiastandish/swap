@@ -1,7 +1,7 @@
 INSERT INTO users
-  ( username, authid, user_photo, email)
+  ( username, authid, email)
 VALUES
-  ($1, $2, $3, $4)
+  ($1, $2, $3 )
 
 SELECT *
 FROM users

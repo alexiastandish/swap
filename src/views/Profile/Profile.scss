@@ -8,8 +8,8 @@ $dark-gray: #707070;
 
 .profile-container {
   background-color: $light-gray;
-  width: 93%;
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+  // align-content: space-between;
 }

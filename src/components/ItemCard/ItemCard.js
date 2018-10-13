@@ -14,8 +14,7 @@ class ItemCard extends Component {
 
     return (
       <div className="item-card-container">
-        <p>{this.props.item.item_userid} </p>
-        <h1>{this.props.item.item_name}</h1>
+        {/* <p>{this.props.item.item_userid} </p> */}
         <div className="item-image">
           {
             this.props.images.map(image => {
@@ -29,9 +28,23 @@ class ItemCard extends Component {
             })[0]
           }
         </div>
-        <p>{this.props.item.item_description}</p>
-        <p>{this.props.item.post_time}</p>
-        <p>{this.props.item.post_date}</p>
+        <div className="item-description">
+          <h1>
+            <span>Item: </span>
+            <br />
+            {this.props.item.item_name}
+          </h1>
+
+          <p>
+            <span>Description: </span> {this.props.item.item_description}
+          </p>
+          <p>
+            <span className="timestamp-text">{this.props.item.post_time}</span>
+          </p>
+          <p>
+            <span className="timestamp-text">{this.props.item.post_date}</span>
+          </p>
+        </div>
       </div>
     )
   }

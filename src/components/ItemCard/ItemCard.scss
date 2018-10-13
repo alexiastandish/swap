@@ -1,8 +1,49 @@
-.item-image img {
-  width: 200px;
+$font-family: 'Montserrat', sans-serif;
+$blue: #2acbdc;
+$navy: #424c58;
+$light-gray: #e5e5e5;
+$dark-gray: #858585;
+
+* {
+  box-sizing: border-box;
 }
 
 .item-card-container {
   display: flex;
   width: 20vw;
+  display: flex;
+  flex-direction: column;
+  line-height: 25px;
+  background: $navy;
+  margin: 2vw;
+  max-width: 350px;
+
+  .item-description {
+    padding: 20px;
+    padding-top: 0px;
+  }
+
+  img {
+    object-fit: cover;
+    height: 26vh;
+    width: 20vw;
+    max-width: 350px;
+  }
+
+  h1 {
+    font-family: $font-family;
+    color: white;
+    text-transform: uppercase;
+  }
+
+  h1 span {
+    // text-transform: none;
+    font-size: 16px;
+    font-weight: 200;
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    color: white;
+  }
 }

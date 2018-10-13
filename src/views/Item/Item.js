@@ -28,7 +28,6 @@ class Item extends Component {
     const hasImages = this.props.images.length > 0
     return (
       <div className="item-container">
-        <Nav />
         <div className="item-section">
           <div className="selected-image">
             <img

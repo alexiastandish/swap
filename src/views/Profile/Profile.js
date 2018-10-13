@@ -20,7 +20,7 @@ class Profile extends Component {
   componentDidMount() {
     // this.props.user_id userId
     this.props.getUserItems(2)
-    this.props.getImages(2)
+    this.props.getImages(1)
     this.props.getUser(2)
   }
 

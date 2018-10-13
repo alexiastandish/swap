@@ -4,13 +4,13 @@ $font-family: 'Montserrat', sans-serif;
 $blue: #2acbdc;
 $navy: #424c58;
 $light-gray: #e5e5e5;
-$dark-gray: #707070;
+$dark-gray: #858585;
 
 .nav-container {
   height: 7vh;
   width: 93%;
   margin: 0 auto;
-  border-bottom: 2px solid $dark-gray;
+  border-bottom: 1px solid #858585;
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -22,7 +22,7 @@ $dark-gray: #707070;
     height: 35px;
     margin: 0;
     margin-right: -3px;
-    border: 2px solid $dark-gray;
+    border: 1px solid $dark-gray;
   }
 
   input {
@@ -42,6 +42,8 @@ $dark-gray: #707070;
 
   .search-containter {
     display: flex;
+    width: 320px;
+    height: 35px;
     flex-direction: row;
     align-content: center;
     align-items: center;
@@ -50,11 +52,11 @@ $dark-gray: #707070;
   button {
     font-size: 1.5em;
     background: $blue;
-    height: 39px;
+    height: 37px;
     margin-left: -3px;
     color: white;
     margin: 0;
-    border: 2px solid $dark-gray;
+    border: 1px solid $dark-gray;
   }
 
   .menu {
@@ -70,5 +72,13 @@ $dark-gray: #707070;
       flex-direction: row;
       padding-left: 30px;
     }
+  }
+
+  // .search-bar:focus input {
+  //   background: $blue;
+  // }
+
+  #textarea:focus {
+    outline: none;
   }
 }
