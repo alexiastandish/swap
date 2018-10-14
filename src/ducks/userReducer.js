@@ -15,7 +15,11 @@ export function getUser() {
 }
 
 const initialState = {
-  user: {},
+  // authid: '',
+  // email: '',
+  // user_id: '',
+  // user_photo: '',
+  // username: '',
   isAuthenticated: false,
 }
 
@@ -24,7 +28,7 @@ export default function userReducer(state = initialState, action) {
     case `${GET_USER}_FULFILLED`:
       return {
         ...state,
-        user: action.payload,
+        ...action.payload,
         isAuthenticated: !!action.payload,
       }
     case `${GET_USER}_REJECTED`:

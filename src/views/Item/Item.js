@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Nav from '../../components/Nav/Nav'
 import './Item.scss'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -22,9 +21,6 @@ class Item extends Component {
   }
 
   render() {
-    console.log('this.props', this.props)
-    console.log('this.props.images', this.props.images)
-    console.log('this.state', this.state)
     const hasImages = this.props.images.length > 0
     return (
       <div className="item-container">
@@ -32,6 +28,7 @@ class Item extends Component {
           <div className="selected-image">
             <img
               className="selectedImage"
+              alt="selector-item"
               src={
                 hasImages
                   ? this.state.selectedImage
@@ -48,6 +45,7 @@ class Item extends Component {
                 <div key={image.image_id}>
                   <img
                     className="thumbnail"
+                    alt="thumbnail-item"
                     src={image.imageurl}
                     onClick={() => this.setState({ selectedImage: image })}
                   />

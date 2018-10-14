@@ -4,12 +4,22 @@ import { getUser } from './ducks/userReducer'
 import { connect } from 'react-redux'
 
 class User extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      userFetched: false,
+    }
+  }
+
   componentDidMount() {
-    this.props.getUser()
+    this.props.getUser().then(() => {
+      this.setState({ userFetched: true })
+    })
   }
 
   render() {
-    return <div>{this.props.children}</div>
+    return this.state.userFetched && <div>{this.props.children}</div>
   }
 }
 

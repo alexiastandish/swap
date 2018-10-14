@@ -11,8 +11,6 @@ class Nav extends Component {
   }
 
   render() {
-    const { user } = this.state
-
     return (
       window.location.pathname !== '/' && (
         <div className="nav-container">
@@ -41,13 +39,3 @@ class Nav extends Component {
 }
 
 export default Nav
-
-{
-  /* <li>
-{!this.props.isAuthed ? (
-  <div>Not Logged In</div>
-) : (
-  <div>{JSON.stringify(this.props.user)}</div>
-)}
-</li> */
-}

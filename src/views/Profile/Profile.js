@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Nav from '../../components/Nav/Nav'
 import './Profile.scss'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -11,30 +10,31 @@ class Profile extends Component {
   constructor() {
     super()
 
-    this.state = {
-      itemCards: [],
-    }
+    this.state = {}
   }
 
   componentDidMount() {
-    // this.props.user_id userId
-    this.props.getUserItems(2)
-    this.props.getImages(1)
+    this.props.getUserItems(this.props.user.user_id).then(idk => {
+      console.log('idk', idk)
+      idk.value.forEach(item => {
+        this.props.getImages(item.items_id)
+      })
+    })
   }
 
   render() {
-    const itemCards = this.props.items.map(item => {
-      return (
-        <div className="item-card" key={item.item_name}>
-          <ItemCard item={item} images={this.props.images} user={this.props.user} />
-        </div>
-      )
-    })
-
     console.log('this.props', this.props)
-    console.log('itemCards', itemCards)
-
-    return <div className="profile-container">{itemCards}</div>
+    return (
+      <div className="profile-container">
+        {this.props.items.map(item => {
+          return (
+            <div className="item-card" key={item.item_name}>
+              <ItemCard item={item} images={this.props.images} user={this.props.user} />
+            </div>
+          )
+        })}
+      </div>
+    )
   }
 }
 

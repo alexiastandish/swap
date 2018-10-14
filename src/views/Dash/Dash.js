@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Nav from '../../components/Nav/Nav'
+
 import axios from 'axios'
 
 class Dash extends Component {
@@ -20,16 +20,11 @@ class Dash extends Component {
   }
 
   render() {
-    console.log('this.props.id', this.props.id)
-    return (
-      <div className="dash-container">
-        <Nav />
-      </div>
-    )
+    return <div className="dash-container" />
   }
 }
 
-const mapStateToProps = state => ({ ...state.currentUser })
+const mapStateToProps = state => ({})
 
 export default connect(
   mapStateToProps,
