@@ -10,14 +10,14 @@ class ItemCard extends Component {
   render() {
     // console.log('props.item', this.props.item)
     // console.log('this.props', this.props)
-    // console.log('this.props.images', this.props.images)
+    console.log('this.props.images', this.props.images)
     // console.log('this.props.user.user_name', this.props.user.user_name)
 
     return (
       <Link to={`/item/${this.props.items_id}`}>
         <div className="item-card-container">
           <div className="item-image">
-            {
+            {this.props.images &&
               this.props.images.map(image => {
                 if (image.imageurl_itemid === this.props.item.items_id) {
                   return (
@@ -30,8 +30,7 @@ class ItemCard extends Component {
                     </div>
                   )
                 }
-              })[0]
-            }
+              })[0]}
           </div>
           <div className="item-description">
             <h1>

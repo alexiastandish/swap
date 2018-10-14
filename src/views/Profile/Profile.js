@@ -14,9 +14,9 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    this.props.getUserItems(this.props.user.user_id).then(idk => {
-      console.log('idk', idk)
-      idk.value.forEach(item => {
+    this.props.getUserItems(this.props.user.user_id).then(response => {
+      console.log('response.value', response.value)
+      response.value.forEach(item => {
         this.props.getImages(item.items_id)
       })
     })
@@ -28,8 +28,12 @@ class Profile extends Component {
       <div className="profile-container">
         {this.props.items.map(item => {
           return (
-            <div className="item-card" key={item.item_name}>
-              <ItemCard item={item} images={this.props.images} user={this.props.user} />
+            <div className="item-card" key={item.items_id}>
+              <ItemCard
+                item={item}
+                images={this.props.images[item.items_id]}
+                user={this.props.user}
+              />
             </div>
           )
         })}

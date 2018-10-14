@@ -15,11 +15,6 @@ export function getUser() {
 }
 
 const initialState = {
-  // authid: '',
-  // email: '',
-  // user_id: '',
-  // user_photo: '',
-  // username: '',
   isAuthenticated: false,
 }
 

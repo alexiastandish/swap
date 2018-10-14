@@ -1,49 +1,27 @@
 import axios from 'axios'
 
 const GET_FOLLOWING = 'GET_FOLLOWING'
-const FOLLOW_USER = 'FOLLOW_USER'
 
-export function getFollowingUsers() {
+export function getFollowingUsers(id) {
   return {
     type: GET_FOLLOWING,
-    payload: axios.get('/api/follows/:id'),
+    payload: axios
+      .get(`/api/follows/${id}`)
+      .then(res => res.data)
+      .catch(err => {
+        console.log('err', err)
+        return []
+      }),
   }
 }
 
-export function followUser(user_followingid) {
-  return {
-    type: FOLLOW_USER,
-    payload: axios.post('/api/follow', { user_followingid }),
-  }
-}
+const initialState = []
 
-const initialState = {
-  followingUsers: [],
-  isLoading: false,
-}
-
-export default function userReducer(state = initialState, action) {
+export default function followingReducer(state = initialState, action) {
   switch (action.type) {
-    case `${GET_FOLLOWING}_PENDING`:
-      return {
-        ...state,
-        isLoading: true,
-      }
-    case `${GET_FOLLOWING}_FULLFILLED`:
-      return {
-        ...state,
-        isLoading: false,
-      }
-    case `${FOLLOW_USER}_PENDING`:
-      return {
-        ...state,
-        isLoading: true,
-      }
-    case `${FOLLOW_USER}_FULLFILLED`:
-      return {
-        ...state,
-        isLoading: false,
-      }
+    case `${GET_FOLLOWING}_FULFILLED`:
+      console.log('action.payload', action.payload)
+      return [...action.payload]
     default:
       return state
   }

@@ -4,6 +4,7 @@ import itemReducer from './itemReducer'
 import userReducer from './userReducer'
 import imagesReducer from './imagesReducer'
 import profileReducer from './profileReducer'
+import followingReducer from './followingReducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 const combinedReducers = combineReducers({
@@ -11,6 +12,7 @@ const combinedReducers = combineReducers({
   item: itemReducer,
   images: imagesReducer,
   items: profileReducer,
+  following: followingReducer,
 })
 
 const store = createStore(
