@@ -5,13 +5,15 @@ import userReducer from './userReducer'
 import imagesReducer from './imagesReducer'
 import profileReducer from './profileReducer'
 import followingReducer from './followingReducer'
-import { composeWithDevTools } from 'redux-devtools-extension'
 import likesReducer from './likesReducer'
+// import itemImagesReducer from './itemImagesReducer'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const combinedReducers = combineReducers({
   user: userReducer,
   item: itemReducer,
   images: imagesReducer,
+  // itemImages: itemImagesReducer,
   items: profileReducer,
   following: followingReducer,
   likes: likesReducer,

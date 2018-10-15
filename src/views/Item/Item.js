@@ -24,7 +24,8 @@ class Item extends Component {
 
   render() {
     console.log('this.props', this.props)
-    const hasImages = this.props.images.length > 0
+    console.log('this.props.item', this.props.item)
+    const hasImages = this.props.images[this.props.match.params.id].length > 0
 
     return (
       <div className="item-container">
@@ -37,7 +38,7 @@ class Item extends Component {
                 hasImages
                   ? this.state.selectedImage
                     ? this.state.selectedImage.imageurl
-                    : this.props.images[0].imageurl
+                    : this.props.images[this.props.match.params.id][0].imageurl
                   : ''
               }
             />
@@ -45,7 +46,7 @@ class Item extends Component {
 
           <ul className="multi-image-container">
             {hasImages &&
-              this.props.images.map(image => {
+              this.props.images[this.props.match.params.id].map(image => {
                 return (
                   <div key={image.image_id}>
                     <img
@@ -58,9 +59,10 @@ class Item extends Component {
                 )
               })}
           </ul>
+
           <div className="description-section">
-            <h1>{this.props.item.item_name}</h1>
-            <p>{this.props.item.item_description}</p>
+            <h1>{this.props.item && this.props.item.item_name}</h1>
+            <p>{this.props.item && this.props.item.item_description}</p>
           </div>
         </div>
       </div>

@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-const GET_ITEM = 'GET_ITEM'
+const GET_ITEM_IMAGES = 'GET_ITEM_IMAGES'
 
-export function getItem(id) {
+export function getItemImages(id) {
   return {
-    type: GET_ITEM,
+    type: GET_ITEM_IMAGES,
     payload: axios
-      .get(`/api/item/${id}`)
+      .get(`/api/images/${id}`)
       .then(res => {
         console.log('res.data', res.data)
         return res.data
@@ -18,11 +18,11 @@ export function getItem(id) {
   }
 }
 
-const initialState = { item: {} }
+const initialState = { images: {} }
 
-export default function itemReducer(state = initialState, action) {
+export default function itemImagesReducer(state = initialState, action) {
   switch (action.type) {
-    case `${GET_ITEM}_FULFILLED`:
+    case `${GET_ITEM_IMAGES}_FULFILLED`:
       return {
         ...action.payload,
       }

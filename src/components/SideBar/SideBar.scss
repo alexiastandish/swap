@@ -57,3 +57,14 @@ $dark-gray: #707070;
     transition: 0.25s ease-in;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .sidebar-container {
+    background-image: none;
+    background-color: $blue;
+    height: 100vh;
+    display: flex;
+    width: 100vw;
+    max-width: 600px;
+  }
+}
