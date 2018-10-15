@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const GET_USER = 'GET_USER'
-const GET_USER_BY_ID = 'GET_USER_BY_ID'
+// const GET_USER_BY_ID = 'GET_USER_BY_ID'
 
 export function getUser() {
   return {
@@ -15,17 +15,17 @@ export function getUser() {
   }
 }
 
-export function getUserById(id) {
-  return {
-    type: GET_USER_BY_ID,
-    payload: axios
-      .get(`/api/user/${id}`)
-      .then(res => res.data)
-      .catch(err => {
-        console.log('err', err)
-      }),
-  }
-}
+// export function getUserById(id) {
+//   return {
+//     type: GET_USER_BY_ID,
+//     payload: axios
+//       .get(`/api/user/${id}`)
+//       .then(res => res.data)
+//       .catch(err => {
+//         console.log('err', err)
+//       }),
+//   }
+// }
 
 const initialState = {
   isAuthenticated: false,
@@ -45,10 +45,10 @@ export default function userReducer(state = initialState, action) {
         ...state,
         isAuthenticated: false,
       }
-    case `${GET_USER_BY_ID}_FULFILLED`:
-      return {
-        ...action.payload,
-      }
+    // case `${GET_USER_BY_ID}_FULFILLED`:
+    //   return {
+    //     ...action.payload,
+    //   }
     default:
       return state
   }

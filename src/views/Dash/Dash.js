@@ -7,16 +7,7 @@ class Dash extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      currentUser: {},
-    }
-  }
-
-  componentDidMount(id) {
-    axios.get(`/api/user/${id}`).then(response => {
-      // console.log('response.data', response.data)
-      this.setState(response)
-    })
+    this.state = {}
   }
 
   render() {

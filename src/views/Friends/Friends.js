@@ -21,7 +21,7 @@ class Friends extends Component {
         {this.props.following &&
           this.props.following.map(friend => {
             return (
-              <Link to={`/profile/${friend.user_id}`}>
+              <Link key={friend.user_id} to={`/profile/${friend.user_id}`}>
                 <div className="follow-container" key={friend.user_id}>
                   <span className="follow-name">{friend.username}</span>
                 </div>

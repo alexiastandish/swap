@@ -14,7 +14,7 @@ function SideBar(props) {
             <Link to="/offers">Offers</Link>
             <Link to="/likes">Likes</Link>
             <Link to="/friends">Friends</Link>
-            <Link to={`/profile/${props.user.user_id}`}>Profile</Link>
+            <Link to={`/myProfile/${props.user.user_id}`}>Profile</Link>
           </nav>
         </div>
       </div>
