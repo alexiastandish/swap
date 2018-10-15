@@ -8,6 +8,7 @@ const saveItem = async (req, res) => {
 const getUserLikes = (req, res) => {
   const db = req.app.get('db')
   db.likes.getLikes([req.params.id]).then(response => {
+    console.log('response', response)
     res.status(200).json(response)
   })
 }

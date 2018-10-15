@@ -6,6 +6,10 @@ $navy: #424c58;
 $light-gray: #e5e5e5;
 $dark-gray: #707070;
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
   display: flex;
 }

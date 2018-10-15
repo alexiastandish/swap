@@ -1,51 +1,27 @@
 import axios from 'axios'
 
 const GET_LIKES = 'GET_LIKES'
-const ADD_LIKE = 'ADD_LIKE'
-// const UNLIKE_ITEM = 'UNLIKE_ITEM'
 
-export function getUserLikes() {
+export function getLikes(id) {
   return {
     type: GET_LIKES,
-    payload: axios.get('/api/like/:id'),
+    payload: axios
+      .get(`/api/like/${id}`)
+      .then(res => res.data)
+      .catch(err => {
+        console.log('err', err)
+        return []
+      }),
   }
 }
 
-export function saveItem(postid, postedbyid, likinguser) {
-  return {
-    type: ADD_LIKE,
-    payload: axios.post('/api/like', { postid, postedbyid, likinguser }),
-  }
-}
-
-const initialState = {
-  likes: [],
-  isLoading: false,
-}
+const initialState = []
 
 export default function likesReducer(state = initialState, action) {
   switch (action.type) {
-    case `${GET_LIKES}_PENDING`:
-      return {
-        ...state,
-        isLoading: true,
-      }
-    case `${GET_LIKES}_FULLFILLED`:
-      return {
-        ...state,
-        isLoading: false,
-        likes: action.payload.data,
-      }
-    case `${ADD_LIKE}_PENDING`:
-      return {
-        ...state,
-        isLoading: true,
-      }
-    case `${ADD_LIKE}_FULLFILLED`:
-      return {
-        ...state,
-        isLoading: false,
-      }
+    case `${GET_LIKES}_FULFILLED`:
+      console.log('action.payload', action.payload)
+      return [...action.payload]
     default:
       return state
   }
