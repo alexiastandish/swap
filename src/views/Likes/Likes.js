@@ -12,20 +12,19 @@ class Likes extends Component {
     this.props.getLikes(this.props.user.user_id).then(response => {
       response.value.forEach(item => {
         this.props.getImages(item.items_id).then(response => {
-          console.log('response', response)
+          // console.log('response', response)
         })
       })
     })
   }
 
   render() {
-    console.log('this.props.images', this.props.images)
-    console.log('this.props.item', this.props.item)
+    // console.log('this.props.images', this.props.images)
+    // console.log('this.props.item', this.props.item)
     return (
       <div className="likes-container">
         {this.props.likes &&
           this.props.likes.map(like => {
-            console.log('like', like)
             return (
               <div className="like-item" key={like.items_id}>
                 <LikeCard item={like} images={this.props.images[like.items_id]} />

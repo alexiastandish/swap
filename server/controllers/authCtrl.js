@@ -11,7 +11,7 @@ const strategy = new Auth0Strategy(
     scope: 'openid email profile',
   },
   (accessToken, refreshToken, extraParams, profile, done) => {
-    console.log('profile', profile)
+    // console.log('profile', profile)
     done(null, profile)
   }
 )

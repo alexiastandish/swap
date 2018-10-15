@@ -7,13 +7,8 @@ import { getImages } from '../../ducks/imagesReducer'
 import ItemCard from '../../components/ItemCard/ItemCard'
 
 class Profile extends Component {
-  constructor() {
-    super()
-  }
-
   componentDidMount() {
     this.props.getUserItems(this.props.match.params.id).then(response => {
-      console.log('response.value', response.value)
       response.value.forEach(item => {
         this.props.getImages(item.items_id)
       })
@@ -21,7 +16,7 @@ class Profile extends Component {
   }
 
   render() {
-    console.log('this.props.PROFILE', this.props)
+    // console.log('this.props.PROFILE', this.props)
     return (
       <div className="profile-container">
         {this.props.items.map(item => {

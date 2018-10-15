@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom'
 class Friends extends Component {
   componentDidMount() {
     this.props.getFollowingUsers(this.props.user.user_id).then(res => {
-      console.log('res.value', res.value)
+      // console.log('res.value', res.value)
       return res.value
     })
   }
 
   render() {
-    console.log('this.props.FRIENDS', this.props)
+    // console.log('this.props.FRIENDS', this.props)
 
     return (
       <div className="following-container">

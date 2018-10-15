@@ -20,7 +20,7 @@ const initialState = []
 export default function followingReducer(state = initialState, action) {
   switch (action.type) {
     case `${GET_FOLLOWING}_FULFILLED`:
-      console.log('action.payload', action.payload)
+      // console.log('action.payload', action.payload)
       return [...action.payload]
     default:
       return state
