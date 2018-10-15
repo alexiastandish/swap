@@ -14,7 +14,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    this.props.getUserItems(this.props.user.user_id).then(response => {
+    this.props.getUserItems(this.props.match.params.id).then(response => {
       console.log('response.value', response.value)
       response.value.forEach(item => {
         this.props.getImages(item.items_id)
@@ -23,7 +23,7 @@ class Profile extends Component {
   }
 
   render() {
-    console.log('this.props', this.props)
+    console.log('this.props.PROFILE', this.props)
     return (
       <div className="profile-container">
         {this.props.items.map(item => {

@@ -12,8 +12,8 @@ import Nav from './components/Nav/Nav'
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <User>
+      <User>
+        <BrowserRouter>
           <div className="App">
             <SideBar />
             <div className="body-container">
@@ -21,8 +21,8 @@ function App() {
               <Routes />
             </div>
           </div>
-        </User>
-      </BrowserRouter>
+        </BrowserRouter>
+      </User>
     </Provider>
   )
 }

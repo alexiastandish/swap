@@ -3,6 +3,7 @@ import { getFollowingUsers } from '../../ducks/followingReducer'
 import './Friends.scss'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom'
 
 class Friends extends Component {
   componentDidMount() {
@@ -13,12 +14,19 @@ class Friends extends Component {
   }
 
   render() {
-    console.log('this.props.following', this.props.following)
+    console.log('this.props.FRIENDS', this.props)
+
     return (
       <div className="following-container">
         {this.props.following &&
           this.props.following.map(friend => {
-            return <div className="follow-container" key={friend.user_id} />
+            return (
+              <Link to={`/profile/${friend.user_id}`}>
+                <div className="follow-container" key={friend.user_id}>
+                  <span className="follow-name">{friend.username}</span>
+                </div>
+              </Link>
+            )
           })}
       </div>
     )

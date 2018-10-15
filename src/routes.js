@@ -18,7 +18,7 @@ export default function Routes() {
       <Route exact path="/" component={Home} />
       {/* <Route path="/login" component={Login} /> */}
       <Route path="/dash" component={Dash} />
-      <Route path="/profile" component={Profile} />
+      <Route path="/profile/:id" component={Profile} />
       <Route path="/friends" component={Friends} />
       <Route path="/likes" component={Likes} />
       <Route path="/offers" component={Offers} />

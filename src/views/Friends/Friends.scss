@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700');
+
+$font-family: 'Montserrat', sans-serif;
+$blue: #2acbdc;
+$navy: #424c58;
+$light-gray: #e5e5e5;
+$dark-gray: #707070;
+
+.following-container {
+  border: 1px $dark-gray solid;
+  width: 88%;
+  margin: 40px auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .follow-container {
+    border-bottom: 1px $dark-gray solid;
+    align-content: center;
+    height: 100px;
+    display: flex;
+    align-items: center;
+
+    .follow-name {
+      padding-left: 20px;
+    }
+  }
+}

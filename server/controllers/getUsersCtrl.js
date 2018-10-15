@@ -9,7 +9,7 @@ const getAllUsers = (req, res) => {
     .catch(err => res.status(500).send(err))
 }
 
-const getUserId = (req, res) => {
+const getUserById = (req, res) => {
   const db = req.app.get('db')
   db.getUserById([req.params.id])
     .then(response => {
@@ -22,5 +22,5 @@ const getUserId = (req, res) => {
 
 module.exports = {
   getAllUsers,
-  getUserId,
+  getUserById,
 }
