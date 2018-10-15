@@ -15,13 +15,17 @@ class Item extends Component {
   }
 
   componentDidMount() {
-    // this.props.items_id itemId
-    this.props.getItem(2)
-    this.props.getImages(2)
+    this.props.getItem(this.props.match.params.id).then(response => {
+      response.value.forEach(item => {
+        this.props.getImages(item.items_id)
+      })
+    })
   }
 
   render() {
+    console.log('this.props', this.props)
     const hasImages = this.props.images.length > 0
+
     return (
       <div className="item-container">
         <div className="item-section">
@@ -40,18 +44,19 @@ class Item extends Component {
           </div>
 
           <ul className="multi-image-container">
-            {this.props.images.map(image => {
-              return (
-                <div key={image.image_id}>
-                  <img
-                    className="thumbnail"
-                    alt="thumbnail-item"
-                    src={image.imageurl}
-                    onClick={() => this.setState({ selectedImage: image })}
-                  />
-                </div>
-              )
-            })}
+            {hasImages &&
+              this.props.images.map(image => {
+                return (
+                  <div key={image.image_id}>
+                    <img
+                      className="thumbnail"
+                      alt="thumbnail-item"
+                      src={image.imageurl}
+                      onClick={() => this.setState({ selectedImage: image })}
+                    />
+                  </div>
+                )
+              })}
           </ul>
           <div className="description-section">
             <h1>{this.props.item.item_name}</h1>

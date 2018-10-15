@@ -7,7 +7,10 @@ export function getItem(id) {
     type: GET_ITEM,
     payload: axios
       .get(`/api/item/${id}`)
-      .then(res => res.data)
+      .then(res => {
+        console.log('res.data', res.data)
+        return res.data
+      })
       .catch(err => {
         console.log('err', err)
         return {}
@@ -15,11 +18,7 @@ export function getItem(id) {
   }
 }
 
-// export function getItems() {}
-
-const initialState = {
-  item: {},
-}
+const initialState = {}
 
 export default function itemReducer(state = initialState, action) {
   switch (action.type) {

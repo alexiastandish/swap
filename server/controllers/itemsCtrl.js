@@ -3,15 +3,18 @@ const getItem = (req, res) => {
   db.items
     .getItem([req.params.id])
     .then(response => {
-      res.status(200).json(response[0])
+      // console.log('response', response)
+      res.status(200).json(response)
     })
-    .catch(console.log())
+    .catch(err => {
+      console.log('ITEMS ERROR', err)
+    })
 }
 
 const getItems = (req, res) => {
   const db = req.app.get('db')
   db.getItems([req.params.id]).then(response => {
-    console.log('response', response)
+    // console.log('response', response)
     res.status(200).json(response)
   })
 }

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function LikeCard(props) {
   return (
-    <Link to={`/item/${props.items_id}`}>
+    <Link to={`/item/${props.item.items_id}`}>
       <div className="like-card-container">
         <div className="like-image-container">
           {props.images &&

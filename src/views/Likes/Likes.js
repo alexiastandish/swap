@@ -11,16 +11,14 @@ class Likes extends Component {
   componentDidMount() {
     this.props.getLikes(this.props.user.user_id).then(response => {
       response.value.forEach(item => {
-        this.props.getImages(item.items_id).then(response => {
-          // console.log('response', response)
-        })
+        console.log('response.value', response.value)
+        this.props.getImages(item.items_id)
       })
     })
   }
 
   render() {
     // console.log('this.props.images', this.props.images)
-    // console.log('this.props.item', this.props.item)
     return (
       <div className="likes-container">
         {this.props.likes &&
