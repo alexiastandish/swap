@@ -25,7 +25,11 @@ $dark-gray: #707070;
       color: $navy;
       margin-left: 40px;
       width: 24vw;
-      background: red;
+
+      h1 {
+        color: $navy;
+        text-transform: uppercase;
+      }
     }
 
     .selected-image img {

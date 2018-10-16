@@ -59,10 +59,9 @@ class Item extends Component {
                 )
               })}
           </ul>
-
           <div className="description-section">
-            <h1>{this.props.item && this.props.item.item_name}</h1>
-            <p>{this.props.item && this.props.item.item_description}</p>
+            <h1>{this.props.item[0] && this.props.item[0].item_name}</h1>
+            <p>{this.props.item[0] && this.props.item[0].item_description}</p>
           </div>
         </div>
       </div>
@@ -78,7 +77,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getItem, getImages }, dispatch)
+  return bindActionCreators({ getImages, getItem }, dispatch)
 }
 
 export default connect(
