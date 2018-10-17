@@ -29,11 +29,10 @@ class Offers extends Component {
     return (
       <div className="offers-container">
         {this.props.offers &&
-          this.props.offers.map((offer, index) => {
+          this.props.offers.map((i, index) => {
             return (
-              <div className="offer-card" key={offer.items_id}>
+              <div className="offer-card" key={i.items_id}>
                 <OfferCard
-                  offer={offer}
                   item={this.props.item[index]}
                   // images={this.props.images && this.props.images[index]}
                 />

@@ -21,6 +21,7 @@
     "passport-auth0": "^1.0.0",
     "pwd": "^1.1.0",
     "react": "^16.5.2",
+    "react-burger-menu": "^2.5.4",
     "react-dom": "^16.5.2",
     "react-icons": "^3.1.0",
     "react-image-carousel": "^2.0.18",

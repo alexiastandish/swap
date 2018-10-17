@@ -77,13 +77,24 @@ $dark-gray: #707070;
   font-family: $font-family;
 }
 
-@media only screen and (max-width: 600px) {
-  .sidebar-container {
-    background-image: none;
-    background-color: $blue;
-    height: 100vh;
+.mobile-menu {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .mobile-menu {
     display: flex;
-    width: 100vw;
-    max-width: 600px;
+    background-color: $blue;
+  }
+  .Navbar_Items {
+    flex-direction: column;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  #main-nav {
+    display: none;
   }
 }

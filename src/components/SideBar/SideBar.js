@@ -14,11 +14,13 @@ class SideBar extends Component {
       itemName: '',
       itemDescription: '',
       imageUrls: [''],
+      isToggleOn: true,
     }
 
     this.toggleModal = this.toggleModal.bind(this)
     this.addToItems = this.addToItems.bind(this)
     this.clearInput = this.clearInput.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentWillMount() {
@@ -50,6 +52,13 @@ class SideBar extends Component {
       imageUrls: [''],
     })
   }
+
+  handleClick() {
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn,
+    }))
+  }
+
   render() {
     console.log('this.props', this.props)
     return (
@@ -57,16 +66,41 @@ class SideBar extends Component {
         <div className="sidebar-container">
           <div className="sb-section">
             <img src="http://i66.tinypic.com/2cnw4lw.png" alt="swap-logo" />
-            <nav>
-              {/* <button id="mobile-nav-button">
-                <Link to={}
-              </button> */}
+            <nav id="main-nav">
               <Link to="/dash">Dash</Link>
               <Link to="/offers">Offers</Link>
               <Link to="/likes">Likes</Link>
               <Link to="/friends">Friends</Link>
               <Link to={`/myProfile/${this.props.user.user_id}`}>Profile</Link>
             </nav>
+
+            <div className="mobile-menu">
+              <div className="Navbar__Link Navbar__Link-toggle">
+                <button onClick={this.handleClick}>
+                  {this.state.isToggleOn ? (
+                    'on'
+                  ) : (
+                    <div className="Navbar_Items">
+                      <Link to="/dash">
+                        <div className="Navbar_Link">Dash</div>
+                      </Link>
+                      <Link to="/offers">
+                        <div className="Navbar_Link">Offers</div>
+                      </Link>
+                      <Link to="/likes">
+                        <div className="Navbar_Link">Likes</div>
+                      </Link>
+                      <Link to="/friends">
+                        <div className="Navbar_Link">Friends</div>
+                      </Link>
+                      <Link to={`/myProfile/${this.props.user.user_id}`}>
+                        <div className="Navbar_Link">Profile</div>
+                      </Link>
+                    </div>
+                  )}
+                </button>
+              </div>
+            </div>
 
             <section className="modal-container">
               <button onClick={this.toggleModal} className="modal-button">
