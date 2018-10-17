@@ -13,11 +13,8 @@ const { getAllUsers, getUserById } = require('./controllers/getUsersCtrl')
 const {
   getItem,
   getItems,
-  // getItemAndImage,
   getItemImages,
-  postItem,
-  addItemImages,
-  // getAllFollows,
+  addItem,
   deleteItem,
   editItem,
   changeItemImage,
@@ -98,9 +95,8 @@ app.get('/api/user/:id', getUserById)
 
 app.get('/api/item/:id', getItem)
 app.get('/api/items/:id', getItems)
+app.post('/api/addItem', addItem)
 app.get('/api/images/:id', getItemImages)
-app.post('/api/item', postItem)
-app.post('/api/image', addItemImages)
 app.delete('/api/item/:id', deleteItem)
 app.put('/api/item/:id', editItem)
 app.put('/api/item/:id', changeItemImage)

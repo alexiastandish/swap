@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import './SideBar.scss'
 import { connect } from 'react-redux'
 import Modal from 'react-modal'
+import axios from 'axios'
 
 class SideBar extends Component {
   constructor(props) {
@@ -10,9 +11,14 @@ class SideBar extends Component {
 
     this.state = {
       isActive: false,
+      itemName: '',
+      itemDescription: '',
+      imageUrls: [''],
     }
 
     this.toggleModal = this.toggleModal.bind(this)
+    this.addToItems = this.addToItems.bind(this)
+    this.clearInput = this.clearInput.bind(this)
   }
 
   componentWillMount() {
@@ -23,7 +29,25 @@ class SideBar extends Component {
     this.setState({ isActive: !this.state.isActive })
   }
 
-  render(props) {
+  addToItems() {
+    axios.post('/api/addItem', {
+      itemName: this.state.itemName,
+      itemDescription: this.state.itemDescription,
+      imageUrls: this.state.imageUrls,
+      userId: this.props.user.user_id,
+    })
+  }
+
+  clearInput() {
+    this.setState({
+      itemName: '',
+      itemDescription: '',
+      imageUrls: [''],
+    })
+  }
+  render() {
+    console.log('this.state.itemName', this.state.itemName)
+    console.log('this.state', this.state)
     return (
       window.location.pathname !== '/' && (
         <div className="sidebar-container">
@@ -61,13 +85,40 @@ class SideBar extends Component {
               <button onClick={this.toggleModal}>Close</button>
               <div className="add-item-container">
                 <h1>Add Item</h1>
-                <input placeholder="Item Name..." />
-                <input placeholder="Item Description..." />
-                <input placeholder="Image URL" />
-                <input placeholder="Image URL" />
-                <input placeholder="Image URL" />
-                <input placeholder="Image URL" />
-                <button>Submit</button>
+                <label>Item Name: </label>
+                <input
+                  value={this.state.itemName}
+                  onChange={event => this.setState({ itemName: event.target.value })}
+                />
+                <label>Item Description: </label>
+                <input
+                  value={this.state.itemDescription}
+                  onChange={event => this.setState({ itemDescription: event.target.value })}
+                />
+                {this.state.imageUrls.map((url, index) => {
+                  return (
+                    <div className="image-input-container">
+                      <label>Image: {index + 1} </label>
+                      <input
+                        placeholder="Insert Image URL"
+                        value={url}
+                        onChange={event => {
+                          const nextImageUrls = [...this.state.imageUrls]
+                          nextImageUrls[index] = event.target.value
+                          this.setState({ imageUrls: nextImageUrls })
+                        }}
+                      />
+                    </div>
+                  )
+                })}
+                <button
+                  onClick={() => {
+                    this.setState({ imageUrls: [...this.state.imageUrls, ''] })
+                  }}
+                >
+                  Add Image
+                </button>
+                <button onClick={this.addToItems}>Sumbit</button>
               </div>
             </Modal>
           </section>
