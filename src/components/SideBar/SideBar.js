@@ -4,6 +4,7 @@ import './SideBar.scss'
 import { connect } from 'react-redux'
 import Modal from 'react-modal'
 import axios from 'axios'
+import AddItem from './AddItem/AddItem'
 
 class SideBar extends Component {
   constructor(props) {
@@ -19,7 +20,6 @@ class SideBar extends Component {
 
     this.toggleModal = this.toggleModal.bind(this)
     this.addToItems = this.addToItems.bind(this)
-    this.clearInput = this.clearInput.bind(this)
     this.handleClick = this.handleClick.bind(this)
   }
 
@@ -43,14 +43,6 @@ class SideBar extends Component {
         this.toggleModal()
         this.props.history.push(`/myProfile/${this.props.user.user_id}`)
       })
-  }
-
-  clearInput() {
-    this.setState({
-      itemName: '',
-      itemDescription: '',
-      imageUrls: [''],
-    })
   }
 
   handleClick() {
