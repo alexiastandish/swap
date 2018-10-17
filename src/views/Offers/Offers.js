@@ -2,37 +2,61 @@ import React, { Component } from 'react'
 import './Offers.scss'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import axios from 'axios'
+import { getOffers } from '../../ducks/offersReducer'
+import { getItemFromOffer } from '../../ducks/offerItemReducer'
+import { getImages } from '../../ducks/imagesReducer'
+import { getItem } from '../../ducks/itemReducer'
+import OfferCard from '../../components/OfferCard/OfferCard'
 
 class Offers extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { offers: [] }
-  }
-
   componentDidMount() {
-    axios.get(`/api/offers/${this.props.user.user_id}`).then(response => {
-      this.setState({ offers: response })
+    this.props.getOffers(this.props.user.user_id).then(response => {
+      response.value.forEach(offer => {
+        this.props.getItem(offer.fromuser_itemid).then(response => {
+          return response.value
+        })
+        // .then(response => {
+        //   response.value.forEach(item => {
+        //     this.props.getImages(item.items_id)
+        //   })
+        // })
+      })
     })
   }
 
-  render(props) {
-    console.log('this.state.offers', this.state.offers)
-    console.log('this.state', this.state)
-    return <div className="offers-container" />
+  render() {
+    console.log('this.props.item', this.props.item)
+    return (
+      <div className="offers-container">
+        {this.props.offers &&
+          this.props.offers.map((offer, index) => {
+            return (
+              <div className="offer-card" key={offer.items_id}>
+                <OfferCard
+                  offer={offer}
+                  item={this.props.item[index]}
+                  // images={this.props.images && this.props.images[index]}
+                />
+              </div>
+            )
+          })}
+      </div>
+    )
   }
 }
 
 function mapStateToProps(state) {
   return {
     user: state.user,
-    item: state.item,
+    offerItem: state.offerItem,
     images: state.images,
+    offers: state.offers,
+    item: state.item,
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch)
+  return bindActionCreators({ getOffers, getItemFromOffer, getImages, getItem }, dispatch)
 }
 
 export default connect(

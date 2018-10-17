@@ -1,14 +1,14 @@
 import axios from 'axios'
 
-const GET_OFFERS = 'GET_OFFERS'
+const GET_ITEM_FROM_OFFER = 'GET_ITEM_FROM_OFFER'
 
-export function getOffers(id) {
+export function getItemFromOffer(id) {
   return {
-    type: GET_OFFERS,
+    type: GET_ITEM_FROM_OFFER,
     payload: axios
-      .get(`/api/offers/${id}`)
+      .get(`/api/offer/${id}`)
       .then(res => {
-        console.log('res.data', res.data)
+        console.log('res', res)
         return res.data
       })
       .catch(err => {
@@ -22,7 +22,7 @@ const initialState = []
 
 export default function offersReducer(state = initialState, action) {
   switch (action.type) {
-    case `${GET_OFFERS}_FULFILLED`:
+    case `${GET_ITEM_FROM_OFFER}_FULFILLED`:
       return [...action.payload]
     default:
       return state
