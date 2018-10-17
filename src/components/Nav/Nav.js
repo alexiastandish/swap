@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Nav.scss'
+import { withRouter } from 'react-router-dom'
 
 class Nav extends Component {
   constructor(props) {
@@ -8,6 +9,11 @@ class Nav extends Component {
     this.state = {
       user: {},
     }
+    this.goBack = this.goBack.bind(this)
+  }
+
+  goBack() {
+    this.props.history.goBack()
   }
 
   render() {
@@ -29,8 +35,9 @@ class Nav extends Component {
             </div>
           </div>
           <ul className="menu">
-            <li>back</li>
-            <li>signout</li>
+            <button onClick={this.goBack}>back</button>
+
+            <a href="http://localhost:3001/logout">Logout</a>
           </ul>
         </div>
       )
@@ -38,4 +45,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav
+export default withRouter(Nav)

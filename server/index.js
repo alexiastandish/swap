@@ -7,7 +7,7 @@ const passport = require('passport')
 const port = 3001
 // const path = require("path")
 
-const { strategy, getUser, logout } = require('./controllers/authCtrl')
+const { strategy, getUser } = require('./controllers/authCtrl')
 const { getAllUsers, getUserById } = require('./controllers/getUsersCtrl')
 
 const {
@@ -19,6 +19,8 @@ const {
   editItem,
   changeItemImage,
 } = require(`${__dirname}/controllers/itemsCtrl`)
+
+const { getOffers } = require('./controllers/offersCtrl')
 
 // const { getAllUsers } = require(`${__dirname}/controllers/getUsersCtrl`)
 
@@ -88,8 +90,13 @@ app.get(
   })
 )
 
+app.get('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('http://localhost:3000/')
+  })
+})
+
 app.get('/api/me', getUser)
-app.post('/logout', logout)
 
 app.get('/api/user/:id', getUserById)
 
@@ -101,6 +108,9 @@ app.delete('/api/item/:id', deleteItem)
 app.put('/api/item/:id', editItem)
 app.put('/api/item/:id', changeItemImage)
 // ADD user+LIKES TO ITEM??
+
+// offers
+app.get('/api/offers/:id', getOffers)
 
 // // follows
 app.get('/api/users', getAllUsers)

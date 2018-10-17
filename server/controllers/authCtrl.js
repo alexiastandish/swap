@@ -21,15 +21,7 @@ const getUser = (req, res) => {
   else res.status(403).json({ message: 'Not Logged In' })
 }
 
-const logout = (req, res) => {
-  req.session.destroy(() => {
-    res.redirect('http://localhost:3000/')
-    // domain will be added in place of local host
-  })
-}
-
 module.exports = {
   strategy,
   getUser,
-  logout,
 }

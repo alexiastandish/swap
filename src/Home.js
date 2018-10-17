@@ -14,7 +14,6 @@ export default function Home() {
         <Link to="/about" className="button">
           <span>ABOUT</span>
         </Link>
-        <a href={process.env.REACT_APP_LOGOUT}>signout</a>
       </div>
     </div>
   )
