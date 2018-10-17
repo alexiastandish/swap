@@ -9,7 +9,7 @@ $dark-gray: #707070;
 .sidebar-container {
   background-image: none;
   background-color: $blue;
-  height: 100vh;
+  height: auto;
   display: flex;
   width: 30vw;
   max-width: 600px;
@@ -58,10 +58,23 @@ $dark-gray: #707070;
   }
 }
 
+.modal-button {
+  font-family: $font-family;
+  border: none;
+  background-color: white;
+  padding: 8px 26px;
+  border-radius: 20px;
+  font-size: 18px;
+  text-align: center;
+  color: $blue;
+  margin: 0 auto;
+  font-weight: 400;
+  justify-content: center;
+}
+
 .modal-container {
-  height: 30vh;
-  width: 30vw;
-  background: red;
+  margin: 0 auto;
+  font-family: $font-family;
 }
 
 @media only screen and (max-width: 600px) {
