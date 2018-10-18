@@ -1,25 +1,44 @@
 import React, { Component } from 'react'
+import Modal from 'react-modal'
 
 class AddItem extends Component {
   constructor() {
-    super(
-      (this.state = {
-        isActive: false,
-        itemName: '',
-        itemDescription: '',
-        imageUrls: [''],
-      })
-    )
+    super()
 
-    this.toggleModal = this.toggleModal.bind(this)
-    this.addToItems = this.addToItems.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+    this.state = {
+      itemName: '',
+      itemDescription: '',
+      imageUrls: [''],
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleSubmit() {
+    const { itemName, itemDescription, imageUrls } = this.state
+    this.props.addToItems({ itemName, itemDescription, imageUrls })
   }
 
   render() {
+    console.log('this.props', this.props)
     return (
-      <div>
-        <button onClick={this.toggleModal}>Close</button>
+      <Modal
+        isOpen={this.props.isOpen}
+        onRequestClose={this.props.onRequestClose}
+        style={{
+          overlay: {
+            backgroundColor: 'rgba(253, 253, 253, 0.8)',
+          },
+          content: {
+            width: '40vw',
+            height: '50vh',
+            margin: '0 auto',
+            top: '22vh',
+            backgroundColor: '#ffffff',
+          },
+        }}
+      >
+        <button onClick={this.props.onRequestClose}>Close</button>
         <div className="add-item-container">
           <h1>Add Item</h1>
           <label>Item Name: </label>
@@ -56,9 +75,9 @@ class AddItem extends Component {
             Add Image
           </button>
 
-          <button onClick={this.addToItems}>Submit</button>
+          <button onClick={this.handleSubmit}>Submit</button>
         </div>
-      </div>
+      </Modal>
     )
   }
 }

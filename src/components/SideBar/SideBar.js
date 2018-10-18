@@ -12,9 +12,6 @@ class SideBar extends Component {
 
     this.state = {
       isActive: false,
-      itemName: '',
-      itemDescription: '',
-      imageUrls: [''],
       isToggleOn: true,
     }
 
@@ -31,12 +28,10 @@ class SideBar extends Component {
     this.setState({ isActive: !this.state.isActive })
   }
 
-  addToItems() {
+  addToItems(itemDetails) {
     axios
       .post('/api/addItem', {
-        itemName: this.state.itemName,
-        itemDescription: this.state.itemDescription,
-        imageUrls: this.state.imageUrls,
+        ...itemDetails,
         userId: this.props.user.user_id,
       })
       .then(() => {
@@ -98,62 +93,11 @@ class SideBar extends Component {
               <button onClick={this.toggleModal} className="modal-button">
                 Add Item
               </button>
-              <Modal
+              <AddItem
                 isOpen={this.state.isActive}
                 onRequestClose={this.toggleModal}
-                style={{
-                  overlay: {
-                    backgroundColor: 'rgba(253, 253, 253, 0.8)',
-                  },
-                  content: {
-                    width: '40vw',
-                    height: '50vh',
-                    margin: '0 auto',
-                    top: '22vh',
-                    backgroundColor: '#ffffff',
-                  },
-                }}
-              >
-                <button onClick={this.toggleModal}>Close</button>
-                <div className="add-item-container">
-                  <h1>Add Item</h1>
-                  <label>Item Name: </label>
-                  <input
-                    value={this.state.itemName}
-                    onChange={event => this.setState({ itemName: event.target.value })}
-                  />
-                  <label>Item Description: </label>
-                  <input
-                    value={this.state.itemDescription}
-                    onChange={event => this.setState({ itemDescription: event.target.value })}
-                  />
-                  {this.state.imageUrls.map((url, index) => {
-                    return (
-                      <div className="image-input-container">
-                        <label>Image: {index + 1} </label>
-                        <input
-                          placeholder="Insert Image URL"
-                          value={url}
-                          onChange={event => {
-                            const nextImageUrls = [...this.state.imageUrls]
-                            nextImageUrls[index] = event.target.value
-                            this.setState({ imageUrls: nextImageUrls })
-                          }}
-                        />
-                      </div>
-                    )
-                  })}
-                  <button
-                    onClick={() => {
-                      this.setState({ imageUrls: [...this.state.imageUrls, ''] })
-                    }}
-                  >
-                    Add Image
-                  </button>
-
-                  <button onClick={this.addToItems}>Submit</button>
-                </div>
-              </Modal>
+                addToItems={this.addToItems}
+              />
             </section>
           </div>
         </div>
