@@ -6,7 +6,7 @@ import imagesReducer from './imagesReducer'
 import profileReducer from './profileReducer'
 import followingReducer from './followingReducer'
 import likesReducer from './likesReducer'
-// import offersReducer from './offersReducer'
+import offersReducer from './offersReducer'
 import offerItemReducer from './offerItemReducer'
 import requestedItemReducer from './requestItemReducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
@@ -18,7 +18,7 @@ const combinedReducers = combineReducers({
   items: profileReducer,
   following: followingReducer,
   likes: likesReducer,
-  // offers: offersReducer,
+  offersInfo: offersReducer,
   offers: offerItemReducer,
   requestItem: requestedItemReducer,
 })

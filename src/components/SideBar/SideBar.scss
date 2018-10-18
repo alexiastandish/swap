@@ -6,13 +6,24 @@ $navy: #424c58;
 $light-gray: #e5e5e5;
 $dark-gray: #707070;
 
-.sidebar-container {
-  background-image: none;
-  background-color: $blue;
-  height: auto;
+.desktop-sidebar {
+  width: 100%;
+  width: 26vw;
   display: flex;
-  width: 30vw;
+  background-color: $blue;
+  flex-direction: column;
+  align-content: center;
+  height: 100vh;
   max-width: 600px;
+  min-width: 280px;
+
+  img {
+    padding-top: 100px;
+    width: 22vh;
+    height: auto;
+    justify-content: center;
+    margin: 0 auto;
+  }
 
   .sb-section {
     width: 100%;
@@ -20,13 +31,6 @@ $dark-gray: #707070;
     flex-direction: column;
     align-content: center;
     height: 100vh;
-  }
-
-  img {
-    padding-top: 100px;
-    width: 22vh;
-    justify-content: center;
-    margin: 0 auto;
   }
 
   nav {
@@ -57,7 +61,6 @@ $dark-gray: #707070;
     transition: 0.25s ease-in;
   }
 }
-
 .modal-button {
   font-family: $font-family;
   border: none;
@@ -69,32 +72,97 @@ $dark-gray: #707070;
   color: $blue;
   margin: 0 auto;
   font-weight: 400;
-  justify-content: center;
+  position: absolute;
+  margin: 0 auto;
+  bottom: 20%;
+  display: flex;
 }
 
 .modal-container {
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
   font-family: $font-family;
 }
-
 .mobile-menu {
   display: none;
 }
 
 @media only screen and (max-width: 768px) {
   .mobile-menu {
-    display: flex;
-    background-color: $blue;
-  }
-  .Navbar_Items {
-    flex-direction: column;
-  }
-
-  .mobile-menu {
     display: block;
   }
 
+  .Navbar__Link .Navbar__Link-toggle {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-content: center;
+  }
+
+  .Navbar_Items {
+    background: $blue;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    background-color: $blue;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+  .Navbar_Link {
+    font-family: $font-family;
+    color: white;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-top: 30px;
+  }
+
+  a {
+    padding: 50px;
+    margin-top: 20px;
+  }
+
+  .mobile-nav-section {
+    height: 40vh;
+    margin-top: 60%;
+  }
+
+  .desktop-sidebar {
+    display: none;
+  }
+
   #main-nav {
+    display: none;
+  }
+  .modal-button {
+    font-family: $font-family;
+    border: none;
+    background-color: white;
+    padding: 8px 26px;
+    border-radius: 20px;
+    font-size: 18px;
+    text-align: center;
+    color: $blue;
+    margin: 0 auto;
+    font-weight: 400;
+    position: absolute;
+    margin: 0 auto;
+    bottom: 20%;
+    display: flex;
+  }
+
+  .modal-container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    font-family: $font-family;
+  }
+  .mobile-menu {
     display: none;
   }
 }

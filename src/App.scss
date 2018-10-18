@@ -124,3 +124,16 @@ $dark-gray: #707070;
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .body-container {
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+    background-color: $light-gray;
+    position: absolute;
+    z-index: -1;
+  }
+}

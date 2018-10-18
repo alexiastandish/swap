@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { getItemFromOffer } from '../../ducks/offerItemReducer'
 import { getImages } from '../../ducks/imagesReducer'
 import { getRequestedItem } from '../../ducks/requestItemReducer'
+import { getOffers } from '../../ducks/offersReducer'
 // import { getItem } from '../../ducks/itemReducer'
 import OfferCard from '../../components/OfferCard/OfferCard'
 
@@ -27,6 +28,10 @@ class Offers extends Component {
       console.log('response.value', response.value)
       return response.value[this.props.item.items_id]
     })
+    this.props.getOffers(this.props.user.user_id).then(response => {
+      console.log('response.value.OFFER', response.value)
+      return response.value
+    })
   }
 
   render() {
@@ -38,7 +43,8 @@ class Offers extends Component {
               <div className="offer-item" key={item.items_id}>
                 <OfferCard
                   item={item}
-                  tradeItem={this.props.requestItem && this.props.requestItem}
+                  offersInfo={this.props.offersInfo}
+                  tradeItems={this.props.requestItem && this.props.requestItem}
                   images={this.props.images[item.items_id]}
                 />
               </div>
@@ -55,12 +61,13 @@ function mapStateToProps(state) {
     offers: state.offers,
     item: state.item,
     images: state.images,
+    offersInfo: state.offersInfo,
     requestItem: state.requestItem,
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getItemFromOffer, getImages, getRequestedItem }, dispatch)
+  return bindActionCreators({ getItemFromOffer, getImages, getRequestedItem, getOffers }, dispatch)
 }
 
 export default connect(
