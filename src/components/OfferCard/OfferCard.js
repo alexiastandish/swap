@@ -1,9 +1,25 @@
 import React from 'react'
 import './OfferCard.scss'
 import { Link } from 'react-router-dom'
-
+// if (props.requestItems.items_id===props.offersInfo.requesteditemid)
 function OfferCard(props) {
-  console.log('props', props)
+  console.log('props.offersInfo', props.offersInfo)
+  console.log('requestItemSection', requestItemSection)
+  const requestItemSection = props.requestItems.filter(requestItem => {
+    console.log('requestItem', requestItem)
+    if (requestItem.items_id === props.offersInfo.requesteditemid) {
+      return (
+        <div>
+          <h1>{requestItem.item_name}</h1>
+        </div>
+      )
+    }
+  })
+
+  // const filteredRequest = props.requestItems.filter(requestItem => {
+  //   const requestItemName = requestItem.item_name === props.item.item_name
+  //   return <div>{requestItemName}</div>
+  // })
 
   return (
     <Link to={`/item/${props.item.items_id}`}>
@@ -24,6 +40,7 @@ function OfferCard(props) {
         </div>
 
         <div className="request-item" />
+        <h1>{requestItemSection && requestItemSection}</h1>
       </div>
     </Link>
   )
