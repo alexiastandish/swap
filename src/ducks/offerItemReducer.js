@@ -20,7 +20,7 @@ export function getItemFromOffer(id) {
 
 const initialState = []
 
-export default function offersReducer(state = initialState, action) {
+export default function offerItemReducer(state = initialState, action) {
   switch (action.type) {
     case `${GET_ITEM_FROM_OFFER}_FULFILLED`:
       return [...action.payload]

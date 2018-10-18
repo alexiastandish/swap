@@ -47,7 +47,6 @@ class SideBar extends Component {
   }
 
   render() {
-    console.log('this.props', this.props)
     return (
       window.location.pathname !== '/' && (
         <div className="sidebar-container">

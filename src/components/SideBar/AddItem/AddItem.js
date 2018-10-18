@@ -20,7 +20,6 @@ class AddItem extends Component {
   }
 
   render() {
-    console.log('this.props', this.props)
     return (
       <Modal
         isOpen={this.props.isOpen}

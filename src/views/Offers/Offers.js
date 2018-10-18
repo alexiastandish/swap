@@ -2,24 +2,24 @@ import React, { Component } from 'react'
 import './Offers.scss'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getOffers } from '../../ducks/offersReducer'
 import { getItemFromOffer } from '../../ducks/offerItemReducer'
 import { getImages } from '../../ducks/imagesReducer'
-import { getItem } from '../../ducks/itemReducer'
+// import { getItem } from '../../ducks/itemReducer'
 import OfferCard from '../../components/OfferCard/OfferCard'
 
 class Offers extends Component {
+  // componentDidMount() {
+  //   this.props.getItemFromOffer(this.props.user.user_id).then(response => {
+  //     console.log('response.value', response.value)
+  //     return response.value
+  //   })
+  // }
+
   componentDidMount() {
-    this.props.getOffers(this.props.user.user_id).then(response => {
-      response.value.forEach(offer => {
-        this.props.getItem(offer.fromuser_itemid).then(response => {
-          return response.value
-        })
-        // .then(response => {
-        //   response.value.forEach(item => {
-        //     this.props.getImages(item.items_id)
-        //   })
-        // })
+    this.props.getItemFromOffer(this.props.user.user_id).then(response => {
+      console.log('response.value', response.value)
+      response.value.forEach(item => {
+        this.props.getImages(item.items_id)
       })
     })
   }
@@ -29,13 +29,10 @@ class Offers extends Component {
     return (
       <div className="offers-container">
         {this.props.offers &&
-          this.props.offers.map((i, index) => {
+          this.props.offers.map(item => {
             return (
-              <div className="offer-card" key={i.items_id}>
-                <OfferCard
-                  item={this.props.item[index]}
-                  // images={this.props.images && this.props.images[index]}
-                />
+              <div className="offer-item" key={item.items_id}>
+                <OfferCard item={item} images={this.props.images[item.items_id]} />
               </div>
             )
           })}
@@ -47,15 +44,14 @@ class Offers extends Component {
 function mapStateToProps(state) {
   return {
     user: state.user,
-    offerItem: state.offerItem,
-    images: state.images,
     offers: state.offers,
     item: state.item,
+    images: state.images,
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getOffers, getItemFromOffer, getImages, getItem }, dispatch)
+  return bindActionCreators({ getItemFromOffer, getImages }, dispatch)
 }
 
 export default connect(
