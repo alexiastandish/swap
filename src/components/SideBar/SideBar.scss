@@ -61,6 +61,7 @@ $dark-gray: #707070;
     transition: 0.25s ease-in;
   }
 }
+
 .modal-button {
   font-family: $font-family;
   border: none;
@@ -84,6 +85,7 @@ $dark-gray: #707070;
   justify-content: center;
   font-family: $font-family;
 }
+
 .mobile-menu {
   display: none;
 }
@@ -150,19 +152,14 @@ $dark-gray: #707070;
     color: $blue;
     margin: 0 auto;
     font-weight: 400;
-    position: absolute;
-    margin: 0 auto;
-    bottom: 20%;
-    display: flex;
   }
-
   .modal-container {
     margin: 0 auto;
     display: flex;
+    position: absolute;
+    top: 20%;
+    left: 20%;
     justify-content: center;
     font-family: $font-family;
-  }
-  .mobile-menu {
-    display: none;
   }
 }

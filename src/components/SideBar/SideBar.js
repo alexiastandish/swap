@@ -90,15 +90,14 @@ class SideBar extends Component {
                     </Link>
                   </div>
 
+                  <a href="http://localhost:3001/logout">Logout</a>
+
                   <button
                     className="close-mobile-button"
                     onClick={() => this.setState({ isToggleOn: false })}
                   >
                     Close Menu
                   </button>
-                  <ul className="menu">
-                    <a href="http://localhost:3001/logout">Logout</a>
-                  </ul>
                 </div>
               )}
             </button>
