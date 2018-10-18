@@ -3,6 +3,7 @@ import './OfferCard.scss'
 import { Link } from 'react-router-dom'
 
 function OfferCard(props) {
+  console.log('props', props)
   return (
     <Link to={`/item/${props.item.items_id}`}>
       <div className="like-card-container">
@@ -19,6 +20,17 @@ function OfferCard(props) {
 
         <div className="like-description">
           <h1 className="like-item-link-text">{props.item.item_name}</h1>
+        </div>
+
+        <div className="user-items">
+          {props.tradeItem &&
+            props.tradeItem
+              .filter(item => item.items_id === props.tradeItem.items_id)
+              .map(tradeItem => (
+                <div key={tradeItem.items_id}>
+                  <h1>{tradeItem.item_name}</h1>
+                </div>
+              ))}
         </div>
       </div>
     </Link>

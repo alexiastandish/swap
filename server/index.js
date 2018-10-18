@@ -20,7 +20,7 @@ const {
   changeItemImage,
 } = require(`${__dirname}/controllers/itemsCtrl`)
 
-const { getOffers, getItemFromOffer } = require('./controllers/offersCtrl')
+const { getOffers, getItemFromOffer, getRequestedItem } = require('./controllers/offersCtrl')
 
 // const { getAllUsers } = require(`${__dirname}/controllers/getUsersCtrl`)
 
@@ -112,6 +112,7 @@ app.put('/api/item/:id', changeItemImage)
 // offers
 app.get('/api/offers/:id', getOffers)
 app.get('/api/offer/:id', getItemFromOffer)
+app.get('/api/request/:id', getRequestedItem)
 
 // // follows
 app.get('/api/users', getAllUsers)
