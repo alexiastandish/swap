@@ -12,6 +12,8 @@ $dark-gray: #707070;
 
 .App {
   display: flex;
+  background-color: $light-gray;
+  height: auto;
 }
 
 .body-container {
@@ -19,6 +21,7 @@ $dark-gray: #707070;
   display: flex;
   width: 100%;
   background-color: $light-gray;
+  height: 100%;
 }
 
 .landing-page {

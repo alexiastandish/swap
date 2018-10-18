@@ -10,26 +10,19 @@ import { getOffers } from '../../ducks/offersReducer'
 import OfferCard from '../../components/OfferCard/OfferCard'
 
 class Offers extends Component {
-  // componentDidMount() {
-  //   this.props.getItemFromOffer(this.props.user.user_id).then(response => {
-  //     console.log('response.value', response.value)
-  //     return response.value
-  //   })
-  // }
-
   componentDidMount() {
     this.props.getItemFromOffer(this.props.user.user_id).then(response => {
-      console.log('response.value', response.value)
+      // console.log('response.value', response.value)
       response.value.forEach(item => {
         this.props.getImages(item.items_id)
       })
     })
     this.props.getRequestedItem(this.props.user.user_id).then(response => {
-      console.log('response.value', response.value)
+      // console.log('response.value', response.value)
       return response.value[this.props.item.items_id]
     })
     this.props.getOffers(this.props.user.user_id).then(response => {
-      console.log('response.value.OFFER', response.value)
+      // console.log('response.value.OFFER', response.value)
       return response.value
     })
   }
@@ -46,6 +39,7 @@ class Offers extends Component {
                   offersInfo={this.props.offersInfo}
                   tradeItems={this.props.requestItem && this.props.requestItem}
                   images={this.props.images[item.items_id]}
+                  requestItems={this.props.requestItem}
                 />
               </div>
             )
