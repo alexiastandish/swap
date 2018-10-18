@@ -18,9 +18,9 @@ const combinedReducers = combineReducers({
   items: profileReducer,
   following: followingReducer,
   likes: likesReducer,
-  offersInfo: offersReducer,
-  offers: offerItemReducer,
-  requestItem: requestedItemReducer,
+  offersList: offersReducer,
+  offerItems: offerItemReducer,
+  requestItems: requestedItemReducer,
 })
 
 const store = createStore(

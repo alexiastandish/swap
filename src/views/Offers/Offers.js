@@ -12,8 +12,7 @@ import OfferCard from '../../components/OfferCard/OfferCard'
 class Offers extends Component {
   componentDidMount() {
     this.props.getItemFromOffer(this.props.user.user_id).then(response => {
-      // console.log('response.value', response.value)
-      response.value.forEach(item => {
+      Object.values(response.value).forEach(item => {
         this.props.getImages(item.items_id)
       })
     })
@@ -26,20 +25,28 @@ class Offers extends Component {
       return response.value
     })
   }
-
   render() {
+    // console.log('this.props', this.props)
     return (
       <div className="offers-container">
-        {this.props.offers &&
-          this.props.offers.map(item => {
+        {this.props.offersList &&
+          this.props.offersList.map(offer => {
+            console.log('offer', offer)
             return (
-              <div className="offer-item" key={item.items_id}>
+              <div className="offer-item" key={offer.items_id}>
                 <OfferCard
-                  item={item}
-                  offersInfo={this.props.offersInfo}
-                  tradeItems={this.props.requestItem && this.props.requestItem}
-                  images={this.props.images[item.items_id]}
-                  requestItems={this.props.requestItem}
+                  offerImage={
+                    this.props.images[offer.fromuser_itemid] &&
+                    this.props.images[offer.fromuser_itemid][0]
+                  }
+                  offer={this.props.offerItems && this.props.offerItems[offer.fromuser_itemid]}
+                  requestedItemName={
+                    (this.props.requestItems &&
+                      this.props.requestItems[offer.requesteditemid] &&
+                      this.props.requestItems[offer.requesteditemid].item_name) ||
+                    'I donut have a name'
+                    // get(this.props, ['requestItems', offer.requesteditemid, 'item_name'], 'I donut have a name')
+                  }
                 />
               </div>
             )
@@ -52,11 +59,12 @@ class Offers extends Component {
 function mapStateToProps(state) {
   return {
     user: state.user,
-    offers: state.offers,
+    // users: state.users,
+    offerItems: state.offerItems,
     item: state.item,
     images: state.images,
-    offersInfo: state.offersInfo,
-    requestItem: state.requestItem,
+    offersList: state.offersList,
+    requestItems: state.requestItems,
   }
 }
 

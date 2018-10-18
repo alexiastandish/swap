@@ -35,10 +35,21 @@ const initialState = {
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case `${GET_USER}_FULFILLED`:
+      //Comment back in later
+      // return {
+      //   ...state,
+      //   ...action.payload,
+      //   isAuthenticated: !!action.payload,
+      // }
+
+      //delete when you comment in the above
       return {
-        ...state,
-        ...action.payload,
-        isAuthenticated: !!action.payload,
+        user_id: 59,
+        authid: 'github|40964861',
+        username: '',
+        email: null,
+        user_photo: null,
+        isAuthenticated: true,
       }
     case `${GET_USER}_REJECTED`:
       return {

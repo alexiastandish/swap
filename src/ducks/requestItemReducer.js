@@ -8,22 +8,24 @@ export function getRequestedItem(id) {
     payload: axios
       .get(`/api/request/${id}`)
       .then(response => {
-        console.log('response', response)
-        return response.data
+        return response.data.reduce((prev, curr) => {
+          prev[curr.items_id] = curr
+          return prev
+        }, {})
       })
       .catch(err => {
         console.log('err', err)
-        return []
+        return {}
       }),
   }
 }
 
-const initialState = []
+const initialState = {}
 
 export default function requestedItemReducer(state = initialState, action) {
   switch (action.type) {
     case `${GET_REQUEST_ITEM}_FULFILLED`:
-      return [...action.payload]
+      return { ...state, ...action.payload }
     default:
       return state
   }

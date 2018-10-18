@@ -22,8 +22,6 @@ const {
 
 const { getOffers, getItemFromOffer, getRequestedItem } = require('./controllers/offersCtrl')
 
-// const { getAllUsers } = require(`${__dirname}/controllers/getUsersCtrl`)
-
 const {
   getFollowingUsers,
   followUser,

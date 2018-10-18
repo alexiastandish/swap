@@ -46,7 +46,11 @@ $dark-gray: #858585;
   p {
     color: white;
   }
+}
 
-  // .timestamp-text {
-  // }
+@media only screen and (max-width: 768px) {
+  .item-card {
+    display: flex;
+    width: 100vw;
+  }
 }

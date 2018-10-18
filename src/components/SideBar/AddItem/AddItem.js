@@ -52,7 +52,7 @@ class AddItem extends Component {
           />
           {this.state.imageUrls.map((url, index) => {
             return (
-              <div className="image-input-container">
+              <div key={url} className="image-input-container">
                 <label>Image: {index + 1} </label>
                 <input
                   placeholder="Insert Image URL"

@@ -8,7 +8,6 @@ export function getOffers(id) {
     payload: axios
       .get(`/api/offers/${id}`)
       .then(res => {
-        console.log('res.data', res.data)
         return res.data
       })
       .catch(err => {

@@ -3,7 +3,7 @@ const getOffers = (req, res) => {
   db.offers
     .getOffers([req.params.id])
     .then(response => {
-      console.log('response', response)
+      // console.log('response', response)
       res.status(200).json(response)
     })
     .catch(err => {
@@ -16,7 +16,7 @@ const getItemFromOffer = (req, res) => {
   db.offers
     .getItemFromOffer([req.params.id])
     .then(response => {
-      console.log('response', response)
+      // console.log('response', response)
       res.status(200).json(response)
     })
     .catch(err => {
@@ -29,11 +29,11 @@ const getRequestedItem = (req, res) => {
   db.offers
     .getRequest([req.params.id])
     .then(response => {
-      console.log('response', response)
+      // console.log('response', response)
       res.status(200).json(response)
     })
     .catch(err => {
-      console.log('err', err)
+      // console.log('err', err)
     })
 }
 

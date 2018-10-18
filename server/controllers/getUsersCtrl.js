@@ -3,7 +3,7 @@ const getAllUsers = (req, res) => {
   db.getUsers()
     .then(response => {
       const users = res.status(200).json(response)
-      // console.log('users', users)
+      console.log('users', users)
       return users
     })
     .catch(err => res.status(500).send(err))
