@@ -18,7 +18,7 @@ export function getItem(id) {
   }
 }
 
-const initialState = { item: {} }
+const initialState = {}
 
 export default function itemReducer(state = initialState, action) {
   switch (action.type) {

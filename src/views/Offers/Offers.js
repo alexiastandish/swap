@@ -6,7 +6,9 @@ import { getItemFromOffer } from '../../ducks/offerItemReducer'
 import { getImages } from '../../ducks/imagesReducer'
 import { getRequestedItem } from '../../ducks/requestItemReducer'
 import { getOffers } from '../../ducks/offersReducer'
-// import { getItem } from '../../ducks/itemReducer'
+import { getUserInfo } from '../../ducks/getUserInfoReducer'
+import { getItem } from '../../ducks/itemReducer'
+
 import OfferCard from '../../components/OfferCard/OfferCard'
 
 class Offers extends Component {
@@ -24,16 +26,19 @@ class Offers extends Component {
       // console.log('response.value.OFFER', response.value)
       return response.value
     })
+    this.props.getUserInfo(this.props.offerItems.items_id)
   }
+
   render() {
-    // console.log('this.props', this.props)
+    console.log('this.props', this.props)
+    console.log('this.props', this.props)
+
     return (
       <div className="offers-container">
         {this.props.offersList &&
           this.props.offersList.map(offer => {
-            console.log('offer', offer)
             return (
-              <div className="offer-item" key={offer.items_id}>
+              <div className="offer-item" key={offer.offer_id}>
                 <OfferCard
                   offerImage={
                     this.props.images[offer.fromuser_itemid] &&
@@ -47,6 +52,7 @@ class Offers extends Component {
                     'I donut have a name'
                     // get(this.props, ['requestItems', offer.requesteditemid, 'item_name'], 'I donut have a name')
                   }
+                  userInfo={this.props.userInfo && this.props.userInfo[offer.fromuser_itemid]}
                 />
               </div>
             )
@@ -59,7 +65,7 @@ class Offers extends Component {
 function mapStateToProps(state) {
   return {
     user: state.user,
-    // users: state.users,
+    userInfo: state.userInfo,
     offerItems: state.offerItems,
     item: state.item,
     images: state.images,
@@ -69,7 +75,10 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getItemFromOffer, getImages, getRequestedItem, getOffers }, dispatch)
+  return bindActionCreators(
+    { getItemFromOffer, getImages, getItem, getRequestedItem, getOffers, getUserInfo },
+    dispatch
+  )
 }
 
 export default connect(
