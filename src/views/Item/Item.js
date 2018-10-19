@@ -23,8 +23,8 @@ class Item extends Component {
   }
 
   render() {
-    console.log('this.props', this.props)
-    console.log('this.props.item', this.props.item)
+    // console.log('this.props', this.props)
+    // console.log('this.props.item', this.props.item)
     const hasImages = this.props.images[this.props.match.params.id].length > 0
 
     return (

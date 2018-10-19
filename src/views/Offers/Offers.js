@@ -32,8 +32,7 @@ class Offers extends Component {
   }
 
   render() {
-    console.log('this.props', this.props)
-    console.log('this.props', this.props)
+    // console.log('this.props', this.props)
     // console.log('this.props.offerUserInfo', this.props.offerUserInfo)
 
     return (

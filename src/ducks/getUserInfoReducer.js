@@ -8,7 +8,7 @@ export function getUserInfo(id) {
     payload: axios
       .get(`/api/offerUser/${id}`)
       .then(res => {
-        console.log('res', res)
+        // console.log('res', res)
         return res.data
       })
       .catch(err => {

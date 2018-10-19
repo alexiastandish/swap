@@ -3,8 +3,6 @@ import './OfferCard.scss'
 import { Link } from 'react-router-dom'
 
 function OfferCard(props) {
-  console.log('props', props)
-
   function sendEmail() {
     const mail = `mailto:${props.offerItemUserEmail}`
     // var a = document.createElement('a')

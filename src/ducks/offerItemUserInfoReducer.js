@@ -8,10 +8,10 @@ export function getOfferUser(id) {
     payload: axios
       .get(`/api/offerUser/${id}`)
       .then(response => {
-        console.log('response', response)
+        // console.log('response', response)
         return response.data.reduce((prev, curr) => {
-          console.log('prev', prev)
-          console.log('curr', curr)
+          // console.log('prev', prev)
+          // console.log('curr', curr)
           prev[curr.user_id] = curr
           return prev
         }, {})
@@ -28,7 +28,7 @@ const initialState = {}
 export default function offerItemUserInfoReducer(state = initialState, action) {
   switch (action.type) {
     case `${GET_OFFER_USER}_FULFILLED`:
-      console.log('action.payload', action.payload)
+      // console.log('action.payload', action.payload)
       return { ...state, ...action.payload }
     default:
       return state

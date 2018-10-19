@@ -8,7 +8,7 @@ export function getItem(id) {
     payload: axios
       .get(`/api/item/${id}`)
       .then(res => {
-        console.log('res.data', res.data)
+        // console.log('res.data', res.data)
         return res.data
       })
       .catch(err => {

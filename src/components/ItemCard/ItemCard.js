@@ -3,8 +3,8 @@ import './ItemCard.scss'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
-import { getUserHearts } from '../../ducks/likesReducer'
-import LikeButton from '../../components/LikeButton/LikeButton'
+import { getUserHearts, addLike } from '../../ducks/likesReducer'
+// import LikeButton from '../../components/LikeButton/LikeButton'
 import axios from 'axios'
 
 class ItemCard extends Component {
@@ -20,31 +20,35 @@ class ItemCard extends Component {
 
     this.addToLikes = this.addToLikes.bind(this)
     this.toggleLike = this.toggleLike.bind(this)
-    // this.removeLike = this.removeLike.bind(this)
+    this.removeLike = this.removeLike.bind(this)
     this.handleHeartClick = this.handleHeartClick.bind(this)
   }
 
   componentDidMount() {
-    this.props.user &&
+    this.props.getUserHearts &&
       this.props.getUserHearts(this.props.user.user_id).then(response => {
-        console.log('response.value', response.value)
+        // console.log('response.value', response.value)
+        return Object.values(response.value)
       })
   }
+
+  removeLike() {}
 
   toggleLike() {
     this.setState({ isNotLiked: !this.state.isNotLiked })
   }
 
-  addToLikes(likeDetails) {
+  addToLikes(postid, postedbyid, likinguser) {
     axios
-      .post(`/api/like`, {
-        ...likeDetails,
-        // postId: this.props.item.items_id,
-        // posterId: this.props.item.item_userid,
+      .post('/api/like', {
+        postid,
+        postedbyid,
+        likinguser,
         // userId: this.props.user.user_id,
       })
-
-      .then(() => this.toggleLike())
+      .then(() => {
+        this.toggleLike()
+      })
   }
 
   handleHeartClick() {
@@ -54,22 +58,27 @@ class ItemCard extends Component {
   }
 
   render() {
-    const likeCheck = this.props.userHearts.find(like => like.postid === this.props.item.items_id)
-    console.log('this.props.userHearts', this.props.userHearts)
-    console.log('this.props', this.props)
+    const likeCheck = Object.values(this.props.likes).find(like => {
+      return like.postid === this.props.item.items_id
+    })
+
     return (
       <div className="item-card-container">
-        <LikeButton
-          isLiked={this.state.isLiked}
-          isNotLiked={this.state.isNotLiked}
-          emptyHeart={this.state.noLike}
-          fullHeart={this.state.like}
-          likeCheck={likeCheck}
-          toggleLike={this.toggleLike}
-          addLike={this.addToLikes}
-          user={this.props.user}
-          itemInfoForLike={this.props.item}
-        />
+        {likeCheck ? (
+          <i id="like-button" className={this.state.like} />
+        ) : (
+          <i
+            id="like-button"
+            className={this.state.noLike}
+            onClick={() =>
+              this.addToLikes(
+                this.props.item && this.props.item.items_id,
+                this.props.item && this.props.item.item_userid,
+                this.props.user && this.props.user.user_id
+              )
+            }
+          />
+        )}
         <div className="item-image">
           {this.props.images &&
             this.props.images
@@ -107,11 +116,12 @@ function mapStateToProps(state) {
   return {
     user: state.user,
     userHearts: state.userHearts,
+    likes: state.likes,
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getUserHearts }, dispatch)
+  return bindActionCreators({ getUserHearts, addLike }, dispatch)
 }
 
 export default connect(

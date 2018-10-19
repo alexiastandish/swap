@@ -3,29 +3,38 @@ import React, { Component } from 'react'
 class LikeButton extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      // postid: undefined,
+      // postedbyid: undefined,
+      // likinguser: undefined,
+    }
 
-    this.handleLike = this.handleLike.bind(this)
+    // this.handleLike = this.handleLike.bind(this)
   }
 
-  handleLike() {
-    const { items_id, item_userid } = this.props.itemInfoForLike
-    const { user_id } = this.props.user
-    this.props.addLike({ items_id, item_userid, user_id })
-  }
+  // handleLike() {
+  //   const { postid, postedbyid, likinguser } = this.state
+  //   // const { user_id } = this.props.user
+  //   this.props.addLike(this.setState({ postid, postedbyid, likinguser }))
+  // }
 
   render() {
-    console.log('this.props', this.props)
+    const likeCheck = this.props.userHearts.find(like => like.postid === this.props.item.items_id)
+
     return (
       <div>
-        {this.props.likeCheck ? (
-          <i id="like-button" className={this.props.fullHeart} value={this.props.isLiked} />
+        {likeCheck ? (
+          <i
+            id="like-button"
+            className={this.props.fullHeart}
+            // value={this.props.isLiked && this.props.isLiked}
+          />
         ) : (
           <i
             id="like-button"
             className={this.props.emptyHeart}
-            value={this.props.isNotLiked}
-            onClick={this.handleLike}
+            // value={this.props.isNotLiked}
+            onClick={() => this.props.addLike(this.props.item.items_id, this.props.item.items_id)}
             // onClick={() =>
             //   this.props &&
             //   this.props
