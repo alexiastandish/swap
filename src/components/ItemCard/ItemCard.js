@@ -36,10 +36,15 @@ class ItemCard extends Component {
   }
 
   addToLikes(likeDetails) {
-    axios.post(`/api/addItem`, {
-      ...likeDetails,
-      userId: this.props.user.user_id,
-    })
+    axios
+      .post(`/api/like`, {
+        ...likeDetails,
+        // postId: this.props.item.items_id,
+        // posterId: this.props.item.item_userid,
+        // userId: this.props.user.user_id,
+      })
+
+      .then(() => this.toggleLike())
   }
 
   handleHeartClick() {
@@ -56,7 +61,7 @@ class ItemCard extends Component {
       <div className="item-card-container">
         <LikeButton
           isLiked={this.state.isLiked}
-          isNotLiked={this.state.isNotLIked}
+          isNotLiked={this.state.isNotLiked}
           emptyHeart={this.state.noLike}
           fullHeart={this.state.like}
           likeCheck={likeCheck}
@@ -64,7 +69,6 @@ class ItemCard extends Component {
           addLike={this.addToLikes}
           user={this.props.user}
           itemInfoForLike={this.props.item}
-          toggleLike={this.props.toggleLike}
         />
         <div className="item-image">
           {this.props.images &&
