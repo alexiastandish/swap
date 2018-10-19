@@ -25,6 +25,7 @@ const combinedReducers = combineReducers({
   requestItems: requestedItemReducer,
   userInfo: getUserInfoReducer,
   offerUserInfo: offerItemUserInfoReducer,
+  userHearts: likesReducer,
 })
 
 const store = createStore(

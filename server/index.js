@@ -35,7 +35,12 @@ const {
   getFollowingItems,
 } = require('./controllers/followingCtrl')
 
-const { saveItem, getUserLikes, removeLike } = require('./controllers/likesCtrl')
+const {
+  saveItem,
+  getUserLikes,
+  removeLike,
+  getUserLikesForHearts,
+} = require('./controllers/likesCtrl')
 
 const app = express()
 
@@ -130,6 +135,7 @@ app.delete('/api/follow/:id', removeFollow)
 app.post('/api/like', saveItem)
 app.get('/api/like/:id', getUserLikes)
 app.delete('/api/like/:id', removeLike)
+app.get('/api/likes/:id', getUserLikesForHearts)
 
 app.listen(port, () => {
   console.log(`MARCO.... POLO ${port}`)

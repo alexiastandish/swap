@@ -1,2 +1,2 @@
 DELETE FROM likes
-WHERE likinguser = $1;
+WHERE like_id = $1;

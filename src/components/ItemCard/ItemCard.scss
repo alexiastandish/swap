@@ -46,6 +46,14 @@ $dark-gray: #858585;
   p {
     color: white;
   }
+
+  .like-button-section {
+    position: absolute;
+  }
+  #like-button {
+    z-index: 100;
+    position: absolute;
+  }
 }
 
 @media only screen and (max-width: 768px) {

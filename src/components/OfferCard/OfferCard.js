@@ -6,10 +6,10 @@ function OfferCard(props) {
   console.log('props', props)
 
   function sendEmail() {
-    var mail = `mailto:{}`
-    var a = document.createElement('a')
-    a.href = mail
-    a.click()
+    const mail = `mailto:${props.offerItemUserEmail}`
+    // var a = document.createElement('a')
+    // a.href = `${mail}`
+    // a.click()
   }
   return (
     <Link to={props.offer && `/item/${props.offer.items_id}`}>
@@ -35,7 +35,9 @@ function OfferCard(props) {
           )}
         </h1>
         <div className="offer-buttons">
-          <button>Accept Offer</button>
+          <button onClick={sendEmail}>
+            <a>Accept Offer</a>
+          </button>
           <button>Decline Offer</button>
         </div>
       </div>
