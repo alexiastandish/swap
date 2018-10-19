@@ -6,8 +6,9 @@ export function getUserInfo(id) {
   return {
     type: GET_USER_INFO,
     payload: axios
-      .get(`/api/user/${id}`)
+      .get(`/api/offerUser/${id}`)
       .then(res => {
+        console.log('res', res)
         return res.data
       })
       .catch(err => {
@@ -25,7 +26,6 @@ export default function getUserInfoReducer(state = initialState, action) {
     case `${GET_USER_INFO}_FULFILLED`:
       console.log('action.payload', action.payload)
       return [...action.payload]
-
     default:
       return state
   }

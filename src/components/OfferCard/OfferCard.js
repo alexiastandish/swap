@@ -4,8 +4,15 @@ import { Link } from 'react-router-dom'
 
 function OfferCard(props) {
   console.log('props', props)
+
+  function sendEmail() {
+    var mail = `mailto:{}`
+    var a = document.createElement('a')
+    a.href = mail
+    a.click()
+  }
   return (
-    <Link to={`/item/${props.offer.items_id}`}>
+    <Link to={props.offer && `/item/${props.offer.items_id}`}>
       <div className="like-card-container">
         <div className="like-image-container">
           {props.offerImage && (
@@ -22,7 +29,8 @@ function OfferCard(props) {
           {true && (
             <div>
               <p>{props.requestedItemName}</p>
-              <p>{'userinfo'}</p>
+              <p>{props.offerItemUserName}</p>
+              <p>{props.offerItemUserEmail}</p>
             </div>
           )}
         </h1>

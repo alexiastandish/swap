@@ -37,8 +37,21 @@ const getRequestedItem = (req, res) => {
     })
 }
 
+const offerUserInfo = (req, res) => {
+  const db = req.app.get('db')
+  db.getOfferUserInfo([req.params.id])
+    .then(response => {
+      console.log('response', response)
+      res.status(200).json(response)
+    })
+    .catch(err => {
+      console.log('err', err)
+    })
+}
+
 module.exports = {
   getOffers,
   getItemFromOffer,
   getRequestedItem,
+  offerUserInfo,
 }

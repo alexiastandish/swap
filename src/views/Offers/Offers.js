@@ -6,8 +6,7 @@ import { getItemFromOffer } from '../../ducks/offerItemReducer'
 import { getImages } from '../../ducks/imagesReducer'
 import { getRequestedItem } from '../../ducks/requestItemReducer'
 import { getOffers } from '../../ducks/offersReducer'
-import { getUserInfo } from '../../ducks/getUserInfoReducer'
-import { getItem } from '../../ducks/itemReducer'
+import { getOfferUser } from '../../ducks/offerItemUserInfoReducer'
 
 import OfferCard from '../../components/OfferCard/OfferCard'
 
@@ -26,12 +25,16 @@ class Offers extends Component {
       // console.log('response.value.OFFER', response.value)
       return response.value
     })
-    this.props.getUserInfo(this.props.offerItems.items_id)
+    this.props.getOfferUser(this.props.user.user_id).then(response => {
+      console.log('response.value', response.value)
+      return response.value[this.props.item.items_id]
+    })
   }
 
   render() {
     console.log('this.props', this.props)
     console.log('this.props', this.props)
+    // console.log('this.props.offerUserInfo', this.props.offerUserInfo)
 
     return (
       <div className="offers-container">
@@ -52,7 +55,18 @@ class Offers extends Component {
                     'I donut have a name'
                     // get(this.props, ['requestItems', offer.requesteditemid, 'item_name'], 'I donut have a name')
                   }
-                  userInfo={this.props.userInfo && this.props.userInfo[offer.fromuser_itemid]}
+                  offerItemUserName={
+                    (this.props.offerUserInfo &&
+                      this.props.offerUserInfo[offer.fromuserid] &&
+                      this.props.offerUserInfo[offer.fromuserid].username) ||
+                    'I donut have a name'
+                  }
+                  offerItemUserEmail={
+                    (this.props.offerUserInfo &&
+                      this.props.offerUserInfo[offer.fromuserid] &&
+                      this.props.offerUserInfo[offer.fromuserid].email) ||
+                    'I donut have an email'
+                  }
                 />
               </div>
             )
@@ -65,7 +79,7 @@ class Offers extends Component {
 function mapStateToProps(state) {
   return {
     user: state.user,
-    userInfo: state.userInfo,
+    offerUserInfo: state.offerUserInfo,
     offerItems: state.offerItems,
     item: state.item,
     images: state.images,
@@ -76,7 +90,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { getItemFromOffer, getImages, getItem, getRequestedItem, getOffers, getUserInfo },
+    { getItemFromOffer, getImages, getRequestedItem, getOffers, getOfferUser },
     dispatch
   )
 }
