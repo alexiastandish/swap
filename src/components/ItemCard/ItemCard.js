@@ -12,69 +12,55 @@ class ItemCard extends Component {
   constructor() {
     super()
 
-    this.state = {
-      noLike: 'fa fa-2x fa-heart-o not-liked',
-      like: 'fa fa-2x fa-heart liked',
-    }
-
     this.addToLikes = this.addToLikes.bind(this)
     this.removeLike = this.removeLike.bind(this)
-    this.toggleLike = this.toggleLike.bind(this)
     // this.updateLikes = this.updateLikes.bind(this)
   }
 
   componentDidMount() {
-    this.props.getUserHearts &&
-      this.props.getUserHearts(this.props.user.user_id).then(response => {
-        // console.log('response.value', response.value)
-        return Object.values(response.value)
-      })
-  }
-
-  toggleLike = () => {
-    this.setState({
-      noLike: 'fa fa-2x fa-heart like',
+    this.props.getUserHearts(this.props.user.user_id).then(response => {
+      // console.log('response.value', response.value)
+      return Object.values(response.value)
     })
   }
 
-  removeLike(id) {
-    axios.delete(`/api/like/${id}`).then(() => this.toggleLike())
+  removeLike() {
+    axios
+      .delete(`/api/like/${this.props.item.items_id}`)
+      .then(() => this.props.getUserHearts(this.props.user.user_id))
   }
 
-  addToLikes(postid, postedbyid, likinguser) {
+  addToLikes(likeDetails) {
     axios
-      .post('/api/like', {
-        postid,
-        postedbyid,
-        likinguser,
-      })
-      .then(() => this.toggleLike())
+      .post('/api/like', likeDetails)
+      .then(() => this.props.getUserHearts(this.props.user.user_id))
   }
 
   render() {
-    const likeCheck = Object.values(this.props.likes).find(like => {
-      return like.postid === this.props.item.items_id
-    })
-
+    const isLiked =
+      Object.values(this.props.likes).findIndex(like => {
+        return like.postid === this.props.item.items_id
+      }) !== -1
+    console.log('isLiked', isLiked)
     console.log('this.props.userHearts', this.props.userHearts)
     return (
       <div className="item-card-container">
-        {likeCheck ? (
+        {isLiked ? (
           <i
             id="like-button"
-            className={this.state.like}
+            className="fa fa-2x fa-heart like"
             onClick={() => this.removeLike(this.props.item.items_id)}
           />
         ) : (
           <i
             id="like-button"
-            className={this.state.noLike}
+            className="fa fa-2x fa-heart-o not-liked"
             onClick={() =>
-              this.addToLikes(
-                this.props.item && this.props.item.items_id,
-                this.props.item && this.props.item.item_userid,
-                this.props.user && this.props.user.user_id
-              )
+              this.addToLikes({
+                likinguser: this.props.user && this.props.user.user_id,
+                postedbyid: this.props.item && this.props.item.item_userid,
+                postid: this.props.item && this.props.item.items_id,
+              })
             }
           />
         )}
