@@ -6,22 +6,21 @@ import { Link } from 'react-router-dom'
 import { getUserHearts, addLike } from '../../ducks/likesReducer'
 // import LikeButton from '../../components/LikeButton/LikeButton'
 import axios from 'axios'
+import { getItem } from '../../ducks/itemReducer'
 
 class ItemCard extends Component {
   constructor() {
     super()
 
     this.state = {
-      isNotLiked: false,
-      isLiked: true,
-      noLike: 'fa fa-2x fa-heart-o empty',
-      like: 'fa fa-2x fa-heart full',
+      noLike: 'fa fa-2x fa-heart-o not-liked',
+      like: 'fa fa-2x fa-heart liked',
     }
 
     this.addToLikes = this.addToLikes.bind(this)
-    this.toggleLike = this.toggleLike.bind(this)
     this.removeLike = this.removeLike.bind(this)
-    this.handleHeartClick = this.handleHeartClick.bind(this)
+    this.toggleLike = this.toggleLike.bind(this)
+    // this.updateLikes = this.updateLikes.bind(this)
   }
 
   componentDidMount() {
@@ -32,10 +31,14 @@ class ItemCard extends Component {
       })
   }
 
-  removeLike() {}
+  toggleLike = () => {
+    this.setState({
+      noLike: 'fa fa-2x fa-heart like',
+    })
+  }
 
-  toggleLike() {
-    this.setState({ isNotLiked: !this.state.isNotLiked })
+  removeLike(id) {
+    axios.delete(`/api/like/${id}`).then(() => this.toggleLike())
   }
 
   addToLikes(postid, postedbyid, likinguser) {
@@ -44,17 +47,8 @@ class ItemCard extends Component {
         postid,
         postedbyid,
         likinguser,
-        // userId: this.props.user.user_id,
       })
-      .then(() => {
-        this.toggleLike()
-      })
-  }
-
-  handleHeartClick() {
-    this.setState(prevState => ({
-      isLiked: !prevState.isLiked,
-    }))
+      .then(() => this.toggleLike())
   }
 
   render() {
@@ -65,7 +59,11 @@ class ItemCard extends Component {
     return (
       <div className="item-card-container">
         {likeCheck ? (
-          <i id="like-button" className={this.state.like} />
+          <i
+            id="like-button"
+            className={this.state.like}
+            onClick={() => this.removeLike(this.props.likes.like_id && this.props.likes.like_id)}
+          />
         ) : (
           <i
             id="like-button"
