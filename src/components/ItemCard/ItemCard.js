@@ -56,13 +56,14 @@ class ItemCard extends Component {
       return like.postid === this.props.item.items_id
     })
 
+    console.log('this.props.userHearts', this.props.userHearts)
     return (
       <div className="item-card-container">
         {likeCheck ? (
           <i
             id="like-button"
             className={this.state.like}
-            onClick={() => this.removeLike(this.props.likes.like_id && this.props.likes.like_id)}
+            onClick={() => this.removeLike(this.props.item.items_id)}
           />
         ) : (
           <i
