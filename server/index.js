@@ -8,7 +8,7 @@ const port = 3001
 // const path = require("path")
 
 const { strategy, getUser } = require('./controllers/authCtrl')
-const { getAllUsers, getUserById } = require('./controllers/getUsersCtrl')
+const { getAllUsers, getUserById, getUserInfo } = require('./controllers/getUsersCtrl')
 
 const {
   getItem,
@@ -18,6 +18,7 @@ const {
   deleteItem,
   editItem,
   changeItemImage,
+  itemFeedForDash,
 } = require(`${__dirname}/controllers/itemsCtrl`)
 
 const {
@@ -25,6 +26,7 @@ const {
   getItemFromOffer,
   getRequestedItem,
   offerUserInfo,
+  // getFromUserEmail,
 } = require('./controllers/offersCtrl')
 
 const {
@@ -108,6 +110,7 @@ app.get('/api/me', getUser)
 
 app.get('/api/user/:id', getUserById)
 
+app.get('/api/userInfo/:id', getUserInfo)
 app.get('/api/item/:id', getItem)
 app.get('/api/items/:id', getItems)
 app.post('/api/addItem', addItem)
@@ -115,6 +118,7 @@ app.get('/api/images/:id', getItemImages)
 app.delete('/api/item/:id', deleteItem)
 app.put('/api/item/:id', editItem)
 app.put('/api/item/:id', changeItemImage)
+app.get('/api/dash/:id', itemFeedForDash)
 // ADD user+LIKES TO ITEM??
 
 // offers

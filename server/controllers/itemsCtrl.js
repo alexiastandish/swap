@@ -67,13 +67,21 @@ const changeItemImage = (req, res) => {
   return res.sendStatus(200)
 }
 
+itemFeedForDash = (req, res) => {
+  const db = req.app.get('db')
+  db.following.getFollowingItems([req.params.id]).then(response => {
+    console.log('response', response)
+    res.status(200).json(response)
+  })
+}
+
 module.exports = {
   getItem,
   getItems,
-  // getItemAndImage,
   getItemImages,
   addItem,
   deleteItem,
   editItem,
   changeItemImage,
+  itemFeedForDash,
 }

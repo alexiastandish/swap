@@ -7,7 +7,6 @@ import { getImages } from '../../ducks/imagesReducer'
 import { getRequestedItem } from '../../ducks/requestItemReducer'
 import { getOffers } from '../../ducks/offersReducer'
 import { getOfferUser } from '../../ducks/offerItemUserInfoReducer'
-
 import OfferCard from '../../components/OfferCard/OfferCard'
 
 class Offers extends Component {
@@ -26,14 +25,13 @@ class Offers extends Component {
       return response.value
     })
     this.props.getOfferUser(this.props.user.user_id).then(response => {
-      console.log('response.value', response.value)
       return response.value[this.props.item.items_id]
     })
   }
 
   render() {
     // console.log('this.props', this.props)
-    // console.log('this.props.offerUserInfo', this.props.offerUserInfo)
+    console.log('this.props.offerUserInfo', this.props.offerUserInfo)
 
     return (
       <div className="offers-container">

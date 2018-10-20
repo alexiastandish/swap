@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { getUserHearts, addLike } from '../../ducks/likesReducer'
 // import LikeButton from '../../components/LikeButton/LikeButton'
 import axios from 'axios'
-import { getItem } from '../../ducks/itemReducer'
+// import { getItem } from '../../ducks/itemReducer'
 
 class ItemCard extends Component {
   constructor() {
@@ -41,8 +41,8 @@ class ItemCard extends Component {
       Object.values(this.props.likes).findIndex(like => {
         return like.postid === this.props.item.items_id
       }) !== -1
-    console.log('isLiked', isLiked)
-    console.log('this.props.userHearts', this.props.userHearts)
+    // console.log('isLiked', isLiked)
+    // console.log('this.props.userHearts', this.props.userHearts)
     return (
       <div className="item-card-container">
         {isLiked ? (

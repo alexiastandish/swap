@@ -19,7 +19,21 @@ const getUserById = (req, res) => {
     .catch(err => res.status(500).send(err))
 }
 
+const getUserInfo = (req, res) => {
+  const db = req.app.get('db')
+  db.users
+    .userInfoProfile([req.params.id])
+    .then(response => {
+      console.log('response', response)
+      return res.status(200).json(response)
+    })
+    .catch(err => {
+      console.log('err', err)
+    })
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
+  getUserInfo,
 }

@@ -1,21 +1,53 @@
 import React, { Component } from 'react'
+import './Dash.scss'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { getItemFeed } from '../../ducks/dashReducer'
+import { getImages } from '../../ducks/imagesReducer'
+import ItemCard from '../../components/ItemCard/ItemCard'
 
 class Dash extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {}
+  componentDidMount() {
+    this.props.getItemFeed(this.props.user.user_id).then(response => {
+      response.value.forEach(item => {
+        this.props.getImages(item.items_id)
+      })
+    })
   }
-
   render() {
-    return <div className="dash-container" />
+    console.log('this.props', this.props)
+    console.log('this.props.dashItems', this.props.dashItems)
+    return (
+      <div className="dash-container">
+        {this.props.dashItems.map(dashItem => {
+          return (
+            <div className="item-card" key={dashItem.items_id}>
+              <ItemCard
+                item={dashItem}
+                images={this.props.images[dashItem.items_id]}
+                user={this.props.user}
+              />
+            </div>
+          )
+        })}
+      </div>
+    )
   }
 }
 
-const mapStateToProps = state => ({})
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+    dashItems: state.dashItems,
+    images: state.images,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getItemFeed, getImages }, dispatch)
+}
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Dash)

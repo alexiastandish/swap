@@ -7,8 +7,10 @@ $light-gray: #e5e5e5;
 $dark-gray: #707070;
 
 .dash-container {
-  background-image: none;
   background-color: $light-gray;
-  width: 100vw;
   display: flex;
+  flex-direction: row;
+  width: 96%;
+  margin: 0 auto;
+  flex-wrap: wrap;
 }
