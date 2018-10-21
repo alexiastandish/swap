@@ -42,6 +42,7 @@ class SideBar extends Component {
   }
 
   handleClick() {
+    console.log('handleClick')
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn,
     }))
