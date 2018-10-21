@@ -15,7 +15,6 @@ class Friends extends Component {
 
   render() {
     // console.log('this.props.FRIENDS', this.props)
-
     return (
       <div className="following-container">
         {this.props.following &&

@@ -23,12 +23,25 @@ class Item extends Component {
   }
 
   render() {
-    // console.log('this.props', this.props)
-    // console.log('this.props.item', this.props.item)
-    const hasImages = this.props.images[this.props.match.params.id].length > 0
+    console.log('this.props', this.props)
+    const hasImages =
+      this.props.images[this.props.match.params.id] &&
+      this.props.images[this.props.match.params.id].length > 0
+
+    const isUsersItem =
+      this.props.user &&
+      this.props.item[0] &&
+      this.props.user.user_id === this.props.item[0].item_userid
+
+    console.log('this.props.user.user_id', this.props.user.user_id)
+    console.log('this.props.item.item_userid', this.props.item[0] && this.props.item[0].item_userid)
+    console.log('isUsersItem', isUsersItem)
 
     return (
       <div className="item-container">
+        <div className="edit-container">
+          {isUsersItem && console.log('this is current user item')}
+        </div>
         <div className="item-section">
           <div className="selected-image">
             <img
@@ -71,6 +84,7 @@ class Item extends Component {
 
 function mapStateToProps(state) {
   return {
+    user: state.user,
     item: state.item,
     images: state.images,
   }

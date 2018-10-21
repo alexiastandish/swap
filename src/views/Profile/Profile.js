@@ -18,7 +18,6 @@ class Profile extends Component {
   }
   componentDidMount() {
     this.props.getUserInfo(this.props.match.params.id).then(response => {
-      console.log('response.value', response.value)
       return Object.keys(response.value)
     })
     this.props.getUserItems(this.props.match.params.id).then(response => {
@@ -63,6 +62,7 @@ class Profile extends Component {
             </button>
           ) : (
             <button
+              id="follow-button"
               className="Follow"
               onClick={() =>
                 this.followUser({
