@@ -20,7 +20,7 @@ class AddItem extends Component {
     this.props.addToItems({ itemName, itemDescription, imageUrls })
   }
 
-  fileSelectedHandler(event){
+  fileSelectedHandler(event) {
     console.log('event', event)
   }
 
@@ -59,8 +59,8 @@ class AddItem extends Component {
             return (
               <div key={url} className="image-input-container">
                 <label>Image: {index + 1} </label>
-                <input type="file" onChange={}/>
-                {/* <input
+                {/* <input type="file" onChange={}/> */}
+                <input
                   placeholder="Insert Image URL"
                   value={url}
                   onChange={event => {
@@ -68,7 +68,7 @@ class AddItem extends Component {
                     nextImageUrls[index] = event.target.value
                     this.setState({ imageUrls: nextImageUrls })
                   }}
-                /> */}
+                />
               </div>
             )
           })}

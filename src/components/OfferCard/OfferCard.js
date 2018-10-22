@@ -10,36 +10,46 @@ function OfferCard(props) {
     // a.click()
   }
   return (
-    <Link to={props.offer && `/item/${props.offer.items_id}`}>
-      <div className="like-card-container">
-        <div className="like-image-container">
-          {props.offerImage && (
-            <div key={props.offerImage.image_id}>
-              <img src={props.offerImage.imageurl} alt="default" />
-            </div>
-          )}
-        </div>
-        <div className="like-description">
-          <h1 className="like-item-link-text">{props.offer.item_name}</h1>
-        </div>
-        <div className="request-item" />
-        <h1>
-          {true && (
-            <div>
-              <p>{props.requestedItemName}</p>
-              <p>{props.offerItemUserName}</p>
-              <p>{props.offerItemUserEmail}</p>
-            </div>
-          )}
-        </h1>
-        <div className="offer-buttons">
-          <button onClick={sendEmail}>
-            <a>Accept Offer</a>
-          </button>
-          <button>Decline Offer</button>
+    <div className="offer-card-container">
+      <div className="text-and-image">
+        <Link to={props.offer && `/item/${props.offer.items_id}`}>
+          <div className="offer-image-container">
+            {props.offerImage && (
+              <div key={props.offerImage.image_id}>
+                <img src={props.offerImage.imageurl} alt="default" />
+              </div>
+            )}
+          </div>
+        </Link>
+        <div className="offer-text">
+          <div className="offer-description">
+            <p>
+              <span className="username">{props.offerItemUserName}</span>
+              <br /> would like to swap
+            </p>
+            <h1>{props.offer.item_name}</h1>
+          </div>
+          <div className="request-item" />
+          <div>
+            {true && (
+              <div>
+                <p>
+                  in exchange for <span>{props.requestedItemName}.</span>
+                </p>
+
+                <p>{props.offerItemUserEmail}</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </Link>
+      <div className="offer-buttons">
+        <button onClick={sendEmail}>
+          <a>Accept Offer</a>
+        </button>
+        <button>Decline Offer</button>
+      </div>
+    </div>
   )
 }
 

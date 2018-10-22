@@ -1,3 +1,52 @@
-img {
-  width: 100px;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700');
+
+$font-family: 'Montserrat', sans-serif;
+$blue: #2acbdc;
+$navy: #424c58;
+$light-gray: #e5e5e5;
+$dark-gray: #707070;
+
+* {
+  box-sizing: border-box;
+}
+
+.offer-card-container {
+  display: flex;
+  flex-direction: row;
+  font-family: $font-family;
+  padding: 20px;
+  justify-content: space-between;
+
+  // justify-content: flex-start;
+  margin: 0 auto;
+
+  width: 100%;
+
+  .text-and-image {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  button {
+    justify-content: flex-end;
+    float: right;
+    flex-direction: column;
+  }
+  .offer-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    right: 0;
+    align-items: flex-end;
+    align-self: flex-start;
+  }
+  span {
+    font-weight: bold;
+  }
+
+  img {
+    width: 20vw;
+  }
 }
