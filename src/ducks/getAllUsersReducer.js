@@ -6,7 +6,11 @@ export function getAllUsers() {
   return {
     type: GET_ALL_USERS,
     payload: axios
+<<<<<<< HEAD
       .get('/api/users')
+=======
+      .get(`/api/users`)
+>>>>>>> e4ad06f32ff62b0862585a72deeb4eaa7b476b12
       .then(res => res.data)
       .catch(err => {
         console.log('err', err)
