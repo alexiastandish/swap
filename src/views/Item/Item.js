@@ -7,7 +7,7 @@ import { getImages } from '../../ducks/imagesReducer'
 import Modal from 'react-modal'
 import axios from 'axios'
 import EditItemModal from './ItemModal/EditItemModal'
-// import EditImagesModal from './ItemModal/EditImagesModal'
+import EditImagesModal from './ItemModal/EditImagesModal'
 
 class Item extends Component {
   constructor(props) {
@@ -16,15 +16,13 @@ class Item extends Component {
     this.state = {
       selectedImage: null,
       isItemModalActive: false,
-      // isItemModalToggleOn: true,
-      // isImageModalActive: false,
-      // isImageModalToggleOn: true,
+      isImageModalActive: false,
     }
 
     this.toggleItemModal = this.toggleItemModal.bind(this)
     this.editItem = this.editItem.bind(this)
-    // this.toggleImagesModal = this.toggleImagesModal.bind(this)
-    // this.editImages = this.editImages.bind(this)
+    this.toggleImagesModal = this.toggleImagesModal.bind(this)
+    this.editImages = this.editImages.bind(this)
     this.goBack = this.goBack.bind(this)
   }
 
@@ -41,9 +39,9 @@ class Item extends Component {
     this.setState({ isItemModalActive: !this.state.isItemModalActive })
   }
 
-  // toggleImagesModal() {
-  //   this.setState({ isImageModalActive: !this.state.isImageModalActive })
-  // }
+  toggleImagesModal() {
+    this.setState({ isImageModalActive: !this.state.isImageModalActive })
+  }
 
   editItem(editedItemDetails) {
     axios
@@ -57,13 +55,17 @@ class Item extends Component {
       })
   }
 
-  // editImages() {
-  //   axios
-  //     .put(`/api/images/${this.props.images && this.props.images[0].items_id}`)
-  //     .then(response => {
-  //       console.log('response', response)
-  //     })
-  // }
+  editImages(editedImagesDetail) {
+    axios
+      .put(`/api/item/${this.props.item[0].items_id}`, {
+        ...editedImagesDetail,
+        imagesId: this.props.images[this.props.match.params.id],
+      })
+      .then(() => {
+        this.toggleItemModal()
+        this.props.history.push(`/item/${this.props.item[0].items_id}`)
+      })
+  }
 
   handleItemClick() {
     this.setState(prevState => ({
@@ -71,11 +73,11 @@ class Item extends Component {
     }))
   }
 
-  // handleImagesClick() {
-  //   this.setState(prevState => ({
-  //     isImageModalToggleOn: !prevState.isImageModalToggleOn,
-  //   }))
-  // }
+  handleImagesClick() {
+    this.setState(prevState => ({
+      isImageModalActive: !prevState.isImageModalActive,
+    }))
+  }
 
   goBack() {
     this.props.history.goBack()
@@ -83,6 +85,7 @@ class Item extends Component {
 
   render() {
     console.log('this.state', this.state)
+    console.log('itemId', this.itemId)
 
     const hasImages =
       this.props.images[this.props.match.params.id] &&
@@ -115,19 +118,22 @@ class Item extends Component {
                 />
               </section>
               {/* EDIT IMAGES MODAL */}
-              {/* <section className="edit-images-modal-container">
-                <button onClick={this.toggleImagesModal} className="modal-button">
+              <section className="edit-item-modal-container">
+                <button onClick={this.toggleImagesModal} className="edit-modal-button">
                   Edit Images
                 </button>
-                <EditImagesModal
-                  isImagesOpen={this.state.isImageModalActive}
-                  onRequestCloseImages={this.toggleImagesModal}
-                  editImages={this.editImages}
-                />
-              </section> */}
+                {this.state.isImageModalActive && (
+                  <EditImagesModal
+                    item={this.props.item[0]}
+                    images={this.props.images}
+                    onRequestCloseImages={this.toggleImagesModal}
+                    editImages={this.editImages}
+                  />
+                )}
+              </section>
 
               <button id="edit-item-button" value="Delete" onClick={() => this.deleteItem}>
-                Delete Item
+                Remove Item
               </button>
             </div>
           )}

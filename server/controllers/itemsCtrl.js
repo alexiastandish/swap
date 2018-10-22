@@ -53,9 +53,9 @@ const deleteItem = (req, res) => {
 
 const editItem = (req, res) => {
   const { id } = req.params
-  const { item_name, item_description } = req.body
+  const { itemName, itemDescription } = req.body
   const db = req.app.get('db')
-  db.items.updateItem([id, item_name, item_description])
+  db.items.updateItem([id, itemName, itemDescription])
   return res.sendStatus(200)
 }
 
