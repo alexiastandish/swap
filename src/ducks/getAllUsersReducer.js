@@ -6,7 +6,7 @@ export function getAllUsers() {
   return {
     type: GET_ALL_USERS,
     payload: axios
-      .get(`/api/users`)
+      .get('/api/users')
       .then(res => res.data)
       .catch(err => {
         console.log('err', err)
