@@ -12,6 +12,7 @@ import requestedItemReducer from './requestItemReducer'
 import getUserInfoReducer from './getUserInfoReducer'
 import offerItemUserInfoReducer from './offerItemUserInfoReducer'
 import dashReducer from './dashReducer'
+import getAllUsersReducer from './getAllUsersReducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 const combinedReducers = combineReducers({
@@ -28,6 +29,7 @@ const combinedReducers = combineReducers({
   offerUserInfo: offerItemUserInfoReducer,
   userHearts: likesReducer,
   dashItems: dashReducer,
+  allUsers: getAllUsersReducer,
 })
 
 const store = createStore(

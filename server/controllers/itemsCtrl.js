@@ -60,10 +60,12 @@ const editItem = (req, res) => {
 }
 
 const changeItemImage = (req, res) => {
-  const { id } = req.params
-  const { default_image_url, imageurl } = req.body
+  console.log('req.body', req.body)
+  console.log('req.params', req.params)
+  // const { id } = req.params
+  const { imageurl, imageurl_itemid } = req.body
   const db = req.app.get('db')
-  db.items.updateImage([id, default_image_url, imageurl])
+  db.items.updateImage([imageurl, imageurl_itemid])
   return res.sendStatus(200)
 }
 

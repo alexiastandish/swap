@@ -19,7 +19,7 @@ class EditImagesModal extends Component {
 
   render() {
     console.log('this.props', this.props)
-    console.log('this.state', this.state)
+    console.log('this.state.imageUrls', this.state.imageUrls)
     console.log(' Object.keys(this.props.images)', Object.keys(this.props.images))
     return (
       <Modal

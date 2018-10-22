@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Nav.scss'
 import { withRouter } from 'react-router-dom'
+import SearchBar from '../SearchBar/SearchBar'
 
 class Nav extends Component {
   constructor(props) {
@@ -21,18 +22,7 @@ class Nav extends Component {
       window.location.pathname !== '/' && (
         <div className="nav-container">
           <div className="search-containter">
-            <div className="search-bar">
-              <input
-                type="text"
-                name="textarea"
-                id="textarea"
-                placeholder="search users..."
-                className="input-text"
-                onChange={event => {
-                  return this.setState({ user: event.target.value })
-                }}
-              />
-            </div>
+            <SearchBar />
           </div>
           <ul className="menu">
             <button onClick={this.goBack}>back</button>

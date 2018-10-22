@@ -57,7 +57,7 @@ class Item extends Component {
 
   editImages(editedImagesDetail) {
     axios
-      .put(`/api/item/${this.props.item[0].items_id}`, {
+      .put(`/api/images/${this.props.item[0].items_id}`, {
         ...editedImagesDetail,
         imagesId: this.props.images[this.props.match.params.id],
       })
@@ -85,7 +85,12 @@ class Item extends Component {
 
   render() {
     console.log('this.state', this.state)
-    console.log('itemId', this.itemId)
+    console.log('this.props.images', this.props.images)
+    console.log('this.props', this.props)
+    console.log(
+      'this.props.images[this.props.match.params.id]',
+      this.props.images[this.props.match.params.id]
+    )
 
     const hasImages =
       this.props.images[this.props.match.params.id] &&
