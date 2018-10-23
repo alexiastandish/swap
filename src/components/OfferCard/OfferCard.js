@@ -1,14 +1,23 @@
 import React from 'react'
 import './OfferCard.scss'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 function OfferCard(props) {
-  function sendEmail() {
-    const mail = `mailto:${props.offerItemUserEmail}`
-    // var a = document.createElement('a')
-    // a.href = `${mail}`
-    // a.click()
+  //TODO: UPDATE STATUS FUNCTION
+  function updateStatus(status) {
+    // status 1 = pending
+    // status 2 = accepted
+    // status 3 = declined
+    axios
+      .post(`/api/notification/${props.offerId}`, status)
+      .then
+      // get offers again
+      ()
   }
+
+  console.log('props', props)
+
   return (
     <div className="offer-card-container">
       <div className="text-and-image">
@@ -27,27 +36,34 @@ function OfferCard(props) {
               <span className="username">{props.offerItemUserName}</span>
               <br /> would like to swap
             </p>
-            <h1>{props.offer.item_name}</h1>
+            <h1>{props.offer && props.offer.item_name}</h1>
           </div>
           <div className="request-item" />
           <div>
-            {true && (
-              <div>
-                <p>
-                  in exchange for <span>{props.requestedItemName}.</span>
-                </p>
-
-                <p>{props.offerItemUserEmail}</p>
-              </div>
-            )}
+            <div>
+              <p>
+                in exchange for <span>{props.requestedItemName}.</span>
+              </p>
+              <p>{props.offerItemUserEmail}</p>
+            </div>
           </div>
         </div>
       </div>
       <div className="offer-buttons">
-        <button onClick={sendEmail}>
-          <a>Accept Offer</a>
+        <button
+          onClick={() => {
+            updateStatus(2)
+          }}
+        >
+          Accept Offer
         </button>
-        <button>Decline Offer</button>
+        <button
+          onClick={() => {
+            updateStatus(3)
+          }}
+        >
+          Decline Offer
+        </button>
       </div>
     </div>
   )

@@ -49,6 +49,19 @@ const offerUserInfo = (req, res) => {
     })
 }
 
+const userNotificationInfo = (req, res) => {
+  const db = req.app.get('db')
+  db.offers
+    .getNotificationUserInfo([req.params.id])
+    .then(response => {
+      console.log('response', response)
+      res.status(200).json(response)
+    })
+    .catch(err => {
+      console.log('err', err)
+    })
+}
+
 // const getFromUserEmail = (req, res) => {
 //   const db = req.app.get('db')
 //   db.offers
@@ -66,5 +79,6 @@ module.exports = {
   getItemFromOffer,
   getRequestedItem,
   offerUserInfo,
+  userNotificationInfo,
   // getFromUserEmail,
 }

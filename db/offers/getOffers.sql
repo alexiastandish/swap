@@ -7,4 +7,4 @@
 SELECT o.*
 FROM offers o 
 JOIN items i ON (i.items_id = o.fromuser_itemid)
-WHERE touserid = $1;
+WHERE touserid = $1 AND status = 1 ;

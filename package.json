@@ -20,6 +20,7 @@
     "npm": "^6.4.1",
     "passport": "^0.4.0",
     "passport-auth0": "^1.0.0",
+    "pg": "^7.5.0",
     "pwd": "^1.1.0",
     "react": "^16.5.2",
     "react-burger-menu": "^2.5.4",
@@ -37,6 +38,7 @@
     "react-transition-group": "^2.5.0",
     "redux": "^4.0.0",
     "redux-promise-middleware": "^5.1.1",
+    "redux-thunk": "^2.3.0",
     "sass": "^1.14.1"
   },
   "scripts": {

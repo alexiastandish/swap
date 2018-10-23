@@ -64,6 +64,7 @@ class Offers extends Component {
                       this.props.offerUserInfo[offer.fromuserid].email) ||
                     'I donut have an email'
                   }
+                  offerId={offer.offer_id}
                 />
               </div>
             )
