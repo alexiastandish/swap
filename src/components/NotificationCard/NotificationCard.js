@@ -8,11 +8,8 @@ function NotificationCard(props) {
     // status 1 = pending
     // status 2 = accepted
     // status 3 = declined
-    axios
-      .post(`/api/notification/${props.offerId}`, status)
-      .then
-      // get offers again
-      ()
+    axios.post(`/api/notification/${props.offerId}`, status).then()()
+    // get offers again
   }
 
   console.log('props', props)
@@ -23,8 +20,8 @@ function NotificationCard(props) {
         <div className="offer-text">
           <div className="offer-description">
             <p>
-              <span className="username">{props.offerItemUserName}</span>
-              <br /> would like to swap
+              <span className="username">{props.oppositeUser}</span>
+              <br /> accepted your offer of {props.requestItem}
             </p>
             <h1>{props.offer && props.offer.item_name}</h1>
           </div>
@@ -32,7 +29,7 @@ function NotificationCard(props) {
           <div>
             <div>
               <p>
-                in exchange for <span>{props.requestedItemName}.</span>
+                in exchange for <span>{props.offerItem}.</span>
               </p>
               <p>{props.offerItemUserEmail}</p>
             </div>

@@ -30,6 +30,7 @@ const {
   // getFromUserEmail,
   getNotificationItem,
   notifUserInfo,
+  updateOffer,
 } = require('./controllers/offersCtrl')
 
 const {
@@ -132,6 +133,7 @@ app.get('/api/offerUser/:id', offerUserInfo)
 app.get('/api/notification/:id', userNotificationInfo)
 app.get('/api/itemNotification/:id', getNotificationItem)
 app.get('/api/notifUser/:id', notifUserInfo)
+app.put('/api/updateOffer/:id', updateOffer)
 
 // // follows
 app.get('/api/users', getAllUsers)

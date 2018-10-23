@@ -32,6 +32,7 @@ class AddItem extends Component {
         style={{
           overlay: {
             backgroundColor: 'rgba(253, 253, 253, 0.8)',
+            zIndex: 10,
           },
           content: {
             width: '40vw',

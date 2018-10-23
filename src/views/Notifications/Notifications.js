@@ -8,14 +8,13 @@ import { getOffers } from '../../ducks/offersReducer'
 import { getImages } from '../../ducks/imagesReducer'
 import { getOfferUser } from '../../ducks/offerItemUserInfoReducer'
 import { getNotificationList } from '../../ducks/notificationsReducer'
+import { getItem } from '../../ducks/itemReducer'
 import NotificationCard from '../../components/NotificationCard/NotificationCard'
 
 class Notifications extends Component {
   componentDidMount() {
     this.props.getItemFromNotification(this.props.user.user_id).then(response => {
-      Object.values(response.value).forEach(item => {
-        this.props.getImages(item.items_id)
-      })
+      return response.value
     })
     this.props.getRequestedItem(this.props.user.user_id).then(response => {
       return response.value[this.props.item.items_id]
@@ -25,46 +24,35 @@ class Notifications extends Component {
       return response.value
     })
     this.props.getOfferUser(this.props.user.user_id).then(response => {
-      return response.value[this.props.item.items_id]
+      return response.value[this.props.notificationItems.items_id]
     })
   }
 
   render() {
-    console.log('this.props.notificationList', this.props.notificationList)
+    console.log('notificationItems', this.props.notificationItems)
     console.log('this.props', this.props)
     return (
       <div className="offers-container">
         {this.props.notificationList &&
           this.props.notificationList.map(notification => {
-            console.log('notification', notification)
-            console.log('notificationItems', this.props.notificationItems)
-            console.log('notification.requesteditemid', notification.requesteditemid)
             return (
               <div className="notification-item" key={notification.offer_id}>
                 <NotificationCard
-                  requestedItemName={
-                    this.props.notificationItems &&
-                    this.props.notificationItems[notification.requesteditemid].item_name
+                  requestItem={
+                    (this.props.notificationItems[notification.requesteditemid] &&
+                      this.props.notificationItems[notification.requesteditemid].item_name) ||
+                    'requestItem'
                   }
-                  requestedItemName={
-                    (this.props.requestItems &&
-                      this.props.requestItems[notification.requesteditemid] &&
-                      this.props.requestItems[notification.requesteditemid].item_name &&
-                      this.props.requestItems[notification.requesteditemid].item_name) ||
-                    'I donut have a name'
-                    // get(this.props, ['requestItems', offer.requesteditemid, 'item_name'], 'I donut have a name')
-                  }
-                  offerItemUserName={
+                  oppositeUser={
                     (this.props.offerUserInfo &&
-                      this.props.offerUserInfo[notification.fromuserid] &&
-                      this.props.offerUserInfo[notification.fromuserid].username) ||
-                    'I donut have a name'
+                      this.props.offerUserInfo[notification.touserid] &&
+                      this.props.offerUserInfo[notification.touserid].username) ||
+                    'oppositeUser'
                   }
-                  offerItemUserEmail={
-                    (this.props.offerUserInfo &&
-                      this.props.offerUserInfo[notification.fromuserid] &&
-                      this.props.offerUserInfo[notification.fromuserid].email) ||
-                    'I donut have an email'
+                  offerItem={
+                    (this.props.requestItems[notification.fromuser_itemid] &&
+                      this.props.requestItems[notification.fromuser_itemid].item_name) ||
+                    'offerItem'
                   }
                   offerId={notification.offer_id}
                 />
@@ -98,6 +86,7 @@ function mapDispatchToProps(dispatch) {
       getNotificationList,
       getOfferUser,
       getImages,
+      getItem,
     },
     dispatch
   )

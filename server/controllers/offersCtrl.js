@@ -87,6 +87,22 @@ const getNotificationItem = (req, res) => {
     })
 }
 
+const updateOffer = (req, res) => {
+  console.log('req.body', req.body)
+  const { id } = req.params
+  const { offer_status } = req.body
+  const db = req.app.get('db')
+  db.offers
+    .postOffer([id, offer_status])
+    .then(response => {
+      console.log('response', response)
+      return res.status(200).send('cool')
+    })
+    .catch(err => {
+      console.log('err', err)
+    })
+}
+
 // const getFromUserEmail = (req, res) => {
 //   const db = req.app.get('db')
 //   db.offers
@@ -107,5 +123,6 @@ module.exports = {
   userNotificationInfo,
   getNotificationItem,
   notifUserInfo,
+  updateOffer,
   // getFromUserEmail,
 }

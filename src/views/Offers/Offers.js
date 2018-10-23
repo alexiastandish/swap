@@ -8,8 +8,14 @@ import { getRequestedItem } from '../../ducks/requestItemReducer'
 import { getOffers } from '../../ducks/offersReducer'
 import { getOfferUser } from '../../ducks/offerItemUserInfoReducer'
 import OfferCard from '../../components/OfferCard/OfferCard'
+import axios from 'axios'
 
 class Offers extends Component {
+  constructor() {
+    super()
+
+    this.updateStatus = this.updateStatus.bind(this)
+  }
   componentDidMount() {
     this.props.getItemFromOffer(this.props.user.user_id).then(response => {
       Object.values(response.value).forEach(item => {
@@ -21,12 +27,22 @@ class Offers extends Component {
       return response.value[this.props.item.items_id]
     })
     this.props.getOffers(this.props.user.user_id).then(response => {
-      // console.log('response.value.OFFER', response.value)
+      console.log('response.value.OFFER', response.value)
       return response.value
     })
     this.props.getOfferUser(this.props.user.user_id).then(response => {
       return response.value[this.props.item.items_id]
     })
+  }
+  //TODO: UPDATE STATUS FUNCTION
+  updateStatus(status) {
+    console.log('handleUpdateStatus')
+    axios
+      .put(`/api/updateOffer/${this.props.offerItems.items_id}`, {
+        status,
+        offerId: this.props.offer.offer_id,
+      })
+      .then(() => this.props.getOffers)
   }
 
   render() {
@@ -36,10 +52,10 @@ class Offers extends Component {
       <div className="offers-container">
         {this.props.offersList &&
           this.props.offersList.map(offer => {
-            console.log('this.props.offerItems', this.props.offerItems)
             return (
               <div className="offer-item" key={offer.offer_id}>
                 <OfferCard
+                  updateStatus={this.updateStatus}
                   offerImage={
                     this.props.images[offer.fromuser_itemid] &&
                     this.props.images[offer.fromuser_itemid][0]
