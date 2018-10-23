@@ -30,14 +30,13 @@ class Offers extends Component {
   }
 
   render() {
+    console.log('this.props.offersList', this.props.offersList)
     console.log('this.props', this.props)
-    console.log('this.props.offerUserInfo', this.props.offerUserInfo)
-
     return (
       <div className="offers-container">
         {this.props.offersList &&
           this.props.offersList.map(offer => {
-            console.log('offerOFFER', offer)
+            console.log('this.props.offerItems', this.props.offerItems)
             return (
               <div className="offer-item" key={offer.offer_id}>
                 <OfferCard

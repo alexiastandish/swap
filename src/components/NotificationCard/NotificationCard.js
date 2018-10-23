@@ -1,9 +1,8 @@
 import React from 'react'
 // import './OfferCard.scss'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-function OfferCard(props) {
+function NotificationCard(props) {
   //TODO: UPDATE STATUS FUNCTION
   function updateStatus(status) {
     // status 1 = pending
@@ -21,15 +20,6 @@ function OfferCard(props) {
   return (
     <div className="offer-card-container">
       <div className="text-and-image">
-        <Link to={props.offer && `/item/${props.offer.items_id}`}>
-          <div className="offer-image-container">
-            {props.offerImage && (
-              <div key={props.offerImage.image_id}>
-                <img src={props.offerImage.imageurl} alt="default" />
-              </div>
-            )}
-          </div>
-        </Link>
         <div className="offer-text">
           <div className="offer-description">
             <p>
@@ -69,4 +59,4 @@ function OfferCard(props) {
   )
 }
 
-export default OfferCard
+export default NotificationCard

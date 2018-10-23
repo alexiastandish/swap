@@ -8,6 +8,7 @@ export function getItemFromNotification(id) {
     payload: axios
       .get(`/api/itemNotification/${id}`)
       .then(response => {
+        console.log('response', response)
         return response.data.reduce((prev, curr) => {
           // console.log('prev', prev)
           // console.log('curr', curr)
