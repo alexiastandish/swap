@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Nav.scss'
-import { withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 import SearchBar from './SearchBar/SearchBar'
 
 class Nav extends Component {
@@ -18,6 +19,7 @@ class Nav extends Component {
             <SearchBar />
           </div>
           <ul className="menu">
+            <Link to="/notifications">Notifications</Link>
             <a href="http://localhost:3001/logout">Logout</a>
           </ul>
         </div>
@@ -26,4 +28,10 @@ class Nav extends Component {
   }
 }
 
-export default withRouter(Nav)
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  }
+}
+
+export default connect(mapStateToProps)(withRouter(Nav))

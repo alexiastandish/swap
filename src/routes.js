@@ -12,6 +12,7 @@ import Offers from './views/Offers/Offers'
 import Home from './Home'
 import Item from './views/Item/Item'
 import MyProfile from './views/Profile/MyProfile'
+import Notifications from './views/Notifications/Notifications'
 
 export default function Routes() {
   return (
@@ -26,6 +27,7 @@ export default function Routes() {
       <Route path="/offers" component={Offers} />
       {/* <Route path="/additem" component={AddItem} /> */}
       <Route path="/item/:id" component={Item} />
+      <Route path="/notifications" component={Notifications} />
       <Redirect to="/" />
     </Switch>
   )

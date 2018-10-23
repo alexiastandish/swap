@@ -28,6 +28,8 @@ const {
   offerUserInfo,
   userNotificationInfo,
   // getFromUserEmail,
+  getNotificationItem,
+  notifUserInfo,
 } = require('./controllers/offersCtrl')
 
 const {
@@ -128,6 +130,8 @@ app.get('/api/offer/:id', getItemFromOffer)
 app.get('/api/request/:id', getRequestedItem)
 app.get('/api/offerUser/:id', offerUserInfo)
 app.get('/api/notification/:id', userNotificationInfo)
+app.get('/api/itemNotification/:id', getNotificationItem)
+app.get('/api/notifUser/:id', notifUserInfo)
 
 // // follows
 app.get('/api/users', getAllUsers)
