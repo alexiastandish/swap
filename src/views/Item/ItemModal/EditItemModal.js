@@ -25,6 +25,7 @@ class EditItemModal extends Component {
         style={{
           overlay: {
             backgroundColor: 'rgba(253, 253, 253, 0.8)',
+            width: '100%',
           },
           content: {
             width: '40vw',

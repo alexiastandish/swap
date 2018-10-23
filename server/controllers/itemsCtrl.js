@@ -59,13 +59,14 @@ const editItem = (req, res) => {
   return res.sendStatus(200)
 }
 
-const changeItemImage = (req, res) => {
-  console.log('req.body', req.body)
-  console.log('req.params', req.params)
-  // const { id } = req.params
-  const { imageurl, imageurl_itemid } = req.body
+const changeItemImage = async (req, res) => {
+  const { imageUrls, imagesId } = req.body
   const db = req.app.get('db')
-  db.items.updateImage([imageurl, imageurl_itemid])
+
+  imageUrls.forEach(async url => {
+    await db.items.updateImage([imagesId, url])
+  })
+
   return res.sendStatus(200)
 }
 

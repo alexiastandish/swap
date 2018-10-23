@@ -55,11 +55,11 @@ class Item extends Component {
       })
   }
 
-  editImages(editedImagesDetail) {
+  editImages({ imageUrls }) {
     axios
       .put(`/api/images/${this.props.item[0].items_id}`, {
-        ...editedImagesDetail,
-        imagesId: this.props.images[this.props.match.params.id],
+        imageUrls,
+        imagesId: this.props.item[0].items_id,
       })
       .then(() => {
         this.toggleItemModal()

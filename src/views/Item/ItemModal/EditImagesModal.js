@@ -4,7 +4,6 @@ import Modal from 'react-modal'
 class EditImagesModal extends Component {
   constructor(props) {
     super(props)
-    console.log('props', props)
     this.state = {
       imageUrls: [...props.images[props.item.items_id].map(image => image.imageurl)],
     }
@@ -18,9 +17,8 @@ class EditImagesModal extends Component {
   }
 
   render() {
-    console.log('this.props', this.props)
-    console.log('this.state.imageUrls', this.state.imageUrls)
-    console.log(' Object.keys(this.props.images)', Object.keys(this.props.images))
+    // console.log('this.props', this.props)
+    // console.log('this.state.imageUrls', this.state.imageUrls)
     return (
       <Modal
         isOpen
@@ -41,7 +39,6 @@ class EditImagesModal extends Component {
         <div className="add-item-container">
           <button onClick={this.props.onRequestCloseImages}>Close</button>
           {this.state.imageUrls.map((url, index) => {
-            console.log('url', url)
             return (
               <div key={index} className="image-input-container">
                 <label>Image: {index + 1} </label>
