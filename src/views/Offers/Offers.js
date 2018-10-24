@@ -27,7 +27,7 @@ class Offers extends Component {
       return response.value[this.props.item.items_id]
     })
     this.props.getOffers(this.props.user.user_id).then(response => {
-      console.log('response.value.OFFER', response.value)
+      // console.log('response', response)
       return response.value
     })
     this.props.getOfferUser(this.props.user.user_id).then(response => {
@@ -40,14 +40,12 @@ class Offers extends Component {
     axios
       .put(`/api/updateOffer/${this.props.offerItems.items_id}`, {
         status,
-        offerId: this.props.offer.offer_id,
+        offerId: this.props.offerList && this.props.offerList.offer_id,
       })
       .then(() => this.props.getOffers)
   }
 
   render() {
-    console.log('this.props.offersList', this.props.offersList)
-    console.log('this.props', this.props)
     return (
       <div className="offers-container">
         {this.props.offersList &&

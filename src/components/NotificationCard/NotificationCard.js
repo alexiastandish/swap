@@ -4,13 +4,13 @@ import axios from 'axios'
 
 function NotificationCard(props) {
   //TODO: UPDATE STATUS FUNCTION
-  function updateStatus(status) {
-    // status 1 = pending
-    // status 2 = accepted
-    // status 3 = declined
-    axios.post(`/api/notification/${props.offerId}`, status).then()()
-    // get offers again
-  }
+  // function updateStatus(status) {
+  //   // status 1 = pending
+  //   // status 2 = accepted
+  //   // status 3 = declined
+  //   axios.put(`/api/notification/${props.offerId}`, status).then()()
+  //   // get offers again
+  // }
 
   console.log('props', props)
 
@@ -37,7 +37,7 @@ function NotificationCard(props) {
         </div>
       </div>
       <div className="offer-buttons">
-        <button
+        {/* <button
           onClick={() => {
             updateStatus(2)
           }}
@@ -50,7 +50,7 @@ function NotificationCard(props) {
           }}
         >
           Decline Offer
-        </button>
+        </button> */}
       </div>
     </div>
   )

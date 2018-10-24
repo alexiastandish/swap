@@ -26,12 +26,10 @@ const {
   getItemFromOffer,
   getRequestedItem,
   offerUserInfo,
-  userNotificationInfo,
-  // getFromUserEmail,
-  getNotificationItem,
-  notifUserInfo,
   updateOffer,
 } = require('./controllers/offersCtrl')
+
+const { getNotifications } = require('./controllers/notificationsCtrl')
 
 const {
   getFollowingUsers,
@@ -130,10 +128,10 @@ app.get('/api/offers/:id', getOffers)
 app.get('/api/offer/:id', getItemFromOffer)
 app.get('/api/request/:id', getRequestedItem)
 app.get('/api/offerUser/:id', offerUserInfo)
-app.get('/api/notification/:id', userNotificationInfo)
-app.get('/api/itemNotification/:id', getNotificationItem)
-app.get('/api/notifUser/:id', notifUserInfo)
 app.put('/api/updateOffer/:id', updateOffer)
+
+// notifications
+app.get('/api/notification/:userId', getNotifications)
 
 // // follows
 app.get('/api/users', getAllUsers)
