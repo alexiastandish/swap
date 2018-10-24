@@ -10,6 +10,14 @@ const getOffers = (req, res) => {
     })
 }
 
+const createNewOffer = async (req, res) => {
+  console.log('req.body', req.body)
+  const { yourId, yourItemId, theirId, theirItemId, offerStatus } = req.body
+  const db = req.app.get('db')
+  await db.offers.createOffer([yourId, yourItemId, theirId, theirItemId, offerStatus])
+  return res.status(200).send('okie dokie')
+}
+
 const updateOffer = (req, res) => {
   const db = req.app.get('db')
   db.offers
@@ -24,5 +32,6 @@ const updateOffer = (req, res) => {
 
 module.exports = {
   getOffers,
+  createNewOffer,
   updateOffer,
 }

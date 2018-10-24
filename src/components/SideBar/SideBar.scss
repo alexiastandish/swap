@@ -75,7 +75,7 @@ $dark-gray: #707070;
   display: none;
 }
 
-.modal-button {
+.add-item-button {
   font-family: $font-family;
   border: none;
   background-color: white;
@@ -89,7 +89,23 @@ $dark-gray: #707070;
   position: absolute;
   margin: 0 auto;
   bottom: 20%;
-  display: flex;
+  width: 180px;
+}
+.add-offer-button {
+  font-family: $font-family;
+  border: none;
+  background-color: white;
+  padding: 8px 26px;
+  border-radius: 20px;
+  font-size: 18px;
+  text-align: center;
+  color: $blue;
+  margin: 0 auto;
+  font-weight: 400;
+  position: absolute;
+  margin: 0 auto;
+  bottom: 15%;
+  width: 180px;
 }
 
 .modal-container {

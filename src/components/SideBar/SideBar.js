@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import './SideBar.scss'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { getFollowingUsers } from '../../ducks/followingReducer'
+import { getUserItems } from '../../ducks/profileReducer'
 import Modal from 'react-modal'
 import axios from 'axios'
 import AddItem from './AddItem/AddItem'
+import AddOffer from './AddOffer/AddOffer'
 
 class SideBar extends Component {
   constructor(props) {
@@ -12,21 +16,35 @@ class SideBar extends Component {
 
     this.state = {
       isActive: false,
+      isOfferModalActive: false,
       isToggleOn: true,
+      isOfferToggleOn: true,
     }
 
     this.toggleModal = this.toggleModal.bind(this)
+    this.toggleOfferModal = this.toggleOfferModal.bind(this)
     this.addToItems = this.addToItems.bind(this)
+    this.addToOffers = this.addToOffers.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.handleOfferClick = this.handleOfferClick.bind(this)
     this.goBack = this.goBack.bind(this)
   }
 
   componentWillMount() {
     Modal.setAppElement('body')
+    this.props.getFollowingUsers(this.props.user.user_id).then(response => {
+      response.value.forEach(user => {
+        this.props.getUserItems(user.user_id)
+      })
+    })
   }
 
   toggleModal() {
     this.setState({ isActive: !this.state.isActive })
+  }
+
+  toggleOfferModal() {
+    this.setState({ isOfferModalActive: !this.state.isOfferModalActive })
   }
 
   addToItems(itemDetails) {
@@ -41,10 +59,19 @@ class SideBar extends Component {
       })
   }
 
+  addToOffers(offerDetails) {}
+
   handleClick() {
     console.log('handleClick')
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn,
+    }))
+  }
+
+  handleOfferClick() {
+    console.log('handleOfferClick')
+    this.setState(prevState => ({
+      isOfferToggleOn: !prevState.isOfferToggleOn,
     }))
   }
 
@@ -103,15 +130,30 @@ class SideBar extends Component {
               )}
             </button>
           </div>
-
+          {/* ADD ITEM MODAL SECTION */}
           <section className="modal-container">
-            <button onClick={this.toggleModal} className="modal-button">
+            <button onClick={this.toggleModal} className="add-item-button">
               Add Item
             </button>
             <AddItem
               isOpen={this.state.isActive}
               onRequestClose={this.toggleModal}
               addToItems={this.addToItems}
+            />
+          </section>
+
+          {/* ADD OFFER MODAL SECTION */}
+          <section className="modal-container">
+            <button onClick={this.toggleOfferModal} className="add-offer-button">
+              Add Offer
+            </button>
+            <AddOffer
+              following={this.props.following}
+              items={this.props.items}
+              user={this.props.user}
+              isOpen={this.state.isOfferModalActive}
+              onRequestClose={this.toggleOfferModal}
+              addToItems={this.addToOffers}
             />
           </section>
         </div>
@@ -123,7 +165,16 @@ class SideBar extends Component {
 function mapStateToProps(state) {
   return {
     user: state.user,
+    items: state.items,
+    following: state.following,
   }
 }
 
-export default connect(mapStateToProps)(withRouter(SideBar))
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getFollowingUsers, getUserItems }, dispatch)
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(SideBar))

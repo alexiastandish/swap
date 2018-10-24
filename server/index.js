@@ -21,13 +21,7 @@ const {
   itemFeedForDash,
 } = require(`${__dirname}/controllers/itemsCtrl`)
 
-const {
-  getOffers,
-  getItemFromOffer,
-  getRequestedItem,
-  offerUserInfo,
-  updateOffer,
-} = require('./controllers/offersCtrl')
+const { getOffers, createNewOffer, updateOffer } = require('./controllers/offersCtrl')
 
 const { getNotifications } = require('./controllers/notificationsCtrl')
 
@@ -125,6 +119,7 @@ app.get('/api/dash/:id', itemFeedForDash)
 
 // offers
 app.get('/api/offers/:userId', getOffers)
+app.post('/api/newOffer', createNewOffer)
 app.put('/api/updateOffer/:offerId', updateOffer)
 
 // notifications
