@@ -7,10 +7,8 @@ import profileReducer from './profileReducer'
 import followingReducer from './followingReducer'
 import likesReducer from './likesReducer'
 import offersReducer from './offersReducer'
-import offerItemReducer from './offerItemReducer'
 import requestedItemReducer from './requestItemReducer'
 import getUserInfoReducer from './getUserInfoReducer'
-import offerItemUserInfoReducer from './offerItemUserInfoReducer'
 import dashReducer from './dashReducer'
 import getAllUsersReducer from './getAllUsersReducer'
 import notificationsReducer from './notificationsReducer'
@@ -23,11 +21,9 @@ const combinedReducers = combineReducers({
   items: profileReducer,
   following: followingReducer,
   likes: likesReducer,
-  offersList: offersReducer,
-  offerItems: offerItemReducer,
+  offers: offersReducer,
   requestItems: requestedItemReducer,
   userInfoById: getUserInfoReducer,
-  offerUserInfo: offerItemUserInfoReducer,
   userHearts: likesReducer,
   dashItems: dashReducer,
   allUsers: getAllUsersReducer,

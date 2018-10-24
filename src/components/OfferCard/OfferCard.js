@@ -1,34 +1,33 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './OfferCard.scss'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function OfferCard(props) {
-  console.log('props', props)
   return (
     <div className="offer-card-container">
       <div className="text-and-image">
-        {/* <Link to={props.offer && `/item/${props.offer.items_id}`}> */}
-        <div className="offer-image-container">
-          {props.offerImage && (
-            <div key={props.offerImage.image_id}>
-              <img src={props.offerImage.imageurl} alt="default" />
-            </div>
-          )}
-        </div>
-        {/* </Link> */}
+        <Link to={props.theirItemId && `/item/${props.theirItemId}`}>
+          <div className="offer-image-container">
+            {props.offerImage && (
+              <div key={props.offerImage.image_id}>
+                <img src={props.offerImage.imageurl} alt="default" />
+              </div>
+            )}
+          </div>
+        </Link>
         <div className="offer-text">
           <div className="offer-description">
             <p>
-              <span className="username">{props.offerItemUserName}</span>
+              <span className="username">{props.theirUsername}</span>
               <br /> would like to swap
             </p>
-            <h1>{props.offer && props.offer.item_name}</h1>
+            <h1>{props.theirItemName}</h1>
           </div>
           <div className="request-item" />
           <div>
             <div>
               <p>
-                in exchange for <span>{props.requestedItemName}.</span>
+                in exchange for <span>{props.yourItemName}.</span>
               </p>
               <p>{props.offerItemUserEmail}</p>
             </div>
@@ -38,14 +37,14 @@ function OfferCard(props) {
       <div className="offer-buttons">
         <button
           onClick={() => {
-            props.updateStatus(2)
+            props.updateStatus({ status: 2, offerId: props.offerId })
           }}
         >
           Accept Offer
         </button>
         <button
           onClick={() => {
-            props.updateStatus(3)
+            props.updateStatus({ status: 3, offerId: props.offerId })
           }}
         >
           Decline Offer

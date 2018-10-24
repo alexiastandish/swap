@@ -1,60 +1,8 @@
 const getOffers = (req, res) => {
   const db = req.app.get('db')
   db.offers
-    .getOffers([req.params.id])
+    .getOffers([req.params.userId])
     .then(response => {
-      // console.log('response', response)
-      res.status(200).json(response)
-    })
-    .catch(err => {
-      console.log('err', err)
-    })
-}
-
-const getItemFromOffer = (req, res) => {
-  const db = req.app.get('db')
-  db.offers
-    .getItemFromOffer([req.params.id])
-    .then(response => {
-      // console.log('response', response)
-      res.status(200).json(response)
-    })
-    .catch(err => {
-      console.log('err', err)
-    })
-}
-
-const getRequestedItem = (req, res) => {
-  const db = req.app.get('db')
-  db.offers
-    .getRequest([req.params.id])
-    .then(response => {
-      // console.log('response', response)
-      res.status(200).json(response)
-    })
-    .catch(err => {
-      // console.log('err', err)
-    })
-}
-
-const offerUserInfo = (req, res) => {
-  const db = req.app.get('db')
-  db.getOfferUserInfo([req.params.id])
-    .then(response => {
-      console.log('response', response)
-      res.status(200).json(response)
-    })
-    .catch(err => {
-      console.log('err', err)
-    })
-}
-
-const userNotificationInfo = (req, res) => {
-  const db = req.app.get('db')
-  db.offers
-    .getNotificationUserInfo([req.params.id])
-    .then(response => {
-      console.log('response', response)
       res.status(200).json(response)
     })
     .catch(err => {
@@ -63,14 +11,10 @@ const userNotificationInfo = (req, res) => {
 }
 
 const updateOffer = (req, res) => {
-  console.log('req.body', req.body)
-  const { id } = req.params
-  const { offer_status } = req.body
   const db = req.app.get('db')
   db.offers
-    .postOffer([id, offer_status])
+    .postOffer([req.params.offerId, req.body.status])
     .then(response => {
-      console.log('response', response)
       return res.status(200).send('cool')
     })
     .catch(err => {
@@ -80,9 +24,5 @@ const updateOffer = (req, res) => {
 
 module.exports = {
   getOffers,
-  getItemFromOffer,
-  getRequestedItem,
-  offerUserInfo,
   updateOffer,
-  // getFromUserEmail,
 }

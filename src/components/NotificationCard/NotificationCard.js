@@ -1,6 +1,4 @@
 import React from 'react'
-// import './OfferCard.scss'
-import axios from 'axios'
 
 function NotificationCard(props) {
   //TODO: UPDATE STATUS FUNCTION

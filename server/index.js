@@ -124,11 +124,8 @@ app.get('/api/dash/:id', itemFeedForDash)
 // ADD user+LIKES TO ITEM??
 
 // offers
-app.get('/api/offers/:id', getOffers)
-app.get('/api/offer/:id', getItemFromOffer)
-app.get('/api/request/:id', getRequestedItem)
-app.get('/api/offerUser/:id', offerUserInfo)
-app.put('/api/updateOffer/:id', updateOffer)
+app.get('/api/offers/:userId', getOffers)
+app.put('/api/updateOffer/:offerId', updateOffer)
 
 // notifications
 app.get('/api/notification/:userId', getNotifications)

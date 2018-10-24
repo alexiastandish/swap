@@ -2,11 +2,11 @@ import axios from 'axios'
 
 const GET_OFFERS = 'GET_OFFERS'
 
-export function getOffers(id) {
+export function getOffers(userId) {
   return {
     type: GET_OFFERS,
     payload: axios
-      .get(`/api/offers/${id}`)
+      .get(`/api/offers/${userId}`)
       .then(res => {
         return res.data
       })
