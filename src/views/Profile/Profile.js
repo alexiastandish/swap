@@ -16,6 +16,7 @@ class Profile extends Component {
     this.followUser = this.followUser.bind(this)
     this.unfollowUser = this.unfollowUser.bind(this)
   }
+
   componentDidMount() {
     this.props.getUserInfo(this.props.match.params.id).then(response => {
       return Object.keys(response.value)
