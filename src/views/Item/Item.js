@@ -29,6 +29,10 @@ class Item extends Component {
 
   componentDidMount() {
     Modal.setAppElement('body')
+    this.getItemPage()
+  }
+
+  getItemPage() {
     this.props.getItem(this.props.match.params.id).then(response => {
       response.value.forEach(item => {
         this.props.getImages(item.items_id)
@@ -52,7 +56,8 @@ class Item extends Component {
       })
       .then(() => {
         this.toggleItemModal()
-        this.props.history.push(`/item/${this.props.item[0].items_id}`)
+        this.getItemPage()
+        // this.props.history.push(`/item/${this.props.item[0].items_id}`)
       })
   }
 
@@ -64,7 +69,7 @@ class Item extends Component {
       })
       .then(() => {
         this.toggleItemModal()
-        this.props.history.push(`/item/${this.props.item[0].items_id}`)
+        // this.props.history.push(`/item/${this.props.item[0].items_id}`)
       })
   }
 
