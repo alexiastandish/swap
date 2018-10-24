@@ -13,9 +13,7 @@ import getUserInfoReducer from './getUserInfoReducer'
 import offerItemUserInfoReducer from './offerItemUserInfoReducer'
 import dashReducer from './dashReducer'
 import getAllUsersReducer from './getAllUsersReducer'
-import notificationItemReducer from './notificationItemReducer'
 import notificationsReducer from './notificationsReducer'
-import notifItemUserInfoReducer from './notifItemUserInfoReducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 const combinedReducers = combineReducers({
@@ -33,9 +31,7 @@ const combinedReducers = combineReducers({
   userHearts: likesReducer,
   dashItems: dashReducer,
   allUsers: getAllUsersReducer,
-  notificationItems: notificationItemReducer,
-  notificationList: notificationsReducer,
-  notifUserInfo: notifItemUserInfoReducer,
+  notifications: notificationsReducer,
 })
 
 const store = createStore(

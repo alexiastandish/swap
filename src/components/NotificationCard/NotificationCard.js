@@ -17,40 +17,16 @@ function NotificationCard(props) {
   return (
     <div className="offer-card-container">
       <div className="text-and-image">
-        <div className="offer-text">
-          <div className="offer-description">
-            <p>
-              <span className="username">{props.oppositeUser}</span>
-              <br /> accepted your offer of {props.requestItem}
-            </p>
-            <h1>{props.offer && props.offer.item_name}</h1>
-          </div>
-          <div className="request-item" />
-          <div>
-            <div>
-              <p>
-                in exchange for <span>{props.offerItem}.</span>
-              </p>
-              <p>{props.offerItemUserEmail}</p>
-            </div>
-          </div>
+        <div className="offer-description">
+          <p>
+            <span className="username">{props.otherUserName}</span>
+            <br /> {props.offerStatus === 2 ? 'accepted' : 'declined'} your offer of{' '}
+            {props.yourItem}
+            <br />
+            in exchange for <span>{props.theirItem}.</span>
+          </p>
         </div>
-      </div>
-      <div className="offer-buttons">
-        {/* <button
-          onClick={() => {
-            updateStatus(2)
-          }}
-        >
-          Accept Offer
-        </button>
-        <button
-          onClick={() => {
-            updateStatus(3)
-          }}
-        >
-          Decline Offer
-        </button> */}
+        <div className="offer-buttons">{/* // TODO: DELETE BUTTON */}</div>
       </div>
     </div>
   )

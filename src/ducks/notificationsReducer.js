@@ -2,11 +2,11 @@ import axios from 'axios'
 
 const GET_NOTIFICATIONS = 'GET_NOTIFICATIONS'
 
-export function getNotificationList(id) {
+export function getNotifications(userId) {
   return {
     type: GET_NOTIFICATIONS,
     payload: axios
-      .get(`/api/notification/${id}`)
+      .get(`/api/notification/${userId}`)
       .then(res => {
         return res.data
       })
