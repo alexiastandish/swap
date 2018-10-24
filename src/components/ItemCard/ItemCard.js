@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import './ItemCard.scss'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
 import { getUserHearts, addLike } from '../../ducks/likesReducer'
-// import LikeButton from '../../components/LikeButton/LikeButton'
 import axios from 'axios'
-// import { getItem } from '../../ducks/itemReducer'
 
 class ItemCard extends Component {
   constructor() {
@@ -14,7 +13,7 @@ class ItemCard extends Component {
 
     this.addToLikes = this.addToLikes.bind(this)
     this.removeLike = this.removeLike.bind(this)
-    // this.updateLikes = this.updateLikes.bind(this)
+    this.refreshPage = this.refreshPage.bind(this)
   }
 
   componentDidMount() {
@@ -31,9 +30,12 @@ class ItemCard extends Component {
   }
 
   addToLikes(likeDetails) {
-    axios
-      .post('/api/like', likeDetails)
-      .then(() => this.props.getUserHearts(this.props.user.user_id))
+    axios.post('/api/like', likeDetails).then(() => this.refreshPage())
+    // .then(() => this.props.getUserHearts(this.props.user.user_id))
+  }
+
+  refreshPage() {
+    window.location.reload()
   }
 
   render() {
@@ -41,8 +43,7 @@ class ItemCard extends Component {
       Object.values(this.props.likes).findIndex(like => {
         return like.postid === this.props.item.items_id
       }) !== -1
-    // console.log('isLiked', isLiked)
-    // console.log('this.props.userHearts', this.props.userHearts)
+
     return (
       <div className="item-card-container">
         {isLiked ? (
@@ -78,8 +79,6 @@ class ItemCard extends Component {
         <Link to={`/item/${this.props.item.items_id}`}>
           <div className="item-description">
             <h1>
-              <span>Item: </span>
-
               <br />
               {this.props.item.item_name}
             </h1>
@@ -112,4 +111,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ItemCard)
+)(withRouter(ItemCard))

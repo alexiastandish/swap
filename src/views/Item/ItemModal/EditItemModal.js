@@ -18,6 +18,7 @@ class EditItemModal extends Component {
   }
 
   render() {
+    console.log('this.state', this.state)
     return (
       <Modal
         isOpen={this.props.isItemOpen}

@@ -13,20 +13,27 @@ $dark-gray: #858585;
   width: 20vw;
   display: flex;
   flex-direction: column;
-  line-height: 25px;
+  line-height: 18px;
   background: $navy;
   margin: 2vw;
   max-width: 350px;
+  height: 500px;
+
+  .timestamp-text {
+    display: none;
+  }
 
   .item-description {
     padding: 20px;
+    // height: 300px;
     padding-top: 0px;
   }
 
   img {
     object-fit: cover;
-    height: 26vh;
+    height: 350px;
     width: 20vw;
+    margin-bottom: 5px;
     max-width: 350px;
   }
 
@@ -52,6 +59,7 @@ $dark-gray: #858585;
   }
   #like-button {
     z-index: 1;
+    margin: 10px;
     position: absolute;
   }
 }
