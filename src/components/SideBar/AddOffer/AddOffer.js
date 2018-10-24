@@ -8,9 +8,20 @@ class AddOffer extends Component {
     this.state = {
       theirItemId: null,
       userSelected: null,
+      selectedUserItems: [],
       yourItemId: null,
       offerStatus: 1,
     }
+    this.getUserItems = this.getUserItems.bind(this)
+  }
+
+  getUserItems(event) {
+    this.props.items &&
+      this.props.items.map(item => {
+        if (item.item_userid === Number(this.state.userSelected)) {
+          this.setState({ selectedUserItems: event.target.value })
+        }
+      })
   }
 
   handleSubmit() {
@@ -26,15 +37,7 @@ class AddOffer extends Component {
       </option>
     ))
 
-    const userItems = this.props.items.filter(item => {
-      console.log('item', item)
-      if (item.item_userid === Number(this.state.userSelected)) {
-        return item
-      }
-    })
-
-    console.log('userItems', userItems)
-    console.log('this.state.userSelected', this.state.userSelected)
+    console.log('this.state.selectedUserItems', this.state.selectedUserItems)
 
     return (
       <Modal
@@ -77,6 +80,9 @@ class AddOffer extends Component {
           >
             {optionItems}
           </select>
+          <button value={this.state.selectedUserItems} onClick={this.getUserItems} />
+
+          <select />
         </div>
       </Modal>
     )
