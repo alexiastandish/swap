@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
-import Select from 'react-select'
 
 class AddOffer extends Component {
   constructor() {
@@ -8,10 +7,9 @@ class AddOffer extends Component {
 
     this.state = {
       theirItemId: null,
-      theirId: null,
+      userSelected: null,
       yourItemId: null,
       offerStatus: 1,
-      selectedOption: null,
     }
   }
 
@@ -20,25 +18,24 @@ class AddOffer extends Component {
     this.props.addToItems({ itemName, itemDescription, imageUrls })
   }
 
-  handleSelectedUser(selectedOption) {}
-
   render() {
-    const selectFollwingUser = [
-      this.props.following.map(followingUser => {
-        console.log('followingUser', followingUser)
-        return {
-          value: followingUser.user_id,
-          label: followingUser.username,
-        }
-      }),
-    ]
+    const followingUsers = this.props.following
+    const optionItems = followingUsers.map(user => (
+      <option key={user.user_id} value={user.user_id}>
+        {user.username}
+      </option>
+    ))
 
-    const selectedUsersItems = this.props.following.filter(user => {
-      if (user.user_id === this.props.items.item_userid) {
-        return selectedUsersItems
+    const userItems = this.props.items.filter(item => {
+      console.log('item', item)
+      if (item.item_userid === Number(this.state.userSelected)) {
+        return item
       }
     })
-    console.log('this.props', this.props)
+
+    console.log('userItems', userItems)
+    console.log('this.state.userSelected', this.state.userSelected)
+
     return (
       <Modal
         isOpen={this.props.isOpen}
@@ -74,12 +71,12 @@ class AddOffer extends Component {
 
           <button onClick={this.handleSubmit}>Submit</button>
 
-          <Select
-            name="form-field-name"
-            value={this.selectedOption}
-            options={selectFollwingUser}
-            onChange={this.handleSelectChange}
-          />
+          <select
+            value={this.state.userSelected}
+            onChange={event => this.setState({ userSelected: event.target.value })}
+          >
+            {optionItems}
+          </select>
         </div>
       </Modal>
     )
