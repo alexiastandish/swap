@@ -5,10 +5,9 @@ import { connect } from 'react-redux'
 import { getItem } from '../../ducks/itemReducer'
 import { getImages } from '../../ducks/imagesReducer'
 import Modal from 'react-modal'
-import axios from 'axios'
-import EditItemModal from './ItemModal/EditItemModal'
 import EditImagesModal from './ItemModal/EditImagesModal'
 import LikeButton from '../../components/LikeButton/LikeButton'
+import AddImageModal from './ItemModal/AddImageModal'
 
 class Item extends Component {
   constructor(props) {
@@ -16,15 +15,13 @@ class Item extends Component {
 
     this.state = {
       selectedImage: null,
-      isItemModalActive: false,
-      isImageModalActive: false,
+      isEditImagesModalOpen: false,
+      isAddImageModalOpen: false,
     }
 
-    this.toggleItemModal = this.toggleItemModal.bind(this)
-    this.editItem = this.editItem.bind(this)
-    this.toggleImagesModal = this.toggleImagesModal.bind(this)
-    this.editImages = this.editImages.bind(this)
-    this.goBack = this.goBack.bind(this)
+    this.openEditItemModal = this.openEditItemModal.bind(this)
+    this.closeEditItemModal = this.closeEditItemModal.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -32,61 +29,28 @@ class Item extends Component {
     this.getItemPage()
   }
 
+  closeEditItemModal() {
+    this.setState({ isEditImagesModalOpen: false })
+  }
+
+  openEditItemModal() {
+    this.setState({ isEditImagesModalOpen: true })
+  }
+
+  onSubmit() {
+    this.setState({ isAddImageModalOpen: false })
+    this.getItemPage()
+  }
+
   getItemPage() {
-    this.props.getItem(this.props.match.params.id).then(response => {
-      response.value.forEach(item => {
-        this.props.getImages(item.items_id)
+    this.props.getItem &&
+      this.props.getItem(this.props.match.params.id).then(response => {
+        console.log('response', response)
+
+        response.value.forEach(item => {
+          this.props.getImages(item.items_id)
+        })
       })
-    })
-  }
-
-  toggleItemModal() {
-    this.setState({ isItemModalActive: !this.state.isItemModalActive })
-  }
-
-  toggleImagesModal() {
-    this.setState({ isImageModalActive: !this.state.isImageModalActive })
-  }
-
-  editItem(editedItemDetails) {
-    axios
-      .put(`/api/item/${this.props.item[0].items_id}`, {
-        ...editedItemDetails,
-        itemId: this.props.item[0].items_id,
-      })
-      .then(() => {
-        this.toggleItemModal()
-        this.getItemPage()
-        // this.props.history.push(`/item/${this.props.item[0].items_id}`)
-      })
-  }
-
-  editImages({ imageUrls }) {
-    axios
-      .put(`/api/images/${this.props.item[0].items_id}`, {
-        imageUrls,
-        imagesId: this.props.item[0].items_id,
-      })
-      .then(() => {
-        this.toggleItemModal()
-        // this.props.history.push(`/item/${this.props.item[0].items_id}`)
-      })
-  }
-
-  handleItemClick() {
-    this.setState(prevState => ({
-      isItemModalActive: !prevState.isItemModalActive,
-    }))
-  }
-
-  handleImagesClick() {
-    this.setState(prevState => ({
-      isImageModalActive: !prevState.isImageModalActive,
-    }))
-  }
-
-  goBack() {
-    this.props.history.goBack()
   }
 
   render() {
@@ -99,6 +63,8 @@ class Item extends Component {
       this.props.item[0] &&
       this.props.user.user_id === this.props.item[0].item_userid
 
+    console.log('this.props', this.props)
+    console.log('this.state', this.state)
     return (
       <div className="item-container">
         <div className="item-section">
@@ -139,42 +105,50 @@ class Item extends Component {
               <p>{this.props.item[0] && this.props.item[0].item_description}</p>
             </div>
             <LikeButton item={this.props.item[0]} />
-            <div className="edit-container">
-              {isUsersItem && (
-                <div>
-                  {/* EDIT ITEM MODAL */}
-                  <section className="edit-item-modal-container">
-                    <button onClick={this.toggleItemModal} className="edit-modal-button">
-                      Edit Item
-                    </button>
-                    <EditItemModal
-                      item={this.props.item}
-                      isItemOpen={this.state.isItemModalActive}
-                      onRequestCloseItem={this.toggleItemModal}
-                      editItem={this.editItem}
-                    />
-                  </section>
-                  {/* EDIT IMAGES MODAL */}
-                  <section className="edit-item-modal-container">
-                    <button onClick={this.toggleImagesModal} className="edit-modal-button">
-                      Edit Images
-                    </button>
-                    {this.state.isImageModalActive && (
-                      <EditImagesModal
-                        item={this.props.item[0]}
-                        images={this.props.images}
-                        onRequestCloseImages={this.toggleImagesModal}
-                        editImages={this.editImages}
-                      />
-                    )}
-                  </section>
 
-                  <button id="edit-item-button" value="Delete" onClick={() => this.deleteItem}>
-                    Remove Item
+            {isUsersItem && (
+              <div className="edit-container">
+                <section className="edit-item-modal-container">
+                  <button onClick={this.openEditItemModal} className="edit-modal-button edit">
+                    Edit Item
                   </button>
-                </div>
-              )}
-            </div>
+                  {this.state.isEditImagesModalOpen && (
+                    <EditImagesModal
+                      item={this.props.item[0]}
+                      images={this.props.images[this.props.item[0].items_id]}
+                      onRequestClose={this.closeEditItemModal}
+                      onSubmit={this.onSubmit}
+                      userId={this.props.user.user_id}
+                    />
+                  )}
+                </section>
+                <section className="edit-item-modal-container">
+                  <button
+                    onClick={() => {
+                      this.setState({ isAddImageModalOpen: true })
+                    }}
+                    className="edit-modal-button edit"
+                  >
+                    AddImage
+                  </button>
+                  {this.state.isAddImageModalOpen && (
+                    <AddImageModal
+                      item={this.props.item[0]}
+                      images={this.props.images[this.props.item[0].items_id]}
+                      closeModal={() => {
+                        this.setState({ isAddImageModalOpen: false })
+                      }}
+                      onSubmit={this.onSubmit}
+                      userId={this.props.user.user_id}
+                    />
+                  )}
+                </section>
+
+                <button id="edit-item-button" value="Delete" onClick={() => this.deleteItem}>
+                  Remove Item
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

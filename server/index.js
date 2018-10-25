@@ -15,9 +15,9 @@ const {
   getItems,
   getItemImages,
   addItem,
+  addImage,
   deleteItem,
   editItem,
-  changeItemImage,
   itemFeedForDash,
 } = require(`${__dirname}/controllers/itemsCtrl`)
 
@@ -112,8 +112,8 @@ app.get('/api/items/:id', getItems)
 app.post('/api/addItem', addItem)
 app.get('/api/images/:id', getItemImages)
 app.delete('/api/item/:id', deleteItem)
-app.put('/api/item/:id', editItem)
-app.put('/api/images/:id', changeItemImage)
+app.put('/api/editItem/:itemId', editItem)
+app.put('/api/addImage/:itemId', addImage)
 app.get('/api/dash/:id', itemFeedForDash)
 // ADD user+LIKES TO ITEM??
 

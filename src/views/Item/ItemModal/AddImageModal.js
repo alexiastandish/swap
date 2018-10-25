@@ -2,17 +2,14 @@ import React, { Component } from 'react'
 import Modal from 'react-modal'
 import FileInput from 'react-simple-file-input'
 import { storage } from '../../../firebase'
+import axios from 'axios'
 
-class AddItem extends Component {
-  constructor() {
-    super()
-
+export default class AddImageModal extends Component {
+  constructor(props) {
+    super(props)
     this.state = {
-      itemName: '',
-      itemDescription: '',
       imageUrls: [],
     }
-
     this.storageRef = storage.ref('/user-images').child('test')
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -52,15 +49,22 @@ class AddItem extends Component {
   }
 
   handleSubmit() {
-    const { itemName, itemDescription, imageUrls } = this.state
-    this.props.addToItems({ itemName, itemDescription, imageUrls })
+    const { imageUrls } = this.state
+    this.addImage({ imageUrls }).then(this.props.onSubmit)
+  }
+
+  addImage(itemDetails) {
+    return axios.put(`/api/addImage/${this.props.item.items_id}`, {
+      ...itemDetails,
+      userId: this.props.userId,
+    })
   }
 
   render() {
     return (
       <Modal
-        isOpen={this.props.isOpen}
-        onRequestClose={this.props.onRequestClose}
+        isOpen
+        onRequestClose={this.props.closeModal}
         style={{
           overlay: {
             backgroundColor: 'rgba(253, 253, 253, 0.8)',
@@ -75,25 +79,14 @@ class AddItem extends Component {
           },
         }}
       >
-        <button onClick={this.props.onRequestClose}>Close</button>
+        <button onClick={this.props.closeModal}>Close</button>
         <div className="add-item-container">
-          <h1>Add Item</h1>
-          <label>Item Name: </label>
-          <input
-            value={this.state.itemName}
-            onChange={event => this.setState({ itemName: event.target.value })}
-          />
-          <label>Item Description: </label>
-          <input
-            value={this.state.itemDescription}
-            onChange={event => this.setState({ itemDescription: event.target.value })}
-          />
+          <h1>Add Image</h1>
           <FileInput onChange={this.handleImageSelect} />
           {this.state.imageUrls.map((url, index) => {
             return (
               <div key={index} className="image-input-container">
                 <label>Image: {index + 1} </label>
-                {/* <input type="file" onChange={}/> */}
                 <input
                   placeholder="Insert Image URL"
                   value={url}
@@ -126,5 +119,3 @@ class AddItem extends Component {
     )
   }
 }
-
-export default AddItem

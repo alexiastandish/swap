@@ -37,7 +37,7 @@ class AddOffer extends Component {
       </option>
     ))
 
-    console.log('this.state.selectedUserItems', this.state.selectedUserItems)
+    // console.log('this.state.selectedUserItems', this.state.selectedUserItems)
 
     return (
       <Modal

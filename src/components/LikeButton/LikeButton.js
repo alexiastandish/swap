@@ -14,7 +14,6 @@ class LikeButton extends Component {
 
   componentDidMount() {
     this.props.getUserHearts(this.props.user.user_id).then(response => {
-      // console.log('response.value', response.value)
       return Object.values(response.value)
     })
   }
@@ -34,7 +33,9 @@ class LikeButton extends Component {
   render() {
     const isLiked =
       Object.values(this.props.likes).findIndex(like => {
-        return like.postid === this.props.item.items_id
+        return (
+          this.props.item && this.props.item.items_id && like.postid === this.props.item.items_id
+        )
       }) !== -1
 
     return (

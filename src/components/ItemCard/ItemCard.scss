@@ -10,14 +10,14 @@ $dark-gray: #858585;
 
 .item-card-container {
   display: flex;
-  width: 20vw;
-  display: flex;
+
   flex-direction: column;
   line-height: 18px;
   background: $navy;
   margin: 2vw;
-  max-width: 350px;
-  height: 500px;
+  // max-width: 350px;
+  width: 30vw;
+  height: 640px;
 
   .timestamp-text {
     display: none;
@@ -25,16 +25,19 @@ $dark-gray: #858585;
 
   .item-description {
     padding: 20px;
+
     // height: 300px;
     padding-top: 0px;
   }
 
   img {
+    width: 30vw;
     object-fit: cover;
-    height: 350px;
-    width: 20vw;
+    height: 480px;
+    // width: 18vw;
+
     margin-bottom: 5px;
-    max-width: 350px;
+    // max-width: 350px;
   }
 
   h1 {
@@ -64,9 +67,14 @@ $dark-gray: #858585;
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .item-card {
+@media only screen and (max-width: 980px) {
+  .item-card-container {
     display: flex;
-    width: 100vw;
+    flex-direction: column;
+    line-height: 18px;
+    background: $navy;
+    margin: 0 auto;
+    width: 60vw;
+    height: 640px;
   }
 }
