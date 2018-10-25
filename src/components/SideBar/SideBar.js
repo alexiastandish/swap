@@ -46,6 +46,7 @@ class SideBar extends Component {
         this.props.getUserItems(user.user_id)
       })
     })
+    // this.props.getUser
   }
 
   toggleModal() {
@@ -144,7 +145,7 @@ class SideBar extends Component {
                       profilePicture={this.props.user.user_photo}
                       onSubmit={this.onSubmit}
                       // profilePhoto={this.profilePhoto}
-                      user={this.props.user.user_id}
+                      userId={this.props.user.user_id}
                     />
                   )}
                 </button>

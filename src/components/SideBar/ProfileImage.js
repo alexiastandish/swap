@@ -37,8 +37,8 @@ export default class UpdateProfileImage extends Component {
   }
 
   updateProfilePicture() {
-    return axios.put(`/api/updateProfileImage/${this.props.user_id}`, {
-      userId: this.props.user.user_id,
+    return axios.put(`/api/updateProfileImage/${this.props.userId}`, {
+      userId: this.props.userId,
       profilePicture: this.state.profilePicture,
     })
   }

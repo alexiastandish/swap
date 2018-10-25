@@ -44,7 +44,7 @@ const updateProfileImage = (req, res) => {
   console.log('req.params', req.params)
   const db = req.app.get('db')
   db.users
-    .addProfileImage([userId, profilePicture])
+    .addProfileImage([req.params.userId, req.body.profilePicture])
     .then(response => {
       return res.status(200).json(response)
     })
