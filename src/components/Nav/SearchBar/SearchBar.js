@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Downshift from 'downshift'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-// import { getAllUsers } from '../../ducks/getAllUsersReducer'
+import '../../Nav/Nav.scss'
 
 export default class SearchBar extends Component {
   constructor() {
@@ -61,31 +61,31 @@ export default class SearchBar extends Component {
                     onChange: this.inputOnChange,
                   })}
                 />
-                {isOpen ? (
-                  <div className="downshift-dropdown">
-                    {this.state.allUsers
-                      .filter(
-                        user =>
-                          !inputValue ||
+                {isOpen && (
+                  <div className="downshift-dropdown" style={{ marginTop: '0px' }}>
+                    {inputValue &&
+                      this.state.allUsers
+                        .filter(user =>
                           user.username.toLowerCase().includes(inputValue.toLowerCase())
-                      )
-                      .slice(0, 10)
-                      .map((user, index) => {
-                        return (
-                          <div
-                            className="dropdown-item"
-                            {...getItemProps({ key: index, index, user })}
-                            style={{
-                              backgroundColor: highlightedIndex === index ? 'lightgray' : 'white',
-                              fontWeight: selectedItem === user ? 'bold' : 'normal',
-                            }}
-                          >
-                            <Link to={`/profile/${user.user_id}`}>{user.username}</Link>
-                          </div>
                         )
-                      })}
+                        .slice(0, 10)
+                        .map((user, index) => {
+                          return (
+                            <div
+                              className="dropdown-item"
+                              {...getItemProps({ key: index, index, user })}
+                              style={{
+                                backgroundColor: highlightedIndex === index ? 'lightgray' : 'white',
+                                fontWeight: selectedItem === user ? 'bold' : 'normal',
+                                marginTop: '0px',
+                              }}
+                            >
+                              <Link to={`/profile/${user.user_id}`}>{user.username}</Link>
+                            </div>
+                          )
+                        })}
                   </div>
-                ) : null}
+                )}
               </div>
             )
           }}
