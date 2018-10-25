@@ -15,6 +15,7 @@ class Friends extends Component {
 
   render() {
     // console.log('this.props.FRIENDS', this.props)
+    console.log('this.props', this.props)
     return (
       <div className="following-container">
         {this.props.following &&
@@ -22,6 +23,12 @@ class Friends extends Component {
             return (
               <Link key={friend.user_id} to={`/profile/${friend.user_id}`}>
                 <div className="follow-container" key={friend.user_id}>
+                  <img
+                    src={friend.user_photo}
+                    className="follow-photo"
+                    style={{ width: '60px', height: '60px', borderRadius: '60%' }}
+                  />
+
                   <span className="follow-name">{friend.username}</span>
                 </div>
               </Link>

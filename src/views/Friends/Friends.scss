@@ -13,17 +13,26 @@ $dark-gray: #707070;
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 
   .follow-container {
-    border-bottom: 1px $dark-gray solid;
-    align-content: center;
+    // border-bottom: 1px $dark-gray solid;
     height: 100px;
+    width: 90%;
     display: flex;
+    align-content: center;
+    margin: 10px auto;
     align-items: center;
+    font-family: $font-family;
+  }
 
-    .follow-name {
-      padding-left: 20px;
-    }
+  a {
+    justify-content: space-around;
+    align-content: center;
+    border-bottom: 1px $dark-gray solid;
+    color: $blue;
+  }
+  .follow-name {
+    padding-left: 20px;
   }
 }

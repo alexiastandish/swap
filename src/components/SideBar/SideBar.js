@@ -48,7 +48,7 @@ class SideBar extends Component {
       })
     })
     axios.get(`/api/userPhoto/${this.props.user.user_id}`).then(response => {
-      console.log('response', response)
+      // console.log('response', response)
       this.setState({ profilePhoto: response.data[0].user_photo })
     })
   }
@@ -78,14 +78,14 @@ class SideBar extends Component {
   }
 
   handleClick() {
-    console.log('handleClick')
+    // console.log('handleClick')
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn,
     }))
   }
 
   handleOfferClick() {
-    console.log('handleOfferClick')
+    // console.log('handleOfferClick')
     this.setState(prevState => ({
       isUpdateProfileImageToggleOn: !prevState.isUpdateProfileImageToggleOn,
     }))
@@ -112,8 +112,8 @@ class SideBar extends Component {
   }
 
   render() {
-    console.log('this.state', this.state)
-    console.log('this.props', this.props)
+    // console.log('this.state', this.state)
+    // console.log('this.props', this.props)
     return (
       window.location.pathname !== '/' && (
         <div className="sidebar-container">
