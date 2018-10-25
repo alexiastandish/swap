@@ -111,10 +111,6 @@ class SideBar extends Component {
     this.props.history.goBack()
   }
 
-  imageOnClickFunction() {
-    this.setState({ isUpdateProfileImageModalOpen: true })
-  }
-
   render() {
     console.log('this.state', this.state)
     console.log('this.props', this.props)
@@ -137,31 +133,23 @@ class SideBar extends Component {
                 }}
               />
               <section className="edit-item-modal-container">
-                {/* <button
+                <button
                   onClick={() => {
                     this.setState({ isUpdateProfileImageModalOpen: true })
                   }}
                   className="edit-modal-button edit"
-                > */}
-                <button>
-                  <image
-                    // src={this.props.user_photo}
-
-                    alt="my-image"
-                    onClick={this.imageOnClickFunction}
+                />
+                {this.state.isUpdateProfileImageModalOpen && (
+                  <ProfileImage
+                    closeModal={() => {
+                      this.setState({ isUpdateProfileImageModalOpen: false })
+                    }}
+                    profilePicture={this.props.user.user_photo}
+                    onSubmit={this.onSubmit}
+                    // profilePhoto={this.profilePhoto}
+                    userId={this.props.user.user_id}
                   />
-                  {this.state.isUpdateProfileImageModalOpen && (
-                    <ProfileImage
-                      closeModal={() => {
-                        this.setState({ isUpdateProfileImageModalOpen: false })
-                      }}
-                      profilePicture={this.props.user.user_photo}
-                      onSubmit={this.onSubmit}
-                      // profilePhoto={this.profilePhoto}
-                      userId={this.props.user.user_id}
-                    />
-                  )}
-                </button>
+                )}
               </section>
             </div>
 
