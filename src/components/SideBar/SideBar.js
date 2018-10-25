@@ -9,8 +9,7 @@ import Modal from 'react-modal'
 import axios from 'axios'
 import AddItem from './AddItem/AddItem'
 import AddOffer from './AddOffer/AddOffer'
-import FileInput from 'react-simple-file-input'
-import { storage } from '../../firebase'
+import ProfileImage from './ProfileImage'
 
 class SideBar extends Component {
   constructor(props) {
@@ -19,33 +18,22 @@ class SideBar extends Component {
     this.state = {
       isAddItemModalOpen: false,
       isOfferModalOpen: false,
+      isUpdateProfileImageModalOpen: false,
       isToggleOn: true,
       isOfferToggleOn: true,
-      profileImage: 'http://i66.tinypic.com/npktoy.png',
+      isUpdateProfileImageToggleOn: true,
+      selectedImage: null,
     }
-    this.storageRef = storage.ref('/user-images').child('test')
 
     this.toggleModal = this.toggleModal.bind(this)
     this.toggleOfferModal = this.toggleOfferModal.bind(this)
+    this.toggleProfilePicModal = this.toggleProfilePicModal.bind(this)
     this.addToItems = this.addToItems.bind(this)
+    this.handleOfferClick = this.handleOfferClick.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.handleOfferClick = this.handleOfferClick.bind(this)
     this.goBack = this.goBack.bind(this)
-    this.handleImageSelect = this.handleImageSelect.bind(this)
-    // this.addProfileImage = this.addProfileImage.bind(this)
-  }
-
-  handleImageSelect(file) {
-    this.storageRef
-      .child(file.name)
-      .put(file, { contentType: file.type })
-      .then(snapshot => {
-        console.log('snapshot', snapshot)
-        this.storageRef
-          .child(snapshot.metadata.name)
-          .getDownloadURL()
-          .then(this.addImageUrl)
-      })
+    this.onSubmit = this.onSubmit.bind
   }
 
   componentWillMount() {
@@ -66,6 +54,10 @@ class SideBar extends Component {
 
   toggleOfferModal() {
     this.setState({ isOfferModalOpen: !this.state.isOfferModalOpen })
+  }
+
+  toggleProfilePicModal() {
+    this.setState({ isUpdateProfileImageModalOpen: !this.state.isUpdateProfileImageModalOpen })
   }
 
   addToItems(itemDetails) {
@@ -90,52 +82,75 @@ class SideBar extends Component {
   handleOfferClick() {
     console.log('handleOfferClick')
     this.setState(prevState => ({
+      isUpdateProfileImageToggleOn: !prevState.isUpdateProfileImageToggleOn,
+    }))
+  }
+
+  handleProfilePicClick() {
+    console.log('handleOfferClick')
+    this.setState(prevState => ({
       isOfferToggleOn: !prevState.isOfferToggleOn,
     }))
   }
 
-  addProfileImage() {}
+  onSubmit() {
+    this.setState({
+      isAddImageModalOpen: false,
+      isEditItemModalOpen: false,
+      isUpdateProfileImageModalOpen: false,
+    })
+    this.getItemPage()
+  }
 
   goBack() {
     this.props.history.goBack()
   }
 
+  // profilePhoto(profilePhoto) {
+  //   this.props.user.user_photo(profilePhoto)
+  // }
+
   render() {
+    console.log('this.props.user.user_photo', this.props.user.user_photo)
     return (
       window.location.pathname !== '/' && (
         <div className="sidebar-container">
           <div className="desktop-sidebar">
-            <Link to="/dash">
+            <img src="http://i66.tinypic.com/2cnw4lw.png" alt="swap-logo" />
+
+            <div className="profile-image">
               <img
-                src="http://i66.tinypic.com/2cnw4lw.png"
-                alt="swap-logo"
+                src={this.props.user.user_photo}
                 style={{
-                  background: 'none',
+                  width: '40%',
+                  marginTop: '10px',
+                  justifyContent: 'center',
+                  marginBottom: '0px',
+                  borderRadius: '50% ',
                 }}
               />
-            </Link>
-            <div className="profile-image">
-              <button
-                className="profile-image-button"
-                onClick={this.addProfileImage}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: 'none',
-                }}
-              >
-                <FileInput onChange={this.handleImageSelect} />
-                <img
-                  src={this.state.profileImage}
-                  style={{
-                    width: '40%',
-                    marginTop: '10px',
-                    justifyContent: 'center',
-                    marginBottom: '0px',
+              <section className="edit-item-modal-container">
+                <button
+                  onClick={() => {
+                    this.setState({ isUpdateProfileImageModalOpen: true })
                   }}
-                />
-              </button>
+                  className="edit-modal-button edit"
+                >
+                  {this.state.isUpdateProfileImageModalOpen && (
+                    <ProfileImage
+                      closeModal={() => {
+                        this.setState({ isUpdateProfileImageModalOpen: false })
+                      }}
+                      profilePicture={this.props.user.user_photo}
+                      onSubmit={this.onSubmit}
+                      // profilePhoto={this.profilePhoto}
+                      user={this.props.user.user_id}
+                    />
+                  )}
+                </button>
+              </section>
             </div>
+
             <nav id="main-nav">
               <Link to="/dash">Dash</Link>
               <Link to="/offers">Offers</Link>

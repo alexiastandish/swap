@@ -1,3 +1,5 @@
-INSERT INTO users (user_photo)
-VALUES ($1)
+UPDATE users
+SET user_photo=$2
+WHERE user_id = $1
+
 RETURNING *;

@@ -2,7 +2,7 @@ const getAllUsers = (req, res) => {
   const db = req.app.get('db')
   db.getUsers()
     .then(response => {
-      console.log('response', response)
+      // console.log('response', response)
       res.status(200).json(response)
     })
     .catch(err => res.status(500).send(err))
@@ -24,7 +24,28 @@ const getUserInfo = (req, res) => {
   db.users
     .userInfoProfile([req.params.id])
     .then(response => {
-      console.log('response', response)
+      return res.status(200).json(response)
+    })
+    .catch(err => {
+      console.log('err', err)
+    })
+}
+
+const getUserProfileImage = (req, res) => {
+  const db = req.app.get('db')
+  db.users.getUserPhoto([req.params.userId]).then(response => {
+    console.log('response', response)
+    return res.status(200).json(response)
+  })
+}
+
+const updateProfileImage = (req, res) => {
+  console.log('req.body', req.body)
+  console.log('req.params', req.params)
+  const db = req.app.get('db')
+  db.users
+    .addProfileImage([userId, profilePicture])
+    .then(response => {
       return res.status(200).json(response)
     })
     .catch(err => {
@@ -36,4 +57,6 @@ module.exports = {
   getAllUsers,
   getUserById,
   getUserInfo,
+  getUserProfileImage,
+  updateProfileImage,
 }

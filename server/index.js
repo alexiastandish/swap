@@ -8,7 +8,13 @@ const port = 3001
 // const path = require("path")
 
 const { strategy, getUser } = require('./controllers/authCtrl')
-const { getAllUsers, getUserById, getUserInfo } = require('./controllers/getUsersCtrl')
+const {
+  getAllUsers,
+  getUserById,
+  getUserInfo,
+  getUserProfileImage,
+  updateProfileImage,
+} = require('./controllers/getUsersCtrl')
 
 const {
   getItem,
@@ -105,6 +111,8 @@ app.get('/logout', (req, res) => {
 app.get('/api/me', getUser)
 
 app.get('/api/user/:id', getUserById)
+app.get('/api/userPhoto/:userId', getUserProfileImage)
+app.put('/api/updateProfileImage/:userId', updateProfileImage)
 
 app.get('/api/userInfo/:id', getUserInfo)
 app.get('/api/item/:id', getItem)
