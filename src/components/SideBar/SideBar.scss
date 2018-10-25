@@ -8,7 +8,7 @@ $dark-gray: #707070;
 
 .desktop-sidebar {
   width: 100%;
-  width: 26vw;
+  width: 22vw;
   display: flex;
   background-color: $blue;
   flex-direction: column;
@@ -17,9 +17,14 @@ $dark-gray: #707070;
   max-width: 600px;
   min-width: 280px;
 
+  .profile-image {
+    display: flex;
+    justify-content: center;
+  }
+
   img {
-    padding-top: 100px;
-    width: 22vh;
+    padding-top: 30px;
+    width: 15vh;
     height: auto;
     justify-content: center;
     margin: 0 auto;
@@ -36,13 +41,11 @@ $dark-gray: #707070;
   nav {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    align-content: center;
     font-family: $font-family;
     text-decoration: none;
     color: white;
-    height: 60vh;
+    height: 35vh;
     width: 100%;
   }
 
@@ -50,8 +53,9 @@ $dark-gray: #707070;
     text-decoration: none;
     text-transform: uppercase;
     color: white;
-    padding: 20px;
-    font-size: 24px;
+    padding: 10px;
+    font-size: 18px;
+    margin: 0 auto;
   }
 
   a:hover {
@@ -77,35 +81,36 @@ $dark-gray: #707070;
 
 .add-item-button {
   font-family: $font-family;
-  border: none;
-  background-color: white;
-  padding: 8px 26px;
+  background: $blue;
+  border: 3px solid white;
+  padding: 8px 20px;
   border-radius: 20px;
-  font-size: 18px;
+  font-size: 14px;
   text-align: center;
-  color: $blue;
+  color: white;
   margin: 0 auto;
-  font-weight: 400;
   position: absolute;
   margin: 0 auto;
-  bottom: 20%;
-  width: 180px;
+  bottom: 26%;
+  width: 10%;
+  min-width: 130px;
 }
 .add-offer-button {
   font-family: $font-family;
-  border: none;
-  background-color: white;
+  border: 3px solid white;
   padding: 8px 26px;
+  background: $blue;
   border-radius: 20px;
-  font-size: 18px;
+  font-size: 14px;
   text-align: center;
-  color: $blue;
+  color: white;
   margin: 0 auto;
-  font-weight: 400;
   position: absolute;
   margin: 0 auto;
-  bottom: 15%;
-  width: 180px;
+  margin-top: 30px;
+  bottom: 21%;
+  width: 10%;
+  min-width: 130px;
 }
 
 .modal-container {

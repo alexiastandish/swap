@@ -9,6 +9,8 @@ import Modal from 'react-modal'
 import axios from 'axios'
 import AddItem from './AddItem/AddItem'
 import AddOffer from './AddOffer/AddOffer'
+import FileInput from 'react-simple-file-input'
+import { storage } from '../../firebase'
 
 class SideBar extends Component {
   constructor(props) {
@@ -19,7 +21,9 @@ class SideBar extends Component {
       isOfferModalOpen: false,
       isToggleOn: true,
       isOfferToggleOn: true,
+      profileImage: 'http://i66.tinypic.com/npktoy.png',
     }
+    this.storageRef = storage.ref('/user-images').child('test')
 
     this.toggleModal = this.toggleModal.bind(this)
     this.toggleOfferModal = this.toggleOfferModal.bind(this)
@@ -27,6 +31,21 @@ class SideBar extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.handleOfferClick = this.handleOfferClick.bind(this)
     this.goBack = this.goBack.bind(this)
+    this.handleImageSelect = this.handleImageSelect.bind(this)
+    // this.addProfileImage = this.addProfileImage.bind(this)
+  }
+
+  handleImageSelect(file) {
+    this.storageRef
+      .child(file.name)
+      .put(file, { contentType: file.type })
+      .then(snapshot => {
+        console.log('snapshot', snapshot)
+        this.storageRef
+          .child(snapshot.metadata.name)
+          .getDownloadURL()
+          .then(this.addImageUrl)
+      })
   }
 
   componentWillMount() {
@@ -75,6 +94,8 @@ class SideBar extends Component {
     }))
   }
 
+  addProfileImage() {}
+
   goBack() {
     this.props.history.goBack()
   }
@@ -84,7 +105,37 @@ class SideBar extends Component {
       window.location.pathname !== '/' && (
         <div className="sidebar-container">
           <div className="desktop-sidebar">
-            <img src="http://i66.tinypic.com/2cnw4lw.png" alt="swap-logo" />
+            <Link to="/dash">
+              <img
+                src="http://i66.tinypic.com/2cnw4lw.png"
+                alt="swap-logo"
+                style={{
+                  background: 'none',
+                }}
+              />
+            </Link>
+            <div className="profile-image">
+              <button
+                className="profile-image-button"
+                onClick={this.addProfileImage}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'none',
+                }}
+              >
+                <FileInput onChange={this.handleImageSelect} />
+                <img
+                  src={this.state.profileImage}
+                  style={{
+                    width: '40%',
+                    marginTop: '10px',
+                    justifyContent: 'center',
+                    marginBottom: '0px',
+                  }}
+                />
+              </button>
+            </div>
             <nav id="main-nav">
               <Link to="/dash">Dash</Link>
               <Link to="/offers">Offers</Link>
