@@ -8,6 +8,7 @@ import Modal from 'react-modal'
 import EditItemModal from './ItemModal/EditItemModal'
 import LikeButton from '../../components/LikeButton/LikeButton'
 import AddImageModal from './ItemModal/AddImageModal'
+import axios from 'axios'
 
 class Item extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class Item extends Component {
       isEditItemModalOpen: false,
       selectedImage: null,
     }
-
+    this.deleteItem = this.deleteItem.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
   }
 
@@ -39,6 +40,12 @@ class Item extends Component {
           this.props.getImages(item.items_id)
         })
       })
+  }
+
+  deleteItem() {
+    axios.put(`/api/deleteItem/${this.props.item[0].items_id}`, {}).then(() => {
+      this.props.history.push(`/myProfile/${this.props.user.user_id}`)
+    })
   }
 
   render() {
@@ -76,7 +83,7 @@ class Item extends Component {
                 this.props.images[this.props.match.params.id].map(image => {
                   return (
                     <div key={image.image_id}>
-                      <button onClick={() => this.deleteImage}>x</button>
+                      <button onClick={() => {}}>x</button>
                       <img
                         className="thumbnail"
                         alt="thumbnail-item"
@@ -140,7 +147,7 @@ class Item extends Component {
                   )}
                 </section>
 
-                <button id="edit-item-button" value="Delete" onClick={() => this.deleteItem}>
+                <button id="edit-item-button" value="Delete" onClick={this.deleteItem}>
                   Remove Item
                 </button>
               </div>

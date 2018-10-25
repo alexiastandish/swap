@@ -53,11 +53,11 @@ const addImage = async (req, res) => {
 const deleteItem = (req, res) => {
   const db = req.app.get('db')
   console.log('req.params', req.params)
-  db.items.deleteItem([req.params.id])
+  const { item_status } = req.body
   db.items
-    .deleteImages([req.params.id])
-    .then(() => {
-      return res.sendStatus(200)
+    .deleteItem([req.params.itemId, item_status])
+    .then(response => {
+      res.status(200).json(response)
     })
     .catch(err => console.log(err))
 }
@@ -88,6 +88,8 @@ itemFeedForDash = (req, res) => {
     res.status(200).json(response)
   })
 }
+
+deleteItem
 
 module.exports = {
   getItem,
