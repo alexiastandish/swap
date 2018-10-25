@@ -6,10 +6,10 @@ import { bindActionCreators } from 'redux'
 import { getFollowingUsers } from '../../ducks/followingReducer'
 import { getUserItems } from '../../ducks/profileReducer'
 import Modal from 'react-modal'
-import axios from 'axios'
 import AddItem from './AddItem/AddItem'
 import AddOffer from './AddOffer/AddOffer'
 import ProfileImage from './ProfileImage'
+import axios from 'axios'
 
 class SideBar extends Component {
   constructor(props) {
@@ -23,6 +23,7 @@ class SideBar extends Component {
       isOfferToggleOn: true,
       isUpdateProfileImageToggleOn: true,
       selectedImage: null,
+      profilePhoto: null,
     }
 
     this.toggleModal = this.toggleModal.bind(this)
@@ -46,7 +47,10 @@ class SideBar extends Component {
         this.props.getUserItems(user.user_id)
       })
     })
-    // this.props.getUser
+    axios.get(`/api/userPhoto/${this.props.user.user_id}`).then(response => {
+      console.log('response', response)
+      this.setState({ profilePhoto: response.data[0].user_photo })
+    })
   }
 
   toggleModal() {
@@ -107,36 +111,45 @@ class SideBar extends Component {
     this.props.history.goBack()
   }
 
-  // profilePhoto(profilePhoto) {
-  //   this.props.user.user_photo(profilePhoto)
-  // }
+  imageOnClickFunction() {
+    this.setState({ isUpdateProfileImageModalOpen: true })
+  }
 
   render() {
-    console.log('this.props.user.user_photo', this.props.user.user_photo)
+    console.log('this.state', this.state)
+    console.log('this.props', this.props)
     return (
       window.location.pathname !== '/' && (
         <div className="sidebar-container">
           <div className="desktop-sidebar">
             <img src="http://i66.tinypic.com/2cnw4lw.png" alt="swap-logo" />
 
-            <div className="profile-image">
+            <div className="profile-image" style={{ display: 'flex', justifyContent: 'center' }}>
               <img
-                src={this.props.user.user_photo}
+                src={this.state.profilePhoto}
                 style={{
-                  width: '40%',
-                  marginTop: '10px',
                   justifyContent: 'center',
-                  marginBottom: '0px',
+                  height: '200px',
+                  width: '200px',
+                  margin: '0 auto',
+                  marginTop: '30px',
                   borderRadius: '50% ',
                 }}
               />
               <section className="edit-item-modal-container">
-                <button
+                {/* <button
                   onClick={() => {
                     this.setState({ isUpdateProfileImageModalOpen: true })
                   }}
                   className="edit-modal-button edit"
-                >
+                > */}
+                <button>
+                  <image
+                    // src={this.props.user_photo}
+
+                    alt="my-image"
+                    onClick={this.imageOnClickFunction}
+                  />
                   {this.state.isUpdateProfileImageModalOpen && (
                     <ProfileImage
                       closeModal={() => {
