@@ -15,8 +15,8 @@ class SideBar extends Component {
     super(props)
 
     this.state = {
-      isActive: false,
-      isOfferModalActive: false,
+      isAddItemModalOpen: false,
+      isOfferModalOpen: false,
       isToggleOn: true,
       isOfferToggleOn: true,
     }
@@ -24,7 +24,6 @@ class SideBar extends Component {
     this.toggleModal = this.toggleModal.bind(this)
     this.toggleOfferModal = this.toggleOfferModal.bind(this)
     this.addToItems = this.addToItems.bind(this)
-    this.addToOffers = this.addToOffers.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.handleOfferClick = this.handleOfferClick.bind(this)
     this.goBack = this.goBack.bind(this)
@@ -32,6 +31,9 @@ class SideBar extends Component {
 
   componentWillMount() {
     Modal.setAppElement('body')
+  }
+
+  componentDidMount() {
     this.props.getFollowingUsers(this.props.user.user_id).then(response => {
       response.value.forEach(user => {
         this.props.getUserItems(user.user_id)
@@ -40,11 +42,11 @@ class SideBar extends Component {
   }
 
   toggleModal() {
-    this.setState({ isActive: !this.state.isActive })
+    this.setState({ isAddItemModalOpen: !this.state.isAddItemModalOpen })
   }
 
   toggleOfferModal() {
-    this.setState({ isOfferModalActive: !this.state.isOfferModalActive })
+    this.setState({ isOfferModalOpen: !this.state.isOfferModalOpen })
   }
 
   addToItems(itemDetails) {
@@ -58,8 +60,6 @@ class SideBar extends Component {
         this.props.history.push(`/myProfile/${this.props.user.user_id}`)
       })
   }
-
-  addToOffers(offerDetails) {}
 
   handleClick() {
     console.log('handleClick')
@@ -135,11 +135,13 @@ class SideBar extends Component {
             <button onClick={this.toggleModal} className="add-item-button">
               Add Item
             </button>
-            <AddItem
-              isOpen={this.state.isActive}
-              onRequestClose={this.toggleModal}
-              addToItems={this.addToItems}
-            />
+            {this.state.isAddItemModalOpen && (
+              <AddItem
+                isOpen={this.state.isAddItemModalOpen}
+                onRequestClose={this.toggleModal}
+                addToItems={this.addToItems}
+              />
+            )}
           </section>
 
           {/* ADD OFFER MODAL SECTION */}
@@ -147,14 +149,15 @@ class SideBar extends Component {
             <button onClick={this.toggleOfferModal} className="add-offer-button">
               Add Offer
             </button>
-            <AddOffer
-              following={this.props.following}
-              items={this.props.items}
-              user={this.props.user}
-              isOpen={this.state.isOfferModalActive}
-              onRequestClose={this.toggleOfferModal}
-              addToItems={this.addToOffers}
-            />
+            {this.state.isOfferModalOpen && (
+              <AddOffer
+                following={this.props.following}
+                items={this.props.items}
+                user={this.props.user}
+                onRequestClose={this.toggleOfferModal}
+                addToItems={this.addToOffers}
+              />
+            )}
           </section>
         </div>
       )

@@ -1,47 +1,80 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
+import axios from 'axios'
 
 class AddOffer extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
-      theirItemId: null,
-      userSelected: null,
+      selectedUser: this.props.following && this.props.following[0].user_id,
       selectedUserItems: [],
-      yourItemId: null,
-      offerStatus: 1,
+      loggedInUserItems: [],
+      selectedItemId: '',
+      selectedLoggedInUserItemId: '',
     }
-    this.getUserItems = this.getUserItems.bind(this)
+
+    this.handleItemSelect = this.handleItemSelect.bind(this)
+    this.handleUserSelect = this.handleUserSelect.bind(this)
+    this.handleLoggedInUserItemSelect = this.handleLoggedInUserItemSelect.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.getSelectedUserItems = this.getSelectedUserItems.bind(this)
+    this.getLoggedInUserItems = this.getLoggedInUserItems.bind(this)
   }
 
-  getUserItems(event) {
-    this.props.items &&
-      this.props.items.map(item => {
-        if (item.item_userid === Number(this.state.userSelected)) {
-          this.setState({ selectedUserItems: event.target.value })
-        }
+  componentDidMount() {
+    this.getSelectedUserItems()
+    this.getLoggedInUserItems()
+  }
+
+  handleItemSelect(e) {
+    this.setState({ selectedItemId: e.target.value })
+  }
+
+  handleLoggedInUserItemSelect(e) {
+    this.setState({ selectedLoggedInUserItemId: e.target.value })
+  }
+
+  handleUserSelect(e) {
+    this.setState({ selectedUser: e.target.value }, this.getSelectedUserItems)
+  }
+
+  getSelectedUserItems() {
+    axios.get(`/api/items/${this.state.selectedUser}`).then(({ data }) => {
+      this.setState({
+        selectedUserItems: data,
+        selectedItemId: data.length > 0 ? data[0].items_id : '',
       })
+    })
+  }
+
+  getLoggedInUserItems() {
+    axios.get(`/api/items/${this.props.user.user_id}`).then(({ data }) => {
+      console.log('data', data)
+      this.setState({
+        loggedInUserItems: data,
+        selectedLoggedInUserItemId: data.length > 0 ? data[0].items_id : '',
+      })
+    })
   }
 
   handleSubmit() {
-    const { itemName, itemDescription, imageUrls } = this.state
-    this.props.addToItems({ itemName, itemDescription, imageUrls })
+    axios
+      .post('/api/newOffer', {
+        yourId: this.props.user.user_id,
+        yourItemId: this.state.selectedLoggedInUserItemId,
+        theirId: this.state.selectedUser,
+        theirItemId: this.state.selectedItemId,
+      })
+      .then(this.props.onRequestClose)
   }
 
   render() {
-    const followingUsers = this.props.following
-    const optionItems = followingUsers.map(user => (
-      <option key={user.user_id} value={user.user_id}>
-        {user.username}
-      </option>
-    ))
-
-    // console.log('this.state.selectedUserItems', this.state.selectedUserItems)
+    console.log('this.state', this.state)
 
     return (
       <Modal
-        isOpen={this.props.isOpen}
+        isOpen
         onRequestClose={this.props.onRequestClose}
         style={{
           overlay: {
@@ -60,29 +93,34 @@ class AddOffer extends Component {
         <button onClick={this.props.onRequestClose}>Close</button>
         <div className="add-item-container">
           <h1>Add Offer</h1>
-          {/* ADD CURRENT USER, USERNAME, USER ID */}
-          <label>Friend you would like to swap with: </label>
-          <input
-            value={this.state.itemName}
-            onChange={event => this.setState({ itemName: event.target.value })}
-          />
-          <label>Item Description: </label>
-          <input
-            value={this.state.itemDescription}
-            onChange={event => this.setState({ itemDescription: event.target.value })}
-          />
-
-          <button onClick={this.handleSubmit}>Submit</button>
-
+          <label>I would like to swap my: </label>
           <select
-            value={this.state.userSelected}
-            onChange={event => this.setState({ userSelected: event.target.value })}
+            value={this.state.selectedLoggedInUserItemId}
+            onChange={this.handleLoggedInUserItemSelect}
           >
-            {optionItems}
+            {this.state.loggedInUserItems.map(item => (
+              <option key={item.items_id} value={item.items_id}>
+                {item.item_name}
+              </option>
+            ))}
           </select>
-          <button value={this.state.selectedUserItems} onClick={this.getUserItems} />
-
-          <select />
+          <label>with: </label>
+          <select value={this.state.selectedUser} onChange={this.handleUserSelect}>
+            {this.props.following.map(user => (
+              <option key={user.user_id} value={user.user_id}>
+                {user.username}
+              </option>
+            ))}
+          </select>
+          <label>for their: </label>
+          <select value={this.state.selectedItemId} onChange={this.handleItemSelect}>
+            {this.state.selectedUserItems.map(item => (
+              <option key={item.items_id} value={item.items_id}>
+                {item.item_name}
+              </option>
+            ))}
+          </select>
+          <button onClick={this.handleSubmit}>Submit</button>
         </div>
       </Modal>
     )

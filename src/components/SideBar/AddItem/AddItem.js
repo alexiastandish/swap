@@ -59,7 +59,7 @@ class AddItem extends Component {
   render() {
     return (
       <Modal
-        isOpen={this.props.isOpen}
+        isOpen
         onRequestClose={this.props.onRequestClose}
         style={{
           overlay: {

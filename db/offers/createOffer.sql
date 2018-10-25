@@ -5,5 +5,5 @@
 -- - submit: post that sends offer to offers table with a status of 1
 
 
-INSERT INTO offers(fromuserid, fromuser_itemid, touserid,requesteditemid, offer_status)
-VALUES(59,169, 3,5, 1);
+INSERT INTO offers(fromuserid, fromuser_itemid, touserid, requesteditemid, offer_status)
+VALUES($1, $2, $3, $4, 1);

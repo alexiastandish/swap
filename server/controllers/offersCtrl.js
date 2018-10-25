@@ -12,9 +12,9 @@ const getOffers = (req, res) => {
 
 const createNewOffer = async (req, res) => {
   console.log('req.body', req.body)
-  const { yourId, yourItemId, theirId, theirItemId, offerStatus } = req.body
+  const { yourId, yourItemId, theirId, theirItemId } = req.body
   const db = req.app.get('db')
-  await db.offers.createOffer([yourId, yourItemId, theirId, theirItemId, offerStatus])
+  await db.offers.createOffer([yourId, yourItemId, theirId, theirItemId])
   return res.status(200).send('okie dokie')
 }
 
