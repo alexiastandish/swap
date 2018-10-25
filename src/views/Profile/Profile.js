@@ -7,14 +7,24 @@ import { getImages } from '../../ducks/imagesReducer'
 import { getUserInfo } from '../../ducks/getUserInfoReducer'
 import ItemCard from '../../components/ItemCard/ItemCard'
 import { getFollowingUsers } from '../../ducks/followingReducer'
+import ProfileImage from '../../components/SideBar/ProfileImage'
 import axios from 'axios'
 
 class Profile extends Component {
   constructor() {
     super()
 
+    this.state = {
+      isUpdateProfileImageModalOpen: false,
+      isUpdateProfileImageToggleOn: true,
+      profilePhoto: null,
+    }
+
     this.followUser = this.followUser.bind(this)
     this.unfollowUser = this.unfollowUser.bind(this)
+    this.toggleProfilePicModal = this.toggleProfilePicModal.bind(this)
+    this.handleProfilePicClick = this.handleProfilePicClick.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -31,6 +41,24 @@ class Profile extends Component {
     this.props.getFollowingUsers(this.props.user.user_id).then(res => {
       return res.value
     })
+  }
+
+  onSubmit() {
+    this.setState({
+      isUpdateProfileImageModalOpen: false,
+    })
+    this.getItemPage()
+  }
+
+  toggleProfilePicModal() {
+    this.setState({ isUpdateProfileImageModalOpen: !this.state.isUpdateProfileImageModalOpen })
+  }
+
+  handleProfilePicClick() {
+    console.log('handleOfferClick')
+    this.setState(prevState => ({
+      isOfferToggleOn: !prevState.isOfferToggleOn,
+    }))
   }
 
   followUser(followDetails) {
@@ -52,6 +80,9 @@ class Profile extends Component {
       }) !== -1
 
     console.log('this.props', this.props)
+
+    const isUser = this.props.user.user_id === Number(this.props.match.params.id)
+
     return (
       <div className="profile-container">
         <div className="profile-header">
@@ -83,6 +114,32 @@ class Profile extends Component {
               >
                 <div className="fa fa-3x fa-plus-circle" style={{ color: '#2acbdc' }} />
               </button>
+            )}
+          </div>
+
+          <div className="editProfilePicButton">
+            {isUser && (
+              <div className="profile-image" style={{ display: 'flex', justifyContent: 'center' }}>
+                <section className="edit-item-modal-container">
+                  <button
+                    style={{ color: 'white', background: '#2acbdc' }}
+                    onClick={() => {
+                      this.setState({ isUpdateProfileImageModalOpen: true })
+                    }}
+                    className="edit-modal-button edit"
+                  />
+                  {this.state.isUpdateProfileImageModalOpen && (
+                    <ProfileImage
+                      closeModal={() => {
+                        this.setState({ isUpdateProfileImageModalOpen: false })
+                      }}
+                      profilePicture={this.props.user.user_photo}
+                      onSubmit={this.onSubmit}
+                      userId={this.props.user.user_id}
+                    />
+                  )}
+                </section>
+              </div>
             )}
           </div>
         </div>

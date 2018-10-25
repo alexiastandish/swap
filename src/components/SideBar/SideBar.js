@@ -8,7 +8,7 @@ import { getUserItems } from '../../ducks/profileReducer'
 import Modal from 'react-modal'
 import AddItem from './AddItem/AddItem'
 import AddOffer from './AddOffer/AddOffer'
-import ProfileImage from './ProfileImage'
+// import ProfileImage from './ProfileImage'
 import axios from 'axios'
 
 class SideBar extends Component {
@@ -18,23 +18,18 @@ class SideBar extends Component {
     this.state = {
       isAddItemModalOpen: false,
       isOfferModalOpen: false,
-      isUpdateProfileImageModalOpen: false,
       isToggleOn: true,
       isOfferToggleOn: true,
-      isUpdateProfileImageToggleOn: true,
       selectedImage: null,
-      profilePhoto: null,
     }
 
     this.toggleModal = this.toggleModal.bind(this)
     this.toggleOfferModal = this.toggleOfferModal.bind(this)
-    this.toggleProfilePicModal = this.toggleProfilePicModal.bind(this)
     this.addToItems = this.addToItems.bind(this)
     this.handleOfferClick = this.handleOfferClick.bind(this)
     this.handleClick = this.handleClick.bind(this)
-    this.handleOfferClick = this.handleOfferClick.bind(this)
     this.goBack = this.goBack.bind(this)
-    this.onSubmit = this.onSubmit.bind
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
   componentWillMount() {
@@ -59,10 +54,6 @@ class SideBar extends Component {
 
   toggleOfferModal() {
     this.setState({ isOfferModalOpen: !this.state.isOfferModalOpen })
-  }
-
-  toggleProfilePicModal() {
-    this.setState({ isUpdateProfileImageModalOpen: !this.state.isUpdateProfileImageModalOpen })
   }
 
   addToItems(itemDetails) {
@@ -91,13 +82,6 @@ class SideBar extends Component {
     }))
   }
 
-  handleProfilePicClick() {
-    console.log('handleOfferClick')
-    this.setState(prevState => ({
-      isOfferToggleOn: !prevState.isOfferToggleOn,
-    }))
-  }
-
   onSubmit() {
     this.setState({
       isAddImageModalOpen: false,
@@ -119,39 +103,6 @@ class SideBar extends Component {
         <div className="sidebar-container">
           <div className="desktop-sidebar">
             <img src="http://i66.tinypic.com/2cnw4lw.png" alt="swap-logo" />
-
-            <div className="profile-image" style={{ display: 'flex', justifyContent: 'center' }}>
-              <img
-                src={this.state.profilePhoto}
-                style={{
-                  justifyContent: 'center',
-                  height: '200px',
-                  width: '200px',
-                  margin: '0 auto',
-                  marginTop: '30px',
-                  borderRadius: '50% ',
-                }}
-              />
-              <section className="edit-item-modal-container">
-                <button
-                  onClick={() => {
-                    this.setState({ isUpdateProfileImageModalOpen: true })
-                  }}
-                  className="edit-modal-button edit"
-                />
-                {this.state.isUpdateProfileImageModalOpen && (
-                  <ProfileImage
-                    closeModal={() => {
-                      this.setState({ isUpdateProfileImageModalOpen: false })
-                    }}
-                    profilePicture={this.props.user.user_photo}
-                    onSubmit={this.onSubmit}
-                    // profilePhoto={this.profilePhoto}
-                    userId={this.props.user.user_id}
-                  />
-                )}
-              </section>
-            </div>
 
             <nav id="main-nav">
               <Link to="/dash">Dash</Link>
