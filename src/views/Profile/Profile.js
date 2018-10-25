@@ -19,6 +19,7 @@ class Profile extends Component {
 
   componentDidMount() {
     this.props.getUserInfo(this.props.match.params.id).then(response => {
+      console.log('response.value', response.value)
       return Object.keys(response.value)
     })
     this.props.getUserItems(this.props.match.params.id).then(response => {
@@ -50,32 +51,40 @@ class Profile extends Component {
         return follow.user_id === this.props.userInfoById.user_id
       }) !== -1
 
+    console.log('this.props', this.props)
     return (
       <div className="profile-container">
         <div className="profile-header">
-          {follows ? (
-            <button
-              id="follow-button"
-              value="Unfollow"
-              onClick={() => this.unfollowUser(this.props.userInfoById.user_id)}
-            >
-              Unfollow
-            </button>
-          ) : (
-            <button
-              id="follow-button"
-              className="Follow"
-              onClick={() =>
-                this.followUser({
-                  user_followingid: this.props.userInfoById.user_id,
-                  follower_id: this.props.user && this.props.user.user_id,
-                })
-              }
-            >
-              Follow
-            </button>
-          )}
-          <h1>{this.props.userInfoById && this.props.userInfoById.username}</h1>
+          <div className="left">
+            <div className="profile-photo">
+              <img src={this.props.userInfoById.user_photo} />
+            </div>
+            <h1>{this.props.userInfoById && this.props.userInfoById.username}</h1>
+          </div>
+          <div className="right">
+            {follows ? (
+              <button
+                id="follow-button"
+                value="Unfollow"
+                onClick={() => this.unfollowUser(this.props.userInfoById.user_id)}
+              >
+                <div className="fa fa-3x fa-times-circle" style={{ color: '#2acbdc' }} />
+              </button>
+            ) : (
+              <button
+                id="follow-button"
+                className="Follow"
+                onClick={() =>
+                  this.followUser({
+                    user_followingid: this.props.userInfoById.user_id,
+                    follower_id: this.props.user && this.props.user.user_id,
+                  })
+                }
+              >
+                <div className="fa fa-3x fa-plus-circle" style={{ color: '#2acbdc' }} />
+              </button>
+            )}
+          </div>
         </div>
         {this.props.items.map(item => {
           return (

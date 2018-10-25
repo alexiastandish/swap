@@ -8,13 +8,13 @@ $dark-gray: #858585;
 
 .nav-container {
   height: 7vh;
-  width: 93%;
-  margin: 0 auto;
+  width: 72vw;
   border-bottom: 1px solid #858585;
   align-items: center;
   display: flex;
   flex-direction: row;
-  margin-bottom: 50px;
+  margin: 0 auto;
+  margin-bottom: 20px;
   justify-content: space-between;
 
   .search-bar {

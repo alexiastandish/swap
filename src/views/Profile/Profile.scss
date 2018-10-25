@@ -6,11 +6,69 @@ $navy: #424c58;
 $light-gray: #e5e5e5;
 $dark-gray: #707070;
 
+* {
+  box-sizing: border-box;
+}
+
 .profile-container {
   background-color: $light-gray;
   display: flex;
   flex-direction: row;
-  width: 96%;
   margin: 0 auto;
   flex-wrap: wrap;
+
+  .profile-header {
+    height: 8vh;
+    // background: $blue;
+    font-family: $font-family;
+    width: 72vw;
+    padding: 0;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    button {
+      border: none;
+      background: none;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: row;
+      width: 30vw;
+      align-items: center;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: $blue;
+      text-transform: uppercase;
+    }
+
+    .right {
+    }
+
+    .profile-photo img {
+      object-fit: cover;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    #follow-button button {
+      justify-content: flex-end;
+      float: right;
+    }
+  }
 }
+
+// img {
+//   width: 30vw;
+//   object-fit: cover;
+//   height: 480px;
+//   max-width: 400px;
+
+//   margin-bottom: 5px;
+//   // max-width: 350px;
+// }
