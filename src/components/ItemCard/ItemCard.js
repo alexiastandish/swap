@@ -48,6 +48,7 @@ class ItemCard extends Component {
       <div className="item-card-container">
         {isLiked ? (
           <i
+            style={{ color: '#2acbdc' }}
             id="like-button"
             className="fa fa-2x fa-heart like"
             onClick={() => this.removeLike(this.props.item.items_id)}
@@ -55,6 +56,7 @@ class ItemCard extends Component {
         ) : (
           <i
             id="like-button"
+            style={{ color: '#2acbdc' }}
             className="fa fa-2x fa-heart-o not-liked"
             onClick={() =>
               this.addToLikes({
@@ -83,9 +85,7 @@ class ItemCard extends Component {
               {this.props.item.item_name}
             </h1>
 
-            <p>
-              <span>Description: </span> {this.props.item.item_description}
-            </p>
+            <p>{this.props.item.item_description}</p>
             <p>
               <span className="timestamp-text">{this.props.item.post_time}</span>
             </p>

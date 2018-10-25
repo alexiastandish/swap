@@ -16,10 +16,11 @@ $dark-gray: #707070;
   flex-direction: row;
   margin: 0 auto;
   flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 30px;
 
   .profile-header {
     height: 8vh;
-    // background: $blue;
     font-family: $font-family;
     width: 72vw;
     padding: 0;
@@ -27,6 +28,9 @@ $dark-gray: #707070;
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    // background: $navy;
     flex-direction: row;
 
     button {
@@ -41,11 +45,10 @@ $dark-gray: #707070;
       align-items: center;
       font-size: 16px;
       letter-spacing: 1px;
+      // margin-left: 10px;
+
       color: $blue;
       text-transform: uppercase;
-    }
-
-    .right {
     }
 
     .profile-photo img {

@@ -10,13 +10,15 @@ $dark-gray: #707070;
   background-color: $light-gray;
   display: flex;
   flex-direction: row;
-  width: 96%;
   margin: 0 auto;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .current-user-profile {
   .profile-header {
-    display: none;
+    #follow-button {
+      display: none;
+    }
   }
 }

@@ -12,54 +12,45 @@ $dark-gray: #858585;
   margin-top: 0;
 }
 
-.item-card-container {
+.item-card {
   display: flex;
-
   flex-direction: column;
-  line-height: 18px;
+  // line-height: 16px;
   background: $navy;
-  margin: 2vw;
-  // max-width: 350px;
-  width: 30vw;
-  height: 640px;
-  max-width: 400px;
+  width: 30%;
+  margin-bottom: 30px;
+
+  // max-width: 400px;
+
+  .item-image img {
+    width: 100%;
+    height: 33vh;
+    object-fit: cover;
+  }
 
   .timestamp-text {
     display: none;
   }
 
   .item-description {
-    padding: 20px;
-
-    // height: 300px;
-    padding-top: 0px;
-  }
-
-  img {
-    width: 30vw;
-    object-fit: cover;
-    height: 480px;
-    max-width: 400px;
-
-    margin-bottom: 5px;
-    // max-width: 350px;
+    margin: 20px;
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: light;
   }
 
   h1 {
     font-family: $font-family;
     color: white;
+    line-height: 8px;
+    font-size: 20px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-  }
-
-  h1 span {
-    // text-transform: none;
-    font-size: 16px;
-    font-weight: 200;
-    letter-spacing: 0.5px;
   }
 
   p {
     color: white;
+    line-height: 18px;
   }
 
   .like-button-section {
