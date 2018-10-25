@@ -1,32 +1,39 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
+import axios from 'axios'
 
-class EditItemModal extends Component {
-  constructor() {
-    super()
-
+export default class EditItemModal extends Component {
+  constructor(props) {
+    super(props)
     this.state = {
-      itemName: '',
-      itemDescription: '',
+      itemName: props.item.item_name,
+      itemDescription: props.item.item_description,
     }
 
-    this.handleSubmitItem = this.handleSubmitItem.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
-  handleSubmitItem() {
+
+  handleSubmit() {
     const { itemName, itemDescription } = this.state
-    this.props.editItem({ itemName, itemDescription })
+    this.editItem({ itemName, itemDescription }).then(this.props.onSubmit)
+  }
+
+  editItem(itemDetails) {
+    return axios.put(`/api/editItem/${this.props.item.items_id}`, {
+      ...itemDetails,
+      userId: this.props.userId,
+    })
   }
 
   render() {
-    console.log('this.state', this.state)
     return (
       <Modal
-        isOpen={this.props.isItemOpen}
-        onRequestClose={this.props.onRequestCloseItem}
+        isOpen
+        onRequestClose={this.props.closeModal}
         style={{
           overlay: {
             backgroundColor: 'rgba(253, 253, 253, 0.8)',
-            width: '100%',
+            zIndex: 10,
           },
           content: {
             width: '40vw',
@@ -37,27 +44,22 @@ class EditItemModal extends Component {
           },
         }}
       >
-        <button onClick={this.props.onRequestCloseItem}>Close</button>
+        <button onClick={this.props.closeModal}>Close</button>
         <div className="add-item-container">
           <h1>Edit Item</h1>
           <label>Item Name: </label>
           <input
             value={this.state.itemName}
-            placeholder={this.props.item[0] && this.props.item[0].item_name}
             onChange={event => this.setState({ itemName: event.target.value })}
           />
           <label>Item Description: </label>
           <input
             value={this.state.itemDescription}
-            placeholder={this.props.item[0] && this.props.item[0].item_description}
             onChange={event => this.setState({ itemDescription: event.target.value })}
           />
-
-          <button onClick={this.handleSubmitItem}>Submit</button>
+          <button onClick={this.handleSubmit}>Submit</button>
         </div>
       </Modal>
     )
   }
 }
-
-export default EditItemModal

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { getItem } from '../../ducks/itemReducer'
 import { getImages } from '../../ducks/imagesReducer'
 import Modal from 'react-modal'
-import EditImagesModal from './ItemModal/EditImagesModal'
+import EditItemModal from './ItemModal/EditItemModal'
 import LikeButton from '../../components/LikeButton/LikeButton'
 import AddImageModal from './ItemModal/AddImageModal'
 
@@ -14,13 +14,11 @@ class Item extends Component {
     super(props)
 
     this.state = {
-      selectedImage: null,
-      isEditImagesModalOpen: false,
       isAddImageModalOpen: false,
+      isEditItemModalOpen: false,
+      selectedImage: null,
     }
 
-    this.openEditItemModal = this.openEditItemModal.bind(this)
-    this.closeEditItemModal = this.closeEditItemModal.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
   }
 
@@ -29,24 +27,14 @@ class Item extends Component {
     this.getItemPage()
   }
 
-  closeEditItemModal() {
-    this.setState({ isEditImagesModalOpen: false })
-  }
-
-  openEditItemModal() {
-    this.setState({ isEditImagesModalOpen: true })
-  }
-
   onSubmit() {
-    this.setState({ isAddImageModalOpen: false })
+    this.setState({ isAddImageModalOpen: false, isEditItemModalOpen: false })
     this.getItemPage()
   }
 
   getItemPage() {
     this.props.getItem &&
       this.props.getItem(this.props.match.params.id).then(response => {
-        console.log('response', response)
-
         response.value.forEach(item => {
           this.props.getImages(item.items_id)
         })
@@ -88,6 +76,7 @@ class Item extends Component {
                 this.props.images[this.props.match.params.id].map(image => {
                   return (
                     <div key={image.image_id}>
+                      <button onClick={() => this.deleteImage}>x</button>
                       <img
                         className="thumbnail"
                         alt="thumbnail-item"
@@ -109,14 +98,21 @@ class Item extends Component {
             {isUsersItem && (
               <div className="edit-container">
                 <section className="edit-item-modal-container">
-                  <button onClick={this.openEditItemModal} className="edit-modal-button edit">
+                  <button
+                    onClick={() => {
+                      this.setState({ isEditItemModalOpen: true })
+                    }}
+                    className="edit-modal-button edit"
+                  >
                     Edit Item
                   </button>
-                  {this.state.isEditImagesModalOpen && (
-                    <EditImagesModal
+                  {this.state.isEditItemModalOpen && (
+                    <EditItemModal
                       item={this.props.item[0]}
                       images={this.props.images[this.props.item[0].items_id]}
-                      onRequestClose={this.closeEditItemModal}
+                      closeModal={() => {
+                        this.setState({ isEditItemModalOpen: true })
+                      }}
                       onSubmit={this.onSubmit}
                       userId={this.props.user.user_id}
                     />
