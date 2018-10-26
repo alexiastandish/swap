@@ -19,6 +19,10 @@ $dark-gray: #707070;
   margin: 0 auto;
   width: 100%;
   color: $dark-gray;
+  button {
+    background: none;
+    border: none;
+  }
 
   .username {
     text-transform: uppercase;

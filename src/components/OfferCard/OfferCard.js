@@ -10,18 +10,22 @@ function OfferCard(props) {
           <div className="offer-image-container">
             {props.offerImage && (
               <div key={props.offerImage.image_id}>
-                <img src={props.offerImage.imageurl} alt="default" />
+                <img
+                  src={props.offerImage.imageurl}
+                  alt="default"
+                  style={{ borderRadius: '25px' }}
+                />
               </div>
             )}
           </div>
         </Link>
-        <div className="offer-text">
+        <div className="offer-text" style={{ marginLeft: '30px' }}>
           <div className="offer-description">
             <p>
               <span className="username">{props.theirUsername}</span>
               <br /> would like to swap
             </p>
-            <h1>{props.theirItemName}</h1>
+            <h1 style={{ color: '#2acbdc' }}>{props.theirItemName}</h1>
           </div>
           <div className="request-item" />
           <div>
@@ -29,7 +33,6 @@ function OfferCard(props) {
               <p>
                 in exchange for <span>{props.yourItemName}.</span>
               </p>
-              <p>{props.offerItemUserEmail}</p>
             </div>
           </div>
         </div>

@@ -57,6 +57,10 @@ class Item extends Component {
   }
 
   render() {
+    // console.log('this.props.user.user_id', this.props.user.user_id)
+    // console.log('this.props.items.item_userid', this.props.items[0].item_userid)
+    console.log('this.props', this.props)
+
     const hasImages =
       this.props.images[this.props.match.params.id] &&
       this.props.images[this.props.match.params.id].length > 0
@@ -66,6 +70,7 @@ class Item extends Component {
       this.props.item[0] &&
       this.props.user.user_id === this.props.item[0].item_userid
 
+    console.log('isUsersItem', isUsersItem)
     console.log('this.props', this.props)
 
     return (
@@ -92,19 +97,25 @@ class Item extends Component {
                   console.log('image', image)
                   return (
                     <div key={image.image_id}>
-                      <i
-                        className="fa fa-2x fa-times-circle"
-                        style={{
-                          borderRadius: '50%',
-                          width: '20px',
-                          height: '20px',
-                          position: 'absolute',
-                          marginLeft: '4px',
-                          marginTop: '4px',
-                          color: '#2acbdc',
-                        }}
-                        onClick={() => this.deleteImage(image.image_id)}
-                      />
+                      {isUsersItem && (
+                        <i
+                          className="fa fa-2x  fa-times"
+                          style={{
+                            borderRadius: '50%',
+                            width: '20px',
+                            height: '20px',
+                            position: 'absolute',
+                            marginLeft: '4px',
+                            marginTop: '4px',
+                            color: '#2acbdc',
+                            fontSize: '20px',
+                            fontWeight: 'light',
+                            border: 'none',
+                          }}
+                          onClick={() => this.deleteImage(image.image_id)}
+                        />
+                      )}
+
                       <img
                         className="thumbnail"
                         alt="thumbnail-item"
@@ -117,11 +128,11 @@ class Item extends Component {
             </ul>
           </div>
           <div className="right-section">
+            <LikeButton item={this.props.item[0]} />
             <div className="description-section">
               <h1>{this.props.item[0] && this.props.item[0].item_name}</h1>
               <p>{this.props.item[0] && this.props.item[0].item_description}</p>
             </div>
-            <LikeButton item={this.props.item[0]} />
 
             {isUsersItem && (
               <div className="edit-container">

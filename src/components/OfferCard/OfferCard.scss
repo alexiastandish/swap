@@ -16,10 +16,8 @@ $dark-gray: #707070;
   font-family: $font-family;
   padding: 20px;
   justify-content: space-between;
-
-  // justify-content: flex-start;
+  color: $dark-gray;
   margin: 0 auto;
-
   width: 100%;
 
   .text-and-image {
@@ -29,24 +27,30 @@ $dark-gray: #707070;
     justify-content: flex-start;
   }
 
-  button {
+  .offer-buttons button {
     justify-content: flex-end;
+    background: #2acbdc;
+    font-family: $font-family;
+    width: 100px;
+    justify-content: center;
+    color: white;
+    border-radius: 25px;
+    border: none;
+    box-shadow: none;
+    margin: 3px;
     float: right;
     flex-direction: column;
-  }
-  .offer-buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    right: 0;
-    align-items: flex-end;
-    align-self: flex-start;
+    padding: 8px;
+    text-align: center;
+    align-items: center;
+    align-content: flex-end;
+    font-weight: 500;
   }
   span {
     font-weight: bold;
   }
 
   img {
-    width: 20vw;
+    width: 12vw;
   }
 }

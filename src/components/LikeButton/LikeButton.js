@@ -44,12 +44,14 @@ class LikeButton extends Component {
           <i
             id="like-button"
             className="fa fa-2x fa-heart like"
+            style={{ color: '#2acbdc', fontSize: '40px' }}
             onClick={() => this.removeLike(this.props.item.items_id)}
           />
         ) : (
           <i
             id="like-button"
             className="fa fa-2x fa-heart-o not-liked"
+            style={{ color: '#2acbdc', fontWeight: 'bold', fontSize: '40px' }}
             onClick={() =>
               this.addToLikes({
                 likinguser: this.props.user && this.props.user.user_id,

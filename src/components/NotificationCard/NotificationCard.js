@@ -10,7 +10,8 @@ function NotificationCard(props) {
         <span className="username">{props.otherUserName}</span>
         <br /> {props.offerStatus === 2 ? 'accepted' : 'declined'} your offer of {props.yourItem}
         <br />
-        in exchange for <span>{props.theirItem}.</span>
+        in exchange for{' '}
+        <span style={{ color: '#2acbdc', fontWeight: 'bold' }}>{props.theirItem}.</span>
       </p>
       <button
         onClick={() => {
@@ -18,9 +19,9 @@ function NotificationCard(props) {
         }}
       >
         <div
-          className="offer-buttons"
+          // className="offer-buttons"
           className="fa fa-1x fa-times remove"
-          style={{ color: '#2acbdc' }}
+          style={{ fontSize: '22px' }}
         />
       </button>
     </div>

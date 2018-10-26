@@ -73,15 +73,31 @@ export default class AddImageModal extends Component {
           content: {
             width: '40vw',
             height: '50vh',
+            padding: '0px',
             margin: '0 auto',
             top: '22vh',
             backgroundColor: '#ffffff',
           },
         }}
       >
-        <button onClick={this.props.closeModal}>Close</button>
+        <button
+          style={{ position: 'absolute', float: 'right', fontFamily: 'Montserrat, sans-serif' }}
+          onClick={this.props.closeModal}
+        >
+          Close
+        </button>
         <div className="add-item-container">
-          <h1>Add Image</h1>
+          <h1
+            style={{
+              backgroundColor: '#2acbdc',
+              color: 'white',
+              fontFamily: 'Montserrat, sans-serif',
+              width: '100%',
+              padding: '0px',
+            }}
+          >
+            Add Image
+          </h1>
           <FileInput onChange={this.handleImageSelect} />
           {this.state.imageUrls.map((url, index) => {
             return (
