@@ -99,7 +99,10 @@ class Profile extends Component {
                 value="Unfollow"
                 onClick={() => this.unfollowUser(this.props.userInfoById.user_id)}
               >
-                <div className="fa fa-3x fa-times-circle" style={{ color: '#2acbdc' }} />
+                <div
+                  className="fa fa-3x fa-times-circle"
+                  style={{ color: '#2acbdc', float: 'right', right: '0', alignItems: 'flex-end' }}
+                />
               </button>
             ) : (
               <button

@@ -42,8 +42,9 @@ $dark-gray: #858585;
   h1 {
     font-family: $font-family;
     color: white;
-    line-height: 8px;
+    line-height: 20px;
     font-size: 20px;
+    margin-top: -20px;
     letter-spacing: 1px;
     text-transform: uppercase;
   }

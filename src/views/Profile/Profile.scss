@@ -30,12 +30,17 @@ $dark-gray: #707070;
     align-items: center;
     margin-top: 15px;
     margin-bottom: 15px;
+
     // background: $navy;
+
     flex-direction: row;
 
     button {
       border: none;
       background: none;
+      justify-items: flex-end;
+      float: right;
+      right: 0;
     }
 
     .left {
@@ -45,10 +50,12 @@ $dark-gray: #707070;
       align-items: center;
       font-size: 16px;
       letter-spacing: 1px;
-      // margin-left: 10px;
-
       color: $blue;
       text-transform: uppercase;
+    }
+
+    .right {
+      width: 100%;
     }
 
     .profile-photo img {
