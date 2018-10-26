@@ -21,11 +21,13 @@ class Item extends Component {
     }
     this.deleteItem = this.deleteItem.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+    this.deleteImage = this.deleteImage.bind(this)
+    // this.imageArrayToObj = this.imageArrayToObj.bind(this)
   }
 
   componentDidMount() {
-    Modal.setAppElement('body')
     this.getItemPage()
+    Modal.setAppElement('body')
   }
 
   onSubmit() {
@@ -35,8 +37,8 @@ class Item extends Component {
 
   getItemPage() {
     this.props.getItem &&
-      this.props.getItem(this.props.match.params.id).then(response => {
-        response.value.forEach(item => {
+      this.props.getItem(this.props.match.params.id).then(async response => {
+        await response.value.forEach(item => {
           this.props.getImages(item.items_id)
         })
       })
@@ -45,6 +47,12 @@ class Item extends Component {
   deleteItem() {
     axios.put(`/api/deleteItem/${this.props.item[0].items_id}`, {}).then(() => {
       this.props.history.push(`/myProfile/${this.props.user.user_id}`)
+    })
+  }
+
+  deleteImage(id) {
+    axios.delete(`/api/deleteImage/${id}`).then(() => {
+      this.getItemPage()
     })
   }
 
@@ -59,7 +67,7 @@ class Item extends Component {
       this.props.user.user_id === this.props.item[0].item_userid
 
     console.log('this.props', this.props)
-    console.log('this.state', this.state)
+
     return (
       <div className="item-container">
         <div className="item-section">
@@ -81,9 +89,22 @@ class Item extends Component {
             <ul className="multi-image-container">
               {hasImages &&
                 this.props.images[this.props.match.params.id].map(image => {
+                  console.log('image', image)
                   return (
                     <div key={image.image_id}>
-                      <button onClick={() => {}}>x</button>
+                      <i
+                        className="fa fa-2x fa-times-circle"
+                        style={{
+                          borderRadius: '50%',
+                          width: '20px',
+                          height: '20px',
+                          position: 'absolute',
+                          marginLeft: '4px',
+                          marginTop: '4px',
+                          color: '#2acbdc',
+                        }}
+                        onClick={() => this.deleteImage(image.image_id)}
+                      />
                       <img
                         className="thumbnail"
                         alt="thumbnail-item"

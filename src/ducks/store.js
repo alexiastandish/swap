@@ -12,6 +12,7 @@ import getUserInfoReducer from './getUserInfoReducer'
 import dashReducer from './dashReducer'
 import getAllUsersReducer from './getAllUsersReducer'
 import notificationsReducer from './notificationsReducer'
+import profileItemsReducer from './profileItemsReducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 const combinedReducers = combineReducers({
@@ -28,6 +29,7 @@ const combinedReducers = combineReducers({
   dashItems: dashReducer,
   allUsers: getAllUsersReducer,
   notifications: notificationsReducer,
+  profileItems: profileItemsReducer,
 })
 
 const store = createStore(

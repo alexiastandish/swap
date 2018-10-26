@@ -99,10 +99,7 @@ class Profile extends Component {
                 value="Unfollow"
                 onClick={() => this.unfollowUser(this.props.userInfoById.user_id)}
               >
-                <div
-                  className="fa fa-3x fa-times-circle"
-                  style={{ color: '#2acbdc', float: 'right', right: '0', alignItems: 'flex-end' }}
-                />
+                <div className="fa fa-3x fa-times-circle" style={{ color: '#2acbdc' }} />
               </button>
             ) : (
               <button
@@ -125,12 +122,23 @@ class Profile extends Component {
               <div className="profile-image" style={{ display: 'flex', justifyContent: 'center' }}>
                 <section className="edit-item-modal-container">
                   <button
-                    style={{ color: 'white', background: '#2acbdc' }}
+                    style={{
+                      color: 'white',
+                      background: '#2acbdc',
+                      width: '100px',
+                      borderRadius: '25px',
+                      height: '25px',
+                      fontFamily: 'Montserrat, sans-serif',
+                      fontWeight: '400',
+                    }}
+                    className="profile-pic-button"
                     onClick={() => {
                       this.setState({ isUpdateProfileImageModalOpen: true })
                     }}
                     className="edit-modal-button edit"
-                  />
+                  >
+                    Edit Profile Pic
+                  </button>
                   {this.state.isUpdateProfileImageModalOpen && (
                     <ProfileImage
                       closeModal={() => {

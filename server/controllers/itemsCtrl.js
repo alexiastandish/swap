@@ -84,12 +84,21 @@ const changeItemImage = async (req, res) => {
 itemFeedForDash = (req, res) => {
   const db = req.app.get('db')
   db.following.getFollowingItems([req.params.id]).then(response => {
-    console.log('response', response)
+    // console.log('response', response)
     res.status(200).json(response)
   })
 }
 
-deleteItem
+deleteImage = (req, res) => {
+  const db = req.app.get('db')
+  db.items
+    .removeImage([req.params.imageId])
+    .then(response => {
+      console.log('response', response)
+      res.status(200).json(response)
+    })
+    .catch(err => console.log(err))
+}
 
 module.exports = {
   getItem,
@@ -101,4 +110,5 @@ module.exports = {
   editItem,
   changeItemImage,
   itemFeedForDash,
+  deleteImage,
 }

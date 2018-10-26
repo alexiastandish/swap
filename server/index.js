@@ -46,6 +46,8 @@ const {
   getUserLikesForHearts,
 } = require('./controllers/likesCtrl')
 
+const { getUserProfile } = require('./controllers/profileCtrl')
+
 const app = express()
 
 // KEEP COMMENTED UNTIL READY TO HOST
@@ -123,6 +125,10 @@ app.put('/api/editItem/:itemId', editItem)
 app.put('/api/addImage/:itemId', addImage)
 app.get('/api/dash/:id', itemFeedForDash)
 app.put('/api/deleteItem/:itemId', deleteItem)
+app.delete('/api/deleteImage/:imageId', deleteImage)
+
+// profile
+app.get('/api/profileItems/:userId', getUserProfile)
 
 // offers
 app.get('/api/offers/:userId', getOffers)

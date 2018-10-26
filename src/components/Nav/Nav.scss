@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700');
 
 $font-family: 'Montserrat', sans-serif;
 $blue: #2acbdc;
@@ -7,18 +7,19 @@ $light-gray: #e5e5e5;
 $dark-gray: #858585;
 
 .nav-container {
-  height: 7vh;
+  height: 6vh;
   width: 72vw;
   border-bottom: 1px solid #858585;
   align-items: center;
   display: flex;
   flex-direction: row;
   margin: 0 auto;
-  // margin-bottom: 20px;
+  margin-top: -15px;
+  margin-bottom: 10px;
   justify-content: space-between;
 
   .search-bar {
-    width: 320px;
+    width: 220px;
     height: 35px;
     margin: 0;
     margin-right: -3px;
@@ -27,7 +28,7 @@ $dark-gray: #858585;
 
   input {
     border: none;
-    width: 320px;
+    width: 220px;
     height: 35px;
     margin: 0;
     background: none;
@@ -42,7 +43,7 @@ $dark-gray: #858585;
 
   .search-containter {
     display: flex;
-    width: 320px;
+    width: 220px;
     height: 35px;
     flex-direction: row;
     align-content: center;
@@ -74,9 +75,22 @@ $dark-gray: #858585;
     }
   }
 
-  // .search-bar:focus input {
-  //   background: $blue;
-  // }
+  a {
+    color: $dark-gray;
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 300;
+    margin-top: 22px;
+    padding-left: 22px;
+  }
+
+  a:hover {
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 300;
+    margin-top: 22px;
+    color: $blue;
+  }
 
   #textarea:focus {
     outline: none;

@@ -3,6 +3,7 @@ import Downshift from 'downshift'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import '../../Nav/Nav.scss'
+import './SearchBar.scss'
 
 export default class SearchBar extends Component {
   constructor() {
@@ -53,16 +54,32 @@ export default class SearchBar extends Component {
           }) => {
             return (
               <div>
-                <label style={{ marginTop: '1rem', display: 'block' }} {...getLabelProps()} />
+                <label
+                  style={{ marginTop: '1rem', display: 'block', margin: '5px' }}
+                  {...getLabelProps()}
+                />
                 <br />
                 <input
+                  style={{
+                    fontSize: '12px',
+                    fontWeight: '300',
+                    margin: '5px',
+                  }}
                   {...getInputProps({
                     placeholder: 'Search All Users',
                     onChange: this.inputOnChange,
                   })}
                 />
                 {isOpen && (
-                  <div className="downshift-dropdown" style={{ marginTop: '0px' }}>
+                  <div
+                    className="downshift-dropdown"
+                    style={{
+                      margin: '5px',
+                      marginTop: '0px',
+                      position: 'absolute',
+                      width: '220px',
+                    }}
+                  >
                     {inputValue &&
                       this.state.allUsers
                         .filter(user =>
@@ -75,9 +92,10 @@ export default class SearchBar extends Component {
                               className="dropdown-item"
                               {...getItemProps({ key: index, index, user })}
                               style={{
-                                backgroundColor: highlightedIndex === index ? 'lightgray' : 'white',
-                                fontWeight: selectedItem === user ? 'bold' : 'normal',
-                                marginTop: '0px',
+                                color: 'white',
+                                margin: '5px',
+                                // backgroundColor: highlightedIndex === index ? 'lightgray' : 'white',
+                                // fontWeight: selectedItem === user ? 'bold' : 'normal',
                               }}
                             >
                               <Link to={`/profile/${user.user_id}`}>{user.username}</Link>

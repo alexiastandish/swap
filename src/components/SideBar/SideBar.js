@@ -36,18 +36,6 @@ class SideBar extends Component {
     Modal.setAppElement('body')
   }
 
-  componentDidMount() {
-    this.props.getFollowingUsers(this.props.user.user_id).then(response => {
-      response.value.forEach(user => {
-        this.props.getUserItems(user.user_id)
-      })
-    })
-    axios.get(`/api/userPhoto/${this.props.user.user_id}`).then(response => {
-      // console.log('response', response)
-      this.setState({ profilePhoto: response.data[0].user_photo })
-    })
-  }
-
   toggleModal() {
     this.setState({ isAddItemModalOpen: !this.state.isAddItemModalOpen })
   }

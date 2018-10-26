@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500, 700');
 
 $font-family: 'Montserrat', sans-serif;
 $blue: #2acbdc;
@@ -22,7 +22,7 @@ $dark-gray: #707070;
     height: auto;
     justify-content: center;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 60px;
   }
 
   .sb-section {
@@ -52,12 +52,16 @@ $dark-gray: #707070;
     padding: 20px;
     font-size: 18px;
     margin: 0 auto;
+    letter-spacing: 1px;
+    font-weight: 500;
   }
 
   a:hover {
     // transform: skew(-12deg);
     color: $navy;
     opacity: 0.2;
+    font-weight: 500;
+    letter-spacing: 1px;
     transition: 0.25s ease-in;
   }
 }
@@ -78,7 +82,7 @@ $dark-gray: #707070;
 .add-item-button {
   font-family: $font-family;
   background: $blue;
-  border: 3px solid white;
+  border: 2px solid white;
   padding: 8px 20px;
   border-radius: 20px;
   font-size: 14px;
@@ -87,13 +91,13 @@ $dark-gray: #707070;
   margin: 0 auto;
   position: absolute;
   margin: 0 auto;
-  bottom: 26%;
+  bottom: 19%;
   width: 10%;
   min-width: 130px;
 }
 .add-offer-button {
   font-family: $font-family;
-  border: 3px solid white;
+  border: 2px solid white;
   padding: 8px 26px;
   background: $blue;
   border-radius: 20px;
@@ -104,9 +108,24 @@ $dark-gray: #707070;
   position: absolute;
   margin: 0 auto;
   margin-top: 30px;
-  bottom: 21%;
+  bottom: 14%;
   width: 10%;
   min-width: 130px;
+}
+
+.add-item-button:hover {
+  color: $navy;
+  opacity: 0.2;
+  font-weight: 500;
+  border: 2px solid $navy;
+  transition: 0.25s ease-in;
+}
+.add-offer-button:hover {
+  color: $navy;
+  opacity: 0.2;
+  font-weight: 500;
+  border: 2px solid $navy;
+  transition: 0.25s ease-in;
 }
 
 .modal-container {

@@ -20,12 +20,16 @@ class Likes extends Component {
   render() {
     // console.log('this.props.images', this.props.images)
     return (
-      <div className="likes-container">
+      <div className="likes-container" style={{ margin: '0px' }}>
         {this.props.likes &&
           this.props.likes.map(like => {
             return (
-              <div className="like-item" key={like.items_id}>
-                <LikeCard item={like} images={this.props.images[like.items_id]} />
+              <div className="like-item" style={{ margin: '0px' }} key={like.items_id}>
+                <LikeCard
+                  item={like}
+                  images={this.props.images[like.items_id]}
+                  style={{ margin: '0px' }}
+                />
               </div>
             )
           })}

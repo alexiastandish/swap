@@ -43,15 +43,28 @@ $dark-gray: #707070;
       right: 0;
     }
 
+    input::placeholder {
+      color: white;
+    }
+
+    input:focus {
+      color: white;
+    }
+
     .left {
       display: flex;
       flex-direction: row;
       width: 30vw;
       align-items: center;
-      font-size: 16px;
+      font-size: 14px;
       letter-spacing: 1px;
       color: $blue;
       text-transform: uppercase;
+    }
+
+    button {
+      font-family: $font-family;
+      font-weight: 300;
     }
 
     .right {
@@ -69,6 +82,9 @@ $dark-gray: #707070;
     #follow-button button {
       justify-content: flex-end;
       float: right;
+    }
+    #downshift-0-input {
+      color: white;
     }
   }
 }

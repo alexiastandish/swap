@@ -30,8 +30,10 @@ class ItemCard extends Component {
   }
 
   addToLikes(likeDetails) {
-    axios.post('/api/like', likeDetails).then(() => this.refreshPage())
-    // .then(() => this.props.getUserHearts(this.props.user.user_id))
+    axios
+      .post('/api/like', likeDetails)
+      .then(() => this.props.getUserHearts(this.props.user.user_id))
+    // .then(() => this.refreshPage())
   }
 
   refreshPage() {
@@ -50,14 +52,14 @@ class ItemCard extends Component {
           <i
             style={{ color: '#2acbdc' }}
             id="like-button"
-            className="fa fa-1x fa-heart like"
+            className="fa fa-2x fa-heart like"
             onClick={() => this.removeLike(this.props.item.items_id)}
           />
         ) : (
           <i
             id="like-button"
             style={{ color: '#2acbdc' }}
-            className="fa fa-1x fa-heart-o not-liked"
+            className="fa fa-2x fa-heart-o not-liked"
             onClick={() =>
               this.addToLikes({
                 likinguser: this.props.user && this.props.user.user_id,

@@ -9,10 +9,11 @@ $dark-gray: #707070;
 .likes-container {
   border: 1px $dark-gray solid;
   width: 88%;
-  margin: 0 auto;
+  margin: 40px auto;
   background-color: white;
   display: flex;
   flex-direction: row;
+  padding: 0px;
   flex-wrap: wrap;
   justify-content: space-around;
 }
