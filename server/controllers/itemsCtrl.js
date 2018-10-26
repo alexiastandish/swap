@@ -100,6 +100,19 @@ deleteImage = (req, res) => {
     .catch(err => console.log(err))
 }
 
+const getItemUser = (req, res) => {
+  const db = req.app.get('db')
+  db.items
+    .getItemUser([req.params.itemId])
+    .then(response => {
+      // console.log('response', response)
+      res.status(200).json(response)
+    })
+    .catch(err => {
+      console.log('ITEMS ERROR', err)
+    })
+}
+
 module.exports = {
   getItem,
   getItems,
@@ -111,4 +124,5 @@ module.exports = {
   changeItemImage,
   itemFeedForDash,
   deleteImage,
+  getItemUser,
 }

@@ -36,6 +36,8 @@ class SideBar extends Component {
     Modal.setAppElement('body')
   }
 
+  componentDidMount() {}
+
   toggleModal() {
     this.setState({ isAddItemModalOpen: !this.state.isAddItemModalOpen })
   }

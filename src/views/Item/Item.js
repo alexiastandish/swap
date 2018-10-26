@@ -18,6 +18,7 @@ class Item extends Component {
       isAddImageModalOpen: false,
       isEditItemModalOpen: false,
       selectedImage: null,
+      itemUserName: '',
     }
     this.deleteItem = this.deleteItem.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -56,11 +57,14 @@ class Item extends Component {
     })
   }
 
-  render() {
-    // console.log('this.props.user.user_id', this.props.user.user_id)
-    // console.log('this.props.items.item_userid', this.props.items[0].item_userid)
-    console.log('this.props', this.props)
+  getItemUserName() {
+    axios.get(`/api/getItemUser/${this.props.item[0].items_id}`).then(response => {
+      console.log('response', response)
+      this.setState({ itemUserName: response.data })
+    })
+  }
 
+  render() {
     const hasImages =
       this.props.images[this.props.match.params.id] &&
       this.props.images[this.props.match.params.id].length > 0
@@ -70,8 +74,8 @@ class Item extends Component {
       this.props.item[0] &&
       this.props.user.user_id === this.props.item[0].item_userid
 
-    console.log('isUsersItem', isUsersItem)
-    console.log('this.props', this.props)
+    // console.log('isUsersItem', isUsersItem)
+    // console.log('this.props', this.props)
 
     return (
       <div className="item-container">
@@ -130,6 +134,7 @@ class Item extends Component {
           <div className="right-section">
             <LikeButton item={this.props.item[0]} />
             <div className="description-section">
+              <p>{this.props.user && this.props.user.user_name}</p>
               <h1>{this.props.item[0] && this.props.item[0].item_name}</h1>
               <p>{this.props.item[0] && this.props.item[0].item_description}</p>
             </div>

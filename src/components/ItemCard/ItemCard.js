@@ -41,6 +41,7 @@ class ItemCard extends Component {
   }
 
   render() {
+    console.log('this.props', this.props)
     const isLiked =
       Object.values(this.props.likes).findIndex(like => {
         return like.postid === this.props.item.items_id

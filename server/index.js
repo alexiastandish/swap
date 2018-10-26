@@ -25,6 +25,7 @@ const {
   deleteItem,
   editItem,
   itemFeedForDash,
+  getItemUser,
 } = require(`${__dirname}/controllers/itemsCtrl`)
 
 const { getOffers, createNewOffer, updateOffer } = require('./controllers/offersCtrl')
@@ -126,6 +127,7 @@ app.put('/api/addImage/:itemId', addImage)
 app.get('/api/dash/:id', itemFeedForDash)
 app.put('/api/deleteItem/:itemId', deleteItem)
 app.delete('/api/deleteImage/:imageId', deleteImage)
+app.get('/api/getItemUser/:itemId', getItemUser)
 
 // profile
 app.get('/api/profileItems/:userId', getUserProfile)
