@@ -29,6 +29,9 @@ class Item extends Component {
   componentDidMount() {
     this.getItemPage()
     Modal.setAppElement('body')
+    axios.get(`/api/getItemUser/${this.props.match.params.id}`).then(response => {
+      this.setState({ itemUserName: response.data[0].username })
+    })
   }
 
   onSubmit() {
@@ -76,6 +79,7 @@ class Item extends Component {
 
     // console.log('isUsersItem', isUsersItem)
     // console.log('this.props', this.props)
+    console.log('this.state.itemUserName', this.state.itemUserName)
 
     return (
       <div className="item-container">
@@ -134,7 +138,7 @@ class Item extends Component {
           <div className="right-section">
             <LikeButton item={this.props.item[0]} />
             <div className="description-section">
-              <p>{this.props.user && this.props.user.user_name}</p>
+              <p style={{ color: '#858585' }}>user: {this.state.itemUserName}</p>
               <h1>{this.props.item[0] && this.props.item[0].item_name}</h1>
               <p>{this.props.item[0] && this.props.item[0].item_description}</p>
             </div>

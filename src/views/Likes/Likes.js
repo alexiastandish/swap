@@ -20,7 +20,7 @@ class Likes extends Component {
   render() {
     // console.log('this.props.images', this.props.images)
     return (
-      <div className="likes-container" style={{ margin: '0px' }}>
+      <div className="likes-container" style={{ margin: '40px' }}>
         {this.props.likes &&
           this.props.likes.map(like => {
             return (
