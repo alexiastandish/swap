@@ -62,7 +62,7 @@ class Item extends Component {
 
   getItemUserName() {
     axios.get(`/api/getItemUser/${this.props.item[0].items_id}`).then(response => {
-      console.log('response', response)
+      // console.log('response', response)
       this.setState({ itemUserName: response.data })
     })
   }
@@ -79,7 +79,7 @@ class Item extends Component {
 
     // console.log('isUsersItem', isUsersItem)
     // console.log('this.props', this.props)
-    console.log('this.state.itemUserName', this.state.itemUserName)
+    // console.log('this.state.itemUserName', this.state.itemUserName)
 
     return (
       <div className="item-container">
@@ -102,7 +102,7 @@ class Item extends Component {
             <ul className="multi-image-container">
               {hasImages &&
                 this.props.images[this.props.match.params.id].map(image => {
-                  console.log('image', image)
+                  // console.log('image', image)
                   return (
                     <div key={image.image_id}>
                       {isUsersItem && (

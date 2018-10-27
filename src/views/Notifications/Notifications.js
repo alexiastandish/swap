@@ -17,17 +17,19 @@ class Notifications extends Component {
   }
 
   updateNotificationStatus({ status, offerId }) {
-    axios.put(`/api/updateOffer/${offerId}`, { status }).then(this.props.getNotifications)
+    axios
+      .put(`/api/updateOffer/${offerId}`, { status })
+      .then(this.props.getNotifications(this.props.user.user_id))
   }
 
   render() {
-    console.log('notificationItems', this.props.notificationItems)
-    console.log('this.props', this.props)
+    // console.log('notificationItems', this.props.notificationItems)
+    // console.log('this.props', this.props)
     return (
       <div className="offers-container">
         {this.props.notifications &&
           this.props.notifications.map(notification => {
-            console.log('notification', notification)
+            // console.log('notification', notification)
             return (
               <div className="notification-item" key={notification.offer_id}>
                 <NotificationCard

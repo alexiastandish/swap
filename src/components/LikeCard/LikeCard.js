@@ -3,6 +3,7 @@ import './LikeCard.scss'
 import { Link } from 'react-router-dom'
 
 function LikeCard(props) {
+  console.log('props', props)
   return (
     <Link to={`/item/${props.item.items_id}`}>
       <div className="like-card-container">
