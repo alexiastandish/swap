@@ -10,6 +10,10 @@ $dark-gray: #707070;
   box-sizing: border-box;
 }
 
+button:focus {
+  outline: none;
+}
+
 .App {
   display: flex;
   background-color: $light-gray;

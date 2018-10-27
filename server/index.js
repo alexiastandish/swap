@@ -45,6 +45,7 @@ const {
   getUserLikes,
   removeLike,
   getUserLikesForHearts,
+  getItemLikes,
 } = require('./controllers/likesCtrl')
 
 const { getUserProfile } = require('./controllers/profileCtrl')
@@ -153,6 +154,7 @@ app.post('/api/like', saveItem)
 app.get('/api/like/:id', getUserLikes)
 app.delete('/api/like/:id', removeLike)
 app.get('/api/likes/:id', getUserLikesForHearts)
+app.get('/api/itemLikes/:itemId', getItemLikes)
 
 app.listen(port, () => {
   console.log(`MARCO.... POLO ${port}`)

@@ -19,10 +19,12 @@ class Item extends Component {
       isEditItemModalOpen: false,
       selectedImage: null,
       itemUserName: '',
+      itemLikes: [],
     }
     this.deleteItem = this.deleteItem.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
     this.deleteImage = this.deleteImage.bind(this)
+    // this.getItemLikes = this.getItemLikes.bind(this)
     // this.imageArrayToObj = this.imageArrayToObj.bind(this)
   }
 
@@ -32,7 +34,17 @@ class Item extends Component {
     axios.get(`/api/getItemUser/${this.props.match.params.id}`).then(response => {
       this.setState({ itemUserName: response.data[0].username })
     })
+    axios.get(`/api/itemLikes/${this.props.match.params.id}`).then(response => {
+      console.log('response', response)
+      this.setState({ itemLikes: response.data })
+    })
   }
+
+  // getItemLikes() {
+  //   axios.get(`/api/itemLikes/${this.props.match.params.id}`).then(response => {
+  //     this.setState({ itemLikes: response.value })
+  //   })
+  // }
 
   onSubmit() {
     this.setState({ isAddImageModalOpen: false, isEditItemModalOpen: false })
@@ -78,7 +90,8 @@ class Item extends Component {
       this.props.user.user_id === this.props.item[0].item_userid
 
     // console.log('isUsersItem', isUsersItem)
-    // console.log('this.props', this.props)
+    console.log('this.props', this.props)
+    console.log('this.state', this.state)
     // console.log('this.state.itemUserName', this.state.itemUserName)
 
     return (
@@ -141,6 +154,18 @@ class Item extends Component {
               <p style={{ color: '#858585' }}>user: {this.state.itemUserName}</p>
               <h1>{this.props.item[0] && this.props.item[0].item_name}</h1>
               <p>{this.props.item[0] && this.props.item[0].item_description}</p>
+            </div>
+
+            <div
+              className="likes-section"
+              style={{ color: '#858585', fontSize: '12px', lineHeight: '16px' }}
+            >
+              <p>users who like this item:</p>
+              <p>
+                {this.state.itemLikes.map((userLike, index) => {
+                  return <p key={index}>{userLike.username}</p>
+                })}
+              </p>
             </div>
 
             {isUsersItem && (

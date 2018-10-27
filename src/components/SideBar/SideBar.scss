@@ -139,32 +139,47 @@ $dark-gray: #707070;
   display: none;
 }
 
+@media only screen and (max-width: 1200px) {
+  .sidebar-container {
+    width: 22vw;
+    .desktop-sidebar {
+      width: 100%;
+      min-width: 0px;
+      max-width: none;
+    }
+    img {
+      width: 18vw;
+      height: auto;
+      justify-content: center;
+      margin: 0 auto;
+      margin-top: 60px;
+    }
+  }
+}
+
 @media only screen and (max-width: 768px) {
+  .sidebar-container {
+    position: fixed;
+  }
   .Navbar__Link-toggle {
     display: block;
   }
-  .mobile-menu {
-    display: block;
-  }
-
-  .Navbar__Link .Navbar__Link-toggle {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-content: center;
-  }
 
   .Navbar_Items {
-    background: $blue;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
     background-color: $blue;
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: 100%;
+    padding: 0px;
+    margin: 0px;
+    top: 0;
+    left: 0;
+    z-index: 400;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    // width: 100%;
   }
 
   .Navbar_Link {
@@ -182,29 +197,36 @@ $dark-gray: #707070;
   }
 
   .mobile-nav-section {
-    height: 40vh;
-    margin-top: 60%;
+    height: 20vh;
+    margin-top: 30%;
+    // position: fixed;
   }
 
   .desktop-sidebar {
     display: none;
+    position: fixed;
+    overflow: hidden;
   }
 
   #main-nav {
     display: none;
+    position: fixed;
+    overflow: hidden;
   }
-  .modal-button {
-    font-family: $font-family;
-    border: none;
-    background-color: white;
-    padding: 8px 26px;
-    border-radius: 20px;
-    font-size: 18px;
-    text-align: center;
-    color: $blue;
-    margin: 0 auto;
-    font-weight: 400;
-  }
+  // .modal-button {
+  //   font-family: $font-family;
+  //   border: none;
+  //   background-color: white;
+  //   padding: 8px 26px;
+  //   border-radius: 20px;
+  //   font-size: 18px;
+  //   text-align: center;
+  //   color: $blue;
+  //   position: fixed;
+  //   margin: 0 auto;
+  //   font-weight: 400;
+  //   display: none;
+  // }
   .modal-container {
     margin: 0 auto;
     display: flex;

@@ -31,9 +31,18 @@ const getUserLikesForHearts = (req, res) => {
   })
 }
 
+const getItemLikes = (req, res) => {
+  const db = req.app.get('db')
+  db.likes.getItemLikes([req.params.itemId]).then(response => {
+    console.log('response', response)
+    res.status(200).json(response)
+  })
+}
+
 module.exports = {
   saveItem,
   getUserLikes,
   removeLike,
   getUserLikesForHearts,
+  getItemLikes,
 }

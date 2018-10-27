@@ -11,7 +11,7 @@ function NotificationCard(props) {
         <br />
         <span style={{ fontWeight: 'bold' }}>
           {props.offerStatus === 2 ? 'accepted' : 'declined'}
-        </span>
+        </span>{' '}
         your offer of {props.yourItem}
         <br />
         in exchange for{' '}

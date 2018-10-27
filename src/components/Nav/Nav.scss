@@ -96,3 +96,26 @@ $dark-gray: #858585;
     outline: none;
   }
 }
+
+@media only screen and (max-width: 1200px) {
+  .nav-container {
+    width: 68vw;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-container {
+    height: 6vh;
+    width: 80vw;
+
+    position: fixed;
+    border-bottom: 1px solid #858585;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    margin-top: -15px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+  }
+}

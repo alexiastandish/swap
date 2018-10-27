@@ -64,14 +64,32 @@ $dark-gray: #858585;
   }
 }
 
-@media only screen and (max-width: 980px) {
-  .item-card-container {
+@media only screen and (max-width: 1200px) {
+  .item-card {
     display: flex;
     flex-direction: column;
-    line-height: 18px;
     background: $navy;
+    width: 45%;
     margin: 0 auto;
-    width: 60vw;
-    height: 640px;
+    margin-bottom: 30px;
+
+    // max-width: 400px;
+
+    .item-image img {
+      width: 100%;
+      height: 33vh;
+      object-fit: cover;
+    }
+
+    .timestamp-text {
+      display: none;
+    }
+
+    .item-description {
+      margin: 20px;
+      font-family: $font-family;
+      font-size: 12px;
+      font-weight: light;
+    }
   }
 }
