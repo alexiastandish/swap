@@ -37,10 +37,12 @@ export default class UpdateProfileImage extends Component {
   }
 
   updateProfilePicture() {
-    return axios.put(`/api/updateProfileImage/${this.props.userId}`, {
-      userId: this.props.userId,
-      profilePicture: this.state.profilePicture,
-    })
+    return axios
+      .put(`/api/updateProfileImage/${this.props.userId}`, {
+        userId: this.props.userId,
+        profilePicture: this.state.profilePicture,
+      })
+      .then(this.props.closeModal)
   }
 
   render() {

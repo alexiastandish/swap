@@ -24,7 +24,7 @@ class Profile extends Component {
     this.unfollowUser = this.unfollowUser.bind(this)
     this.toggleProfilePicModal = this.toggleProfilePicModal.bind(this)
     this.handleProfilePicClick = this.handleProfilePicClick.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
+    // this.onSubmit = this.onSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -38,17 +38,17 @@ class Profile extends Component {
       })
     })
 
-    this.props.getFollowingUsers(this.props.user.user_id).then(res => {
-      return res.value
-    })
+    // this.props.getFollowingUsers(this.props.user.user_id).then(res => {
+    //   return res.value
+    // })
   }
 
-  onSubmit() {
-    this.setState({
-      isUpdateProfileImageModalOpen: false,
-    })
-    this.getItemPage()
-  }
+  // onSubmit() {
+  //   this.setState({
+  //     isUpdateProfileImageModalOpen: false,
+  //   })
+  //   // this.getItemPage()
+  // }
 
   toggleProfilePicModal() {
     this.setState({ isUpdateProfileImageModalOpen: !this.state.isUpdateProfileImageModalOpen })
@@ -145,7 +145,7 @@ class Profile extends Component {
                         this.setState({ isUpdateProfileImageModalOpen: false })
                       }}
                       profilePicture={this.props.user.user_photo}
-                      onSubmit={this.onSubmit}
+                      // onSubmit={this.onSubmit}
                       userId={this.props.user.user_id}
                     />
                   )}
