@@ -144,7 +144,7 @@ app.get('/api/notification/:userId', getNotifications)
 app.get('/api/users', getAllUsers)
 app.get('/api/follows', getAllFollowingUsers)
 app.post('/api/follow', followUser)
-app.get('/api/follows/:id', getFollowingUsers)
+app.get('/api/follows/:userId', getFollowingUsers)
 app.get('/api/following/:id', getFollowingItems)
 app.delete('/api/follow/:id', removeFollow)
 

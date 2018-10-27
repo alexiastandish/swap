@@ -29,7 +29,7 @@ class Profile extends Component {
 
   componentDidMount() {
     this.props.getUserInfo(this.props.match.params.id).then(response => {
-      console.log('response.value', response.value)
+      // console.log('response.value', response.value)
       return Object.keys(response.value)
     })
     this.props.getUserItems(this.props.match.params.id).then(response => {
@@ -55,7 +55,7 @@ class Profile extends Component {
   }
 
   handleProfilePicClick() {
-    console.log('handleOfferClick')
+    // console.log('handleOfferClick')
     this.setState(prevState => ({
       isOfferToggleOn: !prevState.isOfferToggleOn,
     }))
@@ -79,7 +79,7 @@ class Profile extends Component {
         return follow.user_id === this.props.userInfoById.user_id
       }) !== -1
 
-    console.log('this.props', this.props)
+    // console.log('this.props', this.props)
 
     const isUser = this.props.user.user_id === Number(this.props.match.params.id)
 

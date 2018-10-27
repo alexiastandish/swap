@@ -2,7 +2,7 @@ import React from 'react'
 import './NotificationCard.scss'
 
 function NotificationCard(props) {
-  console.log('props', props)
+  // console.log('props', props)
 
   return (
     <div className="notification-card-container" style={{ borderBottom: '1px solid' }}>
@@ -11,7 +11,7 @@ function NotificationCard(props) {
         <br />
         <span style={{ fontWeight: 'bold' }}>
           {props.offerStatus === 2 ? 'accepted' : 'declined'}
-        </span>{' '}
+        </span>
         your offer of {props.yourItem}
         <br />
         in exchange for{' '}

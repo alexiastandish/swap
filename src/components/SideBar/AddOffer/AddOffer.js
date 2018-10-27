@@ -7,7 +7,8 @@ class AddOffer extends Component {
     super(props)
 
     this.state = {
-      selectedUser: this.props.following && this.props.following[0].user_id,
+      selectedUser: '',
+      allFollowingUsers: [],
       selectedUserItems: [],
       loggedInUserItems: [],
       selectedItemId: '',
@@ -20,10 +21,11 @@ class AddOffer extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.getSelectedUserItems = this.getSelectedUserItems.bind(this)
     this.getLoggedInUserItems = this.getLoggedInUserItems.bind(this)
+    this.getFollowingUsers = this.getFollowingUsers.bind(this)
   }
 
   componentDidMount() {
-    this.getSelectedUserItems()
+    this.getFollowingUsers().then(this.getSelectedUserItems)
     this.getLoggedInUserItems()
   }
 
@@ -37,6 +39,15 @@ class AddOffer extends Component {
 
   handleUserSelect(e) {
     this.setState({ selectedUser: e.target.value }, this.getSelectedUserItems)
+  }
+
+  getFollowingUsers() {
+    return axios.get(`/api/follows/${this.props.user.user_id}`).then(({ data }) => {
+      this.setState({
+        allFollowingUsers: data,
+        selectedUser: data.length > 0 ? data[0].user_id : '',
+      })
+    })
   }
 
   getSelectedUserItems() {
@@ -71,6 +82,7 @@ class AddOffer extends Component {
 
   render() {
     console.log('this.state', this.state)
+    console.log('this.props', this.props)
 
     return (
       <Modal
@@ -106,7 +118,7 @@ class AddOffer extends Component {
           </select>
           <label>with: </label>
           <select value={this.state.selectedUser} onChange={this.handleUserSelect}>
-            {this.props.following.map(user => (
+            {this.state.allFollowingUsers.map(user => (
               <option key={user.user_id} value={user.user_id}>
                 {user.username}
               </option>

@@ -42,7 +42,7 @@ export default function userReducer(state = initialState, action) {
       //   isAuthenticated: !!action.payload,
       // }
 
-      //delete when you comment in the above
+      // delete when you comment in the above
       return {
         user_id: 59,
         authid: 'github|40964861',

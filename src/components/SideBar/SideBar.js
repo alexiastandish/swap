@@ -3,12 +3,10 @@ import { Link, withRouter } from 'react-router-dom'
 import './SideBar.scss'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getFollowingUsers } from '../../ducks/followingReducer'
 import { getUserItems } from '../../ducks/profileReducer'
 import Modal from 'react-modal'
 import AddItem from './AddItem/AddItem'
 import AddOffer from './AddOffer/AddOffer'
-// import ProfileImage from './ProfileImage'
 import axios from 'axios'
 
 class SideBar extends Component {
@@ -18,27 +16,22 @@ class SideBar extends Component {
     this.state = {
       isAddItemModalOpen: false,
       isOfferModalOpen: false,
-      isToggleOn: true,
+      isItemToggleOn: true,
       isOfferToggleOn: true,
-      selectedImage: null,
     }
 
-    this.toggleModal = this.toggleModal.bind(this)
+    this.toggleAddItemModal = this.toggleAddItemModal.bind(this)
     this.toggleOfferModal = this.toggleOfferModal.bind(this)
     this.addToItems = this.addToItems.bind(this)
     this.handleOfferClick = this.handleOfferClick.bind(this)
-    this.handleClick = this.handleClick.bind(this)
-    this.goBack = this.goBack.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
+    this.handleAddItemClick = this.handleAddItemClick.bind(this)
   }
 
   componentWillMount() {
     Modal.setAppElement('body')
   }
 
-  componentDidMount() {}
-
-  toggleModal() {
+  toggleAddItemModal() {
     this.setState({ isAddItemModalOpen: !this.state.isAddItemModalOpen })
   }
 
@@ -53,41 +46,25 @@ class SideBar extends Component {
         userId: this.props.user.user_id,
       })
       .then(() => {
-        this.toggleModal()
+        this.toggleAddItemModal()
         this.props.history.push(`/myProfile/${this.props.user.user_id}`)
       })
   }
 
-  handleClick() {
-    // console.log('handleClick')
+  handleAddItemClick() {
     this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn,
+      isItemToggleOn: !prevState.isItemToggleOn,
     }))
   }
 
   handleOfferClick() {
-    // console.log('handleOfferClick')
     this.setState(prevState => ({
-      isUpdateProfileImageToggleOn: !prevState.isUpdateProfileImageToggleOn,
+      isOfferToggleOn: !prevState.isOfferToggleOn,
     }))
   }
 
-  onSubmit() {
-    this.setState({
-      isAddImageModalOpen: false,
-      isEditItemModalOpen: false,
-      isUpdateProfileImageModalOpen: false,
-    })
-    this.getItemPage()
-  }
-
-  goBack() {
-    this.props.history.goBack()
-  }
-
   render() {
-    // console.log('this.state', this.state)
-    // console.log('this.props', this.props)
+    console.log('this.props', this.props)
     return (
       window.location.pathname !== '/' && (
         <div className="sidebar-container">
@@ -102,10 +79,9 @@ class SideBar extends Component {
               <Link to={`/myProfile/${this.props.user.user_id}`}>Profile</Link>
             </nav>
           </div>
-          {/* <div className="mobile-menu"> */}
           <div className="Navbar__Link Navbar__Link-toggle">
-            <button className="mobile-button" onClick={this.handleClick}>
-              {this.state.isToggleOn ? (
+            <button className="mobile-button" onClick={this.handleAddItemClick}>
+              {this.state.isItemToggleOn ? (
                 'on'
               ) : (
                 <div className="Navbar_Items">
@@ -131,7 +107,7 @@ class SideBar extends Component {
 
                   <button
                     className="close-mobile-button"
-                    onClick={() => this.setState({ isToggleOn: false })}
+                    onClick={() => this.setState({ isItemToggleOn: false })}
                   >
                     Close Menu
                   </button>
@@ -141,13 +117,13 @@ class SideBar extends Component {
           </div>
           {/* ADD ITEM MODAL SECTION */}
           <section className="modal-container">
-            <button onClick={this.toggleModal} className="add-item-button">
+            <button onClick={this.toggleAddItemModal} className="add-item-button">
               Add Item
             </button>
             {this.state.isAddItemModalOpen && (
               <AddItem
                 isOpen={this.state.isAddItemModalOpen}
-                onRequestClose={this.toggleModal}
+                onRequestClose={this.toggleAddItemModal}
                 addToItems={this.addToItems}
               />
             )}
@@ -159,13 +135,7 @@ class SideBar extends Component {
               Add Offer
             </button>
             {this.state.isOfferModalOpen && (
-              <AddOffer
-                following={this.props.following}
-                items={this.props.items}
-                user={this.props.user}
-                onRequestClose={this.toggleOfferModal}
-                addToItems={this.addToOffers}
-              />
+              <AddOffer user={this.props.user} onRequestClose={this.toggleOfferModal} />
             )}
           </section>
         </div>
@@ -183,7 +153,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getFollowingUsers, getUserItems }, dispatch)
+  return bindActionCreators({ getUserItems }, dispatch)
 }
 
 export default connect(

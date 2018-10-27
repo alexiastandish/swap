@@ -3,7 +3,7 @@ const getNotifications = (req, res) => {
   db.offers
     .getNotifications([req.params.userId])
     .then(response => {
-      console.log('response', response)
+      // console.log('response', response)
       res.status(200).json(response)
     })
     .catch(err => {

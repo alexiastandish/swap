@@ -34,14 +34,14 @@ const getUserInfo = (req, res) => {
 const getUserProfileImage = (req, res) => {
   const db = req.app.get('db')
   db.users.getUserPhoto([req.params.userId]).then(response => {
-    console.log('response', response)
+    // console.log('response', response)
     return res.status(200).json(response)
   })
 }
 
 const updateProfileImage = (req, res) => {
-  console.log('req.body', req.body)
-  console.log('req.params', req.params)
+  // console.log('req.body', req.body)
+  // console.log('req.params', req.params)
   const db = req.app.get('db')
   db.users
     .addProfileImage([req.params.userId, req.body.profilePicture])

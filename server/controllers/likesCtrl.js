@@ -8,7 +8,7 @@ const saveItem = async (req, res) => {
 const getUserLikes = (req, res) => {
   const db = req.app.get('db')
   db.likes.getLikes([req.params.id]).then(response => {
-    console.log('response', response)
+    // console.log('response', response)
     res.status(200).json(response)
   })
 }
@@ -26,7 +26,7 @@ const removeLike = (req, res) => {
 const getUserLikesForHearts = (req, res) => {
   const db = req.app.get('db')
   db.likes.getUserLikes([req.params.id]).then(response => {
-    console.log('response', response)
+    // console.log('response', response)
     res.status(200).json(response)
   })
 }
