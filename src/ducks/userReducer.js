@@ -35,7 +35,7 @@ const initialState = {
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case `${GET_USER}_FULFILLED`:
-      //Comment back in later
+      // Comment back in later
       // return {
       //   ...state,
       //   ...action.payload,

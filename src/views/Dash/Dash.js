@@ -18,8 +18,8 @@ class Dash extends Component {
     return (
       <div className="dash-container">
         {this.props.dashItems.map((dashItem, index) => {
-          console.log('dashItem', dashItem)
-          console.log('index', index)
+          // console.log('dashItem', dashItem)
+          // console.log('index', index)
           return (
             <div className="item-card" key={index}>
               <ItemCard

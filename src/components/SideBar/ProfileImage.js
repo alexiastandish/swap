@@ -66,7 +66,7 @@ export default class UpdateProfileImage extends Component {
       >
         <button onClick={this.props.closeModal}>Close</button>
         <div className="add-item-container">
-          <h1>Add Profile Picture</h1>
+          <h1>Edit Profile Picture</h1>
           <FileInput onChange={this.handleImageSelect} />
           <div className="image-input-container">
             <label>Image:</label>

@@ -12,7 +12,8 @@ $dark-gray: #707070;
   flex-direction: row;
   margin: 0 auto;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  width: 72vw;
   margin-top: 30px;
 }
 

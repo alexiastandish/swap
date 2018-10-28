@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
 import axios from 'axios'
+import './AddOffer.scss'
 
 class AddOffer extends Component {
   constructor(props) {
@@ -102,37 +103,47 @@ class AddOffer extends Component {
           },
         }}
       >
-        <button onClick={this.props.onRequestClose}>Close</button>
-        <div className="add-item-container">
-          <h1>Add Offer</h1>
-          <label>I would like to swap my: </label>
-          <select
-            value={this.state.selectedLoggedInUserItemId}
-            onChange={this.handleLoggedInUserItemSelect}
+        <div className="modal-style">
+          <button
+            style={{ background: 'none', color: '#2acbdc' }}
+            onClick={this.props.onRequestClose}
           >
-            {this.state.loggedInUserItems.map(item => (
-              <option key={item.items_id} value={item.items_id}>
-                {item.item_name}
-              </option>
-            ))}
-          </select>
-          <label>with: </label>
-          <select value={this.state.selectedUser} onChange={this.handleUserSelect}>
-            {this.state.allFollowingUsers.map(user => (
-              <option key={user.user_id} value={user.user_id}>
-                {user.username}
-              </option>
-            ))}
-          </select>
-          <label>for their: </label>
-          <select value={this.state.selectedItemId} onChange={this.handleItemSelect}>
-            {this.state.selectedUserItems.map(item => (
-              <option key={item.items_id} value={item.items_id}>
-                {item.item_name}
-              </option>
-            ))}
-          </select>
-          <button onClick={this.handleSubmit}>Submit</button>
+            <i className="fa fa-2x  fa-times" />
+          </button>
+          <div className="add-item-container">
+            <h1>Add Offer</h1>
+            <label>I would like to swap my: </label>
+            <select
+              value={this.state.selectedLoggedInUserItemId}
+              onChange={this.handleLoggedInUserItemSelect}
+            >
+              {this.state.loggedInUserItems.map(item => (
+                <option key={item.items_id} value={item.items_id}>
+                  {item.item_name}
+                </option>
+              ))}
+            </select>
+            <br />
+            <label>with: </label>
+            <select value={this.state.selectedUser} onChange={this.handleUserSelect}>
+              {this.state.allFollowingUsers.map(user => (
+                <option key={user.user_id} value={user.user_id}>
+                  {user.username}
+                </option>
+              ))}
+            </select>
+            <br />
+            <label>for their: </label>
+            <select value={this.state.selectedItemId} onChange={this.handleItemSelect}>
+              {this.state.selectedUserItems.map(item => (
+                <option key={item.items_id} value={item.items_id}>
+                  {item.item_name}
+                </option>
+              ))}
+            </select>
+            <br />
+            <button onClick={this.handleSubmit}>Submit</button>
+          </div>
         </div>
       </Modal>
     )

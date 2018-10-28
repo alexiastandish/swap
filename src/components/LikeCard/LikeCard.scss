@@ -17,7 +17,6 @@ $dark-gray: #707070;
     height: 250px;
     width: 250px;
     z-index: 1;
-    border: 1px $dark-gray solid;
     object-fit: cover;
     margin: 40px;
     margin-bottom: 10px;
@@ -37,7 +36,9 @@ $dark-gray: #707070;
     color: $dark-gray;
     font-family: $font-family;
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
   }
 }
 

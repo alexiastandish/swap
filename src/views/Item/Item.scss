@@ -15,6 +15,7 @@ $dark-gray: #707070;
   background-color: $light-gray;
   width: 100%;
   display: flex;
+  margin-top: 30px;
   justify-content: space-between;
 
   .right-section {
@@ -82,7 +83,6 @@ $dark-gray: #707070;
     width: 70vw;
     display: flex;
     flex-direction: row;
-    padding: 10px 60px;
     justify-content: flex-start;
 
     .description-section {

@@ -15,12 +15,10 @@ $dark-gray: #858585;
 .item-card {
   display: flex;
   flex-direction: column;
-  // line-height: 16px;
   background: $navy;
   width: 30%;
   margin-bottom: 30px;
-
-  // max-width: 400px;
+  margin-right: 3%;
 
   .item-image img {
     width: 100%;

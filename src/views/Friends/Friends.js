@@ -24,6 +24,7 @@ class Friends extends Component {
               <Link key={friend.user_id} to={`/profile/${friend.user_id}`}>
                 <div className="follow-container" key={friend.user_id}>
                   <img
+                    alt="friend"
                     src={friend.user_photo}
                     className="follow-photo"
                     style={{ width: '60px', height: '60px', borderRadius: '60%' }}

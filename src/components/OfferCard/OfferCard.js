@@ -13,7 +13,7 @@ function OfferCard(props) {
                 <img
                   src={props.offerImage.imageurl}
                   alt="default"
-                  style={{ borderRadius: '25px' }}
+                  style={{ borderRadius: '50%' }}
                 />
               </div>
             )}

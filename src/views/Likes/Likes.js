@@ -21,7 +21,7 @@ class Likes extends Component {
     // console.log('this.props', this.props)
     // console.log('this.props.images', this.props.images)
     return (
-      <div className="likes-container" style={{ margin: '40px' }}>
+      <div className="likes-container" style={{ width: '72vw', margin: '0 auto' }}>
         {this.props.likes &&
           this.props.likes.map(like => {
             return (

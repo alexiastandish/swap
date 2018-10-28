@@ -88,7 +88,7 @@ class Profile extends Component {
         <div className="profile-header">
           <div className="left">
             <div className="profile-photo">
-              <img src={this.props.userInfoById.user_photo} />
+              <img src={this.props.userInfoById.user_photo} alt="profile" />
             </div>
             <h1>{this.props.userInfoById && this.props.userInfoById.username}</h1>
           </div>
@@ -122,22 +122,12 @@ class Profile extends Component {
               <div className="profile-image" style={{ display: 'flex', justifyContent: 'center' }}>
                 <section className="edit-item-modal-container">
                   <button
-                    style={{
-                      color: 'white',
-                      background: '#2acbdc',
-                      width: '100px',
-                      borderRadius: '25px',
-                      height: '25px',
-                      fontFamily: 'Montserrat, sans-serif',
-                      fontWeight: '400',
-                    }}
                     className="profile-pic-button"
                     onClick={() => {
                       this.setState({ isUpdateProfileImageModalOpen: true })
                     }}
-                    className="edit-modal-button edit"
                   >
-                    Edit Profile Pic
+                    EDIT PROFILE PIC
                   </button>
                   {this.state.isUpdateProfileImageModalOpen && (
                     <ProfileImage
