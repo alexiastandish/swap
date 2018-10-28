@@ -1,4 +1,4 @@
-select l.like_id, u.username
+select l.like_id, u.user_id, u.username
 from likes l
 inner join users u on u.user_id = l.likinguser
 inner join items i on l.postid = i.items_id

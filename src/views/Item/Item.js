@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { getItem } from '../../ducks/itemReducer'
 import { getImages } from '../../ducks/imagesReducer'
+import { Link } from 'react-router-dom'
 import Modal from 'react-modal'
 import EditItemModal from './ItemModal/EditItemModal'
 import LikeButton from '../../components/LikeButton/LikeButton'
@@ -158,14 +159,27 @@ class Item extends Component {
 
             <div
               className="likes-section"
-              style={{ color: '#858585', fontSize: '12px', lineHeight: '16px' }}
+              style={{
+                color: '#858585',
+                fontSize: '12px',
+                lineHeight: '16px',
+                marginBottom: '20px',
+              }}
             >
               <p>users who like this item:</p>
-              <p>
-                {this.state.itemLikes.map((userLike, index) => {
-                  return <p key={index}>{userLike.username}</p>
-                })}
-              </p>
+              {this.state.itemLikes.map((userLike, index) => {
+                console.log('userLike', userLike)
+                return (
+                  <Link
+                    key={index}
+                    to={`/profile/${userLike.user_id}`}
+                    style={{ color: '#424c58', display: 'block', margin: '4px' }}
+                  >
+                    {' - '}
+                    {userLike.username}
+                  </Link>
+                )
+              })}
             </div>
 
             {isUsersItem && (
