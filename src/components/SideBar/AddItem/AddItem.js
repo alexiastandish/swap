@@ -76,52 +76,63 @@ class AddItem extends Component {
           },
         }}
       >
-        <button onClick={this.props.onRequestClose}>Close</button>
-        <div className="add-item-container">
-          <h1>Add Item</h1>
-          <label>Item Name: </label>
-          <input
-            value={this.state.itemName}
-            onChange={event => this.setState({ itemName: event.target.value })}
-          />
-          <label>Item Description: </label>
-          <input
-            value={this.state.itemDescription}
-            onChange={event => this.setState({ itemDescription: event.target.value })}
-          />
-          <FileInput onChange={this.handleImageSelect} />
-          {this.state.imageUrls.map((url, index) => {
-            return (
-              <div key={index} className="image-input-container">
-                <label>Image: {index + 1} </label>
-                {/* <input type="file" onChange={}/> */}
-                <input
-                  placeholder="Insert Image URL"
-                  value={url}
-                  onChange={event => {
-                    const nextImageUrls = [...this.state.imageUrls]
-                    nextImageUrls[index] = event.target.value
-                    this.setState({ imageUrls: nextImageUrls })
-                  }}
-                />
-                <button
-                  onClick={() => {
-                    this.removeImageUrl(index)
-                  }}
-                >
-                  X
-                </button>
-              </div>
-            )
-          })}
+        <div className="modal-style">
           <button
-            onClick={e => {
-              this.addImageUrl(e.target.value)
-            }}
+            style={{ background: 'none', color: '#2acbdc' }}
+            onClick={this.props.onRequestClose}
           >
-            Add Image
+            <i className="fa fa-2x  fa-times" />
           </button>
-          <button onClick={this.handleSubmit}>Submit</button>
+          <div className="add-item-container">
+            <h1>Add Item</h1>
+            <label>Item Name: </label>
+            <input
+              value={this.state.itemName}
+              onChange={event => this.setState({ itemName: event.target.value })}
+            />
+            <br />
+            <br />
+            <label>Item Description: </label>
+            <input
+              value={this.state.itemDescription}
+              onChange={event => this.setState({ itemDescription: event.target.value })}
+            />
+            <br />
+            <br />
+            <FileInput onChange={this.handleImageSelect} />
+            {this.state.imageUrls.map((url, index) => {
+              return (
+                <div key={index} className="image-input-container">
+                  <label>Image: {index + 1} </label>
+                  {/* <input type="file" onChange={}/> */}
+                  <input
+                    placeholder="Insert Image URL"
+                    value={url}
+                    onChange={event => {
+                      const nextImageUrls = [...this.state.imageUrls]
+                      nextImageUrls[index] = event.target.value
+                      this.setState({ imageUrls: nextImageUrls })
+                    }}
+                  />
+                  <button
+                    onClick={() => {
+                      this.removeImageUrl(index)
+                    }}
+                  >
+                    X
+                  </button>
+                </div>
+              )
+            })}
+            <button
+              onClick={e => {
+                this.addImageUrl(e.target.value)
+              }}
+            >
+              Add Image
+            </button>
+            <button onClick={this.handleSubmit}>Submit</button>
+          </div>
         </div>
       </Modal>
     )

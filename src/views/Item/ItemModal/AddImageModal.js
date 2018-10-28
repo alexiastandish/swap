@@ -3,6 +3,7 @@ import Modal from 'react-modal'
 import FileInput from 'react-simple-file-input'
 import { storage } from '../../../firebase'
 import axios from 'axios'
+import './ItemModal.scss'
 
 export default class AddImageModal extends Component {
   constructor(props) {
@@ -71,65 +72,53 @@ export default class AddImageModal extends Component {
             zIndex: 10,
           },
           content: {
-            width: '40vw',
+            width: '30vw',
             height: '50vh',
-            padding: '0px',
             margin: '0 auto',
             top: '22vh',
             backgroundColor: '#ffffff',
           },
         }}
       >
-        <button
-          style={{ position: 'absolute', float: 'right', fontFamily: 'Montserrat, sans-serif' }}
-          onClick={this.props.closeModal}
-        >
-          Close
-        </button>
-        <div className="add-item-container">
-          <h1
-            style={{
-              backgroundColor: '#2acbdc',
-              color: 'white',
-              fontFamily: 'Montserrat, sans-serif',
-              width: '100%',
-              padding: '0px',
-            }}
-          >
-            Add Image
-          </h1>
-          <FileInput onChange={this.handleImageSelect} />
-          {this.state.imageUrls.map((url, index) => {
-            return (
-              <div key={index} className="image-input-container">
-                <label>Image: {index + 1} </label>
-                <input
-                  placeholder="Insert Image URL"
-                  value={url}
-                  onChange={event => {
-                    const nextImageUrls = [...this.state.imageUrls]
-                    nextImageUrls[index] = event.target.value
-                    this.setState({ imageUrls: nextImageUrls })
-                  }}
-                />
-                <button
-                  onClick={() => {
-                    this.removeImageUrl(index)
-                  }}
-                >
-                  X
-                </button>
-              </div>
-            )
-          })}
-          <button
-            onClick={e => {
-              this.addImageUrl(e.target.value)
-            }}
-          >
-            Add Image
+        <div className="modal-style">
+          <button style={{ background: 'none', color: '#2acbdc' }} onClick={this.props.closeModal}>
+            <i className="fa fa-2x  fa-times" />
           </button>
-          <button onClick={this.handleSubmit}>Submit</button>
+          <div className="add-item-container">
+            <h1>Add Image</h1>
+            <FileInput onChange={this.handleImageSelect} />
+            {this.state.imageUrls.map((url, index) => {
+              return (
+                <div key={index} className="image-input-container">
+                  <label>Image: {index + 1} </label>
+                  <input
+                    placeholder="Insert Image URL"
+                    value={url}
+                    onChange={event => {
+                      const nextImageUrls = [...this.state.imageUrls]
+                      nextImageUrls[index] = event.target.value
+                      this.setState({ imageUrls: nextImageUrls })
+                    }}
+                  />
+                  <button
+                    onClick={() => {
+                      this.removeImageUrl(index)
+                    }}
+                  >
+                    X
+                  </button>
+                </div>
+              )
+            })}
+            <button
+              onClick={e => {
+                this.addImageUrl(e.target.value)
+              }}
+            >
+              Add Image
+            </button>
+            <button onClick={this.handleSubmit}>Submit</button>
+          </div>
         </div>
       </Modal>
     )

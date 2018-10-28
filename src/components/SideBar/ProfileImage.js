@@ -3,6 +3,7 @@ import Modal from 'react-modal'
 import FileInput from 'react-simple-file-input'
 import { storage } from '../../firebase'
 import axios from 'axios'
+import './ProfileImage.scss'
 
 export default class UpdateProfileImage extends Component {
   constructor(props) {
@@ -64,20 +65,27 @@ export default class UpdateProfileImage extends Component {
           },
         }}
       >
-        <button onClick={this.props.closeModal}>Close</button>
-        <div className="add-item-container">
-          <h1>Edit Profile Picture</h1>
-          <FileInput onChange={this.handleImageSelect} />
-          <div className="image-input-container">
-            <label>Image:</label>
-            <input
-              placeholder="Insert Image URL"
-              value={this.state.profilePicture}
-              onChange={event => this.setState({ profilePicture: event.target.value })}
-            />
+        <div className="modal-style">
+          <button
+            style={{ background: 'none', color: '#2acbdc', fontFamily: 'Montserrat, sans-serif' }}
+            onClick={this.props.closeModal}
+          >
+            <i className="fa fa-2x  fa-times" />
+          </button>
+          <div className="add-item-container">
+            <h1>Edit Profile Picture</h1>
+            <FileInput onChange={this.handleImageSelect} style={{ color: '#707070' }} />
+            <div className="image-input-container">
+              <label>Image:</label>
+              <input
+                placeholder="Insert Image URL"
+                value={this.state.profilePicture}
+                onChange={event => this.setState({ profilePicture: event.target.value })}
+              />
+            </div>
+            <br />
+            <button onClick={this.updateProfilePicture}>Submit</button>
           </div>
-
-          <button onClick={this.updateProfilePicture}>Submit</button>
         </div>
       </Modal>
     )

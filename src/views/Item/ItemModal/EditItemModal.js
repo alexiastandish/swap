@@ -44,20 +44,28 @@ export default class EditItemModal extends Component {
           },
         }}
       >
-        <button onClick={this.props.closeModal}>Close</button>
-        <div className="add-item-container">
-          <h1>Edit Item</h1>
-          <label>Item Name: </label>
-          <input
-            value={this.state.itemName}
-            onChange={event => this.setState({ itemName: event.target.value })}
-          />
-          <label>Item Description: </label>
-          <input
-            value={this.state.itemDescription}
-            onChange={event => this.setState({ itemDescription: event.target.value })}
-          />
-          <button onClick={this.handleSubmit}>Submit</button>
+        <div className="modal-style">
+          <button style={{ background: 'none', color: '#2acbdc' }} onClick={this.props.closeModal}>
+            <i className="fa fa-2x  fa-times" />
+          </button>
+          <div className="add-item-container">
+            <h1>Edit Item</h1>
+            <label>Item Name: </label>
+            <input
+              value={this.state.itemName}
+              onChange={event => this.setState({ itemName: event.target.value })}
+            />
+            <br />
+            <br />
+            <label>Item Description: </label>
+            <input
+              value={this.state.itemDescription}
+              onChange={event => this.setState({ itemDescription: event.target.value })}
+            />
+            <br />
+            <br />
+            <button onClick={this.handleSubmit}>Submit</button>
+          </div>
         </div>
       </Modal>
     )

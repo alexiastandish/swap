@@ -18,6 +18,9 @@ $dark-gray: #707070;
     color: $navy;
   }
 
+  input:focus {
+    padding: 0px;
+  }
   select::-ms-expand {
     font-family: $font-family;
   }

@@ -9,7 +9,7 @@ import LikeCard from '../../components/LikeCard/LikeCard'
 
 class Likes extends Component {
   componentDidMount() {
-    this.props.getLikes(this.props.user.user_id).then(response => {
+    this.props.getLikes(this.props.user && this.props.user.user_id).then(response => {
       response.value.forEach(item => {
         // console.log('response.value', response.value)
         this.props.getImages(item.items_id)
@@ -18,14 +18,12 @@ class Likes extends Component {
   }
 
   render() {
-    // console.log('this.props', this.props)
-    // console.log('this.props.images', this.props.images)
     return (
       <div className="likes-container" style={{ width: '72vw', margin: '0 auto' }}>
         {this.props.likes &&
-          this.props.likes.map(like => {
+          this.props.likes.map((like, index) => {
             return (
-              <div className="like-item" style={{ margin: '0px' }} key={like.items_id}>
+              <div className="like-item" style={{ margin: '0px' }} key={index}>
                 <LikeCard
                   item={like}
                   images={this.props.images[like.items_id]}

@@ -198,7 +198,7 @@ class Item extends Component {
                       item={this.props.item[0]}
                       images={this.props.images[this.props.item[0].items_id]}
                       closeModal={() => {
-                        this.setState({ isEditItemModalOpen: true })
+                        this.setState({ isEditItemModalOpen: false })
                       }}
                       onSubmit={this.onSubmit}
                       userId={this.props.user.user_id}

@@ -95,7 +95,7 @@ class AddOffer extends Component {
             zIndex: 10,
           },
           content: {
-            width: '40vw',
+            width: '30vw',
             height: '50vh',
             margin: '0 auto',
             top: '22vh',
@@ -124,6 +124,7 @@ class AddOffer extends Component {
               ))}
             </select>
             <br />
+            <br />
             <label>with: </label>
             <select value={this.state.selectedUser} onChange={this.handleUserSelect}>
               {this.state.allFollowingUsers.map(user => (
@@ -133,6 +134,7 @@ class AddOffer extends Component {
               ))}
             </select>
             <br />
+            <br />
             <label>for their: </label>
             <select value={this.state.selectedItemId} onChange={this.handleItemSelect}>
               {this.state.selectedUserItems.map(item => (
@@ -141,6 +143,7 @@ class AddOffer extends Component {
                 </option>
               ))}
             </select>
+            <br />
             <br />
             <button onClick={this.handleSubmit}>Submit</button>
           </div>

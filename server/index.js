@@ -10,7 +10,7 @@ const port = 3001
 const { strategy, getUser } = require('./controllers/authCtrl')
 const {
   getAllUsers,
-  getUserById,
+  // getUserById,
   getUserInfo,
   getUserProfileImage,
   updateProfileImage,
@@ -35,7 +35,6 @@ const { getNotifications } = require('./controllers/notificationsCtrl')
 const {
   getFollowingUsers,
   followUser,
-  getAllFollowingUsers,
   removeFollow,
   getFollowingItems,
 } = require('./controllers/followingCtrl')
@@ -114,7 +113,7 @@ app.get('/logout', (req, res) => {
 
 app.get('/api/me', getUser)
 
-app.get('/api/user/:id', getUserById)
+// app.get('/api/user/:id', getUserById)
 app.get('/api/userPhoto/:userId', getUserProfileImage)
 app.put('/api/updateProfileImage/:userId', updateProfileImage)
 
@@ -143,7 +142,7 @@ app.get('/api/notification/:userId', getNotifications)
 
 // // follows
 app.get('/api/users', getAllUsers)
-app.get('/api/follows', getAllFollowingUsers)
+// app.get('/api/follows', getAllFollowingUsers)
 app.post('/api/follow', followUser)
 app.get('/api/follows/:userId', getFollowingUsers)
 app.get('/api/following/:id', getFollowingItems)

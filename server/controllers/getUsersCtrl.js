@@ -8,16 +8,16 @@ const getAllUsers = (req, res) => {
     .catch(err => res.status(500).send(err))
 }
 
-const getUserById = (req, res) => {
-  const db = req.app.get('db')
-  db.getUserByItemId([req.params.id])
-    .then(response => {
-      const user = res.status(200).json(response)
-      // console.log('users', user)
-      return user
-    })
-    .catch(err => res.status(500).send(err))
-}
+// const getUserById = (req, res) => {
+//   const db = req.app.get('db')
+//   db.getUserByItemId([req.params.id])
+//     .then(response => {
+//       const user = res.status(200).json(response)
+//       // console.log('users', user)
+//       return user
+//     })
+//     .catch(err => res.status(500).send(err))
+// }
 
 const getUserInfo = (req, res) => {
   const db = req.app.get('db')
@@ -55,7 +55,7 @@ const updateProfileImage = (req, res) => {
 
 module.exports = {
   getAllUsers,
-  getUserById,
+  // getUserById,
   getUserInfo,
   getUserProfileImage,
   updateProfileImage,
