@@ -39,19 +39,6 @@ $dark-gray: #707070;
       justify-content: space-between;
       justify-items: space-between;
 
-      button {
-        font-family: $font-family;
-        border: 3px solid $blue;
-        border-radius: 20px;
-        font-weight: 400;
-        background-color: $blue;
-        color: white;
-        font-size: 12px;
-        margin-top: 10px;
-        width: 98%;
-        height: 30px;
-      }
-
       .edit {
         float: right;
       }
@@ -69,9 +56,14 @@ $dark-gray: #707070;
     margin-top: 10px;
     height: 30px;
     border: none;
+    -webkit-transition: background-color 0.2s ease-out;
+    -moz-transition: background-color 0.2s ease-out;
+    -o-transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
   }
 
   button:hover {
+    background-color: $dark-gray;
   }
 
   #like-button {

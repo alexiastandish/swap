@@ -186,6 +186,7 @@ class Item extends Component {
               <div className="edit-container">
                 <section className="edit-item-modal-container">
                   <button
+                    style={{ width: '200px' }}
                     onClick={() => {
                       this.setState({ isEditItemModalOpen: true })
                     }}
@@ -207,12 +208,13 @@ class Item extends Component {
                 </section>
                 <section className="edit-item-modal-container">
                   <button
+                    style={{ width: '200px' }}
                     onClick={() => {
                       this.setState({ isAddImageModalOpen: true })
                     }}
                     className="edit-modal-button edit"
                   >
-                    AddImage
+                    Add Image
                   </button>
                   {this.state.isAddImageModalOpen && (
                     <AddImageModal
@@ -227,7 +229,12 @@ class Item extends Component {
                   )}
                 </section>
 
-                <button id="edit-item-button" value="Delete" onClick={this.deleteItem}>
+                <button
+                  style={{ width: '200px' }}
+                  id="edit-item-button"
+                  value="Delete"
+                  onClick={this.deleteItem}
+                >
                   Remove Item
                 </button>
               </div>
