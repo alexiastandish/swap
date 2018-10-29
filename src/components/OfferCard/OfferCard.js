@@ -13,7 +13,7 @@ function OfferCard(props) {
                 <img
                   src={props.offerImage.imageurl}
                   alt="default"
-                  style={{ borderRadius: '50%' }}
+                  style={{ borderRadius: '50%', height: '12vw', width: '12vw' }}
                 />
               </div>
             )}
@@ -40,17 +40,17 @@ function OfferCard(props) {
       <div className="offer-buttons">
         <button
           onClick={() => {
-            props.updateStatus({ status: 2, offerId: props.offerId })
-          }}
-        >
-          Accept Offer
-        </button>
-        <button
-          onClick={() => {
             props.updateStatus({ status: 3, offerId: props.offerId })
           }}
         >
           Decline Offer
+        </button>
+        <button
+          onClick={() => {
+            props.updateStatus({ status: 2, offerId: props.offerId })
+          }}
+        >
+          Accept Offer
         </button>
       </div>
     </div>
