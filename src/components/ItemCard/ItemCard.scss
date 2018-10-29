@@ -73,10 +73,10 @@ $dark-gray: #858585;
 @media only screen and (max-width: 1200px) {
   .item-card {
     display: flex;
-    flex-direction: column;
     background: $navy;
-    width: 45%;
-    margin: 0 auto;
+    width: 32vw;
+    // margin: 0 auto;
+    justify-content: flex-start;
     margin-bottom: 30px;
 
     // max-width: 400px;
@@ -97,5 +97,13 @@ $dark-gray: #858585;
       font-size: 12px;
       font-weight: light;
     }
+  }
+  .item-card:hover {
+    display: flex;
+    flex-direction: column;
+    background: $blue;
+    width: 32vw;
+    margin-bottom: 30px;
+    margin-right: 3%;
   }
 }

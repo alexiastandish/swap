@@ -36,7 +36,7 @@ export default class EditItemModal extends Component {
             zIndex: 10,
           },
           content: {
-            width: '40vw',
+            width: '30vw',
             height: '50vh',
             margin: '0 auto',
             top: '22vh',

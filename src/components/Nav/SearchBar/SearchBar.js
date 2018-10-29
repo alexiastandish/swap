@@ -54,19 +54,12 @@ export default class SearchBar extends Component {
           }) => {
             return (
               <div>
-                <label
-                  style={{ marginTop: '1rem', display: 'block', margin: '5px' }}
-                  {...getLabelProps()}
-                />
+                <label style={{ display: 'block' }} {...getLabelProps()} />
                 <br />
                 <input
-                  style={{
-                    fontSize: '12px',
-                    fontWeight: '300',
-                    margin: '5px',
-                  }}
                   {...getInputProps({
-                    placeholder: 'Search All Users',
+                    // className: 'fa fa-2x fa-heart like',
+                    placeholder: 'Search Users',
                     onChange: this.inputOnChange,
                   })}
                 />
@@ -74,8 +67,6 @@ export default class SearchBar extends Component {
                   <div
                     className="downshift-dropdown"
                     style={{
-                      margin: '5px',
-                      marginTop: '0px',
                       position: 'absolute',
                       width: '220px',
                     }}
@@ -92,7 +83,7 @@ export default class SearchBar extends Component {
                               className="dropdown-item"
                               {...getItemProps({ key: index, index, user })}
                               style={{
-                                color: 'white',
+                                // color: 'white',
                                 margin: '5px',
                                 // backgroundColor: highlightedIndex === index ? 'lightgray' : 'white',
                                 // fontWeight: selectedItem === user ? 'bold' : 'normal',
