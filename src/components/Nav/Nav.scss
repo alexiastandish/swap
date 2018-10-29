@@ -97,7 +97,7 @@ $dark-gray: #858585;
     margin-top: 0px;
     // margin-bottom: 10px;
     justify-content: space-between;
-    width: 100vw;
+    width: 100%;
     right: 0;
     background: $blue;
     z-index: 450;
@@ -143,5 +143,8 @@ $dark-gray: #858585;
       background: $blue;
       left: 0;
     }
+  }
+  .menu {
+    margin-right: 20px;
   }
 }

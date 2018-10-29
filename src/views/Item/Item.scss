@@ -102,7 +102,7 @@ $dark-gray: #707070;
 
       .thumbnail {
         height: 150px;
-        margin-right: 20px;
+        margin-right: 5px;
       }
     }
     img {
@@ -121,13 +121,20 @@ $dark-gray: #707070;
     margin-top: 100px;
     justify-content: space-between;
   }
-  .multi-image-container {
-    flex-direction: row;
-    padding: 0px;
-    width: 100%;
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: flex-start;
+  .item-section {
+    .multi-image-container {
+      flex-direction: row;
+      padding: 0px;
+      width: 100%;
+      flex-wrap: wrap;
+      display: flex;
+      justify-content: flex-start;
+
+      .thumbnail {
+        height: 50px;
+        margin-right: 5px;
+      }
+    }
   }
 }
 // @media only screen and (max-width: 900px) {
