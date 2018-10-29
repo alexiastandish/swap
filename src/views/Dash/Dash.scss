@@ -29,3 +29,16 @@ $dark-gray: #707070;
     margin: 30px auto;
   }
 }
+
+@media only screen and (max-width: 786px) {
+  .dash-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 30px auto;
+    margin-top: 60px;
+  }
+}

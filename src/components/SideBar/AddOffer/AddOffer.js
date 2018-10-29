@@ -95,7 +95,7 @@ class AddOffer extends Component {
             zIndex: 10,
           },
           content: {
-            width: '30vw',
+            width: '40vw',
             height: '50vh',
             margin: '0 auto',
             top: '22vh',

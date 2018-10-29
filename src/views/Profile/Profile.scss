@@ -141,6 +141,16 @@ $dark-gray: #707070;
 
 @media only screen and (max-width: 768px) {
   .profile-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 30px auto;
+    margin-top: 60px;
+    // font-size: 12px;
+
     .profile-header {
       height: 8vh;
       font-family: $font-family;
@@ -148,13 +158,23 @@ $dark-gray: #707070;
       padding: 0;
       display: flex;
       margin: 0 auto;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 15px;
+      // align-items: center;
+      margin-top: 45px;
       margin-bottom: 15px;
+      flex-direction: row;
 
+      .profile-photo img {
+        margin-right: 2px;
+      }
+
+      .profile-pic-button {
+        float: left;
+        margin-top: 0px;
+        font-size: 8px;
+      }
       h1 {
-        font-size: 28px;
+        margin-left: 0px;
+        font-size: 18px;
       }
     }
   }

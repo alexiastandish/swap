@@ -107,3 +107,39 @@ $dark-gray: #858585;
     margin-right: 3%;
   }
 }
+
+@media only screen and (max-width: 786px) {
+  .item-card {
+    display: flex;
+    background: $navy;
+    width: 100%;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+
+    // max-width: 400px;
+
+    .item-image img {
+      // width: 100%;
+      object-fit: cover;
+    }
+
+    .timestamp-text {
+      display: none;
+    }
+
+    .item-description {
+      margin: 20px;
+      font-family: $font-family;
+      font-size: 12px;
+      font-weight: light;
+    }
+  }
+  .item-card:hover {
+    display: flex;
+    flex-direction: column;
+    background: $blue;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-right: 3%;
+  }
+}

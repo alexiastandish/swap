@@ -80,9 +80,20 @@ class SideBar extends Component {
             </nav>
           </div>
           <div className="Navbar__Link Navbar__Link-toggle">
-            <button className="mobile-button" onClick={this.handleAddItemClick}>
+            <button
+              className="mobile-button"
+              onClick={this.handleAddItemClick}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: '#2acbdc',
+                top: '0',
+                left: '0',
+                margin: '10px',
+              }}
+            >
               {this.state.isItemToggleOn ? (
-                'on'
+                <i className="fa fa-2x fa-circle" />
               ) : (
                 <div className="Navbar_Items">
                   <div className="mobile-nav-section">
@@ -103,20 +114,52 @@ class SideBar extends Component {
                     </Link>
                   </div>
 
-                  <a href="http://localhost:3001/logout">Logout</a>
-
+                  {/* ADD ITEM MOBILE MODAL SECTION */}
+                  <section className="mobile-modal-container" id="modal-mobile">
+                    <button onClick={this.toggleAddItemModal} className="add-item-button">
+                      Add Item
+                    </button>
+                    {this.state.isAddItemModalOpen && (
+                      <AddItem
+                        isOpen={this.state.isAddItemModalOpen}
+                        onRequestClose={this.toggleAddItemModal}
+                        addToItems={this.addToItems}
+                      />
+                    )}
+                  </section>
+                  {/* ADD OFFER MOBILE MODAL SECTION */}
+                  <section className="mobile-modal-container" id="modal-mobile">
+                    <button
+                      onClick={this.toggleOfferModal}
+                      className="add-offer-button"
+                      style={{ margin: '0 auto' }}
+                    >
+                      Add Offer
+                    </button>
+                    {this.state.isOfferModalOpen && (
+                      <AddOffer user={this.props.user} onRequestClose={this.toggleOfferModal} />
+                    )}
+                  </section>
                   <button
-                    className="close-mobile-button"
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: 'white',
+                      position: 'absolute',
+                      top: '0',
+                      left: '0',
+                      margin: '10px',
+                    }}
                     onClick={() => this.setState({ isItemToggleOn: false })}
                   >
-                    Close Menu
+                    <i className="fa fa-2x fa-circle" />
                   </button>
                 </div>
               )}
             </button>
           </div>
           {/* ADD ITEM MODAL SECTION */}
-          <section className="modal-container">
+          <section className="modal-container" id="modal-desktop">
             <button onClick={this.toggleAddItemModal} className="add-item-button">
               Add Item
             </button>
@@ -130,7 +173,7 @@ class SideBar extends Component {
           </section>
 
           {/* ADD OFFER MODAL SECTION */}
-          <section className="modal-container">
+          <section className="modal-container" id="modal-desktop">
             <button onClick={this.toggleOfferModal} className="add-offer-button">
               Add Offer
             </button>

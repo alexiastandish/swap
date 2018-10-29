@@ -112,6 +112,24 @@ $dark-gray: #707070;
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .item-container {
+    background-image: none;
+    background-color: $light-gray;
+    width: 100%;
+    display: flex;
+    margin-top: 100px;
+    justify-content: space-between;
+  }
+  .multi-image-container {
+    flex-direction: row;
+    padding: 0px;
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-start;
+  }
+}
 // @media only screen and (max-width: 900px) {
 //   .item-container {
 //     display: flex;
