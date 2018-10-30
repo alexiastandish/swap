@@ -75,7 +75,7 @@ class SideBar extends Component {
               <Link to="/dash">Dash</Link>
               <Link to="/offers">Offers</Link>
               <Link to="/likes">Likes</Link>
-              <Link to="/friends">Friends</Link>
+              <Link to="/friends">Following</Link>
               <Link to={`/myProfile/${this.props.user.user_id}`}>Profile</Link>
             </nav>
           </div>
@@ -89,7 +89,7 @@ class SideBar extends Component {
                 color: '#2acbdc',
                 top: '0',
                 left: '0',
-                margin: '10px',
+                margin: '6px',
               }}
             >
               {this.state.isItemToggleOn ? (
@@ -107,7 +107,7 @@ class SideBar extends Component {
                       <div className="Navbar_Link">Likes</div>
                     </Link>
                     <Link to="/friends">
-                      <div className="Navbar_Link">Friends</div>
+                      <div className="Navbar_Link">Following</div>
                     </Link>
                     <Link to={`/myProfile/${this.props.user.user_id}`}>
                       <div className="Navbar_Link">Profile</div>
@@ -148,7 +148,7 @@ class SideBar extends Component {
                       position: 'absolute',
                       top: '0',
                       left: '0',
-                      margin: '10px',
+                      margin: '6px',
                     }}
                     onClick={() => this.setState({ isItemToggleOn: false })}
                   >

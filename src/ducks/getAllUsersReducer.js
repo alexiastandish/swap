@@ -7,7 +7,10 @@ export function getAllUsers() {
     type: GET_ALL_USERS,
     payload: axios
       .get('/api/users')
-      .then(res => res.data)
+      .then(res => {
+        console.log('res', res)
+        return res.data
+      })
       .catch(err => {
         console.log('err', err)
       }),

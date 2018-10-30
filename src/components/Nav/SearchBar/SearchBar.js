@@ -15,7 +15,7 @@ export default class SearchBar extends Component {
 
     this.fetchAllUsers = this.fetchAllUsers.bind(this)
     this.inputOnChange = this.inputOnChange.bind(this)
-    this.downshiftOnChange = this.downshiftOnChange.bind(this)
+    // this.downshiftOnChange = this.downshiftOnChange.bind(this)
   }
 
   inputOnChange(event) {
@@ -26,7 +26,7 @@ export default class SearchBar extends Component {
   }
 
   downshiftOnChange(selectedUser) {
-    alert(`you selected user ${selectedUser.username}`)
+    window.location.reload(selectedUser)
   }
 
   fetchAllUsers() {
@@ -40,6 +40,7 @@ export default class SearchBar extends Component {
     return (
       <div className="search-bar-container">
         <Downshift
+          item={this.state.allUsers}
           onChange={this.downshiftOnChange}
           itemToString={item => (item ? item.title : '')}
         >
@@ -73,23 +74,26 @@ export default class SearchBar extends Component {
                   >
                     {inputValue &&
                       this.state.allUsers
-                        .filter(user =>
-                          user.username.toLowerCase().includes(inputValue.toLowerCase())
+                        .filter(item =>
+                          item.username.toLowerCase().includes(inputValue.toLowerCase())
                         )
-                        .slice(0, 10)
-                        .map((user, index) => {
+                        .slice(0, 5)
+                        .map((item, index) => {
                           return (
                             <div
                               className="dropdown-item"
-                              {...getItemProps({ key: index, index, user })}
+                              {...getItemProps({ key: index, index, item })}
                               style={{
-                                // color: 'white',
+                                color: 'white',
                                 margin: '5px',
-                                // backgroundColor: highlightedIndex === index ? 'lightgray' : 'white',
-                                // fontWeight: selectedItem === user ? 'bold' : 'normal',
+                                color: selectedItem === item ? 'white' : 'lightgray',
+                                backgroundColor: highlightedIndex === index ? 'lightgray' : 'white',
+                                fontWeight: selectedItem === item ? 'bold' : 'normal',
                               }}
                             >
-                              <Link to={`/profile/${user.user_id}`}>{user.username}</Link>
+                              {/* {this.downshiftOnChange(item.user_id)} */}
+                              <Link to={`/profile/${item.user_id}`}>{item.username}</Link>
+                              {this.downshiftOnChange}
                             </div>
                           )
                         })}
