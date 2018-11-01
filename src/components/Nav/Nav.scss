@@ -96,12 +96,16 @@ $dark-gray: #858585;
     margin: 0 auto;
     margin-top: 0px;
     // margin-bottom: 10px;
-    justify-content: space-between;
     width: 100%;
     right: 0;
     background: $blue;
-    z-index: 450;
+    z-index: 500;
     color: white;
+    justify-content: space-between;
+    padding-left: 40px;
+
+    padding-right: 30px;
+    align-content: center;
   }
 
   .search-bar-container {
@@ -111,19 +115,18 @@ $dark-gray: #858585;
     color: white;
     font-size: 14px;
     margin-left: 14px;
+    width: 150px;
+    padding-top: 2px;
   }
 
-  .nav-container a {
+  .nav-container .menu a {
     color: white;
     font-family: $font-family;
     font-size: 12px;
     font-weight: 400;
-    right: 0;
-    padding-left: 0px;
-    padding: 13px;
   }
 
-  .nav-container a:hover {
+  .nav-container .menu a:hover {
     font-family: $font-family;
     font-size: 12px;
     font-weight: 400;
@@ -134,13 +137,10 @@ $dark-gray: #858585;
   input::placeholder {
     color: white;
   }
-  .nav-container input {
-    color: white;
-  }
+
   .search-bar-container {
     .downshift-dropdown {
       margin-top: 0px;
-      background: $blue;
       left: 0;
     }
   }

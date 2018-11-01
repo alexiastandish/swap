@@ -8,6 +8,7 @@ import Modal from 'react-modal'
 import AddItem from './AddItem/AddItem'
 import AddOffer from './AddOffer/AddOffer'
 import axios from 'axios'
+import Toggle from '../Toggle/Toggle'
 
 class SideBar extends Component {
   constructor(props) {
@@ -80,107 +81,89 @@ class SideBar extends Component {
             </nav>
           </div>
           <div className="Navbar__Link Navbar__Link-toggle">
-            <button
-              className="mobile-button"
-              onClick={this.handleAddItemClick}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: '#2acbdc',
-                top: '0',
-                left: '0',
-                margin: '6px',
-              }}
-            >
-              {this.state.isItemToggleOn ? (
-                <i className="fa fa-2x fa-circle" />
-              ) : (
-                <div className="Navbar_Items">
-                  <div className="mobile-nav-section">
-                    <Link to="/dash">
-                      <div className="Navbar_Link">Dash</div>
-                    </Link>
-                    <Link to="/offers">
-                      <div className="Navbar_Link">Offers</div>
-                    </Link>
-                    <Link to="/likes">
-                      <div className="Navbar_Link">Likes</div>
-                    </Link>
-                    <Link to="/friends">
-                      <div className="Navbar_Link">Following</div>
-                    </Link>
-                    <Link to={`/myProfile/${this.props.user.user_id}`}>
-                      <div className="Navbar_Link">Profile</div>
-                    </Link>
-                  </div>
-
-                  {/* ADD ITEM MOBILE MODAL SECTION */}
-                  <section className="mobile-modal-container" id="modal-mobile">
-                    <button onClick={this.toggleAddItemModal} className="add-item-button">
-                      Add Item
-                    </button>
-                    {this.state.isAddItemModalOpen && (
-                      <AddItem
-                        isOpen={this.state.isAddItemModalOpen}
-                        onRequestClose={this.toggleAddItemModal}
-                        addToItems={this.addToItems}
+            <Toggle>
+              {({ on, toggle }) => (
+                <div>
+                  {on && (
+                    <div className="Navbar_Items">
+                      <div className="mobile-nav-section">
+                        <Link to="/dash">
+                          <div className="Navbar_Link">Dash</div>
+                        </Link>
+                        <Link to="/offers">
+                          <div className="Navbar_Link">Offers</div>
+                        </Link>
+                        <Link to="/likes">
+                          <div className="Navbar_Link">Likes</div>
+                        </Link>
+                        <Link to="/friends">
+                          <div className="Navbar_Link">Following</div>
+                        </Link>
+                        <Link to={`/myProfile/${this.props.user.user_id}`}>
+                          <div className="Navbar_Link">Profile</div>
+                        </Link>
+                      </div>
+                      {/* ADD ITEM MOBILE MODAL SECTION */}
+                      <section className="mobile-modal-container" id="modal-mobile">
+                        <button onClick={this.toggleAddItemModal} className="add-item-button">
+                          Add Item
+                        </button>
+                        {this.state.isAddItemModalOpen && (
+                          <AddItem
+                            isOpen={this.state.isAddItemModalOpen}
+                            onRequestClose={this.toggleAddItemModal}
+                            addToItems={this.addToItems}
+                          />
+                        )}
+                      </section>
+                      {/* ADD OFFER MOBILE MODAL SECTION */}
+                      <section className="mobile-modal-container" id="modal-mobile">
+                        <button
+                          onClick={this.toggleOfferModal}
+                          className="add-offer-button"
+                          style={{ margin: '0 auto' }}
+                        >
+                          Add Offer
+                        </button>
+                        {this.state.isOfferModalOpen && (
+                          <AddOffer user={this.props.user} onRequestClose={this.toggleOfferModal} />
+                        )}
+                      </section>
+                      <i
+                        className="fa fa-2x fa-circle"
+                        style={{
+                          position: 'absolute',
+                          zIndex: '500',
+                          color: 'white',
+                          width: '50px',
+                          margin: '10px',
+                          marginTop: '10px',
+                          height: '50px',
+                          top: '0',
+                          left: '0',
+                        }}
+                        onClick={toggle}
                       />
-                    )}
-                  </section>
-                  {/* ADD OFFER MOBILE MODAL SECTION */}
-                  <section className="mobile-modal-container" id="modal-mobile">
-                    <button
-                      onClick={this.toggleOfferModal}
-                      className="add-offer-button"
-                      style={{ margin: '0 auto' }}
-                    >
-                      Add Offer
-                    </button>
-                    {this.state.isOfferModalOpen && (
-                      <AddOffer user={this.props.user} onRequestClose={this.toggleOfferModal} />
-                    )}
-                  </section>
-                  <button
+                    </div>
+                  )}
+
+                  <i
+                    className="fa fa-2x fa-circle"
                     style={{
-                      background: 'none',
-                      border: 'none',
-                      color: 'white',
-                      position: 'absolute',
-                      top: '0',
-                      left: '0',
-                      margin: '6px',
+                      position: 'fixed',
+                      zIndex: '-200',
+                      color: '#2acbdc',
+                      width: '50px',
+                      margin: '10px',
+                      // marginTop: '60px',
+                      height: '50px',
                     }}
-                    onClick={() => this.setState({ isItemToggleOn: false })}
-                  >
-                    <i className="fa fa-2x fa-circle" />
-                  </button>
+                    onClick={toggle}
+                  />
                 </div>
               )}
-            </button>
+            </Toggle>
           </div>
-          {/* ADD ITEM MODAL SECTION */}
-          <section className="modal-container" id="modal-desktop">
-            <button onClick={this.toggleAddItemModal} className="add-item-button">
-              Add Item
-            </button>
-            {this.state.isAddItemModalOpen && (
-              <AddItem
-                isOpen={this.state.isAddItemModalOpen}
-                onRequestClose={this.toggleAddItemModal}
-                addToItems={this.addToItems}
-              />
-            )}
-          </section>
-
-          {/* ADD OFFER MODAL SECTION */}
-          <section className="modal-container" id="modal-desktop">
-            <button onClick={this.toggleOfferModal} className="add-offer-button">
-              Add Offer
-            </button>
-            {this.state.isOfferModalOpen && (
-              <AddOffer user={this.props.user} onRequestClose={this.toggleOfferModal} />
-            )}
-          </section>
         </div>
       )
     )

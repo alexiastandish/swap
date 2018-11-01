@@ -83,16 +83,11 @@ export default class SearchBar extends Component {
                             <div
                               className="dropdown-item"
                               {...getItemProps({ key: index, index, item })}
-                              style={{
-                                color: 'white',
-                                margin: '5px',
-                                color: selectedItem === item ? 'white' : 'lightgray',
-                                backgroundColor: highlightedIndex === index ? 'lightgray' : 'white',
-                                fontWeight: selectedItem === item ? 'bold' : 'normal',
-                              }}
                             >
                               {/* {this.downshiftOnChange(item.user_id)} */}
-                              <Link to={`/profile/${item.user_id}`}>{item.username}</Link>
+                              <Link to={`/profile/${item.user_id}`} className="dropdown-item">
+                                {item.username}
+                              </Link>
                               {this.downshiftOnChange}
                             </div>
                           )

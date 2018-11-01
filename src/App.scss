@@ -6,6 +6,10 @@ $navy: #424c58;
 $light-gray: #e5e5e5;
 $dark-gray: #707070;
 
+body {
+  width: 100%;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -18,7 +22,7 @@ button:focus {
   display: flex;
   background-color: $light-gray;
   min-height: 100vh;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   z-index: -1;
   font-family: $font-family;
@@ -303,13 +307,23 @@ button:focus {
   }
 }
 
-@media only screen and (max-width: 786px) {
+@media only screen and (max-width: 860px) {
+  // .App {
+  //   display: flex;
+  //   background-color: $light-gray;
+  //   min-height: 100vh;
+  //   width: 100vw;
+  //   height: 100%;
+  //   z-index: -1;
+  //   font-family: $font-family;
+
   .body-container {
     flex-direction: column;
     display: flex;
     background-color: $light-gray;
     height: 100%;
     margin: 0 auto;
-    width: 90vw;
+    width: 80%;
   }
+  // }
 }
