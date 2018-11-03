@@ -79,7 +79,36 @@ class SideBar extends Component {
               <Link to="/friends">Following</Link>
               <Link to={`/myProfile/${this.props.user.user_id}`}>Profile</Link>
             </nav>
+
+            <div className="modal-buttons">
+              {/* ADD ITEM MODAL SECTION */}
+
+              <button onClick={this.toggleAddItemModal} className="add-item-button">
+                Add Item
+              </button>
+              {this.state.isAddItemModalOpen && (
+                <AddItem
+                  isOpen={this.state.isAddItemModalOpen}
+                  onRequestClose={this.toggleAddItemModal}
+                  addToItems={this.addToItems}
+                />
+              )}
+
+              {/* ADD OFFER MODAL SECTION */}
+
+              <button
+                onClick={this.toggleOfferModal}
+                className="add-offer-button"
+                style={{ margin: '0 auto' }}
+              >
+                Add Offer
+              </button>
+              {this.state.isOfferModalOpen && (
+                <AddOffer user={this.props.user} onRequestClose={this.toggleOfferModal} />
+              )}
+            </div>
           </div>
+
           <div className="Navbar__Link Navbar__Link-toggle">
             <Toggle>
               {({ on, toggle }) => (

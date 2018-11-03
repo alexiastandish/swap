@@ -11,6 +11,7 @@ $dark-gray: #707070;
   background-color: $blue;
   flex-direction: column;
   height: 100%;
+
   max-width: 600px;
   min-width: 300px;
 
@@ -51,6 +52,65 @@ $dark-gray: #707070;
     letter-spacing: 1px;
     transition: 0.25s ease-in;
   }
+
+  .modal-buttons {
+    justify-content: center;
+    margin: 0 auto;
+    display: flex;
+
+    .add-item-button {
+      font-family: $font-family;
+      background: $blue;
+      border: 2px solid white;
+      padding: 8px 0px;
+      border-radius: 20px;
+      font-size: 14px;
+      text-align: center;
+      color: white;
+      margin: 0 auto;
+      position: absolute;
+      bottom: 165px;
+      width: 8%;
+      min-width: 130px;
+    }
+    .add-offer-button {
+      font-family: $font-family;
+      border: 2px solid white;
+      padding: 8px 0px;
+      background: $blue;
+      border-radius: 20px;
+      font-size: 14px;
+      text-align: center;
+      color: white;
+      margin: 0 auto;
+      position: absolute;
+      bottom: 120px;
+      width: 8%;
+      min-width: 130px;
+    }
+
+    .add-item-button:hover {
+      color: $navy;
+      opacity: 0.2;
+      font-weight: 500;
+      border: 2px solid $navy;
+      transition: 0.25s ease-in;
+    }
+    .add-offer-button:hover {
+      color: $navy;
+      opacity: 0.2;
+      font-weight: 500;
+      border: 2px solid $navy;
+      transition: 0.25s ease-in;
+    }
+  }
+
+  .modal-container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    font-family: $font-family;
+  }
 }
 
 .Navbar__Link .Navbar__Link-toggle {
@@ -64,59 +124,6 @@ $dark-gray: #707070;
 }
 .Navbar__Link-toggle {
   display: none;
-}
-
-.add-item-button {
-  font-family: $font-family;
-  background: $blue;
-  border: 2px solid white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 14px;
-  text-align: center;
-  color: white;
-  margin: 0 auto;
-  position: absolute;
-  bottom: 165px;
-  width: 10%;
-  min-width: 130px;
-}
-.add-offer-button {
-  font-family: $font-family;
-  border: 2px solid white;
-  padding: 8px 16px;
-  background: $blue;
-  border-radius: 20px;
-  font-size: 14px;
-  text-align: center;
-  color: white;
-  margin: 0 auto;
-  position: absolute;
-  bottom: 120px;
-  width: 10%;
-  min-width: 130px;
-}
-
-.add-item-button:hover {
-  color: $navy;
-  opacity: 0.2;
-  font-weight: 500;
-  border: 2px solid $navy;
-  transition: 0.25s ease-in;
-}
-.add-offer-button:hover {
-  color: $navy;
-  opacity: 0.2;
-  font-weight: 500;
-  border: 2px solid $navy;
-  transition: 0.25s ease-in;
-}
-
-.modal-container {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  font-family: $font-family;
 }
 
 .Navbar_Items {
