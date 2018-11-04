@@ -84,11 +84,6 @@ $dark-gray: #707070;
       text-transform: uppercase;
     }
 
-    button {
-      font-family: $font-family;
-      font-weight: 300;
-    }
-
     .right {
       width: 100%;
     }
@@ -140,7 +135,7 @@ $dark-gray: #707070;
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 568px) {
   .profile-container {
     display: flex;
     flex-direction: column;
@@ -165,7 +160,18 @@ $dark-gray: #707070;
       flex-direction: row;
       margin-top: 60px;
 
+      .right {
+        button {
+          font-size: 10px;
+          min-width: 20px;
+        }
+      }
+
       .profile-photo img {
+        object-fit: cover;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
         margin-right: 2px;
       }
 
@@ -177,7 +183,7 @@ $dark-gray: #707070;
       }
       h1 {
         margin-left: 0px;
-        font-size: 18px;
+        font-size: 14px;
       }
     }
   }

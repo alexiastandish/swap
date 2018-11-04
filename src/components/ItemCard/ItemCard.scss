@@ -74,7 +74,7 @@ $dark-gray: #858585;
   .item-card {
     display: flex;
     background: $navy;
-    width: 32vw;
+    width: 100%;
     // margin: 0 auto;
     justify-content: flex-start;
     margin-bottom: 30px;
@@ -108,7 +108,7 @@ $dark-gray: #858585;
   }
 }
 
-@media only screen and (max-width: 786px) {
+@media only screen and (max-width: 586px) {
   .item-card {
     display: flex;
     background: $navy;

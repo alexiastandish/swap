@@ -105,7 +105,7 @@ class Profile extends Component {
             ) : (
               <button
                 id="follow-button"
-                className="Follow"
+                value="Follow"
                 style={{ boxShadow: 'none' }}
                 onClick={() =>
                   this.followUser({

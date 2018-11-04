@@ -56,12 +56,35 @@ input:focus {
   background: $dark-gray;
 }
 
-@media only screen and (max-width: 768px) {
-  // .downshift-dropdown {
-  //   font-family: $font-family;
-  //   background: white;
-  //   z-index: 300;
+@media only screen and (max-width: 568px) {
+  .downshift-dropdown {
+    font-family: $font-family;
+    background: white;
+    margin-top: 0px;
+    z-index: 1200;
+  }
+
+  .downshift-dropdown:focus {
+    outline: none;
+    font-family: $font-family;
+    z-index: 1200;
+  }
+
+  input {
+    font-family: $font-family;
+    z-index: 1200;
+  }
+
+  // .downshift-0-input {
+  //   outline: none;
+  //   box-shadow: none;
+  //   color: red;
   // }
+  .dropdown-item {
+    font-family: $font-family;
+    background: white;
+    margin-top: 0px;
+  }
   input::placeholder {
     color: white;
   }

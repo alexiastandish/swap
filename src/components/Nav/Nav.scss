@@ -7,7 +7,7 @@ $light-gray: #e5e5e5;
 $dark-gray: #858585;
 
 .nav-container {
-  height: 6vh;
+  height: 5vh;
   width: 72vw;
   border-bottom: 1px solid #858585;
   align-items: center;
@@ -19,7 +19,7 @@ $dark-gray: #858585;
 
   .search-bar-container {
     align-content: center;
-    margin-top: 10px;
+    // margin-top: 10px;
   }
 
   .downshift-dropdown {
@@ -84,7 +84,7 @@ $dark-gray: #858585;
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 568px) {
   .nav-container {
     height: 7vh;
     border-bottom: none;

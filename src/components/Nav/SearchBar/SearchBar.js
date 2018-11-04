@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Downshift from 'downshift'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import '../../Nav/Nav.scss'
+// import '../../Nav/Nav.scss'
 import './SearchBar.scss'
 
 export default class SearchBar extends Component {
@@ -62,6 +62,7 @@ export default class SearchBar extends Component {
                     style={{
                       position: 'absolute',
                       width: '220px',
+                      marginTop: '0px',
                     }}
                   >
                     {inputValue &&

@@ -132,10 +132,10 @@ $dark-gray: #707070;
 
 @media only screen and (max-width: 1200px) {
   .sidebar-container {
-    width: 22vw;
+    width: 25vw;
     .desktop-sidebar {
       width: 100%;
-      min-width: 200px;
+      min-width: 100px;
       max-width: none;
     }
     img {
@@ -148,7 +148,7 @@ $dark-gray: #707070;
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 568px) {
   .sidebar-container {
     position: fixed;
     height: 100vh;
