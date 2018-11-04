@@ -97,6 +97,7 @@ class Profile extends Component {
               <button
                 id="follow-button"
                 value="Unfollow"
+                style={{ boxShadow: 'none' }}
                 onClick={() => this.unfollowUser(this.props.userInfoById.user_id)}
               >
                 <div className="fa fa-3x fa-times-circle" style={{ color: '#2acbdc' }} />
@@ -105,6 +106,7 @@ class Profile extends Component {
               <button
                 id="follow-button"
                 className="Follow"
+                style={{ boxShadow: 'none' }}
                 onClick={() =>
                   this.followUser({
                     user_followingid: this.props.userInfoById.user_id,

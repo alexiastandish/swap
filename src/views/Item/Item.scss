@@ -56,6 +56,7 @@ $dark-gray: #707070;
     margin-top: 10px;
     height: 30px;
     border: none;
+    padding: 0px;
     -webkit-transition: background-color 0.2s ease-out;
     -moz-transition: background-color 0.2s ease-out;
     -o-transition: background-color 0.2s ease-out;
@@ -63,7 +64,9 @@ $dark-gray: #707070;
   }
 
   button:hover {
-    background-color: $dark-gray;
+    background-color: $light-gray;
+    color: $blue;
+    border: 2px solid $blue;
   }
 
   #like-button {

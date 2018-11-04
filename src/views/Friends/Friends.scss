@@ -32,6 +32,13 @@ $dark-gray: #707070;
     border-bottom: 1px $dark-gray solid;
     color: $blue;
   }
+  a:hover {
+    justify-content: space-around;
+    align-content: center;
+    border-bottom: 1px $dark-gray solid;
+    color: $blue;
+    font-weight: bold;
+  }
   .follow-name {
     padding-left: 20px;
   }

@@ -92,11 +92,11 @@ class AddOffer extends Component {
         style={{
           overlay: {
             backgroundColor: 'rgba(253, 253, 253, 0.8)',
-            zIndex: 10,
+            zIndex: 80000,
           },
           content: {
-            width: '40vw',
-            height: '50vh',
+            width: '65vw',
+            height: '40vh',
             margin: '0 auto',
             top: '22vh',
             backgroundColor: '#ffffff',
@@ -104,12 +104,11 @@ class AddOffer extends Component {
         }}
       >
         <div className="modal-style">
-          <button
+          <i
             style={{ background: 'none', color: '#2acbdc' }}
             onClick={this.props.onRequestClose}
-          >
-            <i className="fa fa-2x  fa-times" />
-          </button>
+            className="fa fa-2x  fa-times"
+          />
           <div className="add-item-container">
             <h1>Add Offer</h1>
             <label>I would like to swap my: </label>
@@ -123,18 +122,14 @@ class AddOffer extends Component {
                 </option>
               ))}
             </select>
-            <br />
-            <br />
-            <label>with: </label>
+            {'      '} <label>with: </label>
             <select value={this.state.selectedUser} onChange={this.handleUserSelect}>
               {this.state.allFollowingUsers.map(user => (
                 <option key={user.user_id} value={user.user_id}>
                   {user.username}
                 </option>
               ))}
-            </select>
-            <br />
-            <br />
+            </select>{' '}
             <label>for their: </label>
             <select value={this.state.selectedItemId} onChange={this.handleItemSelect}>
               {this.state.selectedUserItems.map(item => (

@@ -115,61 +115,66 @@ class SideBar extends Component {
                 <div>
                   {on && (
                     <div className="Navbar_Items">
-                      <div className="mobile-nav-section">
-                        <Link to="/dash">
-                          <div className="Navbar_Link">Dash</div>
-                        </Link>
-                        <Link to="/offers">
-                          <div className="Navbar_Link">Offers</div>
-                        </Link>
-                        <Link to="/likes">
-                          <div className="Navbar_Link">Likes</div>
-                        </Link>
-                        <Link to="/friends">
-                          <div className="Navbar_Link">Following</div>
-                        </Link>
-                        <Link to={`/myProfile/${this.props.user.user_id}`}>
-                          <div className="Navbar_Link">Profile</div>
-                        </Link>
+                      {/* <div className="mobile-nav-section"> */}
+                      <Link to="/dash">
+                        <div className="Navbar_Link">Dash</div>
+                      </Link>
+                      <Link to="/offers">
+                        <div className="Navbar_Link">Offers</div>
+                      </Link>
+                      <Link to="/likes">
+                        <div className="Navbar_Link">Likes</div>
+                      </Link>
+                      <Link to="/friends">
+                        <div className="Navbar_Link">Following</div>
+                      </Link>
+                      <Link to={`/myProfile/${this.props.user.user_id}`}>
+                        <div className="Navbar_Link">Profile</div>
+                      </Link>
+                      {/* </div> */}
+
+                      <div className="modal-buttons-mobile">
+                        {/* ADD ITEM MOBILE MODAL SECTION */}
+                        <section id="modal-mobile">
+                          <button onClick={this.toggleAddItemModal} className="add-item-button">
+                            Add Item
+                          </button>
+                          {this.state.isAddItemModalOpen && (
+                            <AddItem
+                              isOpen={this.state.isAddItemModalOpen}
+                              onRequestClose={this.toggleAddItemModal}
+                              addToItems={this.addToItems}
+                            />
+                          )}
+                        </section>
+                        {/* ADD OFFER MOBILE MODAL SECTION */}
+                        <section id="modal-mobile">
+                          <button
+                            onClick={this.toggleOfferModal}
+                            className="add-offer-button"
+                            style={{ margin: '0 auto' }}
+                          >
+                            Add Offer
+                          </button>
+                          {this.state.isOfferModalOpen && (
+                            <AddOffer
+                              user={this.props.user}
+                              onRequestClose={this.toggleOfferModal}
+                            />
+                          )}
+                        </section>
                       </div>
-                      {/* ADD ITEM MOBILE MODAL SECTION */}
-                      <section className="mobile-modal-container" id="modal-mobile">
-                        <button onClick={this.toggleAddItemModal} className="add-item-button">
-                          Add Item
-                        </button>
-                        {this.state.isAddItemModalOpen && (
-                          <AddItem
-                            isOpen={this.state.isAddItemModalOpen}
-                            onRequestClose={this.toggleAddItemModal}
-                            addToItems={this.addToItems}
-                          />
-                        )}
-                      </section>
-                      {/* ADD OFFER MOBILE MODAL SECTION */}
-                      <section className="mobile-modal-container" id="modal-mobile">
-                        <button
-                          onClick={this.toggleOfferModal}
-                          className="add-offer-button"
-                          style={{ margin: '0 auto' }}
-                        >
-                          Add Offer
-                        </button>
-                        {this.state.isOfferModalOpen && (
-                          <AddOffer user={this.props.user} onRequestClose={this.toggleOfferModal} />
-                        )}
-                      </section>
                       <i
                         className="fa fa-2x fa-circle"
                         style={{
                           position: 'absolute',
                           zIndex: '500',
                           color: 'white',
-                          width: '50px',
                           margin: '10px',
                           marginTop: '10px',
-                          height: '50px',
                           top: '0',
                           left: '0',
+                          fontSize: '24px',
                         }}
                         onClick={toggle}
                       />
@@ -181,11 +186,9 @@ class SideBar extends Component {
                     style={{
                       position: 'fixed',
                       zIndex: '-200',
-                      color: '#2acbdc',
-                      width: '50px',
+                      color: 'white',
                       margin: '10px',
-                      // marginTop: '60px',
-                      height: '50px',
+                      fontSize: '24px',
                     }}
                     onClick={toggle}
                   />

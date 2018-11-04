@@ -10,7 +10,7 @@ $dark-gray: #858585;
   font-family: $font-family;
   background: white;
   z-index: 300;
-  margin-left: 40px;
+  // margin-left: 40px;
 }
 
 .downshift-dropdown:focus {
@@ -38,13 +38,20 @@ input:focus {
   color: $navy;
 }
 
-.dropdown-item {
+.dropdown-item a {
   font-weight: 400;
+  color: $blue;
+  // margin: 5px;
+}
+.dropdown-item a:hover {
+  font-weight: 400;
+  color: white;
   // margin: 5px;
 }
 
 .dropdown-item:hover {
   font-weight: bold;
-  color: $blue;
+  // color: $blue;
+  color: white;
   background: $dark-gray;
 }

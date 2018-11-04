@@ -44,15 +44,7 @@ export default class SearchBar extends Component {
           onChange={this.downshiftOnChange}
           itemToString={item => (item ? item.title : '')}
         >
-          {({
-            selectedItem,
-            getInputProps,
-            getItemProps,
-            highlightedIndex,
-            isOpen,
-            inputValue,
-            getLabelProps,
-          }) => {
+          {({ getInputProps, getItemProps, isOpen, inputValue, getLabelProps }) => {
             return (
               <div>
                 <label style={{ display: 'block' }} {...getLabelProps()} />

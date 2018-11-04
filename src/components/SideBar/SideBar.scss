@@ -171,49 +171,82 @@ $dark-gray: #707070;
     bottom: 0;
     right: 0;
     justify-content: center;
-    display: flex;
     align-items: center;
     height: 100vh;
     overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    .Navbar_Items i {
+      z-index: 4000;
+    }
+
+    a {
+      color: white;
+      padding: 0px;
+      font-family: $font-family;
+      font-size: 32px;
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: 500;
+      padding: 8px;
+      display: flex;
+    }
+
+    .modal-buttons-mobile {
+      justify-content: center;
+      margin: 25px auto;
+      // display: flex;
+
+      .add-item-button {
+        font-family: $font-family;
+        background: $blue;
+        border: 2px solid white;
+        padding: 8px 0px;
+        border-radius: 20px;
+        font-size: 14px;
+        text-align: center;
+        color: white;
+        margin: 0 auto;
+        // position: absolute;
+        bottom: 165px;
+        width: 8%;
+        margin: 10px auto;
+        min-width: 130px;
+      }
+      .add-offer-button {
+        font-family: $font-family;
+        border: 2px solid white;
+        padding: 8px 0px;
+        background: $blue;
+        border-radius: 20px;
+        font-size: 14px;
+        text-align: center;
+        color: white;
+        margin: 0 auto;
+        // position: absolute;
+        bottom: 120px;
+        width: 8%;
+        min-width: 130px;
+      }
+
+      .add-item-button:hover {
+        color: $navy;
+        opacity: 0.2;
+        font-weight: 500;
+        border: 2px solid $navy;
+        transition: 0.25s ease-in;
+      }
+      .add-offer-button:hover {
+        color: $navy;
+        opacity: 0.2;
+        font-weight: 500;
+        border: 2px solid $navy;
+        transition: 0.25s ease-in;
+      }
+    }
   }
-
-  .Navbar_Items i {
-    z-index: 4000;
-  }
-
-  // .Navbar_Link {
-  //   font-family: $font-family;
-  //   color: white;
-  //   font-size: 32px;
-  //   text-transform: uppercase;
-  //   font-weight: 400;
-  //   margin-top: 20px;
-  //   text-transform: uppercase;
-  //   text-align: center;
-  // }
-
-  .Navbar_Items a {
-    color: white;
-    padding: 0px;
-    font-family: $font-family;
-    font-size: 32px;
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: 500;
-    padding: 30px;
-  }
-
-  // .mobile-nav-section {
-  //   height: 85vh;
-  //   // margin-top: 30%;
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   display: flex;
-  //   align-content: center;
-  //   // position: fixed;
-  // }
-
   .desktop-sidebar {
     display: none;
     position: fixed;
@@ -225,47 +258,6 @@ $dark-gray: #707070;
     position: fixed;
     overflow: hidden;
   }
-
-  // .mobile-modal-container {
-  // margin: 0 auto;
-  // display: flex;
-  // position: absolute;
-  // top: 20%;
-  // bottom: 10px;
-  // justify-content: center;
-  // font-family: $font-family;
-
-  //   .add-offer-button {
-  //     font-family: $font-family;
-  //     background: $blue;
-  //     border: 2px solid white;
-  //     padding: 8px 20px;
-  //     border-radius: 20px;
-  //     font-size: 12px;
-  //     text-align: center;
-  //     color: white;
-  //     margin: 0 auto;
-  //     position: absolute;
-  //     margin: 0 auto;
-  //     bottom: 13%;
-  //     min-width: 130px;
-  //   }
-  //   .add-item-button {
-  //     font-family: $font-family;
-  //     background: $blue;
-  //     border: 2px solid white;
-  //     padding: 8px 20px;
-  //     border-radius: 20px;
-  //     font-size: 12px;
-  //     text-align: center;
-  //     color: white;
-  //     margin: 0 auto;
-  //     position: absolute;
-  //     margin: 0 auto;
-  //     bottom: 22%;
-  //     min-width: 130px;
-  //   }
-  // }
 
   #modal-desktop {
     display: none;
