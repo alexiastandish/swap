@@ -119,103 +119,112 @@ class SideBar extends Component {
                 <div>
                   {on && (
                     <div className="Navbar_Items">
-                      <button
-                        onClick={this.sideBarLinkClick}
-                        style={{ background: 'none', boxShadow: 'none' }}
-                      >
-                        <Link to="/dash">
-                          <div className="Navbar_Link">Dash</div>
-                        </Link>
-                      </button>
-                      <button
-                        onClick={this.sideBarLinkClick}
-                        style={{ background: 'none', boxShadow: 'none' }}
-                      >
-                        <Link to="/offers">
-                          <div className="Navbar_Link">Offers</div>
-                        </Link>
-                      </button>
-                      <button
-                        onClick={this.sideBarLinkClick}
-                        style={{ background: 'none', boxShadow: 'none' }}
-                      >
-                        <Link to="/likes">
-                          <div className="Navbar_Link">Likes</div>
-                        </Link>
-                      </button>
-                      <button
-                        onClick={this.sideBarLinkClick}
-                        style={{ background: 'none', boxShadow: 'none' }}
-                      >
-                        <Link to="/friends">
-                          <div className="Navbar_Link">Following</div>
-                        </Link>
-                      </button>
-                      <button
-                        onClick={this.sideBarLinkClick}
-                        style={{ background: 'none', boxShadow: 'none' }}
-                      >
-                        <Link to={`/myProfile/${this.props.user.user_id}`}>
-                          <div className="Navbar_Link">Profile</div>
-                        </Link>
-                      </button>
+                      <div className="Sidebar--links">
+                        <button
+                          onClick={this.sideBarLinkClick}
+                          style={{ background: 'none', boxShadow: 'none' }}
+                        >
+                          <Link to="/dash">
+                            <div className="Navbar_Link">Dash</div>
+                          </Link>
+                        </button>
+                        <button
+                          onClick={this.sideBarLinkClick}
+                          style={{ background: 'none', boxShadow: 'none' }}
+                        >
+                          <Link to="/offers">
+                            <div className="Navbar_Link">Offers</div>
+                          </Link>
+                        </button>
+                        <button
+                          onClick={this.sideBarLinkClick}
+                          style={{ background: 'none', boxShadow: 'none' }}
+                        >
+                          <Link to="/likes">
+                            <div className="Navbar_Link">Likes</div>
+                          </Link>
+                        </button>
+                        <button
+                          onClick={this.sideBarLinkClick}
+                          style={{ background: 'none', boxShadow: 'none' }}
+                        >
+                          <Link to="/friends">
+                            <div className="Navbar_Link">Following</div>
+                          </Link>
+                        </button>
+                        <button
+                          onClick={this.sideBarLinkClick}
+                          style={{ background: 'none', boxShadow: 'none' }}
+                        >
+                          <Link to={`/myProfile/${this.props.user.user_id}`}>
+                            <div className="Navbar_Link">Profile</div>
+                          </Link>
+                        </button>
 
-                      <div className="modal-buttons-mobile">
-                        {/* ADD ITEM MOBILE MODAL SECTION */}
-                        <section id="modal-mobile">
-                          <button onClick={this.toggleAddItemModal} className="add-item-button">
-                            Add Item
-                          </button>
-                          {this.state.isAddItemModalOpen && (
-                            <AddItem
-                              isOpen={this.state.isAddItemModalOpen}
-                              onRequestClose={this.toggleAddItemModal}
-                              addToItems={this.addToItems}
-                            />
-                          )}
-                        </section>
-                        {/* ADD OFFER MOBILE MODAL SECTION */}
-                        <section id="modal-mobile">
-                          <button
-                            onClick={this.toggleOfferModal}
-                            className="add-offer-button"
-                            style={{ margin: '0 auto' }}
-                          >
-                            Add Offer
-                          </button>
-                          {this.state.isOfferModalOpen && (
-                            <AddOffer
-                              user={this.props.user}
-                              onRequestClose={this.toggleOfferModal}
-                            />
-                          )}
-                        </section>
+                        <div className="modal-buttons-mobile">
+                          {/* ADD ITEM MOBILE MODAL SECTION */}
+                          <section id="modal-mobile">
+                            <button onClick={this.toggleAddItemModal} className="add-item-button">
+                              Add Item
+                            </button>
+                            {this.state.isAddItemModalOpen && (
+                              <AddItem
+                                isOpen={this.state.isAddItemModalOpen}
+                                onRequestClose={this.toggleAddItemModal}
+                                addToItems={this.addToItems}
+                              />
+                            )}
+                          </section>
+                          {/* ADD OFFER MOBILE MODAL SECTION */}
+                          <section id="modal-mobile">
+                            <button
+                              onClick={this.toggleOfferModal}
+                              className="add-offer-button"
+                              style={{ margin: '0 auto' }}
+                            >
+                              Add Offer
+                            </button>
+                            {this.state.isOfferModalOpen && (
+                              <AddOffer
+                                user={this.props.user}
+                                onRequestClose={this.toggleOfferModal}
+                              />
+                            )}
+                          </section>
+                        </div>
+
+                        <div className="mobile-navigation-items">
+                          <Link to="/notifications">Notifications</Link>
+                          <a href="http://localhost:3001/logout">Logout</a>
+                        </div>
                       </div>
-                      <i
-                        className="fa fa-2x fa-circle"
+                      {/* <i
+                        className="fa fa-2x fa-circle toggle-button-mobile"
                         style={{
-                          position: 'absolute',
-                          zIndex: '500',
-                          color: 'white',
-                          margin: '10px',
-                          marginTop: '10px',
-                          top: '0',
-                          left: '0',
+                          // position: 'absolute',
+                          // zIndex: '500',
+                          // color: 'white',
+                          // margin: '10px',
+                          // marginTop: '10px',
+                          // top: '0',
+                          // left: '0',
                           fontSize: '24px',
                         }}
                         onClick={toggle}
-                      />
+                      /> */}
                     </div>
                   )}
 
                   <i
-                    className="fa fa-2x fa-circle"
+                    className="fa fa-2x fa-circle toggle-button-mobile"
                     style={{
-                      position: 'fixed',
-                      zIndex: '-200',
-                      color: 'white',
-                      margin: '10px',
+                      // position: 'fixed',
+                      // zIndex: '-200',
+                      // color: 'white',
+                      // margin: '10px',
                       fontSize: '24px',
+                      zIndex: '999999',
+                      // color:
                     }}
                     onClick={toggle}
                   />

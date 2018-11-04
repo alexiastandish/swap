@@ -9,8 +9,8 @@ $dark-gray: #858585;
 .downshift-dropdown {
   font-family: $font-family;
   background: white;
+  margin-top: 0px;
   z-index: 300;
-  // margin-left: 40px;
 }
 
 .downshift-dropdown:focus {
@@ -54,4 +54,15 @@ input:focus {
   // color: $blue;
   color: white;
   background: $dark-gray;
+}
+
+@media only screen and (max-width: 768px) {
+  // .downshift-dropdown {
+  //   font-family: $font-family;
+  //   background: white;
+  //   z-index: 300;
+  // }
+  input::placeholder {
+    color: white;
+  }
 }

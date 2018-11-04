@@ -48,7 +48,7 @@ export default class SearchBar extends Component {
             return (
               <div>
                 <label style={{ display: 'block' }} {...getLabelProps()} />
-                <br />
+                {/* <br /> */}
                 <input
                   {...getInputProps({
                     // className: 'fa fa-2x fa-heart like',

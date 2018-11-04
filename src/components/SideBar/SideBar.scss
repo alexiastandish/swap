@@ -152,11 +152,16 @@ $dark-gray: #707070;
   .sidebar-container {
     position: fixed;
     height: 100vh;
-    z-index: 800;
+    z-index: 600;
     overflow-y: hidden;
+    right: 0;
   }
   .Navbar__Link-toggle {
     display: block;
+    position: fixed;
+    margin: 0px;
+    width: 50px;
+    padding: 0px;
   }
 
   .Navbar_Items {
@@ -178,20 +183,31 @@ $dark-gray: #707070;
     flex-direction: column;
     padding: 20px;
 
+    .Sidebar--links {
+      display: flex;
+      flex-direction: column;
+      button {
+        height: 40px;
+      }
+      .mobile-navigation-items a {
+        font-size: 14px;
+        text-transform: capitalize;
+      }
+    }
     .Navbar_Items i {
       z-index: 4000;
     }
 
     a {
       color: white;
-      padding: 0px;
       font-family: $font-family;
-      font-size: 32px;
+      font-size: 18px;
       text-transform: uppercase;
       text-align: center;
       font-weight: 500;
-      padding: 8px;
-      display: flex;
+      padding: 2px;
+      margin: 0px 2px;
+      // display: flex;
     }
 
     .modal-buttons-mobile {
@@ -203,7 +219,7 @@ $dark-gray: #707070;
         font-family: $font-family;
         background: $blue;
         border: 2px solid white;
-        padding: 8px 0px;
+        // padding: 3px 0px;
         border-radius: 20px;
         font-size: 14px;
         text-align: center;
@@ -213,22 +229,23 @@ $dark-gray: #707070;
         bottom: 165px;
         width: 8%;
         margin: 10px auto;
-        min-width: 130px;
+        min-width: 110px;
       }
       .add-offer-button {
         font-family: $font-family;
         border: 2px solid white;
-        padding: 8px 0px;
+        // padding: 8px 0px;
         background: $blue;
         border-radius: 20px;
         font-size: 14px;
         text-align: center;
         color: white;
         margin: 0 auto;
+
         // position: absolute;
         bottom: 120px;
         width: 8%;
-        min-width: 130px;
+        min-width: 110px;
       }
 
       .add-item-button:hover {
@@ -246,6 +263,16 @@ $dark-gray: #707070;
         transition: 0.25s ease-in;
       }
     }
+  }
+
+  .toggle-button-mobile {
+    position: fixed;
+    color: white;
+    right: 0;
+    // top: 5px;
+    font-size: 10px;
+    padding-top: 0.4em;
+    padding-right: 10px;
   }
   .desktop-sidebar {
     display: none;

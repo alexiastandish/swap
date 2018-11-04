@@ -18,7 +18,7 @@ class Nav extends Component {
           <div className="search-containter">
             <SearchBar />
           </div>
-          <div className="menu">
+          <div className="menu-nav">
             <Link to="/notifications">Notifications</Link>
             <a href="http://localhost:3001/logout">Logout</a>
           </div>
