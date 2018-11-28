@@ -84,7 +84,7 @@ passport.serializeUser((user, done) => {
       // console.log(response)
       if (!response[0]) {
         // console.log(response)
-        db.addUserByAuthid([user.name, user.id, user.email])
+        db.addUserByAuthid([user.displayName, user.id, user.email])
           .then(res => done(null, res[0]))
           .catch(console.log)
       } else return done(null, response[0])
