@@ -50,8 +50,12 @@ export default class AddImageModal extends Component {
   }
 
   handleSubmit() {
-    const { imageUrls } = this.state
-    this.addImage({ imageUrls }).then(this.props.onSubmit)
+    if (this.props.item.item_userid === 79) {
+      return this.props.handleAnonymousUser()
+    } else {
+      const { imageUrls } = this.state
+      this.addImage({ imageUrls }).then(this.props.onSubmit)
+    }
   }
 
   addImage(itemDetails) {
@@ -81,7 +85,7 @@ export default class AddImageModal extends Component {
         }}
       >
         <div className="modal-style">
-          <button style={{ background: 'none', color: '#2acbdc' }} onClick={this.props.closeModal}>
+          <button className="close-modal-btn" onClick={this.props.closeModal}>
             <i className="fa fa-2x  fa-times" />
           </button>
           <div className="add-item-container">

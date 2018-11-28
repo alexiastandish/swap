@@ -10,6 +10,7 @@ import EditItemModal from './ItemModal/EditItemModal'
 import LikeButton from '../../components/LikeButton/LikeButton'
 import AddImageModal from './ItemModal/AddImageModal'
 import axios from 'axios'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 
 class Item extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class Item extends Component {
       selectedImage: null,
       itemUserName: '',
       itemLikes: [],
+      userError: '',
     }
     this.deleteItem = this.deleteItem.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -36,16 +38,9 @@ class Item extends Component {
       this.setState({ itemUserName: response.data[0].username })
     })
     axios.get(`/api/itemLikes/${this.props.match.params.id}`).then(response => {
-      console.log('response', response)
       this.setState({ itemLikes: response.data })
     })
   }
-
-  // getItemLikes() {
-  //   axios.get(`/api/itemLikes/${this.props.match.params.id}`).then(response => {
-  //     this.setState({ itemLikes: response.value })
-  //   })
-  // }
 
   onSubmit() {
     this.setState({ isAddImageModalOpen: false, isEditItemModalOpen: false })
@@ -62,15 +57,23 @@ class Item extends Component {
   }
 
   deleteItem() {
-    axios.put(`/api/deleteItem/${this.props.item[0].items_id}`, {}).then(() => {
-      this.props.history.push(`/myProfile/${this.props.user.user_id}`)
-    })
+    if (this.props.item[0].item_userid === 79) {
+      return this.handleAnonymousUser()
+    } else {
+      axios.put(`/api/deleteItem/${this.props.item[0].items_id}`, {}).then(() => {
+        this.props.history.push(`/myProfile/${this.props.user.user_id}`)
+      })
+    }
   }
 
   deleteImage(id) {
-    axios.delete(`/api/deleteImage/${id}`).then(() => {
-      this.getItemPage()
-    })
+    if (this.props.item[0].item_userid === 79) {
+      return this.handleAnonymousUser()
+    } else {
+      axios.delete(`/api/deleteImage/${id}`).then(() => {
+        this.getItemPage()
+      })
+    }
   }
 
   getItemUserName() {
@@ -78,6 +81,20 @@ class Item extends Component {
       // console.log('response', response)
       this.setState({ itemUserName: response.data })
     })
+  }
+
+  handleAnonymousUser = () => {
+    this.setState({
+      userError: 'Must have a swap profile to access this functionality',
+    })
+    setTimeout(
+      function() {
+        this.setState({
+          userError: '',
+        })
+      }.bind(this),
+      3000
+    )
   }
 
   render() {
@@ -90,13 +107,9 @@ class Item extends Component {
       this.props.item[0] &&
       this.props.user.user_id === this.props.item[0].item_userid
 
-    // console.log('isUsersItem', isUsersItem)
-    console.log('this.props', this.props)
-    console.log('this.state', this.state)
-    // console.log('this.state.itemUserName', this.state.itemUserName)
-
     return (
       <div className="item-container">
+        {this.state.userError && <ErrorMessage message={this.state.userError} />}
         <div className="item-section">
           <div className="left-section">
             <div className="selected-image">
@@ -168,7 +181,6 @@ class Item extends Component {
             >
               <p>users who like this item:</p>
               {this.state.itemLikes.map((userLike, index) => {
-                console.log('userLike', userLike)
                 return (
                   <Link
                     key={index}
@@ -196,6 +208,7 @@ class Item extends Component {
                   </button>
                   {this.state.isEditItemModalOpen && (
                     <EditItemModal
+                      handleAnonymousUser={this.handleAnonymousUser}
                       item={this.props.item[0]}
                       images={this.props.images[this.props.item[0].items_id]}
                       closeModal={() => {
@@ -218,6 +231,7 @@ class Item extends Component {
                   </button>
                   {this.state.isAddImageModalOpen && (
                     <AddImageModal
+                      handleAnonymousUser={this.handleAnonymousUser}
                       item={this.props.item[0]}
                       images={this.props.images[this.props.item[0].items_id]}
                       closeModal={() => {

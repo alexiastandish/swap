@@ -8,7 +8,6 @@ export function getAllUsers() {
     payload: axios
       .get('/api/users')
       .then(res => {
-        console.log('res', res)
         return res.data
       })
       .catch(err => {

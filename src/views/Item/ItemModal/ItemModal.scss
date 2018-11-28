@@ -25,17 +25,25 @@ $dark-gray: #707070;
   select:focus {
     outline: none;
   }
-  button {
-    font-family: $font-family;
-    background: $blue;
-    border-radius: 25px;
-    color: white;
-    box-shadow: none;
-    border: none;
+
+  .close-modal-btn {
+    margin: 0px;
+    padding: 0px;
+    background: none;
+    color: $blue;
+    text-align: left;
   }
-  button:focus {
-    outline: none;
-  }
+  // button {
+  //   font-family: $font-family;
+  //   background: $blue;
+  //   border-radius: 25px;
+  //   color: white;
+  //   box-shadow: none;
+  //   border: none;
+  // }
+  // button:focus {
+  //   outline: none;
+  // }
 
   h1 {
     font-family: $font-family;

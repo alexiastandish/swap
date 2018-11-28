@@ -11,7 +11,6 @@ class Likes extends Component {
   componentDidMount() {
     this.props.getLikes(this.props.user && this.props.user.user_id).then(response => {
       response.value.forEach(item => {
-        // console.log('response.value', response.value)
         this.props.getImages(item.items_id)
       })
     })

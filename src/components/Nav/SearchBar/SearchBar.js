@@ -31,7 +31,6 @@ export default class SearchBar extends Component {
 
   fetchAllUsers() {
     axios.get(`/api/users`).then(response => {
-      console.log('response', response)
       this.setState({ allUsers: response.data })
     })
   }

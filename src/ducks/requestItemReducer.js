@@ -9,8 +9,8 @@ export function getRequestedItem(id) {
       .get(`/api/request/${id}`)
       .then(response => {
         return response.data.reduce((prev, curr) => {
-          console.log('prev', prev)
-          console.log('curr', curr)
+          // console.log('prev', prev)
+          // console.log('curr', curr)
           prev[curr.items_id] = curr
           return prev
         }, {})

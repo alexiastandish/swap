@@ -9,7 +9,6 @@ const scaleUpDown = keyframes`
 
 const AboutBox = styled.section`
   background: #2acbdc;
-  height: 60vh;
   width: 35%;
   display: flex;
   margin: 0 auto;
@@ -31,7 +30,7 @@ const AboutBox = styled.section`
   }
 
   @media ${device.laptop} {
-    width: 50%;
+    width: 60%;
   }
 
   @media ${device.desktop} {

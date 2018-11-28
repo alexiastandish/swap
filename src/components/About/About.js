@@ -26,21 +26,31 @@ class About extends Component {
                 functional and adds the convenience of being able to display all of your tradable
                 items and see your friends tradable items all in one place.
                 <br />
+              </p>
+              <div>
+                <h3>Technologies:</h3>
+                <div className="technologies">
+                  <p>REACT | FIREBASE | REDUX | SASS | DOWNSHIFT | AUTH0 | REACT-MODALS</p>
+                </div>
+              </div>
+              <p>
                 <br />
-                Use the authorization credentials below to explore the functionality of Swap without
-                creating profile.
+                Use the authorization credentials below to sign in anonymously and explore the
+                functionality of Swap without creating profile...
               </p>
             </div>
             <div className="anonymous-login">
-              <h1>
+              <h3>
                 username: <span>anonymous_user</span>
-              </h1>
-              <h1>
+              </h3>
+              <h3>
                 password: <span>anonymous.2018</span>
-              </h1>
+              </h3>
             </div>
 
-            <Link to="/">GO BACK</Link>
+            <Link className="btn-home" to="/">
+              GO BACK
+            </Link>
           </section>
         </AboutBox>
       </div>

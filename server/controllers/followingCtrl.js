@@ -13,7 +13,6 @@
 const getFollowingUsers = (req, res) => {
   const db = req.app.get('db')
   db.following.getFollowing([req.params.userId]).then(response => {
-    console.log('response', response)
     res.status(200).json(response)
   })
 }

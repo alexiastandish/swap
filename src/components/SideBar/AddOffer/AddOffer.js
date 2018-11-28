@@ -62,7 +62,7 @@ class AddOffer extends Component {
 
   getLoggedInUserItems() {
     axios.get(`/api/items/${this.props.user.user_id}`).then(({ data }) => {
-      console.log('data', data)
+      // console.log('data', data)
       this.setState({
         loggedInUserItems: data,
         selectedLoggedInUserItemId: data.length > 0 ? data[0].items_id : '',
@@ -71,20 +71,21 @@ class AddOffer extends Component {
   }
 
   handleSubmit() {
-    axios
-      .post('/api/newOffer', {
-        yourId: this.props.user.user_id,
-        yourItemId: this.state.selectedLoggedInUserItemId,
-        theirId: this.state.selectedUser,
-        theirItemId: this.state.selectedItemId,
-      })
-      .then(this.props.onRequestClose)
+    if (this.props.user.user_id === 79) {
+      return this.props.handleAnonymousUser()
+    } else {
+      axios
+        .post('/api/newOffer', {
+          yourId: this.props.user.user_id,
+          yourItemId: this.state.selectedLoggedInUserItemId,
+          theirId: this.state.selectedUser,
+          theirItemId: this.state.selectedItemId,
+        })
+        .then(this.props.onRequestClose)
+    }
   }
 
   render() {
-    console.log('this.state', this.state)
-    console.log('this.props', this.props)
-
     return (
       <Modal
         isOpen

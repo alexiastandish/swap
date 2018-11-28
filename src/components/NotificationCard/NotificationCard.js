@@ -15,6 +15,7 @@ function NotificationCard(props) {
         <span style={{ color: '#2acbdc', fontWeight: 'bold' }}>{props.theirItem}.</span>
       </p>
       <button
+        style={{ background: 'none', boxShadow: 'none' }}
         onClick={() => {
           props.updateNotificationStatus({ status: 4, offerId: props.offerId })
         }}

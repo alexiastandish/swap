@@ -9,6 +9,7 @@ import ItemCard from '../../components/ItemCard/ItemCard'
 import { getFollowingUsers } from '../../ducks/followingReducer'
 import ProfileImage from '../../components/SideBar/ProfileImage'
 import axios from 'axios'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 
 class Profile extends Component {
   constructor() {
@@ -18,6 +19,7 @@ class Profile extends Component {
       isUpdateProfileImageModalOpen: false,
       isUpdateProfileImageToggleOn: true,
       profilePhoto: null,
+      userError: '',
     }
 
     this.followUser = this.followUser.bind(this)
@@ -62,15 +64,37 @@ class Profile extends Component {
   }
 
   followUser(followDetails) {
-    axios
-      .post('/api/follow', followDetails)
-      .then(() => this.props.getFollowingUsers(this.props.user.user_id))
+    if (this.props.user.user_id === 79) {
+      return this.handleAnonymousUser()
+    } else {
+      axios
+        .post('/api/follow', followDetails)
+        .then(() => this.props.getFollowingUsers(this.props.user.user_id))
+    }
   }
 
   unfollowUser() {
-    axios
-      .delete(`/api/follow/${this.props.userInfoById.user_id}`)
-      .then(() => this.props.getFollowingUsers(this.props.user.user_id))
+    if (this.props.user.user_id === 79) {
+      return this.handleAnonymousUser()
+    } else {
+      axios
+        .delete(`/api/follow/${this.props.userInfoById.user_id}`)
+        .then(() => this.props.getFollowingUsers(this.props.user.user_id))
+    }
+  }
+
+  handleAnonymousUser = () => {
+    this.setState({
+      userError: 'Must have a swap profile to access this functionality',
+    })
+    setTimeout(
+      function() {
+        this.setState({
+          userError: '',
+        })
+      }.bind(this),
+      3000
+    )
   }
 
   render() {
@@ -79,12 +103,12 @@ class Profile extends Component {
         return follow.user_id === this.props.userInfoById.user_id
       }) !== -1
 
-    // console.log('this.props', this.props)
-
     const isUser = this.props.user.user_id === Number(this.props.match.params.id)
 
     return (
       <div className="profile-container">
+        {this.state.userError && <ErrorMessage message={this.state.userError} />}
+
         <div className="profile-header">
           <div className="left">
             <div className="profile-photo">

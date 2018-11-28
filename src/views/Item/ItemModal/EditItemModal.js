@@ -14,8 +14,12 @@ export default class EditItemModal extends Component {
   }
 
   handleSubmit() {
-    const { itemName, itemDescription } = this.state
-    this.editItem({ itemName, itemDescription }).then(this.props.onSubmit)
+    if (this.props.item.item_userid === 79) {
+      return this.props.handleAnonymousUser()
+    } else {
+      const { itemName, itemDescription } = this.state
+      this.editItem({ itemName, itemDescription }).then(this.props.onSubmit)
+    }
   }
 
   editItem(itemDetails) {
@@ -45,7 +49,11 @@ export default class EditItemModal extends Component {
         }}
       >
         <div className="modal-style">
-          <button style={{ background: 'none', color: '#2acbdc' }} onClick={this.props.closeModal}>
+          <button
+            className="close-modal-btn"
+            // style={{ background: 'none', color: '#2acbdc', width: '30px' }}
+            onClick={this.props.closeModal}
+          >
             <i className="fa fa-2x  fa-times" />
           </button>
           <div className="add-item-container">

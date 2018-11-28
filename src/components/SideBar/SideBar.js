@@ -9,6 +9,7 @@ import AddItem from './AddItem/AddItem'
 import AddOffer from './AddOffer/AddOffer'
 import axios from 'axios'
 import Toggle from '../Toggle/Toggle'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 
 class SideBar extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class SideBar extends Component {
       isOfferModalOpen: false,
       isItemToggleOn: true,
       isOfferToggleOn: true,
+      userError: '',
     }
 
     this.toggleAddItemModal = this.toggleAddItemModal.bind(this)
@@ -68,11 +70,25 @@ class SideBar extends Component {
     window.location.reload(selectedPage)
   }
 
+  handleAnonymousUser = () => {
+    this.setState({
+      userError: 'Must have a swap profile to access this functionality',
+    })
+    setTimeout(
+      function() {
+        this.setState({
+          userError: '',
+        })
+      }.bind(this),
+      3000
+    )
+  }
+
   render() {
-    console.log('this.props', this.props)
     return (
       window.location.pathname !== '/' && (
         <div className="sidebar-container">
+          {this.state.userError && <ErrorMessage message={this.state.userError} />}
           <div className="desktop-sidebar">
             <img src="http://i66.tinypic.com/2cnw4lw.png" alt="swap-logo" />
 
@@ -92,9 +108,11 @@ class SideBar extends Component {
               </button>
               {this.state.isAddItemModalOpen && (
                 <AddItem
+                  handleAnonymousUser={this.handleAnonymousUser}
                   isOpen={this.state.isAddItemModalOpen}
                   onRequestClose={this.toggleAddItemModal}
                   addToItems={this.addToItems}
+                  user={this.props.user}
                 />
               )}
 
@@ -108,7 +126,11 @@ class SideBar extends Component {
                 Add Offer
               </button>
               {this.state.isOfferModalOpen && (
-                <AddOffer user={this.props.user} onRequestClose={this.toggleOfferModal} />
+                <AddOffer
+                  user={this.props.user}
+                  onRequestClose={this.toggleOfferModal}
+                  handleAnonymousUser={this.handleAnonymousUser}
+                />
               )}
             </div>
           </div>

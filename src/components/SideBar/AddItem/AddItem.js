@@ -53,8 +53,12 @@ class AddItem extends Component {
   }
 
   handleSubmit() {
-    const { itemName, itemDescription, imageUrls } = this.state
-    this.props.addToItems({ itemName, itemDescription, imageUrls })
+    if (this.props.user.user_id === 79) {
+      return this.props.handleAnonymousUser()
+    } else {
+      const { itemName, itemDescription, imageUrls } = this.state
+      this.props.addToItems({ itemName, itemDescription, imageUrls })
+    }
   }
 
   render() {

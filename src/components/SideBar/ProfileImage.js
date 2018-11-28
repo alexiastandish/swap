@@ -33,7 +33,6 @@ export default class UpdateProfileImage extends Component {
   }
 
   updateProfilePicState(profPic = '') {
-    console.log('hi')
     this.setState({ profilePicture: profPic })
   }
 
