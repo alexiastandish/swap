@@ -9,6 +9,7 @@ import Home from './Home'
 import Item from './views/Item/Item'
 import MyProfile from './views/Profile/MyProfile'
 import Notifications from './views/Notifications/Notifications'
+import About from './components/About/About'
 
 export default function Routes() {
   return (
@@ -22,6 +23,7 @@ export default function Routes() {
       <Route path="/offers" component={Offers} />
       <Route path="/item/:id" component={Item} />
       <Route path="/notifications" component={Notifications} />
+      <Route path="/about" component={About} />
       <Redirect to="/" />
     </Switch>
   )
