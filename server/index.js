@@ -5,7 +5,7 @@ const { json } = require('body-parser')
 const session = require('express-session')
 const passport = require('passport')
 const port = 3001
-// const path = require("path")
+const path = require('path')
 
 const { strategy, getUser } = require('./controllers/authCtrl')
 const {
@@ -52,7 +52,12 @@ const { getUserProfile } = require('./controllers/profileCtrl')
 const app = express()
 
 // KEEP COMMENTED UNTIL READY TO HOST
-// app.use(express.static(__dirname, '../build'));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
+
+// app.use(express.static(__dirname, '../build'))
+app.use(express.static(`${__dirname}/../build`))
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {
