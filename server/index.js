@@ -56,8 +56,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'))
 })
 
-// app.use(express.static(__dirname, '../build'))
-app.use(express.static(`${__dirname}/../build`))
+app.use(express.static(__dirname, '../build'))
+// app.use(express.static(`${__dirname}/../build`))
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {
@@ -162,4 +162,8 @@ app.get('/api/itemLikes/:itemId', getItemLikes)
 
 app.listen(port, () => {
   console.log(`MARCO.... POLO ${port}`)
+})
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
 })
