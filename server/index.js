@@ -155,3 +155,7 @@ app.get('/api/itemLikes/:itemId', getItemLikes)
 app.listen(port, () => {
   console.log(`MARCO.... POLO ${port}`)
 })
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
