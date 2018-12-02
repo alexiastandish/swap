@@ -97,7 +97,7 @@ passport.deserializeUser((user, done) => {
 app.get(
   '/login',
   passport.authenticate('auth0', {
-    successRedirect: `http://165.227.10.168:3001/dash`,
+    successRedirect: `165.227.10.168:3001/dash`,
     // successRedirect: `http://localhost:3000/dash`,
     failureRedirect: '/login',
   })
