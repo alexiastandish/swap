@@ -20,7 +20,7 @@ class Nav extends Component {
           </div>
           <div className="menu-nav">
             <Link to="/notifications">Notifications</Link>
-            <a href="http://localhost:3001/logout">Logout</a>
+            <a href={`${process.env.REACT_APP_URL}/logout`}>Logout</a>
           </div>
         </div>
       )

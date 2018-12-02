@@ -217,7 +217,7 @@ class SideBar extends Component {
 
                         <div className="mobile-navigation-items">
                           <Link to="/notifications">Notifications</Link>
-                          <a href="http://localhost:3001/logout">Logout</a>
+                          <a href={`${process.env.REACT_APP_URL}`}>Logout</a>
                         </div>
                       </div>
                       {/* <i

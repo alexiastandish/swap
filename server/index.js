@@ -5,7 +5,13 @@ const { json } = require('body-parser')
 const session = require('express-session')
 const passport = require('passport')
 const port = 3001
-// const path = require('path')
+const path = require('path')
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
+
+app.use(express.static(`${__dirname}/../build`))
 
 const { strategy, getUser } = require('./controllers/authCtrl')
 const {
@@ -96,15 +102,15 @@ passport.deserializeUser((user, done) => {
 app.get(
   '/login',
   passport.authenticate('auth0', {
-    // successRedirect: process.env.REACT_APP_LOGIN,
-    successRedirect: `http://localhost:3000/dash`,
+    successRedirect: `${process.env.REACT_APP_URL}/dash`,
+    // successRedirect: `http://localhost:3000/dash`,
     failureRedirect: '/login',
   })
 )
 
 app.get('/logout', (req, res) => {
   req.session.destroy(() => {
-    res.redirect('http://localhost:3000/')
+    res.redirect(`${process.env.REACT_APP_URL}`)
   })
 })
 
@@ -154,8 +160,4 @@ app.get('/api/itemLikes/:itemId', getItemLikes)
 
 app.listen(port, () => {
   console.log(`MARCO.... POLO ${port}`)
-})
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build/index.html'))
 })
