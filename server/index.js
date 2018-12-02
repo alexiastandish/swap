@@ -6,12 +6,7 @@ const session = require('express-session')
 const passport = require('passport')
 const port = 3001
 const path = require('path')
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build/index.html'))
-})
-
-app.use(express.static(`${__dirname}/../build`))
+const app = express()
 
 const { strategy, getUser } = require('./controllers/authCtrl')
 const {
@@ -54,8 +49,6 @@ const {
 } = require('./controllers/likesCtrl')
 
 const { getUserProfile } = require('./controllers/profileCtrl')
-
-const app = express()
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {
@@ -160,4 +153,10 @@ app.get('/api/itemLikes/:itemId', getItemLikes)
 
 app.listen(port, () => {
   console.log(`MARCO.... POLO ${port}`)
+})
+
+app.use(express.static(`${__dirname}/../build`))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
 })
