@@ -97,7 +97,7 @@ passport.deserializeUser((user, done) => {
 app.get(
   '/login',
   passport.authenticate('auth0', {
-    successRedirect: `/dash`,
+    successRedirect: `${process.env.REACT_APP_URL}/dash`,
     // successRedirect: `http://localhost:3000/dash`,
     failureRedirect: '/login',
   })
