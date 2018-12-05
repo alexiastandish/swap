@@ -18,7 +18,7 @@ class Likes extends Component {
 
   render() {
     return (
-      <div className="likes-container" style={{ width: '72vw', margin: '0 auto' }}>
+      <div className="likes-container" style={{ width: '72vw', margin: '40px auto' }}>
         {this.props.likes &&
           this.props.likes.map((like, index) => {
             return (

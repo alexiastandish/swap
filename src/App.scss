@@ -324,6 +324,59 @@ button:focus {
     height: 100%;
     margin: 0 auto;
     width: 90%;
+
+    .landing-page {
+      background-image: url('http://i65.tinypic.com/znkmmc.jpg');
+      background-size: cover;
+      height: 100vh;
+      position: absolute;
+      width: 100vw;
+      background-position: center;
+      display: flex;
+      background-repeat: no-repeat;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      left: 0;
+      background-color: #e5e5e5;
+
+      .landing-container {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .image-container img {
+          position: absolute;
+          width: 80vw;
+        }
+
+        img {
+          width: 86vw;
+          max-width: 800px;
+          margin: 0 auto;
+          margin-bottom: 200px;
+        }
+
+        .home-page-link-signin,
+        .home-page-link {
+          color: rgba(255, 255, 255, 1);
+          background: $blue;
+          width: 120px;
+          text-align: center;
+          border-radius: 25px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          -webkit-transition: all 0.5s;
+          -moz-transition: all 0.5s;
+          -o-transition: all 0.5s;
+          transition: all 0.5s;
+          position: relative;
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+    }
   }
   // }
 }

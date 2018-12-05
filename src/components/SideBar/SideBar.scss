@@ -186,9 +186,7 @@ $dark-gray: #707070;
     .Sidebar--links {
       display: flex;
       flex-direction: column;
-      button {
-        height: 40px;
-      }
+
       .mobile-navigation-items a {
         font-size: 14px;
         text-transform: capitalize;
