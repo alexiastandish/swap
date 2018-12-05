@@ -145,7 +145,14 @@ class SideBar extends Component {
                       <div className="Sidebar--links">
                         <button
                           onClick={this.sideBarLinkClick}
-                          style={{ background: 'none', boxShadow: 'none', height: '30px' }}
+                          style={{
+                            background: 'none',
+                            boxShadow: 'none',
+                            margin: '0 auto',
+                            height: 'auto',
+                            display: 'flex',
+                            justifyContent: 'center',
+                          }}
                         >
                           <Link to="/dash">
                             <div className="Navbar_Link">Dash</div>
@@ -153,7 +160,14 @@ class SideBar extends Component {
                         </button>
                         <button
                           onClick={this.sideBarLinkClick}
-                          style={{ background: 'none', boxShadow: 'none', height: '30px' }}
+                          style={{
+                            background: 'none',
+                            boxShadow: 'none',
+                            margin: '0 auto',
+                            height: 'auto',
+                            display: 'flex',
+                            justifyContent: 'center',
+                          }}
                         >
                           <Link to="/offers">
                             <div className="Navbar_Link">Offers</div>
@@ -161,7 +175,14 @@ class SideBar extends Component {
                         </button>
                         <button
                           onClick={this.sideBarLinkClick}
-                          style={{ background: 'none', boxShadow: 'none', height: '30px' }}
+                          style={{
+                            background: 'none',
+                            boxShadow: 'none',
+                            margin: '0 auto',
+                            height: 'auto',
+                            display: 'flex',
+                            justifyContent: 'center',
+                          }}
                         >
                           <Link to="/likes">
                             <div className="Navbar_Link">Likes</div>
@@ -169,7 +190,14 @@ class SideBar extends Component {
                         </button>
                         <button
                           onClick={this.sideBarLinkClick}
-                          style={{ background: 'none', boxShadow: 'none', height: '30px' }}
+                          style={{
+                            background: 'none',
+                            boxShadow: 'none',
+                            margin: '0 auto',
+                            height: 'auto',
+                            display: 'flex',
+                            justifyContent: 'center',
+                          }}
                         >
                           <Link to="/friends">
                             <div className="Navbar_Link">Following</div>
@@ -177,7 +205,14 @@ class SideBar extends Component {
                         </button>
                         <button
                           onClick={this.sideBarLinkClick}
-                          style={{ background: 'none', boxShadow: 'none', height: '30px' }}
+                          style={{
+                            background: 'none',
+                            boxShadow: 'none',
+                            margin: '0 auto',
+                            height: 'auto',
+                            display: 'flex',
+                            justifyContent: 'center',
+                          }}
                         >
                           <Link to={`/myProfile/${this.props.user.user_id}`}>
                             <div className="Navbar_Link">Profile</div>
