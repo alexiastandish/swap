@@ -66,6 +66,7 @@ class SideBar extends Component {
       isOfferToggleOn: !prevState.isOfferToggleOn,
     }))
   }
+
   sideBarLinkClick(selectedPage) {
     window.location.reload(selectedPage)
   }
@@ -142,28 +143,46 @@ class SideBar extends Component {
                   {on && (
                     <div className="Navbar_Items">
                       <div className="Sidebar--links">
-                        <Link to="/dash" onClick={this.sideBarLinkClick}>
-                          <div className="Navbar_Link">Dash</div>
-                        </Link>
-
-                        <Link to="/offers" onClick={this.sideBarLinkClick}>
-                          <div className="Navbar_Link">Offers</div>
-                        </Link>
-
-                        <Link to="/likes" onClick={this.sideBarLinkClick}>
-                          <div className="Navbar_Link">Likes</div>
-                        </Link>
-
-                        <Link to="/friends" onClick={this.sideBarLinkClick}>
-                          <div className="Navbar_Link">Following</div>
-                        </Link>
-
-                        <Link
-                          to={`/myProfile/${this.props.user.user_id}`}
+                        <button
                           onClick={this.sideBarLinkClick}
+                          style={{ background: 'none', boxShadow: 'none', height: '30px' }}
                         >
-                          <div className="Navbar_Link">Profile</div>
-                        </Link>
+                          <Link to="/dash">
+                            <div className="Navbar_Link">Dash</div>
+                          </Link>
+                        </button>
+                        <button
+                          onClick={this.sideBarLinkClick}
+                          style={{ background: 'none', boxShadow: 'none', height: '30px' }}
+                        >
+                          <Link to="/offers">
+                            <div className="Navbar_Link">Offers</div>
+                          </Link>
+                        </button>
+                        <button
+                          onClick={this.sideBarLinkClick}
+                          style={{ background: 'none', boxShadow: 'none', height: '30px' }}
+                        >
+                          <Link to="/likes">
+                            <div className="Navbar_Link">Likes</div>
+                          </Link>
+                        </button>
+                        <button
+                          onClick={this.sideBarLinkClick}
+                          style={{ background: 'none', boxShadow: 'none', height: '30px' }}
+                        >
+                          <Link to="/friends">
+                            <div className="Navbar_Link">Following</div>
+                          </Link>
+                        </button>
+                        <button
+                          onClick={this.sideBarLinkClick}
+                          style={{ background: 'none', boxShadow: 'none', height: '30px' }}
+                        >
+                          <Link to={`/myProfile/${this.props.user.user_id}`}>
+                            <div className="Navbar_Link">Profile</div>
+                          </Link>
+                        </button>
 
                         <div className="modal-buttons-mobile">
                           {/* ADD ITEM MOBILE MODAL SECTION */}
