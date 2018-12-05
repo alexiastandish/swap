@@ -153,8 +153,8 @@ $dark-gray: #707070;
     position: fixed;
     height: 100vh;
     z-index: 600;
-    overflow-y: hidden;
-    right: 0;
+    // overflow-y: hidden;
+    // right: 0;
   }
   .Navbar__Link-toggle {
     display: block;
@@ -177,7 +177,7 @@ $dark-gray: #707070;
     right: 0;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    // height: 100vh;
     overflow-y: hidden;
     display: flex;
     flex-direction: column;
