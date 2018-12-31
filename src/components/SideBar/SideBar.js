@@ -88,207 +88,46 @@ class SideBar extends Component {
   render() {
     return (
       window.location.pathname !== '/' && (
-        <div className="sidebar-container">
+        <div className="sidebar">
           {this.state.userError && <ErrorMessage message={this.state.userError} />}
-          <div className="desktop-sidebar">
-            <img src="http://i66.tinypic.com/2cnw4lw.png" alt="swap-logo" />
+          <img src="http://i66.tinypic.com/2cnw4lw.png" alt="swap-logo" className="logo" />
 
-            <nav id="main-nav">
-              <Link to="/dash">Dash</Link>
-              <Link to="/offers">Offers</Link>
-              <Link to="/likes">Likes</Link>
-              <Link to="/friends">Following</Link>
-              <Link to={`/myProfile/${this.props.user.user_id}`}>Profile</Link>
-            </nav>
+          <nav class="sidebar__main-nav">
+            <Link to="/dash">Dash</Link>
+            <Link to="/offers">Offers</Link>
+            <Link to="/likes">Likes</Link>
+            <Link to="/friends">Following</Link>
+            <Link to={`/myProfile/${this.props.user.user_id}`}>Profile</Link>
+          </nav>
 
-            <div className="modal-buttons">
-              {/* ADD ITEM MODAL SECTION */}
+          <div className="sidebar__modal-buttons">
+            <button onClick={() => this.toggleAddItemModal()} className="btn btn__primary">
+              Add Item
+            </button>
+            {this.state.isAddItemModalOpen && (
+              <AddItem
+                handleAnonymousUser={this.handleAnonymousUser}
+                isOpen={this.state.isAddItemModalOpen}
+                onRequestClose={this.toggleAddItemModal}
+                addToItems={this.addToItems}
+                user={this.props.user}
+              />
+            )}
 
-              <button onClick={this.toggleAddItemModal} className="add-item-button">
-                Add Item
-              </button>
-              {this.state.isAddItemModalOpen && (
-                <AddItem
-                  handleAnonymousUser={this.handleAnonymousUser}
-                  isOpen={this.state.isAddItemModalOpen}
-                  onRequestClose={this.toggleAddItemModal}
-                  addToItems={this.addToItems}
-                  user={this.props.user}
-                />
-              )}
-
-              {/* ADD OFFER MODAL SECTION */}
-
-              <button
-                onClick={this.toggleOfferModal}
-                className="add-offer-button"
-                style={{ margin: '0 auto' }}
-              >
-                Add Offer
-              </button>
-              {this.state.isOfferModalOpen && (
-                <AddOffer
-                  user={this.props.user}
-                  onRequestClose={this.toggleOfferModal}
-                  handleAnonymousUser={this.handleAnonymousUser}
-                />
-              )}
-            </div>
-          </div>
-
-          <div className="Navbar__Link Navbar__Link-toggle">
-            <Toggle>
-              {({ on, toggle }) => (
-                <div>
-                  {on && (
-                    <div className="Navbar_Items">
-                      <div className="Sidebar--links">
-                        <button
-                          onClick={this.sideBarLinkClick}
-                          style={{
-                            background: 'none',
-                            boxShadow: 'none',
-                            margin: '0 auto',
-                            height: 'auto',
-                            display: 'flex',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Link to="/dash">
-                            <div className="Navbar_Link">Dash</div>
-                          </Link>
-                        </button>
-                        <button
-                          onClick={this.sideBarLinkClick}
-                          style={{
-                            background: 'none',
-                            boxShadow: 'none',
-                            margin: '0 auto',
-                            height: 'auto',
-                            display: 'flex',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Link to="/offers">
-                            <div className="Navbar_Link">Offers</div>
-                          </Link>
-                        </button>
-                        <button
-                          onClick={this.sideBarLinkClick}
-                          style={{
-                            background: 'none',
-                            boxShadow: 'none',
-                            margin: '0 auto',
-                            height: 'auto',
-                            display: 'flex',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Link to="/likes">
-                            <div className="Navbar_Link">Likes</div>
-                          </Link>
-                        </button>
-                        <button
-                          onClick={this.sideBarLinkClick}
-                          style={{
-                            background: 'none',
-                            boxShadow: 'none',
-                            margin: '0 auto',
-                            height: 'auto',
-                            display: 'flex',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Link to="/friends">
-                            <div className="Navbar_Link">Following</div>
-                          </Link>
-                        </button>
-                        <button
-                          onClick={this.sideBarLinkClick}
-                          style={{
-                            background: 'none',
-                            boxShadow: 'none',
-                            margin: '0 auto',
-                            height: 'auto',
-                            display: 'flex',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Link to={`/myProfile/${this.props.user.user_id}`}>
-                            <div className="Navbar_Link">Profile</div>
-                          </Link>
-                        </button>
-
-                        <div className="modal-buttons-mobile">
-                          {/* ADD ITEM MOBILE MODAL SECTION */}
-                          <section id="modal-mobile">
-                            <button onClick={this.toggleAddItemModal} className="add-item-button">
-                              Add Item
-                            </button>
-                            {this.state.isAddItemModalOpen && (
-                              <AddItem
-                                isOpen={this.state.isAddItemModalOpen}
-                                onRequestClose={this.toggleAddItemModal}
-                                addToItems={this.addToItems}
-                              />
-                            )}
-                          </section>
-                          {/* ADD OFFER MOBILE MODAL SECTION */}
-                          <section id="modal-mobile">
-                            <button
-                              onClick={this.toggleOfferModal}
-                              className="add-offer-button"
-                              style={{ margin: '0 auto' }}
-                            >
-                              Add Offer
-                            </button>
-                            {this.state.isOfferModalOpen && (
-                              <AddOffer
-                                user={this.props.user}
-                                onRequestClose={this.toggleOfferModal}
-                              />
-                            )}
-                          </section>
-                        </div>
-
-                        <div className="mobile-navigation-items">
-                          <Link to="/notifications">Notifications</Link>
-                          <a href={`${process.env.REACT_APP_URL}`}>Logout</a>
-                        </div>
-                      </div>
-                      {/* <i
-                        className="fa fa-2x fa-circle toggle-button-mobile"
-                        style={{
-                          // position: 'absolute',
-                          // zIndex: '500',
-                          // color: 'white',
-                          // margin: '10px',
-                          // marginTop: '10px',
-                          // top: '0',
-                          // left: '0',
-                          fontSize: '24px',
-                        }}
-                        onClick={toggle}
-                      /> */}
-                    </div>
-                  )}
-
-                  <i
-                    className="fa fa-2x fa-circle toggle-button-mobile"
-                    style={{
-                      // position: 'fixed',
-                      // zIndex: '-200',
-                      // color: 'white',
-                      // margin: '10px',
-                      fontSize: '24px',
-                      zIndex: '999999',
-                      // color:
-                    }}
-                    onClick={toggle}
-                  />
-                </div>
-              )}
-            </Toggle>
+            <button
+              onClick={this.toggleOfferModal}
+              className="btn btn__primary"
+              style={{ margin: '0 auto' }}
+            >
+              Add Offer
+            </button>
+            {this.state.isOfferModalOpen && (
+              <AddOffer
+                user={this.props.user}
+                onRequestClose={this.toggleOfferModal}
+                handleAnonymousUser={this.handleAnonymousUser}
+              />
+            )}
           </div>
         </div>
       )

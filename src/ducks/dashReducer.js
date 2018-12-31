@@ -8,7 +8,6 @@ export function getItemFeed(id) {
     payload: axios
       .get(`/api/dash/${id}`)
       .then(res => {
-        // console.log('res.data', res.data)
         return res.data
       })
       .catch(err => {

@@ -6,285 +6,282 @@ $navy: #424c58;
 $light-gray: #e5e5e5;
 $dark-gray: #707070;
 
-.desktop-sidebar {
-  display: flex;
-  background-color: $blue;
-  flex-direction: column;
-  height: 100%;
+// .desktop-sidebar {
+//   display: flex;
+//   background-color: $blue;
+//   flex-direction: column;
+//   height: 100%;
 
-  max-width: 600px;
-  min-width: 300px;
+//   max-width: 600px;
+//   min-width: 300px;
 
-  img {
-    width: 25vh;
-    height: auto;
-    justify-content: center;
-    margin: 0 auto;
-    margin-top: 60px;
-  }
+//   img {
+//     width: 25vh;
+//     height: auto;
+//     justify-content: center;
+//     margin: 0 auto;
+//     margin-top: 60px;
+//   }
 
-  nav {
-    display: flex;
-    flex-direction: column;
-    font-family: $font-family;
-    text-decoration: none;
-    color: white;
-    align-content: center;
-    margin-top: 12vh;
-  }
+//   nav {
+//     display: flex;
+//     flex-direction: column;
+//     font-family: $font-family;
+//     text-decoration: none;
+//     color: white;
+//     align-content: center;
+//     margin: 10vh 0;
+//   }
 
-  a {
-    text-decoration: none;
-    text-transform: uppercase;
-    color: white;
-    padding: 20px;
-    font-size: 18px;
-    margin: 0 auto;
-    letter-spacing: 1px;
-    font-weight: 500;
-  }
+//   a {
+//     text-decoration: none;
+//     text-transform: uppercase;
+//     color: white;
+//     padding: 20px;
+//     font-size: 18px;
+//     margin: 0 auto;
+//     letter-spacing: 1px;
+//     font-weight: 500;
+//   }
 
-  a:hover {
-    // transform: skew(-12deg);
-    color: $navy;
-    opacity: 0.2;
-    font-weight: 500;
-    letter-spacing: 1px;
-    transition: 0.25s ease-in;
-  }
+//   a:hover {
+//     // transform: skew(-12deg);
+//     color: $navy;
+//     opacity: 0.2;
+//     font-weight: 500;
+//     letter-spacing: 1px;
+//     transition: 0.25s ease-in;
+//   }
 
-  .modal-buttons {
-    justify-content: center;
-    margin: 0 auto;
-    display: flex;
+//   .modal-buttons {
+//     justify-content: center;
+//     margin: 0 auto;
+//     display: flex;
 
-    .add-item-button {
-      font-family: $font-family;
-      background: $blue;
-      border: 2px solid white;
-      padding: 8px 0px;
-      border-radius: 20px;
-      font-size: 14px;
-      text-align: center;
-      color: white;
-      margin: 0 auto;
-      position: absolute;
-      bottom: 165px;
-      width: 8%;
-      min-width: 130px;
-    }
-    .add-offer-button {
-      font-family: $font-family;
-      border: 2px solid white;
-      padding: 8px 0px;
-      background: $blue;
-      border-radius: 20px;
-      font-size: 14px;
-      text-align: center;
-      color: white;
-      margin: 0 auto;
-      position: absolute;
-      bottom: 120px;
-      width: 8%;
-      min-width: 130px;
-    }
+//     .add-item-button {
+//       font-family: $font-family;
+//       background: $blue;
+//       border: 2px solid white;
+//       padding: 8px 0px;
+//       border-radius: 20px;
+//       font-size: 14px;
+//       text-align: center;
+//       color: white;
+//       margin: 0 auto;
+//       width: 8%;
+//       min-width: 130px;
+//     }
+//     .add-offer-button {
+//       font-family: $font-family;
+//       border: 2px solid white;
+//       padding: 8px 0px;
+//       background: $blue;
+//       border-radius: 20px;
+//       font-size: 14px;
+//       text-align: center;
+//       color: white;
+//       margin: 0 auto;
+//       width: 8%;
+//       margin-top: 30px;
+//       min-width: 130px;
+//     }
 
-    .add-item-button:hover {
-      color: $navy;
-      opacity: 0.2;
-      font-weight: 500;
-      border: 2px solid $navy;
-      transition: 0.25s ease-in;
-    }
-    .add-offer-button:hover {
-      color: $navy;
-      opacity: 0.2;
-      font-weight: 500;
-      border: 2px solid $navy;
-      transition: 0.25s ease-in;
-    }
-  }
+//     .add-item-button:hover {
+//       color: $navy;
+//       opacity: 0.2;
+//       font-weight: 500;
+//       border: 2px solid $navy;
+//       transition: 0.25s ease-in;
+//     }
+//     .add-offer-button:hover {
+//       color: $navy;
+//       opacity: 0.2;
+//       font-weight: 500;
+//       border: 2px solid $navy;
+//       transition: 0.25s ease-in;
+//     }
+//   }
 
-  .modal-container {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    font-family: $font-family;
-  }
-}
+//   .modal-container {
+//     margin: 0 auto;
+//     display: flex;
+//     justify-content: center;
+//     font-family: $font-family;
+//   }
+// }
 
-.Navbar__Link .Navbar__Link-toggle {
-  display: none;
-  .mobile-button button {
-    display: none;
-  }
-  button {
-    display: none;
-  }
-}
-.Navbar__Link-toggle {
-  display: none;
-}
+// .Navbar__Link .Navbar__Link-toggle {
+//   display: none;
+//   .mobile-button button {
+//     display: none;
+//   }
+//   button {
+//     display: none;
+//   }
+// }
+// .Navbar__Link-toggle {
+//   display: none;
+// }
 
-.Navbar_Items {
-  display: none;
-}
+// .Navbar_Items {
+//   display: none;
+// }
 
-@media only screen and (max-width: 1200px) {
-  .sidebar-container {
-    width: 25vw;
-    .desktop-sidebar {
-      width: 100%;
-      min-width: 100px;
-      max-width: none;
-    }
-    img {
-      width: 18vw;
-      height: auto;
-      justify-content: center;
-      margin: 0 auto;
-      margin-top: 60px;
-    }
-  }
-}
+// @media only screen and (max-width: 1200px) {
+//   .sidebar-container {
+//     width: 25vw;
+//     .desktop-sidebar {
+//       width: 100%;
+//       min-width: 100px;
+//       max-width: none;
+//     }
+//     img {
+//       width: 18vw;
+//       height: auto;
+//       justify-content: center;
+//       margin: 0 auto;
+//       margin-top: 60px;
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 568px) {
-  .sidebar-container {
-    position: fixed;
-    height: 100vh;
-    z-index: 600;
-    // overflow-y: hidden;
-    // right: 0;
-  }
-  .Navbar__Link-toggle {
-    display: block;
-    position: fixed;
-    margin: 0px;
-    width: 50px;
-    padding: 0px;
-  }
+// @media only screen and (max-width: 568px) {
+//   .sidebar-container {
+//     position: fixed;
+//     height: 100vh;
+//     z-index: 600;
+//     // overflow-y: hidden;
+//     // right: 0;
+//   }
+//   .Navbar__Link-toggle {
+//     display: block;
+//     position: fixed;
+//     margin: 0px;
+//     width: 50px;
+//     padding: 0px;
+//   }
 
-  .Navbar_Items {
-    background: $blue;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    justify-content: center;
-    align-items: center;
-    // height: 100vh;
-    overflow-y: hidden;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+//   .Navbar_Items {
+//     background: $blue;
+//     position: fixed;
+//     height: 100%;
+//     width: 100%;
+//     padding: 0px;
+//     margin: 0px;
+//     top: 0;
+//     left: 0;
+//     bottom: 0;
+//     right: 0;
+//     justify-content: center;
+//     align-items: center;
+//     // height: 100vh;
+//     overflow-y: hidden;
+//     display: flex;
+//     flex-direction: column;
+//     padding: 20px;
 
-    .Sidebar--links {
-      display: flex;
-      flex-direction: column;
+//     .Sidebar--links {
+//       display: flex;
+//       flex-direction: column;
 
-      .mobile-navigation-items a {
-        font-size: 14px;
-        text-transform: capitalize;
-      }
-    }
-    .Navbar_Items i {
-      z-index: 4000;
-    }
+//       .mobile-navigation-items a {
+//         font-size: 14px;
+//         text-transform: capitalize;
+//       }
+//     }
+//     .Navbar_Items i {
+//       z-index: 4000;
+//     }
 
-    a {
-      color: white;
-      font-family: $font-family;
-      font-size: 18px;
-      text-transform: uppercase;
-      text-align: center;
-      font-weight: 500;
-      padding: 2px;
-      margin: 0px 2px;
-      // display: flex;
-    }
+//     a {
+//       color: white;
+//       font-family: $font-family;
+//       font-size: 18px;
+//       text-transform: uppercase;
+//       text-align: center;
+//       font-weight: 500;
+//       padding: 2px;
+//       margin: 0px 2px;
+//       // display: flex;
+//     }
 
-    .modal-buttons-mobile {
-      justify-content: center;
-      margin: 25px auto;
-      // display: flex;
+//     .modal-buttons-mobile {
+//       justify-content: center;
+//       margin: 25px auto;
+//       // display: flex;
 
-      .add-item-button {
-        font-family: $font-family;
-        background: $blue;
-        border: 2px solid white;
-        // padding: 3px 0px;
-        border-radius: 20px;
-        font-size: 14px;
-        text-align: center;
-        color: white;
-        margin: 0 auto;
-        // position: absolute;
-        bottom: 165px;
-        width: 8%;
-        margin: 10px auto;
-        min-width: 110px;
-      }
-      .add-offer-button {
-        font-family: $font-family;
-        border: 2px solid white;
-        // padding: 8px 0px;
-        background: $blue;
-        border-radius: 20px;
-        font-size: 14px;
-        text-align: center;
-        color: white;
-        margin: 0 auto;
+//       .add-item-button {
+//         font-family: $font-family;
+//         background: $blue;
+//         border: 2px solid white;
+//         // padding: 3px 0px;
+//         border-radius: 20px;
+//         font-size: 14px;
+//         text-align: center;
+//         color: white;
+//         margin: 0 auto;
+//         // position: absolute;
+//         bottom: 165px;
+//         width: 8%;
+//         margin: 10px auto;
+//         min-width: 110px;
+//       }
+//       .add-offer-button {
+//         font-family: $font-family;
+//         border: 2px solid white;
+//         // padding: 8px 0px;
+//         background: $blue;
+//         border-radius: 20px;
+//         font-size: 14px;
+//         text-align: center;
+//         color: white;
+//         margin: 0 auto;
 
-        // position: absolute;
-        bottom: 120px;
-        width: 8%;
-        min-width: 110px;
-      }
+//         // position: absolute;
+//         bottom: 120px;
+//         width: 8%;
+//         min-width: 110px;
+//       }
 
-      .add-item-button:hover {
-        color: $navy;
-        opacity: 0.2;
-        font-weight: 500;
-        border: 2px solid $navy;
-        transition: 0.25s ease-in;
-      }
-      .add-offer-button:hover {
-        color: $navy;
-        opacity: 0.2;
-        font-weight: 500;
-        border: 2px solid $navy;
-        transition: 0.25s ease-in;
-      }
-    }
-  }
+//       .add-item-button:hover {
+//         color: $navy;
+//         opacity: 0.2;
+//         font-weight: 500;
+//         border: 2px solid $navy;
+//         transition: 0.25s ease-in;
+//       }
+//       .add-offer-button:hover {
+//         color: $navy;
+//         opacity: 0.2;
+//         font-weight: 500;
+//         border: 2px solid $navy;
+//         transition: 0.25s ease-in;
+//       }
+//     }
+//   }
 
-  .toggle-button-mobile {
-    position: fixed;
-    color: white;
-    right: 0;
-    // top: 5px;
-    font-size: 10px;
-    padding-top: 0.4em;
-    padding-right: 10px;
-  }
-  .desktop-sidebar {
-    display: none;
-    position: fixed;
-    overflow: hidden;
-  }
+//   .toggle-button-mobile {
+//     position: fixed;
+//     color: white;
+//     right: 0;
+//     // top: 5px;
+//     font-size: 10px;
+//     padding-top: 0.4em;
+//     padding-right: 10px;
+//   }
+//   .desktop-sidebar {
+//     display: none;
+//     position: fixed;
+//     overflow: hidden;
+//   }
 
-  #main-nav {
-    display: none;
-    position: fixed;
-    overflow: hidden;
-  }
+//   #main-nav {
+//     display: none;
+//     position: fixed;
+//     overflow: hidden;
+//   }
 
-  #modal-desktop {
-    display: none;
-  }
-}
+//   #modal-desktop {
+//     display: none;
+//   }
+// }

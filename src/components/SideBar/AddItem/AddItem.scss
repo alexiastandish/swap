@@ -1,95 +1,95 @@
-$font-family: 'Montserrat', sans-serif;
-$blue: #2acbdc;
-$navy: #424c58;
-$light-gray: #e5e5e5;
-$dark-gray: #707070;
+// $font-family: 'Montserrat', sans-serif;
+// $blue: #2acbdc;
+// $navy: #424c58;
+// $light-gray: #e5e5e5;
+// $dark-gray: #707070;
 
-* {
-  box-sizing: border-box;
-}
-
-.add-item-container {
-  // display: flex;
-  font-family: $font-family;
-  color: $dark-gray;
-
-  select {
-    font-family: $font-family;
-    color: $navy;
-  }
-
-  select::-ms-expand {
-    font-family: $font-family;
-  }
-
-  select:focus {
-    outline: none;
-  }
-  button {
-    font-family: $font-family;
-    background: $blue;
-    border-radius: 25px;
-    color: white;
-    box-shadow: none;
-    border: none;
-  }
-  button:focus {
-    outline: none;
-  }
-
-  h1 {
-    font-family: $font-family;
-    color: $blue;
-  }
-}
-
-button {
-  border-radius: 2px;
-  min-width: 88px;
-  cursor: pointer;
-  border: 0;
-  min-width: 120px;
-  color: #fff;
-  font-size: 14px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  padding: 10px 6px;
-}
-
-.firebase-input {
-  font-size: 22px;
-  padding: 18px 22px;
-  font-size: 16px;
-  color: $blue;
-  // margin-bottom: 17px;
-  border: 0;
-  // display: block;
-}
-
-// input[type='file'] {
-//   margin: 0 auto;
-//   color: red;
+// * {
+//   box-sizing: border-box;
 // }
 
-@media only screen and (max-width: 568px) {
-  .add-item-container {
-    .input-modal {
-      border: 1px solid $light-gray;
-      display: block;
-    }
-    .fa-times {
-      font-size: 10px;
-    }
-    button {
-      border-radius: 2px;
-      min-width: 88px;
-      cursor: pointer;
-      border: 0;
-      min-width: 120px;
-      color: #fff;
-      font-size: 14px;
+// .add-item-container {
+//   // display: flex;
+//   font-family: $font-family;
+//   color: $dark-gray;
 
-      padding: 2px 1px;
-      border-radius: 25px;
-    }
-  }
-}
+//   select {
+//     font-family: $font-family;
+//     color: $navy;
+//   }
+
+//   select::-ms-expand {
+//     font-family: $font-family;
+//   }
+
+//   select:focus {
+//     outline: none;
+//   }
+//   button {
+//     font-family: $font-family;
+//     background: $blue;
+//     border-radius: 25px;
+//     color: white;
+//     box-shadow: none;
+//     border: none;
+//   }
+//   button:focus {
+//     outline: none;
+//   }
+
+//   h1 {
+//     font-family: $font-family;
+//     color: $blue;
+//   }
+// }
+
+// button {
+//   border-radius: 2px;
+//   min-width: 88px;
+//   cursor: pointer;
+//   border: 0;
+//   min-width: 120px;
+//   color: #fff;
+//   font-size: 14px;
+//   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+//   padding: 10px 6px;
+// }
+
+// .firebase-input {
+//   font-size: 22px;
+//   padding: 18px 22px;
+//   font-size: 16px;
+//   color: $blue;
+//   // margin-bottom: 17px;
+//   border: 0;
+//   // display: block;
+// }
+
+// // input[type='file'] {
+// //   margin: 0 auto;
+// //   color: red;
+// // }
+
+// @media only screen and (max-width: 568px) {
+//   .add-item-container {
+//     .input-modal {
+//       border: 1px solid $light-gray;
+//       display: block;
+//     }
+//     .fa-times {
+//       font-size: 10px;
+//     }
+//     button {
+//       border-radius: 2px;
+//       min-width: 88px;
+//       cursor: pointer;
+//       border: 0;
+//       min-width: 120px;
+//       color: #fff;
+//       font-size: 14px;
+
+//       padding: 2px 1px;
+//       border-radius: 25px;
+//     }
+//   }
+// }

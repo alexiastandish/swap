@@ -41,7 +41,7 @@ class About extends Component {
             </div>
             <div className="anonymous-login">
               <h3>
-                username: <span>anonymous_user</span>
+                email: <span>swap.anonymously@gmail.com</span>
               </h3>
               <h3>
                 password: <span>anonymous.2018</span>
