@@ -38,23 +38,23 @@ input:focus {
   color: $navy;
 }
 
-.dropdown-item a {
-  font-weight: 400;
-  color: $blue;
-  // margin: 5px;
-}
-.dropdown-item a:hover {
-  font-weight: 400;
-  color: white;
-  // margin: 5px;
-}
+// .dropdown-item a {
+//   font-weight: 400;
+//   color: $blue;
+//   // margin: 5px;
+// }
+// .dropdown-item a:hover {
+//   font-weight: 400;
+//   color: white;
+//   // margin: 5px;
+// }
 
-.dropdown-item:hover {
-  font-weight: bold;
-  // color: $blue;
-  color: white;
-  background: $dark-gray;
-}
+// .dropdown-item:hover {
+//   font-weight: bold;
+//   // color: $blue;
+//   color: white;
+//   background: $dark-gray;
+// }
 
 @media only screen and (max-width: 568px) {
   .downshift-dropdown {

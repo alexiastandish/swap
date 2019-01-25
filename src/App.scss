@@ -6,10 +6,6 @@ $navy: #424c58;
 $light-gray: #e5e5e5;
 $dark-gray: #707070;
 
-body {
-  width: 100%;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -22,19 +18,11 @@ button:focus {
   display: flex;
   background-color: $light-gray;
   min-height: 100vh;
-  width: 100vw;
+  flex-direction: row;
   height: 100%;
   z-index: -1;
+  justify-content: space-between;
   font-family: $font-family;
-}
-
-.body-container {
-  flex-direction: column;
-  display: flex;
-  background-color: $light-gray;
-  height: 100%;
-  margin: 0 auto;
-  width: 72vw;
 }
 
 .landing-page {
@@ -66,25 +54,6 @@ button:focus {
       margin: 0 auto;
       margin-bottom: 300px;
     }
-
-    // .home-page-link {
-    //   width: 200px;
-    //   background: #2acbdc;
-    //   color: white;
-    //   text-align: center;
-    //   padding: 3px 0px;
-    //   border-radius: 25px;
-    //   margin: 10px;
-    // }
-    // .home-page-link:hover {
-    //   width: 200px;
-    //   background: #2acbdc;
-    //   color: white;
-    //   text-align: center;
-    //   padding: 3px 0px;
-    //   border-radius: 25px;
-    //   margin: 10px;
-    // }
 
     .home-page-link-signin {
       color: rgba(255, 255, 255, 1);
@@ -235,48 +204,14 @@ button:focus {
       font-weight: 400;
       font-size: 18px;
     }
-
-    // .home-page-button {
-    //   background: $blue;
-    //   color: white;
-    //   padding: 2px 20px;
-    //   border-radius: 25px;
-    //   width: 200px;
-    // }
-
-    // .button {
-    //   display: flex;
-    //   margin: 0 auto;
-    //   text-align: center;
-    //   padding: 10px 24px;
-    //   margin-top: 20px;
-    //   width: 10vw;
-    //   border-radius: 5px;
-    //   background-color: $blue;
-    //   box-shadow: none;
-    //   border: none;
-    //   text-decoration: none;
-
-    //   span {
-    //     text-align: center;
-    //     font-size: 18px;
-    //     color: white;
-    //     margin: 0 auto;
-    //     font-family: $font-family;
-    //   }
-    // }
-
-    // .button:hover {
-    //   background: $light-gray;
-    //   border: $blue solid 3px;
-
-    //   span {
-    //     color: $blue;
-    //     margin: 0 auto;
-    //     padding: 0px;
-    //   }
-    // }
   }
+}
+.body-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 @media only screen and (max-width: 900px) {
@@ -319,11 +254,11 @@ button:focus {
 
   .body-container {
     flex-direction: column;
-    display: flex;
+    // display: flex;
     background-color: $light-gray;
-    height: 100%;
-    margin: 0 auto;
-    width: 90%;
+    // height: 100%;
+    // margin: 0 auto;
+    // width: 90%;
 
     .landing-page {
       background-image: url('http://i65.tinypic.com/znkmmc.jpg');

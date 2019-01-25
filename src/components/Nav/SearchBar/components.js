@@ -55,7 +55,7 @@
 //     boxShadow: 'none',
 //     border: '1px solid rgba(34,36,38,.15)',
 //     borderRadius: '.30rem',
-//     transition: 'box-shadow .1s ease,width .1s ease',
+//     transition: 'dow .1s ease,width .1s ease',
 //     ':hover': {
 //       borderColor: 'rgba(34,36,38,.35)',
 //       boxShadow: 'none',

@@ -7,7 +7,6 @@ import { Provider } from 'react-redux'
 import store from './ducks/store'
 import User from './User'
 import Nav from './components/Nav/Nav'
-import './stylesheets/style.scss'
 
 function App() {
   return (
@@ -16,8 +15,7 @@ function App() {
         <BrowserRouter>
           <div className="App">
             <SideBar />
-
-            <div className="body-container">
+            <div className="body-container" id="right">
               <Nav />
               <Routes />
             </div>

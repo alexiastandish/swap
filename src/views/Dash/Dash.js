@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import './Dash.scss'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -16,21 +16,20 @@ class Dash extends Component {
   }
   render() {
     return (
-      <div className="dash-container">
+      <div className="dash-container dash-space-around">
         {this.props.dashItems.map((dashItem, index) => {
-          // console.log('dashItem', dashItem)
-          // console.log('index', index)
           return (
-            <div className="item-card" key={index}>
+            <Fragment key={index}>
               <ItemCard
                 item={dashItem}
                 images={this.props.images[dashItem.items_id]}
                 user={this.props.user}
               />
-            </div>
+            </Fragment>
           )
         })}
       </div>
+      // </div>
     )
   }
 }

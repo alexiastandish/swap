@@ -15,12 +15,16 @@ class Nav extends Component {
     return (
       window.location.pathname !== '/' && (
         <div className="nav-container">
-          <div className="search-containter">
+          <div className="nav-container__searchbar">
             <SearchBar />
           </div>
-          <div className="menu-nav">
-            <Link to="/notifications">Notifications</Link>
-            <a href={`${process.env.REACT_APP_URL}/logout`}>Logout</a>
+          <div className="nav-container__links ">
+            <Link className="primary-link" to="/notifications">
+              Notifications
+            </Link>
+            <a className="primary-link" href={`${process.env.REACT_APP_URL}/logout`}>
+              Logout
+            </a>
           </div>
         </div>
       )

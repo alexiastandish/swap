@@ -88,52 +88,65 @@ class SideBar extends Component {
   render() {
     return (
       window.location.pathname !== '/' && (
-        <div className="sidebar-container">
+        <div className="sidebar column" id="left">
           {this.state.userError && <ErrorMessage message={this.state.userError} />}
-          <div className="desktop-sidebar">
-            <img src="http://i66.tinypic.com/2cnw4lw.png" alt="swap-logo" />
 
-            <nav id="main-nav">
-              <Link to="/dash">Dash</Link>
-              <Link to="/offers">Offers</Link>
-              <Link to="/likes">Likes</Link>
-              <Link to="/friends">Following</Link>
-              <Link to={`/myProfile/${this.props.user.user_id}`}>Profile</Link>
-            </nav>
+          <img
+            src="http://i66.tinypic.com/2cnw4lw.png"
+            alt="sidebar__logo"
+            className="sidebar__logo"
+          />
 
-            <div className="modal-buttons">
-              {/* ADD ITEM MODAL SECTION */}
+          <nav id="main-nav" className="sidebar__nav">
+            <Link to="/dash" className="heading-secondary">
+              Dash
+            </Link>
+            <Link to="/offers" className="heading-secondary">
+              Offers
+            </Link>
+            <Link to="/likes" className="heading-secondary">
+              Likes
+            </Link>
+            <Link to="/friends" className="heading-secondary">
+              Following
+            </Link>
+            <Link to={`/myProfile/${this.props.user.user_id}`} className="heading-secondary">
+              Profile
+            </Link>
+          </nav>
 
-              <button onClick={this.toggleAddItemModal} className="add-item-button">
-                Add Item
-              </button>
-              {this.state.isAddItemModalOpen && (
-                <AddItem
-                  handleAnonymousUser={this.handleAnonymousUser}
-                  isOpen={this.state.isAddItemModalOpen}
-                  onRequestClose={this.toggleAddItemModal}
-                  addToItems={this.addToItems}
-                  user={this.props.user}
-                />
-              )}
+          <div className="modal-buttons">
+            {/* ADD ITEM MODAL SECTION */}
 
-              {/* ADD OFFER MODAL SECTION */}
+            <button onClick={this.toggleAddItemModal} className="add-item-button">
+              Add Item
+            </button>
+            {this.state.isAddItemModalOpen && (
+              <AddItem
+                handleAnonymousUser={this.handleAnonymousUser}
+                isOpen={this.state.isAddItemModalOpen}
+                onRequestClose={this.toggleAddItemModal}
+                addToItems={this.addToItems}
+                user={this.props.user}
+              />
+            )}
 
-              <button
-                onClick={this.toggleOfferModal}
-                className="add-offer-button"
-                style={{ margin: '0 auto' }}
-              >
-                Add Offer
-              </button>
-              {this.state.isOfferModalOpen && (
-                <AddOffer
-                  user={this.props.user}
-                  onRequestClose={this.toggleOfferModal}
-                  handleAnonymousUser={this.handleAnonymousUser}
-                />
-              )}
-            </div>
+            {/* ADD OFFER MODAL SECTION */}
+
+            <button
+              onClick={this.toggleOfferModal}
+              className="add-offer-button"
+              style={{ margin: '0 auto' }}
+            >
+              Add Offer
+            </button>
+            {this.state.isOfferModalOpen && (
+              <AddOffer
+                user={this.props.user}
+                onRequestClose={this.toggleOfferModal}
+                handleAnonymousUser={this.handleAnonymousUser}
+              />
+            )}
           </div>
 
           <div className="Navbar__Link Navbar__Link-toggle">

@@ -1,0 +1,20 @@
+// COLOR VARIABLES
+
+$blue: #2acbdc;
+$navy: #424c58;
+$light-gray: #e5e5e5;
+$dark-gray: #707070;
+$padding: 30px;
+$margin: 0 auto;
+$text_padding: 20px;
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+}
+
+body {
+  color: $navy;
+  font-weight: 300;
+  line-height: 1.6;
+}

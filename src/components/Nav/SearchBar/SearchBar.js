@@ -37,7 +37,7 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <div className="search-bar-container">
+      <div className="nav-container__search-input">
         <Downshift
           item={this.state.allUsers}
           onChange={this.downshiftOnChange}
@@ -47,10 +47,9 @@ export default class SearchBar extends Component {
             return (
               <div>
                 <label style={{ display: 'block' }} {...getLabelProps()} />
-                {/* <br /> */}
+
                 <input
                   {...getInputProps({
-                    // className: 'fa fa-2x fa-heart like',
                     placeholder: 'Search Users',
                     onChange: this.inputOnChange,
                   })}
@@ -76,7 +75,6 @@ export default class SearchBar extends Component {
                               className="dropdown-item"
                               {...getItemProps({ key: index, index, item })}
                             >
-                              {/* {this.downshiftOnChange(item.user_id)} */}
                               <Link to={`/profile/${item.user_id}`} className="dropdown-item">
                                 {item.username}
                               </Link>

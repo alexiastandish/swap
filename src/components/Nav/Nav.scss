@@ -6,127 +6,126 @@ $navy: #424c58;
 $light-gray: #e5e5e5;
 $dark-gray: #858585;
 
-.nav-container {
-  height: 5vh;
-  width: 72vw;
-  border-bottom: 1px solid #858585;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  justify-content: space-between;
+// .nav-container {
+//   height: 5vh;
+//   border-bottom: 1px solid #858585;
+//   align-items: center;
+//   display: flex;
+//   flex-direction: row;
+//   margin: 0 auto;
+//   margin-bottom: 10px;
+//   justify-content: space-between;
 
-  .search-bar-container {
-    align-content: center;
-    // margin-top: 10px;
-  }
+// .search-bar-container {
+//   align-content: center;
+//   // margin-top: 10px;
+// }
 
-  .downshift-dropdown {
-    margin-top: 7px;
-  }
+// .downshift-dropdown {
+//   margin-top: 7px;
+// }
 
-  input {
-    border: none;
-    width: 220px;
-    height: 35px;
-    margin: 0;
+// input {
+//   border: none;
+//   width: 220px;
+//   height: 35px;
+//   margin: 0;
 
-    background: none;
-  }
+//   background: none;
+// }
 
-  .input-text {
-    font-family: $font-family;
-    font-size: 16px;
-    padding-left: 20px;
-    color: $dark-gray;
-  }
+// .input-text {
+//   font-family: $font-family;
+//   font-size: 16px;
+//   padding-left: 20px;
+//   color: $dark-gray;
+// }
 
-  button {
-    font-size: 1.5em;
-    background: $blue;
-    height: 37px;
-    margin-left: -3px;
-    color: white;
-    margin: 0;
-    border: 1px solid $dark-gray;
-  }
+// button {
+//   font-size: 1.5em;
+//   background: $blue;
+//   height: 37px;
+//   margin-left: -3px;
+//   color: white;
+//   margin: 0;
+//   border: 1px solid $dark-gray;
+// }
 
-  a {
-    color: $dark-gray;
-    font-family: $font-family;
-    font-size: 12px;
-    font-weight: 400;
-    margin-top: 22px;
-    padding-left: 22px;
-  }
+// a {
+//   color: $dark-gray;
+//   font-family: $font-family;
+//   font-size: 12px;
+//   font-weight: 400;
+//   margin-top: 22px;
+//   padding-left: 22px;
+// }
 
-  a:hover {
-    font-family: $font-family;
-    font-size: 12px;
-    font-weight: 400;
-    margin-top: 22px;
-    color: $blue;
-  }
+// a:hover {
+//   font-family: $font-family;
+//   font-size: 12px;
+//   font-weight: 400;
+//   margin-top: 22px;
+//   color: $blue;
+// }
 
-  #textarea:focus {
-    outline: none;
-  }
+// #textarea:focus {
+//   outline: none;
+// }
 
-  input::placeholder {
-    font-size: 12px;
-  }
-}
+// input::placeholder {
+//   font-size: 12px;
+// }
+// }
 
-@media only screen and (max-width: 1200px) {
-  .nav-container {
-    width: 68vw;
-  }
-}
+// @media only screen and (max-width: 1200px) {
+//   .nav-container {
+//     width: 72vw;
+//   }
+// }
 
-@media only screen and (max-width: 568px) {
-  .nav-container {
-    height: 7vh;
-    border-bottom: none;
-    display: flex;
-    width: 100vw;
-    right: 0;
-    left: 0;
-    background: $blue;
-    position: fixed;
-    color: white;
-    margin: 0px;
-  }
+// @media only screen and (max-width: 568px) {
+//   .nav-container {
+//     height: 7vh;
+//     border-bottom: none;
+//     display: flex;
+//     width: 100vw;
+//     right: 0;
+//     left: 0;
+//     background: $blue;
+//     position: fixed;
+//     color: white;
+//     margin: 0px;
+//   }
 
-  .search-containter {
-    // margin: 2px;
-    color: white;
-    font-size: 14px;
-    width: 100px;
-    // padding-top: 1em;
-    left: 0;
-    padding-left: 12px;
-  }
+//   .search-containter {
+//     // margin: 2px;
+//     color: white;
+//     font-size: 14px;
+//     width: 100px;
+//     // padding-top: 1em;
+//     left: 0;
+//     padding-left: 12px;
+//   }
 
-  // .nav-container .menu a:hover {
-  //   font-family: $font-family;
-  //   font-size: 12px;
-  //   font-weight: 400;
-  //   color: $navy;
-  //   opacity: 0.5;
-  // }
+// .nav-container .menu a:hover {
+//   font-family: $font-family;
+//   font-size: 12px;
+//   font-weight: 400;
+//   color: $navy;
+//   opacity: 0.5;
+// }
 
-  // input::placeholder {
-  //   color: white;
-  // }
+// input::placeholder {
+//   color: white;
+// }
 
-  // .search-bar-container {
-  //   .downshift-dropdown {
-  //     margin-top: 0px;
-  //   }
-  // }
+// .search-bar-container {
+//   .downshift-dropdown {
+//     margin-top: 0px;
+//   }
+// }
 
-  .menu-nav {
-    display: none;
-  }
-}
+//   .menu-nav {
+//     display: none;
+//   }
+// }

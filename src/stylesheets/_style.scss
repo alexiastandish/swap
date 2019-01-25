@@ -1,0 +1,33 @@
+.margin {
+  margin: 0 auto;
+}
+
+.padding {
+  padding: 20px;
+}
+
+.btn {
+  background: $blue;
+  font-family: $font-family;
+  border: 2px solid white;
+  padding: 8px 0px;
+  border-radius: 20px;
+  font-size: 14px;
+  text-align: center;
+  color: white;
+  margin: 0 auto;
+  width: 8%;
+  min-width: 130px;
+}
+
+.logo {
+  width: 80%;
+}
+
+a {
+  font-family: $font-family;
+}
+
+p {
+  font-family: $font-family;
+}

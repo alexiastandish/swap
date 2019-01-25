@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import './ItemCard.scss'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -48,7 +48,7 @@ class ItemCard extends Component {
       }) !== -1
 
     return (
-      <div className="item-card-container">
+      <div className="dash-container__item-card">
         {isLiked ? (
           <i
             style={{ color: '#2acbdc' }}
@@ -60,7 +60,7 @@ class ItemCard extends Component {
           <i
             id="like-button"
             style={{ color: '#2acbdc' }}
-            className="fa fa-2x fa-heart-o not-liked"
+            className="fa fa-2x fa-heart-o like"
             onClick={() =>
               this.addToLikes({
                 likinguser: this.props.user && this.props.user.user_id,
@@ -70,30 +70,32 @@ class ItemCard extends Component {
             }
           />
         )}
-        <div className="item-image">
+        <Fragment>
           {this.props.images &&
             this.props.images
               .filter(image => image.imageurl_itemid === this.props.item.items_id)
               .map(image => (
-                <div key={image.image_id}>
-                  <img className="item-card-image-container" src={image.imageurl} alt="default" />
-                </div>
+                <Fragment key={image.image_id}>
+                  <Link to={`/item/${image.items_id}`}>
+                    <img
+                      className="dash-container__item-card--image dash-container__item-card--hover"
+                      src={image.imageurl}
+                      alt="default"
+                    />
+                  </Link>
+                </Fragment>
               ))[0]}
+        </Fragment>
+
+        <div className="item-description">
+          <Link to={`/item/${this.props.item.items_id}`}>
+            <h1 className="heading-secondary">{this.props.item.item_name}</h1>
+
+            <p className="heading-secondary__desc">{this.props.item.item_description}</p>
+
+            <p className="heading-secondary__desc--timestamp">{this.props.item.post_time}</p>
+          </Link>
         </div>
-
-        <Link to={`/item/${this.props.item.items_id}`}>
-          <div className="item-description">
-            <h1>
-              <br />
-              {this.props.item.item_name}
-            </h1>
-
-            <p>{this.props.item.item_description}</p>
-            <p>
-              <span className="timestamp-text">{this.props.item.post_time}</span>
-            </p>
-          </div>
-        </Link>
       </div>
     )
   }
