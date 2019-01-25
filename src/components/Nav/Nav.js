@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import './Nav.scss'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import SearchBar from './SearchBar/SearchBar'
+import NavLinks from './NavLinks'
 
 class Nav extends Component {
   constructor(props) {
@@ -18,14 +19,7 @@ class Nav extends Component {
           <div className="nav-container__searchbar">
             <SearchBar />
           </div>
-          <div className="nav-container__links ">
-            <Link className="primary-link" to="/notifications">
-              Notifications
-            </Link>
-            <a className="primary-link" href={`${process.env.REACT_APP_URL}/logout`}>
-              Logout
-            </a>
-          </div>
+          <NavLinks />
         </div>
       )
     )

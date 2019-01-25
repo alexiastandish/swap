@@ -39,3 +39,30 @@
     color: $blue;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .heading-secondary {
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    letter-spacing: 0.05rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    h1 {
+      text-shadow: 2px 2px 3px rgba(82, 82, 82, 0.48);
+    }
+
+    &__desc {
+      font-size: 0.65rem;
+      color: #ffffff;
+      line-height: 0.75rem;
+      letter-spacing: 0.025rem;
+      &--timestamp {
+        color: $blue;
+        font-size: 0.5rem;
+        line-height: 1.75rem;
+      }
+    }
+  }
+}

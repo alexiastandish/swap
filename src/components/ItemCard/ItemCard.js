@@ -47,6 +47,10 @@ class ItemCard extends Component {
         return like.postid === this.props.item.items_id
       }) !== -1
 
+    const itemDescription =
+      this.props.item.item_description.length >= this.props.descLimit
+        ? this.props.item.item_description.slice(0, this.props.descLimit) + '...'
+        : this.props.item.item_description
     return (
       <div className="dash-container__item-card">
         {isLiked ? (
@@ -91,7 +95,8 @@ class ItemCard extends Component {
           <Link to={`/item/${this.props.item.items_id}`}>
             <h1 className="heading-secondary">{this.props.item.item_name}</h1>
 
-            <p className="heading-secondary__desc">{this.props.item.item_description}</p>
+            {/* <p className="heading-secondary__desc">{this.props.item.item_description}</p> */}
+            <p className="heading-secondary__desc">{itemDescription}</p>
 
             <p className="heading-secondary__desc--timestamp">{this.props.item.post_time}</p>
           </Link>

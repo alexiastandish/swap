@@ -8,7 +8,16 @@ export default class Toggle extends Component {
   }
 
   render() {
+    // const styles = {
+    //   onlyShowOnMobile: {
+    //     display: 'block',
+    //     '@media screen and (min-width:64em)': {
+    //       display: 'none',
+    //     },
+    //   },
+    // }
     const { children } = this.props
+
     return children({
       on: this.state.on,
       toggle: this.toggle,

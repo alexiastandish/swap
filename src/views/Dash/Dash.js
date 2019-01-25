@@ -15,6 +15,7 @@ class Dash extends Component {
     })
   }
   render() {
+    const descLimit = 40
     return (
       <div className="dash-container dash-space-around">
         {this.props.dashItems.map((dashItem, index) => {
@@ -24,6 +25,7 @@ class Dash extends Component {
                 item={dashItem}
                 images={this.props.images[dashItem.items_id]}
                 user={this.props.user}
+                descLimit={descLimit}
               />
             </Fragment>
           )
