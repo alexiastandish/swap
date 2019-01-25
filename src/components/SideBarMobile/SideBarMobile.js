@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getUserItems } from '../../ducks/profileReducer'
 import NavLinks from '../Nav/NavLinks'
+import Media from 'react-media'
 
 class SideBarMobile extends Component {
   constructor(props) {
@@ -83,141 +84,100 @@ class SideBarMobile extends Component {
       3000
     )
   }
+
   render() {
+    console.log('this.props', this.props)
+    const homePageComponent = !this.props.user.isAuthenticated
     return (
       <div className="Navbar__Link Navbar__Link-toggle">
-        <Toggle>
-          {({ on, toggle }) => (
-            <div>
-              {on && (
-                <div className="Navbar_Items">
-                  <div className="Sidebar--links">
-                    <button
-                      onClick={this.sideBarLinkClick}
-                      style={{
-                        background: 'none',
-                        boxShadow: 'none',
-                        margin: '0 auto',
-                        height: 'auto',
-                        display: 'flex',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Link to="/dash">
-                        <div className="Navbar_Link">Dash</div>
-                      </Link>
-                    </button>
-                    <button
-                      onClick={this.sideBarLinkClick}
-                      style={{
-                        background: 'none',
-                        boxShadow: 'none',
-                        margin: '0 auto',
-                        height: 'auto',
-                        display: 'flex',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Link to="/offers">
-                        <div className="Navbar_Link">Offers</div>
-                      </Link>
-                    </button>
-                    <button
-                      onClick={this.sideBarLinkClick}
-                      style={{
-                        background: 'none',
-                        boxShadow: 'none',
-                        margin: '0 auto',
-                        height: 'auto',
-                        display: 'flex',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Link to="/likes">
-                        <div className="Navbar_Link">Likes</div>
-                      </Link>
-                    </button>
-                    <button
-                      onClick={this.sideBarLinkClick}
-                      style={{
-                        background: 'none',
-                        boxShadow: 'none',
-                        margin: '0 auto',
-                        height: 'auto',
-                        display: 'flex',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Link to="/friends">
-                        <div className="Navbar_Link">Following</div>
-                      </Link>
-                    </button>
-                    <button
-                      onClick={this.sideBarLinkClick}
-                      style={{
-                        background: 'none',
-                        boxShadow: 'none',
-                        margin: '0 auto',
-                        height: 'auto',
-                        display: 'flex',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Link to={`/myProfile/${this.props.user.user_id}`}>
-                        <div className="Navbar_Link">Profile</div>
-                      </Link>
-                    </button>
-
-                    <div className="modal-buttons-mobile">
-                      {/* ADD ITEM MOBILE MODAL SECTION */}
-                      <section id="modal-mobile">
-                        <button onClick={this.toggleAddItemModal} className="add-item-button">
-                          Add Item
-                        </button>
-                        {this.state.isAddItemModalOpen && (
-                          <AddItem
-                            isOpen={this.state.isAddItemModalOpen}
-                            onRequestClose={this.toggleAddItemModal}
-                            addToItems={this.addToItems}
-                          />
-                        )}
-                      </section>
-                      {/* ADD OFFER MOBILE MODAL SECTION */}
-                      <section id="modal-mobile">
-                        <button
-                          onClick={this.toggleOfferModal}
-                          className="add-offer-button"
-                          style={{ margin: '0 auto' }}
+        {!homePageComponent && (
+          <Media query={{ maxWidth: 487 }}>
+            <Toggle>
+              {({ on, toggle }) => (
+                <div>
+                  {on && (
+                    <div className="Navbar_Items">
+                      <div className="Sidebar--links">
+                        <Link
+                          to="/dash"
+                          onClick={this.sideBarLinkClick}
+                          className="heading-secondary sb-mobile-link"
                         >
-                          Add Offer
-                        </button>
-                        {this.state.isOfferModalOpen && (
-                          <AddOffer user={this.props.user} onRequestClose={this.toggleOfferModal} />
-                        )}
-                      </section>
-                    </div>
+                          Dash
+                        </Link>
+                        <Link
+                          to="/offers"
+                          onClick={this.sideBarLinkClick}
+                          className="heading-secondary sb-mobile-link"
+                        >
+                          Offers
+                        </Link>
 
-                    <NavLinks />
-                  </div>
+                        <Link
+                          to="/likes"
+                          onClick={this.sideBarLinkClick}
+                          className="heading-secondary sb-mobile-link"
+                        >
+                          Likes
+                        </Link>
+
+                        <Link
+                          to="/friends"
+                          onClick={this.sideBarLinkClick}
+                          className="heading-secondary sb-mobile-link"
+                        >
+                          Following
+                        </Link>
+
+                        <Link
+                          to={`/myProfile/${this.props.user.user_id}`}
+                          onClick={this.sideBarLinkClick}
+                          className="heading-secondary sb-mobile-link"
+                        >
+                          Profile
+                        </Link>
+
+                        {/* ADD ITEM MOBILE MODAL SECTION */}
+                        <div className="sb-modal-btns-section">
+                          <button onClick={this.toggleAddItemModal} className="sb-modal-btn">
+                            Add Item
+                          </button>
+                          {this.state.isAddItemModalOpen && (
+                            <AddItem
+                              isOpen={this.state.isAddItemModalOpen}
+                              onRequestClose={this.toggleAddItemModal}
+                              addToItems={this.addToItems}
+                            />
+                          )}
+
+                          {/* ADD OFFER MOBILE MODAL SECTION */}
+
+                          <button
+                            onClick={this.toggleOfferModal}
+                            className="sb-modal-btn"
+                            style={{ margin: '0 auto' }}
+                          >
+                            Add Offer
+                          </button>
+                          {this.state.isOfferModalOpen && (
+                            <AddOffer
+                              user={this.props.user}
+                              onRequestClose={this.toggleOfferModal}
+                            />
+                          )}
+                        </div>
+
+                        <NavLinks />
+                      </div>
+                    </div>
+                  )}
+
+                  <i className="fa fa-2x fa-circle toggle-button-mobile" onClick={toggle} />
                 </div>
               )}
-
-              <i
-                className="fa fa-2x fa-circle toggle-button-mobile"
-                style={{
-                  position: 'fixed',
-                  zIndex: '-200',
-                  color: 'white',
-                  margin: '10px',
-                  fontSize: '24px',
-                  zIndex: '999999',
-                  // color:
-                }}
-                onClick={toggle}
-              />
-            </div>
-          )}
-        </Toggle>
+            </Toggle>
+          </Media>
+        )}
       </div>
     )
   }

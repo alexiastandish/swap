@@ -27,16 +27,16 @@ input {
   box-shadow: none;
 }
 
-input:focus {
-  outline: none;
-  box-shadow: none;
-  color: $dark-gray;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-family: $font-family;
-  z-index: 100;
-  color: $navy;
-}
+// input:focus {
+//   outline: none;
+//   box-shadow: none;
+//   color: $dark-gray;
+//   padding-top: 10px;
+//   padding-bottom: 10px;
+//   font-family: $font-family;
+//   z-index: 100;
+//   color: $navy;
+// }
 
 // .dropdown-item a {
 //   font-weight: 400;
@@ -85,7 +85,7 @@ input:focus {
     background: white;
     margin-top: 0px;
   }
-  input::placeholder {
-    color: white;
-  }
+  // input::placeholder {
+  //   color: white;
+  // }
 }

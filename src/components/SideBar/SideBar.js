@@ -114,10 +114,10 @@ class SideBar extends Component {
             </Link>
           </nav>
 
-          <div className="modal-buttons">
+          <div className="sb-modal-btns-section">
             {/* ADD ITEM MODAL SECTION */}
 
-            <button onClick={this.toggleAddItemModal} className="add-item-button">
+            <button onClick={this.toggleAddItemModal} className="sb-modal-btn">
               Add Item
             </button>
             {this.state.isAddItemModalOpen && (
@@ -134,7 +134,7 @@ class SideBar extends Component {
 
             <button
               onClick={this.toggleOfferModal}
-              className="add-offer-button"
+              className="sb-modal-btn"
               style={{ margin: '0 auto' }}
             >
               Add Offer

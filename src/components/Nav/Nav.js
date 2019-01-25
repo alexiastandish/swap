@@ -4,14 +4,8 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import SearchBar from './SearchBar/SearchBar'
 import NavLinks from './NavLinks'
-
+import Media from 'react-media'
 class Nav extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {}
-  }
-
   render() {
     return (
       window.location.pathname !== '/' && (
@@ -19,7 +13,9 @@ class Nav extends Component {
           <div className="nav-container__searchbar">
             <SearchBar />
           </div>
-          <NavLinks />
+          <Media query={{ minWidth: 487 }}>
+            <NavLinks />
+          </Media>
         </div>
       )
     )

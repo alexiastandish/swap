@@ -102,7 +102,7 @@
   &__nav {
     display: flex;
     flex-direction: column;
-    height: 30vh;
+    height: 20vh;
     margin: 10rem 0;
     justify-content: space-between;
   }
@@ -159,5 +159,21 @@
     &:hover {
       color: $blue;
     }
+  }
+}
+
+.sb-modal-btns-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-items: center;
+  .sb-modal-btn {
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 50px;
+    font-family: $font-family;
+    max-width: 200px;
+    margin: 0.5rem auto;
+    color: $blue;
   }
 }
